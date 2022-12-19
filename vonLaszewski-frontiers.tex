@@ -16,6 +16,7 @@
 \usepackage{url,hyperref,lineno,microtype,subcaption}
 \usepackage[onehalfspacing]{setspace}
 \usepackage{comment}
+\usepackage{xcolor}
 \usepackage{todonotes}
 
 \newcommand{\TODO}[1]{\todo[inline]{#1}}
@@ -368,61 +369,38 @@ The code is all in public domain and available at github at the following locati
 
 \begin{table}[!h]
 
-  \caption{Training}
-\label{tab:training}
+  \caption{Training and validation with time based hyperparameters sorted by NSSE accuracy.}
+  \label{tab:training}
 
-
-\begin{tabular}{rl}
-NNSE & Name \\
-\hline
-0.191300 & Year Back \\
-0.192700 & 6M 2wk+7AVG \\
-0.197000 & 6M 2wk+13AVG \\
-0.201600 & 6 Months Back \\
-0.232600 & 1Y 2wk+13AVG \\
-0.233000 & 3 Months Back \\
-0.235800 & 1Y 2wk+7AVG \\
-0.243000 & 3M 2wk+7AVG \\
-0.251600 & 1Y 2wk+26AVG \\
-0.251700 & 6M 2wk+26AVG \\
-0.278800 & 3M 2wk+13AVG \\
-0.302500 & 3M 2wk+26AVG \\
-0.405600 & Now 2wk+7AVG \\
-0.429900 & Now 2wk+13AVG \\
-0.506800 & 2 weeks Now \\
-0.521800 & Now 2wk+26AVG \\
+\begin{center}
+\begin{tabular}{|rl||rl|}
+  \hline
+\rule{0pt}{2ex}   
+  \multicolumn{2}{c}{\bfseries Training} & \multicolumn{2}{c|}{\bfseries Validation} \\
+              {\bf NNSE} & {\bf Name} & {\bf NNSE} & {\bf Name} \\
+              \hline
+\rule{0pt}{2ex} 
+0.191300 & {\bf \color{red} Year Back} & 0.195200 & \color{blue} {\bf 6M 2wk+7AVG} \\
+0.192700 & {\bf \color{blue} 6M 2wk+7AVG} & 0.201000 & \color{teal} {\bf 6 Months Back} \\
+0.197000 & 6M 2wk+13AVG & 0.201600 & 6M 2wk+13AVG \\
+0.201600 & \color{teal} {\bf 6 Months Back} & 0.204500 & \color{red} {\bf Year Back} \\
+0.232600 & 1Y 2wk+13AVG & 0.219700 & 3 Months Back \\
+0.233000 & 3 Months Back & 0.228900 & 3M 2wk+7AVG \\
+0.235800 & 1Y 2wk+7AVG & 0.238200 & 1Y 2wk+13AVG \\
+0.243000 & 3M 2wk+7AVG & 0.249500 & 1Y 2wk+7AVG \\
+0.251600 & 1Y 2wk+26AVG & 0.264400 & 6M 2wk+26AVG \\
+0.251700 & 6M 2wk+26AVG & 0.266200 & 3M 2wk+13AVG \\
+0.278800 & 3M 2wk+13AVG & 0.270300 & 1Y 2wk+26AVG \\
+0.302500 & 3M 2wk+26AVG & 0.295800 & 3M 2wk+26AVG \\
+0.405600 & Now 2wk+7AVG & 0.379700 & Now 2wk+7AVG \\
+0.429900 & Now 2wk+13AVG & 0.412700 & Now 2wk+13AVG \\
+0.506800 & 2 weeks Now & 0.470100 & 2 weeks Now \\
+0.521800 & Now 2wk+26AVG & 0.502300 & Now 2wk+26AVG \\
 \hline
 \end{tabular}
+\end{center}
 
 \end{table}
 
-\begin{table}[!h]
-  
-\caption{valitation}
-\label{tab:validation}
-
-\begin{tabular}{rl}
-NNSE & Name \\
-\hline
-0.195200 & 6M 2wk+7AVG \\
-0.201000 & 6 Months Back \\
-0.201600 & 6M 2wk+13AVG \\
-0.204500 & Year Back \\
-0.219700 & 3 Months Back \\
-0.228900 & 3M 2wk+7AVG \\
-0.238200 & 1Y 2wk+13AVG \\
-0.249500 & 1Y 2wk+7AVG \\
-0.264400 & 6M 2wk+26AVG \\
-0.266200 & 3M 2wk+13AVG \\
-0.270300 & 1Y 2wk+26AVG \\
-0.295800 & 3M 2wk+26AVG \\
-0.379700 & Now 2wk+7AVG \\
-0.412700 & Now 2wk+13AVG \\
-0.470100 & 2 weeks Now \\
-0.502300 & Now 2wk+26AVG \\
-\hline
-\end{tabular}
-
-\end{table}
 
 \end{document}
