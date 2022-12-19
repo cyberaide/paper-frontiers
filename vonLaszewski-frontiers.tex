@@ -197,18 +197,14 @@ potential conflict of interest.
 
 \section*{Author Contributions}
 
-GvL is the leadauthor and main contributr to this paper. He has
+{\em GvL} is the leadauthor and main contributr to this paper. He has
 modified and augmented the earthquake paper to include the ability to
-execute hyperparameters. 
-
-JPF is a student hthat has contributed to various aspects of the
-workflow component of the paper and to a number of executions and
-evaluations of experiment runs.
-
-RK has helped togetehr with GVL in teh implementation of the secign of
+execute hyperparameters. {\em JPF} is a student hthat has contributed
+to various aspects of the workflow component of the paper and to a
+number of executions and evaluations of experiment runs. {\em RK} has
+helped togetehr with GVL in teh implementation of the secign of
 cloudmesh-sbatch and the porting of the effort to the UVA machine.
-
-GCF is the author of the earthquake code and facilitaties the
+{\em GCF} is the author of the earthquake code and facilitaties the
 interactions with the MLCommons Science Working group as a group
 leader of that effort.
 
@@ -284,87 +280,75 @@ The code is all in public domain and available at github at the following locati
 
 %%%  NB logo1.eps is required in the path in order to correctly compile front page header %%%
 
-\begin{figure}[h!]
-\begin{center}
-% \includegraphics[width=10cm]{logo1}% This is a *.eps file
-\end{center}
-\caption{ Enter the caption for your figure here.  Repeat as  necessary for each of your figures}\label{fig:1}
-\end{figure}
 
-\setcounter{figure}{2}
-\setcounter{subfigure}{0}
-\begin{subfigure}
-\setcounter{figure}{2}
-\setcounter{subfigure}{0}
-    \centering
-    \begin{minipage}[b]{0.5\textwidth}
-        %\includegraphics[width=\linewidth]{logo1.eps}
-        \caption{This is Subfigure 1.}
-        \label{fig:Subfigure 1}
-    \end{minipage}  
-   
-\setcounter{figure}{2}
-\setcounter{subfigure}{1}
-    \begin{minipage}[b]{0.5\textwidth}
-        %\includegraphics[width=\linewidth]{logo2.eps}
-        \caption{This is Subfigure 2.}
-        \label{fig:Subfigure 2}
-    \end{minipage}
-
-\setcounter{figure}{2}
-\setcounter{subfigure}{-1}
-    \caption{Enter the caption for your subfigure here. \textbf{(A)} This is the caption for Subfigure 1. \textbf{(B)} This is the caption for Subfigure 2.}
-    \label{fig: subfigures}
-\end{subfigure}
 
 \begin{comment}
+\begin{figure}[h!]
+        
+  \begin{center}
+\begin{minipage}[b]{0.49\textwidth}
+  \includegraphics[width=\linewidth]{images/2_training-MSE-and-NNSE.pdf}
+  (A) This is Subfigure 1.
+\end{minipage}  
+\ \
+\begin{minipage}[b]{0.49\textwidth}
+  \includegraphics[width=\linewidth]{images/2_validation-MSE-and-NNSE.pdf}
+  (B) This is Subfigure 2.
+\end{minipage}
+
+\end{center}
+
+    \caption{Enter the caption for your subfigure here. \textbf{(A)}
+      This is the caption for Subfigure 1. \textbf{(B)} This is the
+      caption for Subfigure 2.}
+    \label{fig:subfigures}
+
+\end{figure}
+\end{comment}
 
 
-\begin{figure}[p]
-     \centering
-     \begin{subfigure}[b]{0.49\textwidth}
-        \centering\includegraphics[width=1.0\linewidth]{images/2_training-MSE-and-NNSE.pdf}
-        \caption{MSE and NNSE - 2 epochs training}
-        \label{fig:tbd1}
-     \end{subfigure}
-     \hfill
-     \begin{subfigure}[b]{0.49\textwidth}
-        \centering\includegraphics[width=1.0\linewidth]{images/2_validation-MSE-and-NNSE.pdf}
-        \caption{MSE and NNSE - 2 epochs validation}
-        \label{fig:tbd2}
-     \end{subfigure}
-     \hfill
+
+\begin{figure}[htb]
+
+  \begin{center}
+     \begin{minipage}[b]{0.45\textwidth}
+        \includegraphics[width=1.0\linewidth]{images/2_training-MSE-and-NNSE.pdf}
+        {\bf (T.2)} MSE and NNSE - 2 epochs training.
+     \end{minipage}
+     \ \
+     \begin{minipage}[b]{0.45\textwidth}
+        \includegraphics[width=1.0\linewidth]{images/2_validation-MSE-and-NNSE.pdf}
+        {\bf (V.2)}  MSE and NNSE - 2 epochs validation.
+     \end{minipage}
+
      \newline
-     \begin{subfigure}[b]{0.49\textwidth}
-        \centering\includegraphics[width=1.0\linewidth]{images/30_training-MSE-and-NNSE.pdf}
-        \caption{MSE and NNSE - 30 epochs training}
-        \label{fig:tbd3}
-     \end{subfigure}
-     \hfill
-     \begin{subfigure}[b]{0.49\textwidth}
-        \centering\includegraphics[width=1.0\linewidth]{images/30_validation-MSE-and-NNSE.pdf}
-        \caption{MSE and NNSE - 30 epochs validation}
-        \label{fig:tbd4}
-     \end{subfigure}
-     \hfill
+     \begin{minipage}[b]{0.45\textwidth}
+        \includegraphics[width=1.0\linewidth]{images/30_training-MSE-and-NNSE.pdf}
+        {\bf (T.30)} MSE and NNSE - 30 epochs training.
+     \end{minipage}
+     \ \
+     \begin{minipage}[b]{0.45\textwidth}
+        \includegraphics[width=1.0\linewidth]{images/30_validation-MSE-and-NNSE.pdf}
+        {\bf (V.30)} MSE and NNSE - 30 epochs validation.
+     \end{minipage}
+
           \newline
-     \hfill
-     \begin{subfigure}[b]{0.49\textwidth}
-        \centering\includegraphics[width=1.0\linewidth]{images/70_training-MSE-and-NNSE.pdf}
-        \caption{MSE and NNSE - 70 epochs training}
-        \label{fig:tbd3}
-     \end{subfigure}
-     \hfill
-     \begin{subfigure}[b]{0.49\textwidth}
-        \centering\includegraphics[width=1.0\linewidth]{images/70_validation-MSE-and-NNSE.pdf}
-        \caption{MSE and NNSE - 70 epochs validation}
-        \label{fig:tbd4}
-     \end{subfigure}
-        \caption{NNSE and MSE values for epochs 2, 30, 70 (training and validation).}
-        \label{fig:six graphs}
+
+     \begin{minipage}[b]{0.45\textwidth}
+        \includegraphics[width=1.0\linewidth]{images/70_training-MSE-and-NNSE.pdf}
+        {\bf (T.70)} MSE and NNSE - 70 epochs training.
+     \end{minipage}
+     \ \
+     \begin{minipage}[b]{0.45\textwidth}
+        \includegraphics[width=1.0\linewidth]{images/70_validation-MSE-and-NNSE.pdf}
+        {\bf (V.70)}  MSE and NNSE - 70 epochs validation.
+     \end{minipage}
+\end{center}
+     
+     \caption{NNSE and MSE values for epochs 2, 30, 70 training (T.2, T.30, T.70) and validation (V.2, V.30, V.70).}
+     \label{fig:six graphs}
 \end{figure}
 
-\end{comment}
 
 
 \begin{table}[htb]
