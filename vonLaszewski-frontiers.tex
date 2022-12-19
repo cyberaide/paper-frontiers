@@ -335,7 +335,6 @@ The code is all in public domain and available at github at the following locati
         {\bf (V.2)}  MSE and NNSE - 2 epochs validation.
      \end{minipage}
 
-     \newline
      \begin{minipage}[b]{0.45\textwidth}
         \includegraphics[width=1.0\linewidth]{images/30_training-MSE-and-NNSE.pdf}
         {\bf (T.30)} MSE and NNSE - 30 epochs training.
@@ -345,8 +344,6 @@ The code is all in public domain and available at github at the following locati
         \includegraphics[width=1.0\linewidth]{images/30_validation-MSE-and-NNSE.pdf}
         {\bf (V.30)} MSE and NNSE - 30 epochs validation.
      \end{minipage}
-
-          \newline
 
      \begin{minipage}[b]{0.45\textwidth}
         \includegraphics[width=1.0\linewidth]{images/70_training-MSE-and-NNSE.pdf}
@@ -494,5 +491,32 @@ The code is all in public domain and available at github at the following locati
 \end{center}
 
 \end{table}
+
+
+\section{Energy}
+
+\begin{figure}[htb]
+
+  \begin{center}
+     \begin{minipage}[b]{0.30\textwidth}
+        \includegraphics[width=1.0\linewidth]{images/card-name-v100-gpu-count-1-cpu-num-6-mem-32gb-repeat-1-tfttransformerepochs-2.png}
+        {\bf (E.2)} Energy consumption for 2 epochs training and validation.\\
+     \end{minipage}
+     \ \
+     \begin{minipage}[b]{0.30\textwidth}
+        \includegraphics[width=1.0\linewidth]{images/card-name-v100-gpu-count-1-cpu-num-6-mem-32gb-repeat-1-tfttransformerepochs-30.png}
+        {\bf (E.30)} Energy consumption for 30 epochs training and validation.
+     \end{minipage}
+     \ \
+     \begin{minipage}[b]{0.30\textwidth}
+        \includegraphics[width=1.0\linewidth]{images/card-name-v100-gpu-count-1-cpu-num-6-mem-32gb-repeat-1-tfttransformerepochs-70.png}
+        {\bf (E.70)} Energy consumption for 70 epochs training and validation.
+     \end{minipage}
+  \end{center}
+
+  \caption {Energy monitoring for 2, 30, and 70 Epochs}
+  \label{fig:energy}
+
+\end{figure}
 
 \end{document}
