@@ -14,8 +14,10 @@
 
 \def\keyFont{\fontsize{8}{11}\helveticabold }
 \def\firstAuthorLast{von Laszewski {et~al.}} %use et al only if is more than 1 author
-\def\Authors{Gregor von Laszewski\,$^{1,*}$, J.P. Fleischer\,$^{1}$
-  and Geoffre. C. Fox\,$^{1}$}
+\def\Authors{Gregor von Laszewski\,$^{1,*}$,
+ J.P. Fleischer\,$^{1}$
+Robert Knuuti\,$^{1}$
+ and Geoffrey. C. Fox\,$^{1}$}
 
 % Affiliations should be keyed to the author's name with superscript
 % numbers and be listed as follows: Laboratory, Institute, Department,
@@ -53,7 +55,8 @@ Town Center Four,
 \onecolumn
 \firstpage{1}
 
-\title[Running Title]{Article Title} 
+\title[Running Title]{Insights in High Performance Big Data Systems
+  gained from MLCommons Earthquake Benchmarks} 
 
 \author[\firstAuthorLast ]{\Authors} % This field will be automatically populated
 \address{} % This field will be automatically populated
@@ -178,18 +181,7 @@ this is the case.
 
 \subsection{Resource Identification Initiative}
 
-To take part in the Resource Identification Initiative, please use the
-corresponding catalog number and RRID in your current manuscript. For
-more information about the project and for steps on how to search for
-an RRID, please click
-\href{http://www.frontiersin.org/files/pdf/letter_to_author.pdf}{here}.
-
-\section{Additional Requirements}
-
-For additional requirements for specific article types and further
-information please refer to
-\href{http://www.frontiersin.org/about/AuthorGuidelines#AdditionalRequirements}{Author
-  Guidelines}.
+{\bf Organization:} RRID:SCR_011743
 
 \section*{Conflict of Interest Statement}
 
@@ -199,15 +191,20 @@ potential conflict of interest.
 
 \section*{Author Contributions}
 
-The Author Contributions section is mandatory for all articles,
-including articles by sole authors. If an appropriate statement is not
-provided on submission, a standard one will be inserted during the
-production process. The Author Contributions statement must describe
-the contributions of individual authors referred to by their initials
-and, in doing so, all authors agree to be accountable for the content
-of the work. Please see
-\href{http://home.frontiersin.org/about/author-guidelines#AuthorandContributors}{here}
-for full authorship criteria.
+GvL is the leadauthor and main contributr to this paper. He has
+modified and augmented the earthquake paper to include the ability to
+execute hyperparameters. 
+
+JPF is a student hthat has contributed to various aspects of the
+workflow component of the paper and to a number of executions and
+evaluations of experiment runs.
+
+RK has helped togetehr with GVL in teh implementation of the secign of
+cloudmesh-sbatch and the porting of the effort to the UVA machine.
+
+GCF is the author of the earthquake code and facilitaties the
+interactions with the MLCommons Science Working group as a group
+leader of that effort.
 
 \section*{Funding}
 
@@ -218,7 +215,17 @@ Details of all funding sources should be provided, including grant numbers if ap
 Work was in part funded by the NSF CyberTraining: CIC:
 CyberTraining for Students and Technologies from Generation Z with the
 award numbers 1829704 and 2200409 and NIST 60NANB21D151T. 
-The work was also funded by the \TODO{Department of Energy under the grant ???.}
+The work was also funded by the \TODO{Department of Energy under the
+  grant ???.}
+
+We like to thank Thomas Butler and Jake Kolessar for their
+contributions during the capstone project while focussing on executing
+initial runs of the code, and makeing modifications. In particular we
+like to thank for the correction of the desnity polts of the
+earthquake locations, and Jake for his efforts in alalysing the impact
+of the energy based on the script to collect log data provided by GVL. 
+The code was since modified with a much updated logging library and an
+improved batch management by GVL and RK.
 
 \section*{Supplemental Data}
 
