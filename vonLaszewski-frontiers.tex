@@ -91,12 +91,7 @@ Abstract empty if your article does not require one, please see
 
 \section{Introduction}
 
-For Original Research Articles \citep{conference}, Clinical Trial
-Articles \citep{article}, and Technology Reports \citep{patent}, the
-introduction should be succinct, with no subheadings \citep{book}. For
-Case Reports the Introduction should include symptoms at presentation
-\citep{chapter}, physical exams and lab results \citep{dataset}.
-
+todo \citep{las-22-arxiv-workflow-cc}
 
 
 \section{Article types}
@@ -230,29 +225,44 @@ of the energy based on the script to collect log data provided by GVL.
 The code was since modified with a much updated logging library and an
 improved batch management by GVL and RK.
 
-\section*{Supplemental Data}
-
-\href{http://home.frontiersin.org/about/author-guidelines#SupplementaryMaterial}{Supplementary
-  Material} should be uploaded separately on submission, if there are
-Supplementary Figures, please include the caption in the same file as
-the figure. LaTeX Supplementary Material templates can be found in the
-Frontiers LaTeX folder.
-
 \section*{Data Availability Statement}
 
-The datasets [GENERATED/ANALYZED] for this study can be found in the
-[NAME OF REPOSITORY] [LINK].
+The code is all in public domain and available at github at the following locations
 
-% Please see the availability of data guidelines for more information,
-% at
-% https://www.frontiersin.org/about/author-guidelines#AvailabilityofData
+\begin{itemize}
+
+\item cloudmesh-cc -- Is a code to control workflows to be executed on
+  remote computing
+  resources. \url{https://github.com/cloudmesh/cloudmesh-cc}
+
+\item cloudmesh-sbatch -- Is a code to generate batch scripts for
+  hyperparameter studies high performance computers so they can be
+  executed on different suppercomputers by multiple
+  accounts. \url{https://github.com/cloudmesh/cloudmesh-sbatch}
+
+\item cloudmesh -- Cloudmesh is a large collection of repositories for
+  accessing cloud and HPC
+  resources. \url{\url{https://github.com/orgs/cloudmesh/repositories}
+
+\item mlcommons eartchquake production -- The MLCommons Sceience
+  Working group is described at
+  \url{https://mlcommons.org/en/groups/research-science/}. This page
+  contains the links to the production level earthquake code.
+
+\item mlcommons eartchquake development -- The development version of
+  the code is available in this reporitory. It also contains many of
+  the analysis scrripts that are not pare of the production code
+  hosted by MLCommons \url{https://github.com/laszewsk/mlcommons}.
+  
+\end{itemize}
+
+
 
 \bibliographystyle{frontiersinSCNS_ENG_HUMS}
 
-\bibliography{test}
+\bibliography{vonLaszewski-references}
 
-%%% Make sure to upload the bib file along with the tex file and PDF
-%%% Please see the test.bib file for some examples of references
+
 
 \section*{Figure captions}
 
