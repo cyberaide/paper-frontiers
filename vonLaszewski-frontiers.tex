@@ -68,7 +68,7 @@ Town Center Four,
 \onecolumn
 \firstpage{1}
 
-\title {Article Title} 
+\title{Insights in High Performance Big Data Systems Gained from MLCommons Earthquake Benchmarks Efforts} 
 
 \author[\firstAuthorLast ]{\Authors} %This field will be automatically populated
 \address{} %This field will be automatically populated
@@ -110,38 +110,34 @@ todo \citep{las-22-arxiv-workflow-cc}
 % Case Reports the Introduction should include symptoms at presentation
 % \citep{chapter}, physical exams and lab results \citep{dataset}.
 
+\section{Educational Insights}
 
+More then MNIST
+Practical experience with large systems
+long running jobs
+integration and use of python for DL
+hyperparameter seach
 
-\section{Article types}
+parallelization while not doing all hyperparameters in the same script
 
-For requirements for a specific article type please refer to the
-Article Types on any Frontiers journal page. Please also refer to
-\href{https://www.frontiersin.org/about/author-guidelines#sections}{Author
-  Guidelines} for further information on how to organize your
-manuscript in the required sections or their equivalents for your
-field
+dealing with energy
+delaing with analysis
+deling with hybrid heenvironments
 
-% For Original Research articles, please note that the Material and
-% Methods section can be placed in any of the following ways: before
-% Results, before Discussion or after Discussion.
+time planing team management
+
+pair programming
+
 
 \section{Manuscript Formatting}
 
 \subsection{Heading Levels}
-
-%There are 5 heading levels
 
 \subsection{Level 2}
 \subsubsection{Level 3}
 \paragraph{Level 4}
 \subparagraph{Level 5}
 
-\subsection{Equations}
-Equations should be inserted in editable format from the equation editor.
-
-\begin{equation}
-\sum x+ y =Z\label{eq:01}
-\end{equation}
 
 \subsection{Figures}
 
@@ -192,7 +188,7 @@ this is the case.
 
 \subsection{Resource Identification Initiative}
 
-{\bf Organization:} $RRID:SCR_011743$
+{\bf Organization:} \verb|RRID:SCR_011743|
 
 \section*{Conflict of Interest Statement}
 
@@ -237,14 +233,6 @@ this team finished their work, the logging library was improved and
 accuraccy logging was enabled. Furthermore, {\em GVL} and {\em RK}
 improved significantly the cloudmesh heterogeneous batch management
 framework.  The computational runs were redone.
-
-\section*{Supplemental Data}
-
-\href{https://www.frontiersin.org/guidelines/author-guidelines#supplementary-material}{Supplementary
-  Material} should be uploaded separately on submission, if there are
-Supplementary Figures, please include the caption in the same file as
-the figure. LaTeX Supplementary Material templates can be found in the
-Frontiers LaTeX folder.
 
 \section*{Data Availability Statement}
 
@@ -321,42 +309,42 @@ The code is all in public domain and available at github at the following locati
 \end{comment}
 
 
-
 \begin{figure}[htb]
 
   \begin{center}
+
      \begin{minipage}[b]{0.45\textwidth}
-        \includegraphics[width=1.0\linewidth]{images/2_training-MSE-and-NNSE.pdf}
-        {\bf (T.2)} MSE and NNSE - 2 epochs training.
-     \end{minipage}
+       \includegraphics[width=1.0\linewidth]{images/2_training-MSE-and-NNSE.pdf}
+        {\bf (A)} MSE and NNSE - 2 epochs training.
+    \end{minipage}
      \ \
      \begin{minipage}[b]{0.45\textwidth}
         \includegraphics[width=1.0\linewidth]{images/2_validation-MSE-and-NNSE.pdf}
-        {\bf (V.2)}  MSE and NNSE - 2 epochs validation.
+        {\bf (B)}  MSE and NNSE - 2 epochs validation.
      \end{minipage}
 
      \begin{minipage}[b]{0.45\textwidth}
         \includegraphics[width=1.0\linewidth]{images/30_training-MSE-and-NNSE.pdf}
-        {\bf (T.30)} MSE and NNSE - 30 epochs training.
+        {\bf (C)} MSE and NNSE - 30 epochs training.
      \end{minipage}
      \ \
      \begin{minipage}[b]{0.45\textwidth}
         \includegraphics[width=1.0\linewidth]{images/30_validation-MSE-and-NNSE.pdf}
-        {\bf (V.30)} MSE and NNSE - 30 epochs validation.
+        {\bf (D)} MSE and NNSE - 30 epochs validation.
      \end{minipage}
 
      \begin{minipage}[b]{0.45\textwidth}
         \includegraphics[width=1.0\linewidth]{images/70_training-MSE-and-NNSE.pdf}
-        {\bf (T.70)} MSE and NNSE - 70 epochs training.
+        {\bf (E)} MSE and NNSE - 70 epochs training.
      \end{minipage}
      \ \
      \begin{minipage}[b]{0.45\textwidth}
         \includegraphics[width=1.0\linewidth]{images/70_validation-MSE-and-NNSE.pdf}
-        {\bf (V.70)}  MSE and NNSE - 70 epochs validation.
+        {\bf (F)}  MSE and NNSE - 70 epochs validation.
      \end{minipage}
 \end{center}
      
-     \caption{NNSE and MSE values for epochs 2, 30, 70 training (T.2, T.30, T.70) and validation (V.2, V.30, V.70).}
+     \caption{NNSE and MSE values for Training and validation for epochs 2, 30, 70.}
      \label{fig:six graphs}
 \end{figure}
 
@@ -372,14 +360,13 @@ The code is all in public domain and available at github at the following locati
     validation. The number of Epochs for this experiemnet is 2.}
   \label{tab:training}
 
+  \renewcommand{\arraystretch}{1.2}
 \begin{center}
 \begin{tabular}{|r|rl||rl|}
   \hline
-\rule{0pt}{2ex}   
 {\bf Rank} & \multicolumn{2}{c||}{\bfseries Training} & \multicolumn{2}{c|}{\bfseries Validation} \\
      &   {\bf NNSE} & {\bf Hyperparameters} & {\bf NNSE} & {\bf Hyperparameters} \\
               \hline
-\rule{0pt}{2ex} 
 1 & \color{red} 0.191300 & \color{red} Year Back & \color{blue} 0.195200 & \color{blue} 6M 2wk+7AVG} \\
 2 & 0.192700 & \color{blue} 6M 2wk+7AVG & \color{teal} 0.201000 & \color{teal} 6 Months Back \\
 3 & 0.197000 & 6M 2wk+13AVG & 0.201600 & 6M 2wk+13AVG \\
@@ -402,8 +389,6 @@ The code is all in public domain and available at github at the following locati
 
 \end{table}
 
-\newpage
-
 \begin{table}[htb]
 
   \caption{Training and validation with time based hyperparameters
@@ -412,21 +397,16 @@ The code is all in public domain and available at github at the following locati
     showcase the the the accuracy of the validation. In the validation
     we see that the best value for training is in rank four for the
     validation. The number of Epochs for this experiemnet is 30.
-    \TODO{figure out where the word height comes from, a LaTeX error?}
   }
   \label{tab:training}
 
-\begin{center}
-
-
-  
+  \renewcommand{\arraystretch}{1.2}  
+\begin{center}  
 \begin{tabular}{|r|rl||rl|}
-  \hline
-\rule{0pt}{2ex}   
+\hline
 {\bf Rank} & \multicolumn{2}{c||}{\bfseries Training} & \multicolumn{2}{c|}{\bfseries Validation} \\
      &   {\bf NNSE} & {\bf Hyperparameters} & {\bf NNSE} & {\bf Hyperparameters} \\
               \hline
-\rule{0pt}{2ex} 
 \hline
  1 & \color{red} 0.047600 & \color{red} Year Back & \color{red} 0.050500 & \color{red} Year Back \\
  2 & \color{blue} 0.069500 & \color{blue} 6 Months Back & \color{blue} 0.070300 & \color{blue} 6 Months Back \\
@@ -461,15 +441,13 @@ The code is all in public domain and available at github at the following locati
     validation. The number of Epochs for this experiemnet is 70.}
   \label{tab:training}
 
+  \renewcommand{\arraystretch}{1.2}    
 \begin{center}
-
 \begin{tabular}{|r|rl||rl|}
   \hline
-\rule{0pt}{2ex}   
 {\bf Rank} & \multicolumn{2}{c||}{\bfseries Training} & \multicolumn{2}{c|}{\bfseries Validation} \\
      &   {\bf NNSE} & {\bf Hyperparameters} & {\bf NNSE} & {\bf Hyperparameters} \\
               \hline
-\rule{0pt}{2ex}              
  1 & \color{red} 0.067400 & \color{red} 3 Months Back & \color{red}0.069800 & \color{red} 3 Months Back \\
  2 & \color{blue} 0.073500 & \color{blue} Year Back & \color{blue} 0.071200 & \color{blue} Year Back \\
  3 & 0.083100 & 1Y 2wk+7AVG & 0.084300 & 1Y 2wk+7AVG \\
@@ -498,23 +476,23 @@ The code is all in public domain and available at github at the following locati
 \begin{figure}[htb]
 
   \begin{center}
-     \begin{minipage}[b]{0.30\textwidth}
+     \begin{minipage}[t]{0.30\textwidth}
         \includegraphics[width=1.0\linewidth]{images/card-name-v100-gpu-count-1-cpu-num-6-mem-32gb-repeat-1-tfttransformerepochs-2.png}
-        {\bf (E.2)} Energy consumption for 2 epochs training and validation.\\
+        {\bf (A)} Energy consumption for 2 epochs training and validation.
      \end{minipage}
      \ \
-     \begin{minipage}[b]{0.30\textwidth}
+     \begin{minipage}[t]{0.30\textwidth}
         \includegraphics[width=1.0\linewidth]{images/card-name-v100-gpu-count-1-cpu-num-6-mem-32gb-repeat-1-tfttransformerepochs-30.png}
-        {\bf (E.30)} Energy consumption for 30 epochs training and validation.
+        {\bf (B)} Energy consumption for 30 epochs training and validation.
      \end{minipage}
      \ \
-     \begin{minipage}[b]{0.30\textwidth}
+     \begin{minipage}[t]{0.30\textwidth}
         \includegraphics[width=1.0\linewidth]{images/card-name-v100-gpu-count-1-cpu-num-6-mem-32gb-repeat-1-tfttransformerepochs-70.png}
-        {\bf (E.70)} Energy consumption for 70 epochs training and validation.
+        {\bf (C)} Energy consumption for 70 epochs training and validation.
      \end{minipage}
   \end{center}
 
-  \caption {Energy monitoring for 2, 30, and 70 Epochs}
+  \caption {Energy monitoring for 2, 30, and 70 epochs for training and validation.}
   \label{fig:energy}
 
 \end{figure}
