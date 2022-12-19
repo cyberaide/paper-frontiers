@@ -369,33 +369,38 @@ The code is all in public domain and available at github at the following locati
 
 \begin{table}[!h]
 
-  \caption{Training and validation with time based hyperparameters sorted by NSSE accuracy.}
+  \caption{Training and validation with time based hyperparameters
+    sorted by NSSE accuracy. The table includes the best two two
+    values higlighted in the training and validation results to
+    showcase the the the accuracy of the validation. In the validation
+    we see that the best value for training is in rank four for the
+    validation.}
   \label{tab:training}
 
 \begin{center}
-\begin{tabular}{|rl||rl|}
+\begin{tabular}{|r|rl||rl|}
   \hline
 \rule{0pt}{2ex}   
-  \multicolumn{2}{c}{\bfseries Training} & \multicolumn{2}{c|}{\bfseries Validation} \\
-              {\bf NNSE} & {\bf Name} & {\bf NNSE} & {\bf Name} \\
+Rank & \multicolumn{2}{c}{\bfseries Training} & \multicolumn{2}{c|}{\bfseries Validation} \\
+     &   {\bf NNSE} & {\bf Name} & {\bf NNSE} & {\bf Name} \\
               \hline
 \rule{0pt}{2ex} 
-0.191300 & {\bf \color{red} Year Back} & 0.195200 & \color{blue} {\bf 6M 2wk+7AVG} \\
-0.192700 & {\bf \color{blue} 6M 2wk+7AVG} & 0.201000 & \color{teal} {\bf 6 Months Back} \\
-0.197000 & 6M 2wk+13AVG & 0.201600 & 6M 2wk+13AVG \\
-0.201600 & \color{teal} {\bf 6 Months Back} & 0.204500 & \color{red} {\bf Year Back} \\
-0.232600 & 1Y 2wk+13AVG & 0.219700 & 3 Months Back \\
-0.233000 & 3 Months Back & 0.228900 & 3M 2wk+7AVG \\
-0.235800 & 1Y 2wk+7AVG & 0.238200 & 1Y 2wk+13AVG \\
-0.243000 & 3M 2wk+7AVG & 0.249500 & 1Y 2wk+7AVG \\
-0.251600 & 1Y 2wk+26AVG & 0.264400 & 6M 2wk+26AVG \\
-0.251700 & 6M 2wk+26AVG & 0.266200 & 3M 2wk+13AVG \\
-0.278800 & 3M 2wk+13AVG & 0.270300 & 1Y 2wk+26AVG \\
-0.302500 & 3M 2wk+26AVG & 0.295800 & 3M 2wk+26AVG \\
-0.405600 & Now 2wk+7AVG & 0.379700 & Now 2wk+7AVG \\
-0.429900 & Now 2wk+13AVG & 0.412700 & Now 2wk+13AVG \\
-0.506800 & 2 weeks Now & 0.470100 & 2 weeks Now \\
-0.521800 & Now 2wk+26AVG & 0.502300 & Now 2wk+26AVG \\
+1 & 0.191300 & {\bf \color{red} Year Back} & 0.195200 & \color{blue} {\bf 6M 2wk+7AVG} \\
+2 & 0.192700 & {\bf \color{blue} 6M 2wk+7AVG} & 0.201000 & \color{teal} {\bf 6 Months Back} \\
+3 & 0.197000 & 6M 2wk+13AVG & 0.201600 & 6M 2wk+13AVG \\
+4 & 0.201600 & \color{teal} {\bf 6 Months Back} & 0.204500 & \color{red} {\bf Year Back} \\
+5 & 0.232600 & 1Y 2wk+13AVG & 0.219700 & 3 Months Back \\
+6 & 0.233000 & 3 Months Back & 0.228900 & 3M 2wk+7AVG \\
+7 & 0.235800 & 1Y 2wk+7AVG & 0.238200 & 1Y 2wk+13AVG \\
+8 & 0.243000 & 3M 2wk+7AVG & 0.249500 & 1Y 2wk+7AVG \\
+9 & 0.251600 & 1Y 2wk+26AVG & 0.264400 & 6M 2wk+26AVG \\
+10 & 0.251700 & 6M 2wk+26AVG & 0.266200 & 3M 2wk+13AVG \\
+11 & 0.278800 & 3M 2wk+13AVG & 0.270300 & 1Y 2wk+26AVG \\
+12 & 0.302500 & 3M 2wk+26AVG & 0.295800 & 3M 2wk+26AVG \\
+13 & 0.405600 & Now 2wk+7AVG & 0.379700 & Now 2wk+7AVG \\
+14 & 0.429900 & Now 2wk+13AVG & 0.412700 & Now 2wk+13AVG \\
+15 & 0.506800 & 2 weeks Now & 0.470100 & 2 weeks Now \\
+16 & 0.521800 & Now 2wk+26AVG & 0.502300 & Now 2wk+26AVG \\
 \hline
 \end{tabular}
 \end{center}
