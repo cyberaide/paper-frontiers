@@ -285,7 +285,7 @@ The code is all in public domain and available at github at the following locati
 
 \begin{figure}[h!]
 \begin{center}
-\includegraphics[width=10cm]{logo1}% This is a *.eps file
+% \includegraphics[width=10cm]{logo1}% This is a *.eps file
 \end{center}
 \caption{ Enter the caption for your figure here.  Repeat as  necessary for each of your figures}\label{fig:1}
 \end{figure}
@@ -297,7 +297,7 @@ The code is all in public domain and available at github at the following locati
 \setcounter{subfigure}{0}
     \centering
     \begin{minipage}[b]{0.5\textwidth}
-        \includegraphics[width=\linewidth]{logo1.eps}
+        %\includegraphics[width=\linewidth]{logo1.eps}
         \caption{This is Subfigure 1.}
         \label{fig:Subfigure 1}
     \end{minipage}  
@@ -305,7 +305,7 @@ The code is all in public domain and available at github at the following locati
 \setcounter{figure}{2}
 \setcounter{subfigure}{1}
     \begin{minipage}[b]{0.5\textwidth}
-        \includegraphics[width=\linewidth]{logo2.eps}
+        %\includegraphics[width=\linewidth]{logo2.eps}
         \caption{This is Subfigure 2.}
         \label{fig:Subfigure 2}
     \end{minipage}
@@ -365,12 +365,13 @@ The code is all in public domain and available at github at the following locati
 
 \end{comment}
 
-\begin{comment}
+
 \begin{table}[!h]
 
   \caption{Training}
 \label{tab:training}
-  
+
+
 \begin{tabular}{rl}
 NNSE & Name \\
 \hline
@@ -393,7 +394,10 @@ NNSE & Name \\
 \hline
 \end{tabular}
 
+\end{table}
 
+\begin{table}[!h]
+  
 \caption{valitation}
 \label{tab:validation}
 
@@ -420,7 +424,5 @@ NNSE & Name \\
 \end{tabular}
 
 \end{table}
-
-\end{comment}
 
 \end{document}
