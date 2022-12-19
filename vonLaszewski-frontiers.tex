@@ -1,18 +1,26 @@
-%%% Version 3.4 Generated 2018/06/15 %%%
+%%% Version 3.4 Generated 2022/06/14 %%%
 %%% You will need to have the following packages installed: datetime, fmtcount, etoolbox, fcprefix, which are normally inlcuded in WinEdt. %%%
 %%% In http://www.ctan.org/ you can find the packages and how to install them, if necessary. %%%
 %%%  NB logo1.jpg is required in the path in order to correctly compile front page header %%%
 
-\documentclass[utf8]{frontiersSCNS} 
+%\documentclass[utf8]{FrontiersinHarvard}
+
+\documentclass[utf8]{FrontiersinVancouver} % for articles in journals
+
+%\documentclass[utf8]{frontiersinFPHY_FAMS} % Vancouver Reference
+%Style (Numbered) for articles in the journals "Frontiers in Physics"
+%and "Frontiers in Applied Mathematics and Statistics"
+
+%\setcitestyle{square} % for articles in the journals "Frontiers in Physics" and "Frontiers in Applied Mathematics and Statistics" 
 
 \usepackage{url,hyperref,lineno,microtype,subcaption}
 \usepackage[onehalfspacing]{setspace}
-\usepackage{todonotes}
-\newcommand{\TODO}[1]{\todo[inline]{#1}}
 
 \linenumbers
 
+
 \def\keyFont{\fontsize{8}{11}\helveticabold }
+
 \def\firstAuthorLast{von Laszewski {et~al.}} 
 \def\Authors{Gregor von Laszewski\,$^{1,*}$,
  J.P. Fleischer\,$^{1}$
@@ -55,14 +63,15 @@ Town Center Four,
 \onecolumn
 \firstpage{1}
 
-\title[Running Title]{Insights in High Performance Big Data Systems
-  gained from MLCommons Earthquake Benchmarks} 
+\title {Article Title} 
 
-\author[\firstAuthorLast ]{\Authors} % This field will be automatically populated
-\address{} % This field will be automatically populated
-\correspondance{} % This field will be automatically populated
+\author[\firstAuthorLast ]{\Authors} %This field will be automatically populated
+\address{} %This field will be automatically populated
+\correspondance{} %This field will be automatically populated
 
-\extraAuth{} % no 2nd corresponding author
+\extraAuth{}% If there are more than 1 corresponding author, comment this line and uncomment the next one.
+%\extraAuth{corresponding Author2 \\ Laboratory X2, Institute X2, Department X2, Organization X2, Street X2, City X2 , State XX2 (only USA, Canada and Australia), Zip Code2, X2 Country X2, email2@uni2.edu}
+
 
 \maketitle
 
@@ -70,35 +79,34 @@ Town Center Four,
 \begin{abstract}
 
 %%% Leave the Abstract empty if your article does not require one, please see the Summary Table for full details.
+\section{}
+For full guidelines regarding your manuscript please refer to \href{https://www.frontiersin.org/guidelines/author-guidelines}{Author Guidelines}.
 
-  \section{}
-
-  For full guidelines regarding your manuscript please refer to \href{http://www.frontiersin.org/about/AuthorGuidelines}{Author Guidelines}.
-
-As a primary goal, the abstract should render the general significance
-and conceptual advance of the work clearly accessible to a broad
-readership. References should not be cited in the abstract. Leave the
-Abstract empty if your article does not require one, please see
-\href{http://www.frontiersin.org/about/AuthorGuidelines#SummaryTable}{Summary
-  Table} for details according to article type.
+As a primary goal, the abstract should render the general significance and conceptual advance of the work clearly accessible to a broad readership. References should not be cited in the abstract. Leave the Abstract empty if your article does not require one, please see the Article Types on every Frontiers journal page for full details
 
 
 \tiny
 \keyFont{ \section{Keywords:} deep learning, benchmarking, hyper parameter search, hybrid heterogeneous hyper parameter serach, earthquake forecasting }
-
 % All article types: you may provide up to 8 keywords; at least 5 are mandatory.
 \end{abstract}
 
 \section{Introduction}
 
-% todo \citep{las-22-arxiv-workflow-cc}
+todo \citep{las-22-arxiv-workflow-cc}
+
+% For Original Research Articles \citep{conference}, Clinical Trial
+% Articles \citep{article}, and Technology Reports \citep{patent}, the
+% introduction should be succinct, with no subheadings \citep{book}. For
+% Case Reports the Introduction should include symptoms at presentation
+% \citep{chapter}, physical exams and lab results \citep{dataset}.
+
 
 
 \section{Article types}
 
 For requirements for a specific article type please refer to the
 Article Types on any Frontiers journal page. Please also refer to
-\href{http://home.frontiersin.org/about/author-guidelines#Sections}{Author
+\href{https://www.frontiersin.org/about/author-guidelines#sections}{Author
   Guidelines} for further information on how to organize your
 manuscript in the required sections or their equivalents for your
 field
@@ -132,14 +140,12 @@ order as they are referred to in the manuscript. Figures will then be
 automatically embedded at the bottom of the submitted
 manuscript. Kindly ensure that each table and figure is mentioned in
 the text and in numerical order. Figures must be of sufficient
-resolution for publication
-\href{http://home.frontiersin.org/about/author-guidelines#ResolutionRequirements}{see
-  here for examples and minimum requirements}. Figures which are not
-according to the guidelines will cause substantial delay during the
-production process. Please see
-\href{http://home.frontiersin.org/about/author-guidelines#GeneralStyleGuidelinesforFigures}{here}
+resolution for publication. Figures which are not according to the
+guidelines will cause substantial delay during the production
+process. Please see
+\href{https://www.frontiersin.org/guidelines/author-guidelines#figure-and-table-guidelines}{here}
 for full figure guidelines. Cite figures with subfigures as figure
-\ref{fig:2}B.
+\ref{fig:Subfigure 1} and \ref{fig:Subfigure 2}.
 
 
 \subsubsection{Permission to Reuse and Copyright}
@@ -167,7 +173,7 @@ your table directly in LaTeX.Tables provided as jpeg/tiff files will
 not be accepted. Please note that very large tables (covering several
 pages) cannot be included in the final PDF for reasons of space. These
 tables will be published as
-\href{http://home.frontiersin.org/about/author-guidelines#SupplementaryMaterial}{Supplementary
+\href{https://www.frontiersin.org/guidelines/author-guidelines#supplementary-material}{Supplementary
   Material} on the online article page at the time of acceptance. The
 author will be notified during the typesetting of the final article if
 this is the case.
@@ -176,7 +182,7 @@ this is the case.
 
 \subsection{Resource Identification Initiative}
 
-{\bf Organization:} RRID:SCR_011743
+{\bf Organization:} $RRID:SCR_011743$
 
 \section*{Conflict of Interest Statement}
 
@@ -203,7 +209,9 @@ leader of that effort.
 
 \section*{Funding}
 
-Details of all funding sources should be provided, including grant numbers if applicable. Please ensure to add all necessary funding information, as after publication this is no longer possible.
+Details of all funding sources should be provided, including grant
+numbers if applicable. Please ensure to add all necessary funding
+information, as after publication this is no longer possible.
 
 \section*{Acknowledgments}
 
@@ -212,18 +220,16 @@ CyberTraining for Students and Technologies from Generation Z with the
 award numbers 1829704 and 2200409 and NIST 60NANB21D151T. 
 The work was also funded by the \TODO{Department of Energy under the
   grant ???.}
+colleagues, institutions, or agencies that aided the efforts of the
+authors.
 
-\TODO{PRELIMINARY. If contribution to paper is sufficient, they become
-coauthors. THis has to be determined once we have paper in better shape.}
+\section*{Supplemental Data}
 
-We like to thank Thomas Butler and Jake Kolessar for their
-contributions during the capstone project while focussing on executing
-initial runs of the code, and makeing modifications. In particular we
-like to thank for the correction of the desnity polts of the
-earthquake locations, and Jake for his efforts in alalysing the impact
-of the energy based on the script to collect log data provided by GVL. 
-The code was since modified with a much updated logging library and an
-improved batch management by GVL and RK.
+\href{https://www.frontiersin.org/guidelines/author-guidelines#supplementary-material}{Supplementary
+  Material} should be uploaded separately on submission, if there are
+Supplementary Figures, please include the caption in the same file as
+the figure. LaTeX Supplementary Material templates can be found in the
+Frontiers LaTeX folder.
 
 \section*{Data Availability Statement}
 
@@ -242,7 +248,7 @@ The code is all in public domain and available at github at the following locati
 
 \item cloudmesh -- Cloudmesh is a large collection of repositories for
   accessing cloud and HPC
-  resources. \url{\url{https://github.com/orgs/cloudmesh/repositories}
+  resources. \url{https://github.com/orgs/cloudmesh/repositories}
 
 \item mlcommons eartchquake production -- The MLCommons Sceience
   Working group is described at
@@ -257,36 +263,54 @@ The code is all in public domain and available at github at the following locati
 \end{itemize}
 
 
+% \bibliographystyle{Frontiers-Harvard}
 
-% \bibliographystyle{frontiersinSCNS_ENG_HUMS}
+\bibliographystyle{Frontiers-Vancouver} % Many Frontiers journals
+% use the numbered referencing system, to find the style and resources
+% for the journal you are submitting to:
+% https://zendesk.frontiersin.org/hc/en-us/articles/360017860337-Frontiers-Reference-Styles-by-Journal
 
-% \bibliography{vonLaszewski-references.bib}
-
+\bibliography{vonLaszewski-references}
 
 
 \section*{Figure captions}
 
-%%% permitted 15 figures and tables, one figure with
-%%% multiple subfigures will count as only one figure.
+%%% max 15 figures abd table, subfig is one figure
+
+%%%  NB logo1.eps is required in the path in order to correctly compile front page header %%%
 
 \begin{figure}[h!]
 \begin{center}
-% \includegraphics[width=10cm]{logo1}% This is a *.eps file
+\includegraphics[width=10cm]{logo1}% This is a *.eps file
 \end{center}
-\caption{Enter the caption for your figure here.  Repeat as  necessary for each of your figures}\label{fig:1}
+\caption{ Enter the caption for your figure here.  Repeat as  necessary for each of your figures}\label{fig:1}
 \end{figure}
 
+\setcounter{figure}{2}
+\setcounter{subfigure}{0}
+\begin{subfigure}
+\setcounter{figure}{2}
+\setcounter{subfigure}{0}
+    \centering
+    \begin{minipage}[b]{0.5\textwidth}
+        \includegraphics[width=\linewidth]{logo1.eps}
+        \caption{This is Subfigure 1.}
+        \label{fig:Subfigure 1}
+    \end{minipage}  
+   
+\setcounter{figure}{2}
+\setcounter{subfigure}{1}
+    \begin{minipage}[b]{0.5\textwidth}
+        \includegraphics[width=\linewidth]{logo2.eps}
+        \caption{This is Subfigure 2.}
+        \label{fig:Subfigure 2}
+    \end{minipage}
 
-\begin{figure}[h!]
-\begin{center}
-% \includegraphics[width=15cm]{logos}
-\end{center}
-\caption{This is a figure with sub figures, \textbf{(A)} is one logo, \textbf{(B)} is a different logo.}\label{fig:2}
-\end{figure}
+\setcounter{figure}{2}
+\setcounter{subfigure}{-1}
+    \caption{Enter the caption for your subfigure here. \textbf{(A)} This is the caption for Subfigure 1. \textbf{(B)} This is the caption for Subfigure 2.}
+    \label{fig: subfigures}
+\end{subfigure}
 
-%%% If you are submitting a figure with subfigures please combine
-%%% these into one image file with part labels integrated.
-
-% we do this in separate latex file and create a pdf?
 
 \end{document}
