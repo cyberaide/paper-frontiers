@@ -151,7 +151,7 @@ guidelines will cause substantial delay during the production
 process. Please see
 \href{https://www.frontiersin.org/guidelines/author-guidelines#figure-and-table-guidelines}{here}
 for full figure guidelines. Cite figures with subfigures as figure
-\ref{fig:Subfigure 1} and \ref{fig:Subfigure 2}.
+% \ref{fig:Subfigure 1} and \ref{fig:Subfigure 2}.
 
 
 \subsubsection{Permission to Reuse and Copyright}
@@ -329,11 +329,11 @@ The code is all in public domain and available at github at the following locati
 
   \caption{Training and validation with time based hyperparameters
     sorted by NSSE accuracy. The table includes the best two two
-    values higlighted in the training and validation results to
+    values highlighted in the training and validation results to
     showcase the the the accuracy of the validation. In the validation
     we see that the best value for training is in rank four for the
-    validation. The number of Epochs for this experiemnet is 2.}
-  \label{tab:training}
+    validation. The number of Epochs for this experiment is 2.}
+  \label{tab:training-2}
 
   \renewcommand{\arraystretch}{1.2}
 \begin{center}
@@ -368,12 +368,12 @@ The code is all in public domain and available at github at the following locati
 
   \caption{Training and validation with time based hyperparameters
     sorted by NSSE accuracy. The table includes the best two two
-    values higlighted in the training and validation results to
+    values highlighted in the training and validation results to
     showcase the the the accuracy of the validation. In the validation
     we see that the best value for training is in rank four for the
-    validation. The number of Epochs for this experiemnet is 30.
+    validation. The number of Epochs for this experiment is 30.
   }
-  \label{tab:training}
+  \label{tab:training-30}
 
   \renewcommand{\arraystretch}{1.2}  
 \begin{center}  
@@ -410,11 +410,11 @@ The code is all in public domain and available at github at the following locati
 
   \caption{Training and validation with time based hyperparameters
     sorted by NSSE accuracy. The table includes the best two two
-    values higlighted in the training and validation results to
+    values highlighted in the training and validation results to
     showcase the the the accuracy of the validation. In the validation
     we see that the best value for training is in rank four for the
-    validation. The number of Epochs for this experiemnet is 70.}
-  \label{tab:training}
+    validation. The number of Epochs for this experiment is 70.}
+  \label{tab:training-70}
 
   \renewcommand{\arraystretch}{1.2}    
 \begin{center}
@@ -469,6 +469,27 @@ The code is all in public domain and available at github at the following locati
 
   \caption {Energy monitoring for 2, 30, and 70 epochs for training and validation.}
   \label{fig:energy}
+
+\end{figure}
+
+\begin{figure}[htb]
+
+  \begin{center}
+     \begin{minipage}[t]{0.30\textwidth}
+        \includegraphics[width=1.0\linewidth]{images/NNSE-all-epochs-training}
+        {\bf (A)} NNSE for training.
+     \end{minipage}
+  \end{center}
+    //
+  \begin{center}
+     \begin{minipage}[t]{0.30\textwidth}
+        \includegraphics[width=1.0\linewidth]{images/NNSE-all-epochs-validation}
+        {\bf (B)} NNSE for validation.
+     \end{minipage}
+  \end{center}
+
+  \caption {NNSE comparison}
+  \label{fig:NNSE-comparison}
 
 \end{figure}
 
