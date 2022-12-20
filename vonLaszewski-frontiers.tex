@@ -142,49 +142,49 @@ the students:
 
 \begin{itemize}
 
-  \item {\bf Teamwork.} Students benefit helps foccussing on the
-    success and collaboration of the entire team rather then just an
-    individualsim as after graduation students may work in large
-    teams. This includes oppertunity for pair programing, but also the
-    fact that careful time planing in the team as needed to succeed.
+  \item {\bf Teamwork.} Students benefit helps focusing on the
+    success and collaboration of the entire team rather than just an
+    individualism as after graduation students may work in large
+    teams. This includes opportunity for pair programming, but also the
+    fact that careful time planning in the team as needed to succeed.
 
   \item {\bf Software ecosystem.} Students often are only using a
-    preset up environment prpared explicitly for a class that makes
+    pre-setup environment prepared explicitly for a class that makes
     management for the class easier, but does not expose the students
     to various ways of setting up and utilizing the large variety of
-    software related to big data systems. THis includes setting up
-    python beyond the use of conda and colab notebooks, the use of
-    queuing systems, containers, and cloud computing software for
+    software related to big data systems. This includes setting up
+    Python beyond the use of conda and Colab notebooks, the use of
+    queueing systems, containers, and cloud computing software for
     AI/HPC and DL experiments.
 
-  \item {\bf Execution ecosystem.} Whil ein classes problems typically
+  \item {\bf Execution ecosystem.} While in classes problems typically
     do not require as many compute resources, some of the examples in
     MLCommons require a significant organizational aspect to select
     and run meaningful calculations that enhance the accuracy of the
-    results.  A careful planing with workflows and the potential use
+    results. A careful planing with workflows and the potential use
     of hybrid heterogeneous systems significantly improves the
     awareness to deal with not only the laptop, but also the large
-    availabel resources students may get access to while leveraging
+    available resources students may get access to while leveraging
     leadership class computing resources, or their own local HPC
-    system when available. THis includes dealing with system policies,
+    system when available. This includes dealing with system policies,
     remote system access, and a frugal planing of experiments through
-    predition of runtimes and planing of hyperparameter searches. THis
-    also can includ dealing with energy consumption and other
+    predition of runtimes and planing of hyperparameter searches. This
+    also can include dealing with energy consumption and other
     environmental parameters.
 
   \item {\bf Parallelization.} The examples provide a basis for
-    learning about various parallelization aspects. THis includes the
+    learning about various parallelization aspects. This includes the
     parallelization on the job level and hyperparameters searches, but
     also on the use of parallelization methods provided by large scale
     GPU bases big data systems.
 
   \item {\bf IO Data management.} One other important lessons is the
-    effiecient and effective use of data stores to execute for example
+    efficient and effective use of data stores to execute for example
     DL algorithms that require a large number of fast IO interactions.
 
-  \item {\bf Data Analysis.} THe examples provide a valuble input to
-    further enhance abilities to conduct non trivial data analysis
-    through advanced python scripts while integrating them in
+  \item {\bf Data Analysis.} The examples provide a valuable input to
+    further enhance abilities to conduct non-trivial data analysis
+    through advanced Python scripts while integrating them in
     coordinated runs to analyzed log files that are created to
     validate the numerical stability of the benchmarks.
 
@@ -205,14 +205,14 @@ potential conflict of interest.
 
 \section*{Author Contributions}
 
-{\em GvL} is the leadauthor and main contributr to this paper. He has
+{\em GvL} is the lead author and main contributor to this paper. He has
 modified and augmented the earthquake paper to include the ability to
-execute hyperparameters. {\em JPF} is a student hthat has contributed
+execute hyperparameters. {\em JPF} is a student that has contributed
 to various aspects of the workflow component of the paper and to a
 number of executions and evaluations of experiment runs. {\em RK} has
-helped togetehr with {\em GVL} in the implementation of the secign of
+helped together with {\em GVL} in the implementation of the secign of
 cloudmesh-sbatch and the porting of the effort to the UVA machine.
-{\em GCF} is the author of the earthquake code and facilitaties the
+{\em GCF} is the author of the earthquake code and facilitates the
 interactions with the MLCommons Science Working group as a group
 leader of that effort.
 
@@ -232,12 +232,12 @@ We like to thank Thomas Butler and Jake Kolessar for their
 contributions during the capstone project while focussing on executing
 initial runs of the code, and experimenting with modifications to the
 code including logging. Please note that since this team finished
-their work significant improvement have been made by the authors of
+their work, significant improvements have been made by the authors of
 this paper.
 
 \section*{Data Availability Statement}
 
-The code is all in public domain and available at github at the following locations
+The code is all in public domain and available at GitHub at the following locations
 
 \begin{itemize}
 
@@ -329,12 +329,12 @@ The code is all in public domain and available at github at the following locati
 \begin{table}[htb]
 
   \caption{Training and validation with time based hyperparameters
-    sorted by NSSE accuracy. The table includes the best two two
-    values higlighted in the training and validation results to
+    sorted by NNSE accuracy. The table includes the best two two
+    values highlighted in the training and validation results to
     showcase the the the accuracy of the validation. In the validation
     we see that the best value for training is in rank four for the
-    validation. The number of Epochs for this experiemnet is 2.}
-  \label{tab:training}
+    validation. The number of Epochs for this experiment is 2.}
+  \label{tab:training-2}
 
   \renewcommand{\arraystretch}{1.2}
 \begin{center}
@@ -368,13 +368,13 @@ The code is all in public domain and available at github at the following locati
 \begin{table}[htb]
 
   \caption{Training and validation with time based hyperparameters
-    sorted by NSSE accuracy. The table includes the best two two
-    values higlighted in the training and validation results to
+    sorted by NNSE accuracy. The table includes the best two two
+    values highlighted in the training and validation results to
     showcase the the the accuracy of the validation. In the validation
     we see that the best value for training is in rank four for the
-    validation. The number of Epochs for this experiemnet is 30.
+    validation. The number of Epochs for this experiment is 30.
   }
-  \label{tab:training}
+  \label{tab:training-30}
 
   \renewcommand{\arraystretch}{1.2}  
 \begin{center}  
@@ -410,12 +410,12 @@ The code is all in public domain and available at github at the following locati
 \begin{table}[htb]
 
   \caption{Training and validation with time based hyperparameters
-    sorted by NSSE accuracy. The table includes the best two two
-    values higlighted in the training and validation results to
+    sorted by NNSE accuracy. The table includes the best two two
+    values highlighted in the training and validation results to
     showcase the the the accuracy of the validation. In the validation
     we see that the best value for training is in rank four for the
-    validation. The number of Epochs for this experiemnet is 70.}
-  \label{tab:training}
+    validation. The number of Epochs for this experiment is 70.}
+  \label{tab:training-70}
 
   \renewcommand{\arraystretch}{1.2}    
 \begin{center}
@@ -470,6 +470,27 @@ The code is all in public domain and available at github at the following locati
 
   \caption {Energy monitoring for 2, 30, and 70 epochs for training and validation.}
   \label{fig:energy}
+
+\end{figure}
+
+\begin{figure}[htb]
+
+  \begin{center}
+     \begin{minipage}[t]{0.30\textwidth}
+        \includegraphics[width=1.0\linewidth]{images/NNSE-all-epochs-training}
+        {\bf (A)} NNSE for training.
+     \end{minipage}
+  \end{center}
+  \ \
+  \begin{center}
+     \begin{minipage}[t]{0.30\textwidth}
+        \includegraphics[width=1.0\linewidth]{images/NNSE-all-epochs-validation}
+        {\bf (B)} NNSE for validation.
+     \end{minipage}
+  \end{center}
+
+  \caption {NNSE comparison}
+  \label{fig:NNSE-comparison}
 
 \end{figure}
 
