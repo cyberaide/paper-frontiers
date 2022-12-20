@@ -13,7 +13,7 @@
 
 %\setcitestyle{square} % for articles in the journals "Frontiers in Physics" and "Frontiers in Applied Mathematics and Statistics" 
 
-\usepackage{url,hyperref,lineno,microtype,subcaption}
+\usepackage[hidelinks]{url,hyperref,lineno,microtype,subcaption}
 \usepackage[onehalfspacing]{setspace}
 \usepackage{comment}
 \usepackage{xcolor}
@@ -84,15 +84,8 @@ Town Center Four,
 \begin{abstract}
 
 \section{}
-For full guidelines regarding your manuscript please refer to
-\href{https://www.frontiersin.org/guidelines/author-guidelines}{Author
-  Guidelines}.
 
-As a primary goal, the abstract should render the general significance
-and conceptual advance of the work clearly accessible to a broad
-readership. References should not be cited in the abstract. Leave the
-Abstract empty if your article does not require one, please see the
-Article Types on every Frontiers journal page for full details
+\todo{tbd}
 
 
 \tiny
@@ -112,77 +105,91 @@ todo \citep{las-22-arxiv-workflow-cc}
 
 \section{Educational Insights}
 
-More then MNIST
-Practical experience with large systems
-long running jobs
-integration and use of python for DL
-hyperparameter seach
+The MLCommons benchmarks provide also an ideal starting point for
+educational material addressing various aspects of the machine and
+deep learning ecosystem. This includes benchmarks targeted to a
+variety of system resources from tiny devices to the largest High
+Performance Compute and Data Systems in the world, while being able to
+adapt and test them on platform inbetween these two exstreems. Thus
+the become ideal targets for adoptation in AI classes that want to go
+beyond typical starting applications such as MNIST.
 
-parallelization while not doing all hyperparameters in the same script
+We have gained practical experiences while adapting benchmarks from
+the MLCommons Science Working group While collaborating wih various
+universities and student groups from University of Virginia, New York
+University, and Indiana University. Furthermore it is used in
+undergraduate education that was continied from FAMU as an REU and is
+now executed at University of Virginia as research activity by a past
+student from the REU. We found that the examples provide value for
+classes, capstones, Research Expereinces for Undergraduates (REU),
+team project oriented software engeneering and computer science
+classes, and internships.
 
-dealing with energy
-delaing with analysis
-deling with hybrid heenvironments
+We observed that while traditional classes limit their resoource needs
+and thus the target application to a very short period so assignments
+can be conducted in a short period of time, some MLCommons bencharks
+go well beyond this while confronting the students not only with the
+theoretical background of the ML algorithm, but also with the Big Data
+Systems on which such benchmarks need to be executed due to the
+complexity and time requirements of some of the benchmarks. THis is
+especially the case when hyperparameters are identified to derive more
+scientific accurate examples. It also allows the students to explore
+different algorithme applied to these problems.
 
-time planing team management
+From our experiences with these various efforst we found that the
+following lessons provided significant add on learning experiences for
+the students:
 
-pair programming
+\begin{itemize}
 
+  \item {\bf Teamwork.} Students benefit helps foccussing on the
+    success and collaboration of the entire team rather then just an
+    individualsim as after graduation students may work in large
+    teams. This includes oppertunity for pair programing, but also the
+    fact that careful time planing in the team as needed to succeed.
 
-\section{Manuscript Formatting}
+  \item {\bf Software ecosystem.} Students often are only using a
+    preset up environment prpared explicitly for a class that makes
+    management for the class easier, but does not expose the students
+    to various ways of setting up and utilizing the large variety of
+    software related to big data systems. THis includes setting up
+    python beyond the use of conda and colab notebooks, the use of
+    queuing systems, containers, and cloud computing software for
+    AI/HPC and DL experiments.
 
-\subsection{Heading Levels}
+  \item {\bf Execution ecosystem.} Whil ein classes problems typically
+    do not require as many compute resources, some of the examples in
+    MLCommons require a significant organizational aspect to select
+    and run meaningful calculations that enhance the accuracy of the
+    results.  A careful planing with workflows and the potential use
+    of hybrid heterogeneous systems significantly improves the
+    awareness to deal with not only the laptop, but also the large
+    availabel resources students may get access to while leveraging
+    leadership class computing resources, or their own local HPC
+    system when available. THis includes dealing with system policies,
+    remote system access, and a frugal planing of experiments through
+    predition of runtimes and planing of hyperparameter searches. THis
+    also can includ dealing with energy consumption and other
+    environmental parameters.
 
-\subsection{Level 2}
-\subsubsection{Level 3}
-\paragraph{Level 4}
-\subparagraph{Level 5}
+  \item {\bf Parallelization.} The examples provide a basis for
+    learning about various parallelization aspects. THis includes the
+    parallelization on the job level and hyperparameters searches, but
+    also on the use of parallelization methods provided by large scale
+    GPU bases big data systems.
 
+  \item {\bf IO Data management.} One other important lessons is the
+    effiecient and effective use of data stores to execute for example
+    DL algorithms that require a large number of fast IO interactions.
 
-\subsection{Figures}
+  \item {\bf Data Analysis.} THe examples provide a valuble input to
+    further enhance abilities to conduct non trivial data analysis
+    through advanced python scripts while integrating them in
+    coordinated runs to analyzed log files that are created to
+    validate the numerical stability of the benchmarks.
 
-Frontiers requires figures to be submitted individually, in the same
-order as they are referred to in the manuscript. Figures will then be
-automatically embedded at the bottom of the submitted
-manuscript. Kindly ensure that each table and figure is mentioned in
-the text and in numerical order. Figures must be of sufficient
-resolution for publication. Figures which are not according to the
-guidelines will cause substantial delay during the production
-process. Please see
-\href{https://www.frontiersin.org/guidelines/author-guidelines#figure-and-table-guidelines}{here}
-for full figure guidelines. Cite figures with subfigures as figure
-% \ref{fig:Subfigure 1} and \ref{fig:Subfigure 2}.
+\end{itemize}
 
-
-\subsubsection{Permission to Reuse and Copyright}
-
-Figures, tables, and images will be published under a Creative Commons
-CC-BY licence and permission must be obtained for use of copyrighted
-material from other sources (including
-re-published/adapted/modified/partial figures and images from the
-internet). It is the responsibility of the authors to acquire the
-licenses, to follow any citation instructions requested by third-party
-rights holders, and cover any supplementary charges.
-
-%% Figures, tables, and images will be published under a Creative
-%% Commons CC-BY licence and permission must be obtained for use of
-%% copyrighted material from other sources (including
-%% re-published/adapted/modified/partial figures and images from the
-%% internet). It is the responsibility of the authors to acquire the
-%% licenses, to follow any citation instructions requested by
-%% third-party rights holders, and cover any supplementary charges.
-
-\subsection{Tables}
-
-Tables should be inserted at the end of the manuscript. Please build
-your table directly in LaTeX.Tables provided as jpeg/tiff files will
-not be accepted. Please note that very large tables (covering several
-pages) cannot be included in the final PDF for reasons of space. These
-tables will be published as
-\href{https://www.frontiersin.org/guidelines/author-guidelines#supplementary-material}{Supplementary
-  Material} on the online article page at the time of acceptance. The
-author will be notified during the typesetting of the final article if
-this is the case.
 
 \section{Nomenclature}
 
@@ -221,18 +228,12 @@ authors.
 
 \section*{Acknowledgments}
 
-
 We like to thank Thomas Butler and Jake Kolessar for their
 contributions during the capstone project while focussing on executing
 initial runs of the code, and experimenting with modifications to the
-code including logging.  In particular, we like to thank for the
-correction of the desnity polts of the earthquake locations, and Jake
-for his efforts in alalysing the impact of the energy based on the
-script to collect log data provided by GVL.  Please note that since
-this team finished their work, the logging library was improved and
-accuraccy logging was enabled. Furthermore, {\em GVL} and {\em RK}
-improved significantly the cloudmesh heterogeneous batch management
-framework.  The computational runs were redone.
+code including logging. Please note that since this team finished
+their work significant improvement have been made by the authors of
+this paper.
 
 \section*{Data Availability Statement}
 
@@ -240,25 +241,25 @@ The code is all in public domain and available at github at the following locati
 
 \begin{itemize}
 
-\item cloudmesh-cc -- Is a code to control workflows to be executed on
+\item {\bf cloudmesh-cc} -- Is a code to control workflows to be executed on
   remote computing
   resources. \url{https://github.com/cloudmesh/cloudmesh-cc}
 
-\item cloudmesh-sbatch -- Is a code to generate batch scripts for
+\item {\bf cloudmesh-sbatch} -- Is a code to generate batch scripts for
   hyperparameter studies high performance computers so they can be
   executed on different suppercomputers by multiple
   accounts. \url{https://github.com/cloudmesh/cloudmesh-sbatch}
 
-\item cloudmesh -- Cloudmesh is a large collection of repositories for
+\item {\bf cloudmesh} -- Cloudmesh is a large collection of repositories for
   accessing cloud and HPC
   resources. \url{https://github.com/orgs/cloudmesh/repositories}
 
-\item mlcommons eartchquake production -- The MLCommons Sceience
+\item {\bf mlcommons eartchquake production code} -- The MLCommons Sceience
   Working group is described at
   \url{https://mlcommons.org/en/groups/research-science/}. This page
   contains the links to the production level earthquake code.
 
-\item mlcommons eartchquake development -- The development version of
+\item {\bf mlcommons eartchquake development code} -- The development version of
   the code is available in this reporitory. It also contains many of
   the analysis scrripts that are not pare of the production code
   hosted by MLCommons \url{https://github.com/laszewsk/mlcommons}.
@@ -319,7 +320,7 @@ The code is all in public domain and available at github at the following locati
      \end{minipage}
 \end{center}
      
-     \caption{NNSE and MSE values for Training and validation for epochs 2, 30, 70.}
+     \caption{NNSE and MSE values for training and validation for epochs 2 (A, B), 30 (C, D), 70 (E, F).}
      \label{fig:six graphs}
 \end{figure}
 
@@ -329,11 +330,11 @@ The code is all in public domain and available at github at the following locati
 
   \caption{Training and validation with time based hyperparameters
     sorted by NSSE accuracy. The table includes the best two two
-    values highlighted in the training and validation results to
+    values higlighted in the training and validation results to
     showcase the the the accuracy of the validation. In the validation
     we see that the best value for training is in rank four for the
-    validation. The number of Epochs for this experiment is 2.}
-  \label{tab:training-2}
+    validation. The number of Epochs for this experiemnet is 2.}
+  \label{tab:training}
 
   \renewcommand{\arraystretch}{1.2}
 \begin{center}
@@ -368,12 +369,12 @@ The code is all in public domain and available at github at the following locati
 
   \caption{Training and validation with time based hyperparameters
     sorted by NSSE accuracy. The table includes the best two two
-    values highlighted in the training and validation results to
+    values higlighted in the training and validation results to
     showcase the the the accuracy of the validation. In the validation
     we see that the best value for training is in rank four for the
-    validation. The number of Epochs for this experiment is 30.
+    validation. The number of Epochs for this experiemnet is 30.
   }
-  \label{tab:training-30}
+  \label{tab:training}
 
   \renewcommand{\arraystretch}{1.2}  
 \begin{center}  
@@ -410,11 +411,11 @@ The code is all in public domain and available at github at the following locati
 
   \caption{Training and validation with time based hyperparameters
     sorted by NSSE accuracy. The table includes the best two two
-    values highlighted in the training and validation results to
+    values higlighted in the training and validation results to
     showcase the the the accuracy of the validation. In the validation
     we see that the best value for training is in rank four for the
-    validation. The number of Epochs for this experiment is 70.}
-  \label{tab:training-70}
+    validation. The number of Epochs for this experiemnet is 70.}
+  \label{tab:training}
 
   \renewcommand{\arraystretch}{1.2}    
 \begin{center}
@@ -469,27 +470,6 @@ The code is all in public domain and available at github at the following locati
 
   \caption {Energy monitoring for 2, 30, and 70 epochs for training and validation.}
   \label{fig:energy}
-
-\end{figure}
-
-\begin{figure}[htb]
-
-  \begin{center}
-     \begin{minipage}[t]{0.30\textwidth}
-        \includegraphics[width=1.0\linewidth]{images/NNSE-all-epochs-training}
-        {\bf (A)} NNSE for training.
-     \end{minipage}
-  \end{center}
-    //
-  \begin{center}
-     \begin{minipage}[t]{0.30\textwidth}
-        \includegraphics[width=1.0\linewidth]{images/NNSE-all-epochs-validation}
-        {\bf (B)} NNSE for validation.
-     \end{minipage}
-  \end{center}
-
-  \caption {NNSE comparison}
-  \label{fig:NNSE-comparison}
 
 \end{figure}
 
