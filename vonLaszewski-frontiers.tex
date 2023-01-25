@@ -89,7 +89,7 @@ Town Center Four,
 
 
 \tiny
-\keyFont{ \section{Keywords:} deep learning, benchmarking, hyper parameter search, hybrid heterogeneous hyper parameter serach, earthquake forecasting }
+\keyFont{ \section{Keywords:} deep learning, benchmarking, hyper parameter search, hybrid heterogeneous hyper parameter search, earthquake forecasting }
 % All article types: you may provide up to 8 keywords; at least 5 are mandatory.
 \end{abstract}
 
@@ -190,6 +190,59 @@ the students:
 
 \end{itemize}
 
+\section{Cloudmesh-sbatch}
+
+We describe cloudmesh-sbatch
+
+\section{Cloudmesh-cc}
+
+\begin{itemize}
+\item Different graphics cards
+
+\item Different epochs of training
+
+\item Create workflow for cloudmask
+\end{itemize}
+
+\section{Data compression}
+
+Earthquake data compressed by factor of 100. JP will verify
+this with the real data by seeing size of data compressed and
+uncompressed; download the compressed data
+
+\section{Educational opportunities}
+
+\begin{itemize}
+
+    \item Research project
+
+    \item Learning about Python
+
+    \item Learning about deep learning
+
+    \item Learning about application of deep learning to science
+
+    \item Group collaboration
+
+    \item HPC systems
+
+    \item How to leverage the Python programming language and create virtual environments to execute programs
+
+    \item How to work with dataframes with the Pandas module and how to depict these dataframes in lineplots, histograms, and bar charts
+
+    \item How to critically analyze these displays of data towards an intended result
+
+    \item Contribute towards a humanitarian objective, such as predicting earthquakes or meteorology with artificial intelligence
+
+    \item How to collaborate with peers using professional, industry-standard coding software and the Git version control system
+
+    \item Familiarize students with documenting activities and scientific writing
+
+    \item Learn about MLCommons, benchmarking, difference between system benchmarking and science benchmarking
+
+\end{itemize}
+
+% three axis graph: system, software, science
 
 \section{Nomenclature}
 
@@ -229,7 +282,7 @@ authors.
 \section*{Acknowledgments}
 
 We like to thank Thomas Butler and Jake Kolessar for their
-contributions during the capstone project while focussing on executing
+contributions during the capstone project while focusing on executing
 initial runs of the code, and experimenting with modifications to the
 code including logging. Please note that since this team finished
 their work, significant improvements have been made by the authors of
@@ -324,7 +377,28 @@ The code is all in public domain and available at GitHub at the following locati
      \label{fig:six graphs}
 \end{figure}
 
-
+%we have finalized the EQ code but want to make absolutely sure that we
+%look at the correct values for the scientific comparison.
+%
+%This also requires a small sentence to each variable. Could we have a
+%small meeting and I take then some notes on what these values are
+%tomorrow. I will then add the explanations to the MLCommons EQ benchmark
+%policy document.
+%
+%I just want to make sure I understand over which domain we average and
+%sum up.
+%
+%Also if we were to just do one value (just in case they ask, I think we
+%would use the summed up total right. However I think it is better to
+%keep all of them.)
+%
+%Also I forgot what the +26 refers to
+%
+%I think soething like this is almost correct, but we need to +26
+%explanation and get verification from you.
+%
+%The Magnification based on a years worth of back data, while looking two
+%weeks ahead + 26 what?
 
 \begin{table}[htb]
 
@@ -333,7 +407,8 @@ The code is all in public domain and available at GitHub at the following locati
     values highlighted in the training and validation results to
     showcase the the the accuracy of the validation. In the validation
     we see that the best value for training is in rank four for the
-    validation. The number of Epochs for this experiment is 2.}
+    validation. The number of Epochs for this experiment is 2.
+    26 is half of 52 and so 26 2-week intervals is a year.}
   \label{tab:training-2}
 
   \renewcommand{\arraystretch}{1.2}
