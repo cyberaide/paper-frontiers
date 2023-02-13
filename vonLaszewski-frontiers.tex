@@ -75,6 +75,7 @@ Town Center Four,
 \firstpage{1}
 
 \title{Insights in High Performance Big Data Systems Gained from
+  Educational 
   MLCommons Earthquake Benchmarks Efforts}
 
 \author[\firstAuthorLast ]{\Authors} %This field will be automatically populated
@@ -139,7 +140,7 @@ MLCommons with membersfrom Industry, Academia and Government with the
 goal to accelerate machine learning innovation to benefit everyone
 \cite{mlcomons}. This includes, but is not limited to, application
 areas from healthcare, automotive, image analysis, and natural
-language processing. MLCommons is concerned with benchmarking training
+language processing. MLCommons is concerned with benchmarking training \cite{mlperf-training}
 and validation algorithms in order to measure progress over time.
 Through this, MLCommons investigates ML efforts in the areas of
 benchmarking, datasets in support of benchmarking, and best practices
@@ -162,6 +163,100 @@ to its effort and integarted efforts form MLCommons into our
 educational activities. We have based on this activities obtained the
 a number of important educational insights that we discuss in
 Section~\ref{S:edu-insights}.
+
+\subsection{MLCommons Selected Benchmarks}
+
+\begin{table}[htb]
+  \caption{MLCommons Benchmarks}
+  \label{tab:inference}
+  \begin{tabular}[lll]
+    Name & Training & Inference & HPC & Science & Area \\
+    \hline
+    MiniGo & \YES & & & & \\
+    Mask R-CNN & \YES & & & & \\
+    DLRM & \YES & \YES & & &  Recommender	\\
+    BERT & \YES & \YES &  & & Natural Language Processing \\	
+    ResNet-50 v1.5 & \YES & \YES & & &  Image Classification \\
+    RetinaNet &\YES  & \YES & & & Object Detection \\
+    RNN-T & \YES & \YES & & & Speech Recognition \\
+    3D U-Net & \YES & \YES & & & Medical Imaging \\
+    OpenCatalyst & & & \YES & & \\
+    DeepCam & & & \YES & & \\
+    CosmoFlow & & & \YES & & \\
+    Earthquake & & & & \YES & \\
+    Uno & & & & \YES & \\
+    Cloudmask & & & & \YES & \\
+    StemDL & & & & \YES & \\
+  \end{tabular}
+  \end{table}
+
+\section{Relevance of Machine Leraning in Education}
+
+Libraries
+Infarstructure
+Methods
+
+
+Libraries 
+
+   scikit learn
+
+   pytorch
+
+   tensorflow
+
+   python
+
+
+Infrastructure
+
+   jupyter
+
+   batch queue such as SLURM
+
+   Google colab
+
+   Amazon, Azure, Google Cloud
+
+   Campus HPC resources 
+
+   National Scale HPC resources (DOE, NSF, ...)
+
+   Power
+
+Methods
+
+
+Clustering, k-means
+
+immage classification
+
+sentiment analysis
+
+time series prediction
+
+surrogates
+
+
+cNN
+
+SVM
+
+KNN
+
+ANN
+
+random forest
+
+supervised learning
+
+unsupervised learning
+
+Decission tree
+
+genetic algorithms
+
+
 
 \section{Educational Insights}
 \label{S:edu-insights}
