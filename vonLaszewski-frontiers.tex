@@ -13,7 +13,11 @@
 
 %\setcitestyle{square} % for articles in the journals "Frontiers in Physics" and "Frontiers in Applied Mathematics and Statistics" 
 
-\usepackage[hidelinks]{url,hyperref,lineno,microtype,subcaption}
+\usepackage{url}
+\usepackage{lineno}
+\usepackage[hidelinks]{hyperref}
+\usepackage{microtype}
+\usepackage{subcaption}
 \usepackage[onehalfspacing]{setspace}
 \usepackage{comment}
 \usepackage{xcolor}
@@ -49,8 +53,10 @@ University of Virginia,
 % 994 Research Park Boulevard,
  Charlottesville, VA, 22911, USA
 }
-% The Corresponding Author should be marked with an asterisk
-% Provide the exact contact address (this time including street name and city zip code) and email of the corresponding author
+
+% The Corresponding Author should be marked with an asterisk Provide
+% the exact contact address (this time including street name and city
+% zip code) and email of the corresponding author
 
 \def\corrAuthor{Gregor von Laszewski, Biocomplexity Institute,
 University of Virginia,
@@ -68,14 +74,20 @@ Town Center Four,
 \onecolumn
 \firstpage{1}
 
-\title{Insights in High Performance Big Data Systems Gained from MLCommons Earthquake Benchmarks Efforts} 
+\title{Insights in High Performance Big Data Systems Gained from
+  MLCommons Earthquake Benchmarks Efforts}
 
 \author[\firstAuthorLast ]{\Authors} %This field will be automatically populated
 \address{} %This field will be automatically populated
 \correspondance{} %This field will be automatically populated
 
-\extraAuth{}% If there are more than 1 corresponding author, comment this line and uncomment the next one.
-%\extraAuth{corresponding Author2 \\ Laboratory X2, Institute X2, Department X2, Organization X2, Street X2, City X2 , State XX2 (only USA, Canada and Australia), Zip Code2, X2 Country X2, email2@uni2.edu}
+\extraAuth{}
+
+% If there are more than 1 corresponding author, comment this line and
+%uncomment the next one.  \extraAuth{corresponding Author2
+%\\ Laboratory X2, Institute X2, Department X2, Organization X2,
+%Street X2, City X2 , State XX2 (only USA, Canada and Australia), Zip
+%Code2, X2 Country X2, email2@uni2.edu}
 
 
 \maketitle
@@ -88,10 +100,16 @@ Town Center Four,
 \todo{tbd}
 
 
-\tiny
-\keyFont{ \section{Keywords:} deep learning, benchmarking, hyper parameter search, hybrid heterogeneous hyper parameter search, earthquake forecasting }
+\tiny \keyFont{ \section{Keywords:} deep learning, benchmarking, hyper
+  parameter search, hybrid heterogeneous hyper parameter search,
+  earthquake forecasting}
+
 % All article types: you may provide up to 8 keywords; at least 5 are mandatory.
+
 \end{abstract}
+
+\cite{las-infogram}
+\cite{Laszewski-workflow}
 
 % recording of presentation
 \url{https://myuva-my.sharepoint.com/:v:/r/personal/dje5dj_virginia_edu/Documents/icbicc.mp4?csf=1&web=1&e=oXV6cx}
@@ -294,8 +312,6 @@ We describe cloudmesh-sbatch
 \end{itemize}
 
 
-\FILE{section-workflow.tex}
-
 \subsubsection{Analytics Service Pipelines}
 
 \paragraph{Motivation.}
@@ -316,43 +332,79 @@ enable access buy users controlled by the service providers.
 
 
 \begin{figure}[htb]
-\centering\includegraphics[width=0.75\columnwidth]{images/NIST-AI-services-workflow.pdf}
+\centering\includegraphics[width=0.75\columnwidth]{images/processes-nist.pdf}
 \label{fig:service-interaction}
 \caption{Service Interaction.}
 \end{figure}
 
 
-\subsubsection{Workflow Controlled Computing}
+\subsubsection{Workflow Compute Coordinator}
 
-High-performance computing (HPC) is for decades a very important tool for science. Scientific tasks can be leveraging the processing power of a supercomputer so they can run at previously unobtainable high speeds or utilize specialized hardware for acceleration that otherwise are not available to the user. HPC can be used for analytic programs that leverage machine learning applied to large data sets to, for example, predict future values or to model current states. For such high-complexity projects, 
-there are often multiple complex programs that may be running repeatedly in either competition or cooperation. This may include resources in the same or different data centers. We developed 
-a hybrid multi-cloud analytics service framework was created to manage heterogeneous and remote workflows, queues, and jobs. It can be used through an Python API, the command line, and a REST service. It is supported on multiple operating systems like macOS, Linux, and Windows 10 and 11. 
-The workflow is specified via an easy to define YAML file.
-Specifically, we have developed a library called Cloudmesh Controlled Computing (cloudmesh-cc) that adds workflow features to control the execution of jobs on remote compute resources, while at the same time leveraging capabilities provided by the local compute environments to directly interface with graphical visualizations better suited for the desktop. The goal is to provide numerous workflows that in cooperation enhances the experience of the analytics tasks. This includes a REST service and command line tools to interact with it.
+High-performance computing (HPC) is for decades a very important tool
+for science. Scientific tasks can be leveraging the processing power
+of a supercomputer so they can run at previously unobtainable high
+speeds or utilize specialized hardware for acceleration that otherwise
+are not available to the user. HPC can be used for analytic programs
+that leverage machine learning applied to large data sets to, for
+example, predict future values or to model current states. For such
+high-complexity projects, there are often multiple complex programs
+that may be running repeatedly in either competition or cooperation.
+This may include resources in the same or different data centers. We
+developed a hybrid multi-cloud analytics service framework was created
+to manage heterogeneous and remote workflows, queues, and jobs.  It
+can be used through an Python API, the command line, and a REST
+service. It is supported on multiple operating systems like macOS,
+Linux, and Windows 10 and 11.  The workflow is specified via an easy
+to define YAML file.  Specifically, we have developed a library called
+Cloudmesh Compute Coordinator (cloudmesh-cc) that adds workflow
+features to control the execution of jobs on remote compute resources,
+while at the same time leveraging capabilities provided by the local
+compute environments to directly interface with graphical
+visualizations better suited for the desktop. The goal is to provide
+numerous workflows that in cooperation enhances the experience of the
+analytics tasks. This includes a REST service and command line tools
+to interact with it.
 
 
 \begin{figure}[htb]
-\centering\includegraphics[width=0.5\columnwidth]{images/fastapi-service.png}
+\centering\includegraphics[width=0.7\columnwidth]{images/fastapi-service.png}
+\caption{Fast API Workflow Service.}
+% better resolution
 \label{fig:fastapi-cc}
-\caption{Fast API Workflow Service. \TODO{better resolution}}
 \end{figure}
 
 \begin{figure}[htb]
     \centering
-    \includegraphics[width=0.50\columnwidth]{images/cc.pdf}
-    \caption{Architecture Workflow Service.}\label{fig:cc-2}
+    \includegraphics[width=0.50\columnwidth]{images/cloudmesh-cc-new.pdf}
+    \caption{Architecture Workflow Service.}
+    \label{fig:cc-2}
 \end{figure}
 
 \begin{figure}[htb]
     \centering
-    \includegraphics[width=0.50\columnwidth]{images/cc-1.png}
-    \caption{Workflow user interface. TODO: better resolution}\label{fig:cc-3}
+    \includegraphics[width=0.70\columnwidth]{images/cloudmesh-sbatch-new.pdf}
+    \caption{Workflow Script Batch Generator.}
+    \label{fig:cm-sbatch}
 \end{figure}
 
-We have tested the framework while running various MNIST application examples, including include Multilayer Perceptron, LSTM (Long short-term memory), Auto-Encoder, Convolutional, and Recurrent Neural Networks, Distributed Training, and PyTorch training. 
-A much lager application using earthquake prediction has also been used.
 
-Figure \ref{fig:fastapi-cc} shows the REST specification and \ref{fig:cc-2} shows the architecture. 
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.70\columnwidth]{images/cc-1.png}
+    \caption{Workflow user interface. }
+    \label{fig:cc-3}
+\end{figure}
+
+
+We have tested the framework while running various MNIST application
+examples, including include Multilayer Perceptron, LSTM (Long
+short-term memory), Auto-Encoder, Convolutional, and Recurrent Neural
+Networks, Distributed Training, and PyTorch training.  A much lager
+application using earthquake prediction has also been used.
+
+Figure \ref{fig:fastapi-cc} shows the REST specification and
+\ref{fig:cc-2} shows the architecture.
 
 % \subsubsection{Federated Analytics Service Catalogue}
 % \subsubsection{Catalogue Attributes}
@@ -539,10 +591,10 @@ The code is all in public domain and available at GitHub at the following locati
 \begin{center}
 \begin{tabular}{|r|rl||rl|}
   \hline
-{\bf Rank} & \multicolumn{2}{c||}{\bfseries Training} & \multicolumn{2}{c|}{\bfseries Validation} \\
+{\bf Rank} & \multicolumn{2}{c||}{\bfseries Training} & \multicolumn{2}{c|}{\bfseries Validation}  \\
      &   {\bf NNSE} & {\bf Hyperparameters} & {\bf NNSE} & {\bf Hyperparameters} \\
-              \hline
-1 & \color{red} 0.191300 & \color{red} Year Back & \color{blue} 0.195200 & \color{blue} 6M 2wk+7AVG} \\
+\hline
+1 & \color{red} 0.191300 & \color{red} Year Back & \color{blue} 0.195200 & \color{blue} 6M 2wk+7AVG \\
 2 & 0.192700 & \color{blue} 6M 2wk+7AVG & \color{teal} 0.201000 & \color{teal} 6 Months Back \\
 3 & 0.197000 & 6M 2wk+13AVG & 0.201600 & 6M 2wk+13AVG \\
 4 & \color{teal} 0.201600 & \color{teal} 6 Months Back & \color{red} 0.204500 & \color{red} Year Back \\
@@ -575,13 +627,17 @@ The code is all in public domain and available at GitHub at the following locati
   }
   \label{tab:training-30}
 
-  \renewcommand{\arraystretch}{1.2}  
-\begin{center}  
+  \renewcommand{\arraystretch}{1.2}
+\begin{center}
 \begin{tabular}{|r|rl||rl|}
 \hline
-{\bf Rank} & \multicolumn{2}{c||}{\bfseries Training} & \multicolumn{2}{c|}{\bfseries Validation} \\
-     &   {\bf NNSE} & {\bf Hyperparameters} & {\bf NNSE} & {\bf Hyperparameters} \\
-              \hline
+{\bf Rank} &
+\multicolumn{2}{c||}{\bfseries Training} &
+\multicolumn{2}{c|}{\bfseries Validation} \\
+     {\bf NNSE} &
+     {\bf Hyperparameters} &
+     {\bf NNSE} &
+     {\bf Hyperparameters} \\
 \hline
  1 & \color{red} 0.047600 & \color{red} Year Back & \color{red} 0.050500 & \color{red} Year Back \\
  2 & \color{blue} 0.069500 & \color{blue} 6 Months Back & \color{blue} 0.070300 & \color{blue} 6 Months Back \\
@@ -616,7 +672,7 @@ The code is all in public domain and available at GitHub at the following locati
     validation. The number of Epochs for this experiment is 70.}
   \label{tab:training-70}
 
-  \renewcommand{\arraystretch}{1.2}    
+  \renewcommand{\arraystretch}{1.2}
 \begin{center}
 \begin{tabular}{|r|rl||rl|}
   \hline
