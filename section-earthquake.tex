@@ -8,8 +8,8 @@ dataset for the region of Southern California. While conventional
 forecasting methods rely on statistical techniques, we use ML
 for extracting the evolution and testing the effectiveness of the
 forecast.  As a metric, we use the Nash-Sutcliffe Efficiency (NSE)
-\cite{nash-79}.  Other qualitative predictions are discussed in
-~\cite{fox2022-jm}.
+\citep{nash-79}.  Other qualitative predictions are discussed in
+~\citep{fox2022-jm}.
 
 One of the common tasks when dealing with time series is the ability
 to predict or forecast them in advance.  Time series capture the
@@ -30,7 +30,7 @@ extracts the evolution of time series applied to earthquake forecasting.
 \subsection{Earthquake Data}
 
 The data for this earthquake is described in
-\cite{las-22-mlcommons-science}.  It uses a subset of the earthquake
+\citep{las-22-mlcommons-science}.  It uses a subset of the earthquake
 data from the United States Geological Survey (USGS) focused on Southern
 California between latitude: $32^\circ$N to $36^\circ$N and longitude:
 $-120^\circ$S to $-114^\circ$S). The data for this region covers all
@@ -48,7 +48,7 @@ provide both input and predicted values. These include time ranges
 from a fortnight up to four years. Furthermore, we calculate summed
 magnitudes and depths and counts of significant quakes (magnitude $<
 3.29$).''  Table~\ref{tab:eq-summary} depicts the key features of the
-benchmark \cite{las-22-mlcommons-science}.
+benchmark \citep{las-22-mlcommons-science}.
 
 
 \begin{table}
@@ -58,7 +58,7 @@ benchmark \cite{las-22-mlcommons-science}.
   {\footnotesize
 \begin{tabular}{p{0.2\columnwidth}p{0.2\columnwidth}p{0.45\columnwidth}}
 \hline
-{\bf Area} & \multicolumn{2}{l}{Earthquake Forecasting~\cite{fox2022-jm,TFT-21,eq-code,eq-data}.}\\
+{\bf Area} & \multicolumn{2}{l}{Earthquake Forecasting~\citep{fox2022-jm,TFT-21,eq-code,eq-data}.}\\
 \hline
 {\bf Objectives} &  \multicolumn{2}{l}{Improve the quality of Earthquake
 forecasting in a region of Southern California.}\\
@@ -70,9 +70,9 @@ forecasting in a region of Southern California.}\\
   &  Size:  & 11.3GB (Uncompressed), 21.3MB (Compressed)\\
   & Training samples: & 2,400 spatial bins\\
   & Validation samples:  &  100 spatial bins\\
-  & Source:  & USGS Servers~\cite{eq-data}\\
+  & Source:  & USGS Servers~\citep{eq-data}\\
 \hline
-{\bf Reference Implementation} & \cite{eq-code} & \\
+{\bf Reference Implementation} & \citep{eq-code} & \\
 % \hline
 \hline
 \end{tabular}
@@ -87,14 +87,14 @@ forecasting in a region of Southern California.}\\
 The reference implementation of the benchmark includes three
 distinct deep learning-based reference implementations. These are Long
 short-term memory (LSTM)-based model, Google Temporal Fusion
-Transformer (TFT)~\cite{TFT-21}-based model and a custom hybrid
+Transformer (TFT)~\citep{TFT-21}-based model and a custom hybrid
 transformer model. The TFT-based model uses two distinct LSTMs,
 covering an encoder and a decoder with a temporal attention-based
 transformer. The custom model includes a space-time transformer for
 the Decoder and a two-layer LSTM for the encoder. Each model predicts
 NSE and generates visualizations illustrating the TFT for
 interpretable multi-horizon time series
-forecasting~\cite{TFT-21}. Details of the current reference models can
-be found in~\cite{fox2022-jm}.  In this paper, we only focus on the
+forecasting~\citep{TFT-21}. Details of the current reference models can
+be found in~\citep{fox2022-jm}.  In this paper, we only focus on the
 LSTM implementation.
 

@@ -1,0 +1,112 @@
+\section{Insights into DL Workflows}
+
+
+
+
+
+\subsection{Cloudmesh-sbatch}
+
+We describe cloudmesh-sbatch
+
+\subsection{Cloudmesh-cc}
+
+\begin{itemize}
+\item Different graphics cards
+
+\item Different epochs of training
+
+\item Create workflow for cloudmask
+\end{itemize}
+
+
+\subsubsection{Analytics Service Pipelines}
+
+\paragraph{Motivation.}
+In many cases, a big data analysis is split up into multiple
+subtasks. These subtasks may be reusable in other analytics
+pipelines. Hence it is desirable to be able to specify and use them in
+a coordinated fashion allowing the reuse of the logic represented by the
+analysis. Users must have a clear understanding of what the analysis
+is doing and how it can be invoked and integrated.
+
+\paragraph{Access Requirements.}
+The analysis must include a clear and easy-to-understand specification
+that encourages reuse and provides sufficient details about its
+functionality, data dependency, and performance. Analytics services may
+have authentication, autorotation, and access controls built in that
+enable access by users controlled by the service providers.
+
+
+
+\begin{figure}[htb]
+\centering\includegraphics[width=0.75\columnwidth]{images/processes-nist.pdf}
+\label{fig:service-interaction}
+\caption{Service Interaction.}
+\end{figure}
+
+
+\subsubsection{Workflow Compute Coordinator}
+
+High-performance computing (HPC) is for decades a very important tool
+for science. Scientific tasks can be leveraging the processing power
+of a supercomputer so they can run at previously unobtainable high
+speeds or utilize specialized hardware for acceleration that otherwise
+are not available to the user. HPC can be used for analytic programs
+that leverage machine learning applied to large data sets to, for
+example, predict future values or to model current states. For such
+high-complexity projects, there are often multiple complex programs
+that may be running repeatedly in either competition or cooperation.
+This may include resources in the same or different data centers. We
+developed a hybrid multi-cloud analytics service framework that was
+created to manage heterogeneous and remote workflows, queues, and
+jobs.  It can be used through a Python API, the command line, and a
+REST service. It is supported on multiple operating systems like
+macOS, Linux, and Windows 10 and 11.  The workflow is specified via an
+easy-to-define YAML file.  Specifically, we have developed a library
+called Cloudmesh Compute Coordinator (cloudmesh-cc) that adds workflow
+features to control the execution of jobs on remote compute resources,
+while at the same time leveraging capabilities provided by the local
+compute environments to directly interface with graphical
+visualizations better suited for the desktop. The goal is to provide
+numerous workflows that in cooperation enhances the experience of the
+analytics tasks. This includes a REST service and command line tools
+to interact with it.
+
+
+\begin{figure}[htb]
+\centering\includegraphics[width=0.7\columnwidth]{images/fastapi-service.png}
+\caption{Fast API Workflow Service.}
+% better resolution
+\label{fig:fastapi-cc}
+\end{figure}
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.50\columnwidth]{images/cloudmesh-cc-new.pdf}
+    \caption{Architecture Workflow Service.}
+    \label{fig:cc-2}
+\end{figure}
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.70\columnwidth]{images/cloudmesh-sbatch-new.pdf}
+    \caption{Workflow Script Batch Generator.}
+    \label{fig:cm-sbatch}
+\end{figure}
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.70\columnwidth]{images/cc-1.png}
+    \caption{Workflow user interface. }
+    \label{fig:cc-3}
+\end{figure}
+
+
+We have tested the framework while running various MNIST application
+examples, including include Multilayer Perceptron, LSTM (Long
+short-term memory), Auto-Encoder, Convolutional, and Recurrent Neural
+Networks, Distributed Training, and PyTorch training.  A much lager
+application using earthquake prediction has also been used.
+
+Figure \ref{fig:fastapi-cc} shows the REST specification and
+\ref{fig:cc-2} shows the architecture.
