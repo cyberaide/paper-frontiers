@@ -51,36 +51,35 @@ magnitudes and depths and counts of significant quakes (magnitude $<
 benchmark \cite{las-22-mlcommons-science}.
 
 
-\begin{small}
 \begin{table}
-\caption{Summary of the {\tt tevelop} Benchmark}\label{tab:eq-summary}
-%\resizebox{1.0\textwidth}{!}{
+\caption{Summary of the Earthquake {\em tevelop} Benchmark}\label{tab:eq-summary}
+% \resizebox{1.0\textwidth}{!}{
 \begin{center}
-\begin{tabular}{p{0.4\columnwidth}p{0.6\columnwidth}}
+  {\footnotesize
+\begin{tabular}{p{0.2\columnwidth}p{0.2\columnwidth}p{0.45\columnwidth}}
 \hline
+{\bf Area} & \multicolumn{2}{l}{Earthquake Forecasting~\cite{fox2022-jm,TFT-21,eq-code,eq-data}.}\\
 \hline
-{\bf Description} & Earthquake Forecasting~\cite{fox2022-jm,TFT-21,eq-code,eq-data}.\\
+{\bf Objectives} &  \multicolumn{2}{l}{Improve the quality of Earthquake
+forecasting in a region of Southern California.}\\
 \hline
-{\bf Objectives} &  Improve the quality of Earthquake
-forecasting in a region of Southern California.\\
+{\bf Metrics} & \multicolumn{2}{l}{Normalized Nash-Sutcliffe model efficiency coefficient (NNSE)with $0.8\leq NNSE\leq 0.99$}\\
 \hline
-{\bf Metrics} & Normalized Nash-Sutcliffe model efficiency coefficient (NNSE)with $0.8\leq NNSE\leq 0.99$\\
+{\bf Data}  & Type:  & Richter Measurements with spatial and temporal information (Events). \\
+  &  Input:  & Earthquakes since 1950.\\
+  &  Size:  & 11.3GB (Uncompressed), 21.3MB (Compressed)\\
+  & Training samples: & 2,400 spatial bins\\
+  & Validation samples:  &  100 spatial bins\\
+  & Source:  & USGS Servers~\cite{eq-data}\\
 \hline
-{\bf Data}  & Type:  Richter Measurements with spatial and temporal information (Events). \\
-  &  Input:  Earthquakes since 1950.\\
-  &  Size:  11.3GB (Uncompressed), 21.3MB (Compressed)\\
-  & Training samples: 2,400 spatial bins\\
-  & Validation samples:   100 spatial bins\\
-  & Source:  USGS Servers~\cite{eq-data}\\
-\hline
-{\bf Reference Implementation} & \cite{eq-code}\\
+{\bf Reference Implementation} & \cite{eq-code} & \\
 % \hline
 \hline
 \end{tabular}
+}
 \end{center}
 %}
 \end{table}
-\end{small}
 
 
 \subsection{Implementation}

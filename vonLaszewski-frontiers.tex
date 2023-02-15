@@ -26,6 +26,7 @@
 \newcommand{\TODO}[1]{\todo[inline]{#1}}
 
 \newcommand{\YES}{yes}
+\makeatletter\newcommand{\tableofcontents}{\@starttoc{toc}}\makeaother
 
 \linenumbers
 
@@ -69,16 +70,26 @@ Town Center Four,
 
 \def\corrEmail{laszewski@gmail.com}
 
-
+\newcommand{\TITLE}{Insights in High-Performance Big Data Systems Gained from
+  Educational
+  MLCommons Earthquake Benchmarks Efforts}
 
 
 \begin{document}
+
+% outcomment toc when submitting
+
+{\bf \TITLE}
+
+\bigskip
+
+\tableofcontents
+
+\title{\TITLE}
+
+
 \onecolumn
 \firstpage{1}
-
-\title{Insights in High-Performance Big Data Systems Gained from
-  Educational
-  MLCommons Earthquake Benchmarks Efforts}
 
 \author[\firstAuthorLast ]{\Authors} %This field will be automatically populated
 \address{} %This field will be automatically populated
@@ -126,8 +137,6 @@ Town Center Four,
 % google docs mlcommons science benchmarks
 \url{https://docs.google.com/document/d/1WwcS0gjVoz5Bf0G05xKIgoh2WEBxmNQM8VmkHNP67ag/edit}
 
-\include{section-earthquake}
-
 \section{Introduction}
 
 todo \citep{las-22-arxiv-workflow-cc}
@@ -138,74 +147,14 @@ todo \citep{las-22-arxiv-workflow-cc}
 % Case Reports the Introduction should include symptoms at presentation
 % \citep{chapter}, physical exams and lab results \citep{dataset}.
 
-\section{Relevance of Machine Learning in Education}
 
-Libraries
-Infrastructure
-Methods
-
-
-Libraries
-
-   scikit learn
-
-   pytorch
-
-   tensorflow
-
-   python
-
-
-Infrastructure
-
-   jupyter
-
-   batch queue such as SLURM
-
-   Google colab
-
-   Amazon, Azure, Google Cloud
-
-   Campus HPC resources
-
-   National Scale HPC resources (DOE, NSF, ...)
-
-   Power
-
-Methods
-
-
-Clustering, k-means
-
-immage classification
-
-sentiment analysis
-
-time series prediction
-
-surrogates
-
-
-cNN
-
-SVM
-
-KNN
-
-ANN
-
-random forest
-
-supervised learning
-
-unsupervised learning
-
-Decision tree
-
-genetic algorithms
 
 \input{section-mlcommons}
 
+\input{section-edu-ml}
+\input{section-edu-mlcommons}
+
+\input{section-earthquake}
 
 \section{Erathquake Forecasting}
 
@@ -215,13 +164,12 @@ Application domain
 
 TODO: describe the application
 
+\input{section-dev}
 
 \section{Insights into Data Management}
 
 
 \subsection{Data Sets}
-
-
 
 
 \subsection{Data compression}
@@ -303,12 +251,13 @@ example, predict future values or to model current states. For such
 high-complexity projects, there are often multiple complex programs
 that may be running repeatedly in either competition or cooperation.
 This may include resources in the same or different data centers. We
-developed a hybrid multi-cloud analytics service framework that was created
-to manage heterogeneous and remote workflows, queues, and jobs.  It
-can be used through a Python API, the command line, and a REST
-service. It is supported on multiple operating systems like macOS,
-Linux, and Windows 10 and 11.  The workflow is specified via an easy-to-define YAML file.  Specifically, we have developed a library called
-Cloudmesh Compute Coordinator (cloudmesh-cc) that adds workflow
+developed a hybrid multi-cloud analytics service framework that was
+created to manage heterogeneous and remote workflows, queues, and
+jobs.  It can be used through a Python API, the command line, and a
+REST service. It is supported on multiple operating systems like
+macOS, Linux, and Windows 10 and 11.  The workflow is specified via an
+easy-to-define YAML file.  Specifically, we have developed a library
+called Cloudmesh Compute Coordinator (cloudmesh-cc) that adds workflow
 features to control the execution of jobs on remote compute resources,
 while at the same time leveraging capabilities provided by the local
 compute environments to directly interface with graphical
@@ -399,13 +348,12 @@ as a group leader of that effort.
 
 \section*{Funding}
 
-Work was in part funded by the NSF CyberTraining: CIC:
-CyberTraining for Students and Technologies from Generation Z with the
-award numbers 1829704 and 2200409 and NIST 60NANB21D151T.
-The work was also funded by the \TODO{Department of Energy under the
-  grant ???.}
-colleagues, institutions, or agencies that aided the efforts of the
-authors.
+Work was in part funded by the NSF CyberTraining: CIC: CyberTraining
+for Students and Technologies from Generation Z with the award numbers
+1829704 and 2200409 and NIST 60NANB21D151T.  The work was also funded
+by the Department of Energy under the grant Award
+No. DE-SC0023452. The work was conducted at the Biocomplexity
+Institute and Initiative at University of Virginia.
 
 \section*{Acknowledgments}
 

@@ -1,0 +1,61 @@
+\section{Insights into Development from the Earthquake Code}
+
+The original code was developed by a single researcher with the goal to create a DL method called tvelop to apply spacial timeseries evolution for multiplw applications including eartquake, hydrology and COVID prediction. The code was developed in a large Python Jupyter notebook on Google Collab. The total number of lines of code was \TODO{line number}. The code included all definitions of variables and hyperparemetes in the code itself.
+
+
+difficult to maintain and understand for others
+
+easy to develop by author, many experimental aspects
+
+all varables defined in code not config file
+
+lots of graphic outputs for interactive development
+
+How many lines of code??
+
+
+no use of libraries
+limited use of functions
+if conditions for different science applications
+
+
+large code is too dificult to maintain in colab
+
+papermill
+
+mlcommons focus on one science application at a time
+
+students can not comprehend code
+
+rewritten code to just focus on earth quake
+
+rewritten code to add selected hyperparameters into a configuration file
+
+
+setup
+
+for
+
+training
+
+valiadation 
+
+comparing output
+
+not much use of libraries
+
+choices
+
+development of multiple runs based on variation of additional time based internal hyperparameters,
+--> long runtime, no changes to evaluation section in code
+
+take these parameters out and place them in a configuration fil
+->   multiple runs needed and caomparision has to be separated fromprg, ;lots of changes to the program, program will run shorter,
+
+
+libraries for mlcommons benchmarking, cloudmesh
+portable way to define data locations via config
+experiment permutation over hyperparameters.
+* repeated experiements
+* separate evaluation and comparision of accuray which was not in original code.
+* comparision of accuracy across different hyperparameter searches.
