@@ -1,4 +1,98 @@
-\section*{Figure captions}
+\section{Performance Measurements}
+
+
+\subsection{Runtime}
+
+
+implemented a GPU monitoring tool that has some features others did not have 
+events
+timer start, stop, status
+with statements
+summary table
+info about cpus
+various formats: table, json, csv
+
+
+Timer revealed issue with one of the systems
+\begin{verbatim}
+StopWatch.event(“event-name”)
+
+StopWatch.start(“name”)
+StopWatch.stop(“name”)
+StopWatch.status(“name”)
+
+with StopWatchBlock(“name”)
+      run_long_calculation()
+
+@benchmark
+	def f(...):
+# decorator for function creates automatically start stop for that
+# function, sums up all times for that function in run
+
+StopWatch.benchmark() 
+# prints the result in table, cvs and other formats (if needed)
+\end{verbatim}
+
+\subsection{Perfomance projection}
+
+
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.70\columnwidth]{images/performance-projection.png}
+    \caption{Performance projection. }
+    \label{fig:performance-projection}
+\end{figure}
+
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.70\columnwidth]{images/loss.png}
+    \caption{Loss}
+    \label{fig:loss}
+  \end{figure}
+
+
+  \begin{table}[htb]
+    \caption{Runtime of the 2 epoch case in seconds}
+    \begin{tabular}
+      Timer                 &  K80(X)  &   V100(X) &   A100(X) & RTX3090(G) & RTX3080(R) \\
+      \hline
+      total                    &  28343.3 &  20295.0 &  17574.8  &   6589.4  &  8348.5 \\
+      sampling location & 1779.6 &   1546.4 &   1227.0  &    457.9  &   532.5 \\
+      init                      & 5.3  &     5.6  &     8.1  &      0.8   &    3.6 \\
+      train                    & 6967.3  &  1671.4  &  1373.0   &  1103.2   & 2068.9 \\
+      bestfit                 & 17037.6  & 14795.1 &  13022.1  &   4420.3 &   4997.1 \\
+      \end{tabular}
+      
+      X= University X Cluster: Data provided by Robert Knuuti, Jake Kolessar, Thomas Butler
+
+      G = Gregor’s machine
+
+      R = Robert’s machine
+      
+\end{table}
+
+code management is important, github is essential
+Need to have better sbatch to make code management easier
+cluster design is important and access to local storage on nodes is important
+shared file systems are less effective 
+Predicting behavior of code is great with our timer library as it allows us to estimate runtines and report results in easy fashion. Helps debugging.
+Need to look into the implementation of bestfit 
+Need to look into memory dependency of epochs
+Should we stop at 34 epochs or run 66?
+
+\TODO{add k80 elsewher}
+
+\begin{verbatim}
+Cloudmesh Data Submodule - https://github.com/cloudmesh/cloudmesh-data
+Cloudmesh GPU Submodule - https://github.com/cloudmesh/cloudmesh-gpu
+Cloudmesh sbatch Submodule - https://github.com/cloudmesh/cloudmesh-sbatch 
+
+\end{verbatim}
+
+
+\subsection{Accuracy}
 
 %%% max 15 figures abd table, subfig is one figure
 
