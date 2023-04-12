@@ -22,6 +22,8 @@
 \usepackage{comment}
 \usepackage{xcolor}
 \usepackage{todonotes}
+\usepackage{fancyvrb}
+\usepackage{xcolor}
 
 \newcommand{\TODO}[1]{\todo[inline]{#1}}
 
@@ -117,7 +119,7 @@ Town Center Four,
 
 \section{}
 
-\input{section-abstract}
+here comes abstarct text
 
 
 \tiny \keyFont{ \section{Keywords:} deep learning, benchmarking, hyper
@@ -128,7 +130,66 @@ Town Center Four,
 
 \end{abstract}
 
-\input{section-introduction}
+\section{Introduction}
+
+In this paper, we summarize some of the insights that e we obtained for
+a High-Performance Computing Big Data Systems applied to the
+MLCommons Earthquake Benchmarks Efforts. This includes
+insights into the usability of the HPC Big Data Systems, The usage of
+an MLCommons benchmarks and the insights from the applicability in
+educational efforts.
+
+Benchmarking is an important effort in using HPC Big Data systems.
+While using benchmarks we can compare the performance of various
+systems.  We can also evaluate the overall performance of the system
+and identify potential areas of improvements and optimizations
+either on the system side or the algorithmic performance.
+
+While for traditional HPC systems often the pure
+computational power is measured such as projected by the Top500, it is
+also important to incorporate the file system performance as it can
+considerably impact the computation time. This is especially the case
+when fast GPUs are used that need to be fed with data at an adequate
+rate to perform well. If file systems are too slow the expensive
+specialized GPUs can not be adequately utilized.
+
+Benchmarks also offer a common way to communicate the results to its
+users that includes users from the educational community. Students
+have often an easier time reproducing a benchmark and assessing the
+impact of various parameters modified as part of it to explore how an
+algorithm may behave. This is especially the case in deep learning
+where a variety of hyperparameters can be modified.
+
+Such parameters should include not only parameters related to
+the algorithm itself, but also to explore different systems parameters
+such as those impacting data access performance or even energy
+consumption.
+
+The paper is structured as follows. First, we provide an introduction to
+MLCommons (Section \ref{sec:mlcommons}).  Next, we provide some
+insights about Machine Learning in education as it relates to this
+paper, but can be generalized to other efforts
+(Section~\ref{sec:edu-ml}). We then specifically analyze which
+insights we gained practically from using MLCommons in educational
+efforts (Section~\ref{sec:edu-mlcommons-insights}). After this we
+focus on the Earthquake Forecasting application, describe it
+(Section~\ref{sec:eq}) and identify specifically our insights in the
+data managemnet for this application (Section~\ref{sec:eq-data}).
+
+As the application used is time consuming and hits at the policy
+limitations of the educational HPC data system a special workflow
+system has been designd to ccordinate the many task needed to conduct
+a comprehensie analysis (Section~\ref{sec:workflow-main}). This
+includes the creation of an enhanced batch queue mechanism that
+bypasses the polocy limitations but makes management of the many jobs
+simple (Section~\ref{sec:workflow-sbatch}). In addition we developed a
+grahical compute coordiantor that enables to visualize the execution
+of the jobs in a generalized simple workflow system
+(Section~\ref{sec:workflow-cc}).  To showcase the performance
+(Section~\ref{sec:perf-main}) of the eartquake forecasting
+application, present data for the runtime
+(Section~\ref{sec:perf-runtime}) and for the energy
+(Section~\ref{sec:perf-energy}).
 
 
 
@@ -140,19 +201,1313 @@ Town Center Four,
 
 
 
-\input{section-mlcommons}
+\section{MLCommons}
+\label{sec:mlcommons}
 
-\input{section-edu-ml}
-\input{section-edu-mlcommons}
-\input{section-course}
+MLCommons is a non-profit organization, that has the goal to
+accelerate machine learning innovation to benefit everyone with the
+help of more than 70 members from industry, academia, and government
+\cite{www-mlcommons}. Its main focus is to develop standardized
+benchmarks for measuring the performance systems using machine
+learning while applying them to various applications.  This includes,
+but is not limited to, application areas from healthcare, automotive,
+image analysis, and natural language processing. MLCommons is
+concerned with benchmarking training \cite{mlperf-training} and
+validation algorithms to measure progress over time.  Through this,
+MLCommons investigates machine learning efforts in the areas of
+benchmarking, datasets in support of benchmarking, and best practices
+that leverage machine learning.
 
-\input{section-earthquake}
+MLCommons is organized into several working groups that address topics
+such as benchmarking related to training, training on HPC resources,
+and inference conducted on data centers, edge devices, mobile devices, and
+tiny devices. Best practices are explored in the areas of
+infrastructure and power.  In addition, MLCommons also operates
+working groups in the areas of Algorithms, DataPerf Dynabench,
+Medical, Science, Storage.  The science working group is concerned
+with improving the science just a static benchmark \cite{las-22-mlcommons-science}.
 
-\input{section-dev}
+A list of selected benchmarks for the working groups focussing on
+inference, training, and science are shown in Table~\ref{tab:mlcommons-benchmarks}.
 
-\input{section-data}
-\input{section-workflow}
-\input{section-eq-performance}
+
+\begin{table}[htb]
+  \caption{MLCommons Benchmarks}
+  \label{tab:mlcommons-benchmarks}
+  \bigskip
+
+  \resizebox{\linewidth}{!}{
+  {\footnotesize
+  \begin{tabular}{lllllp{6cm}}
+    Name & Training & Inference & HPC & Science & Area \\
+    \hline
+    MiniGo          & \YES & & & &  Neural-network based Go AI, using TensorFlow\\
+    Mask R-CNN      & \YES & & & & Instance segmentation, developed on top of Faster R-CNN \\
+    DLRM & \YES     & \YES & & &   Deep Learning Recommendation Model \\
+    BERT & \YES     & \YES &  & &  Natural Language Processing \\
+    ResNet-50 v1.5  & \YES & \YES & & &  Image Classification \\
+    RetinaNet & \YES & \YES & & &  Object Detection \\
+    RNN-T           & \YES & \YES & & &  Speech Recognition \\
+    3D U-Net & \YES & \YES & & &  Medical Imaging \\
+    OpenCatalyst & & & \YES & &   Chemical reactions analysis \\
+    DeepCam & & & \YES & &  Deep Learning Climate Segmentation Benchmark \\
+    CosmoFlow \cite{cosmoflow} & & & \YES & & Cosmology and Nongalactic Astrophysics \\
+    Earthquake & & & & \YES &  Earthquake forecasting \\
+    Uno & & & & \YES & Predicting tumor response to drugs \\
+    Cloudmask & & & & \YES &  Cloud masking \\
+    StemDL & & & & \YES & Space group
+classification of solid-state materials from Scanning Transmission Electron Micro-
+scope (STEM) data using Deep Learning \\
+  \end{tabular}
+  }
+  }
+
+\end{table}
+
+Due to the strong affiliation with industry as well as the integration
+of National Labs and Academic High-Performance Computing centers
+MLCommons provides a well-positioned starting point for academic
+participation. Over the last years, we have participated significantly
+in its effort and integrated efforts from MLCommons into our
+educational activities. Since its inception, we leveraged the
+MLCommons activities and obtained a
+number of important educational insights that we discuss in this paper.
+
+
+
+\section{Insights of Machine Learning in Education}
+\label{sec:edu-ml}
+
+Before we start with the insights from MLCommons we like to first
+review some of our experience regarding topics taught in educational
+activities in machine learning in general.  We distinguish machine
+learning {\em methods}, {\em applications} that use or can use machine
+learning, the {\em libraries} that are used to apply these methods for
+applications, software development {\em tools}, and the {\em
+  infrastructure} that is needed to execute them.
+
+\subsection{Methods}
+
+We list a number of keywords that relate to typical methods in machine
+learning (ML) and artificial intelligence (AI) that may be taught in
+classes. This includes Clustering (exemplified via k-means), image
+classification, sentiment analysis, time series prediction, surrogates
+(a new topic that is often not yet taught), and neural networks (with
+its modifications such as CNN, KNN, ANN, SVM).  In addition, general
+topics of interest are supervised learning and unsupervised learning.
+More traditional methods include random forests, decision trees, and
+genetic algorithms.
+
+From this small list, we can already see that this can not be taught
+in a one-semester course in sufficient depth, but needs to span the
+duration of a student's curriculum.
+
+\subsection{Libraries}
+
+Many libraries and tools exist that support AI.  We list here a subset
+of frequently used software libraries and tools that enable the
+machine learning engineer and student to write ML applications.
+
+First, we note that at the university level, the predominant language
+in machine learning and data science has become Python. This is
+explainable due to the availability of sophisticated libraries thus as
+scikitlearn, PyTorch, and TensorFlow.
+
+Most recently we see a trend that PyTorch has become more popular at
+the university level than TensorFlow.  Although the learning curve of
+these tools is significant, they provide invaluable opportunities
+while applying them to many different applications.
+
+In contrast, other specialized classes that focus on the development
+of faster, GPU-based methods use typically C++ code leveraging the
+vendor's specialized libraries to interface with the GPUs such as
+NVIDIA CUDA.
+
+\subsection{Tools}\label{sec:tools}
+
+In order to efficiently use the methods and libraries, and also the
+infrastructure which we discuss later students need a basic
+understanding of software engineering tools. This includes an editor
+and code management system.
+
+The common choice for managing codes is git, while GitHub is
+used. Alternatively one finds also the use of GitLab.  These code
+management systems are key to implementing teams that share the
+developed code and allow collaborative code management.  However, they
+require a significant learning curve.
+
+Another important aspect is the use of a capable editor in support of
+python syntax with code highlighting and code inspection. The use of
+tools such as notepad++, IDLE, or other simplistic editors is
+insufficient. Instead, students ought to use tools such as {\em
+  pycharm} and as alternative choice {\em vscode}. These editors
+provide sophisticated features to improve code quality and also
+integrate with git. One of the strengths of pyCharm is that it has a
+sophisticated code inspector and auto-completion, making writing
+reliable code faster. Vscode may be known to some students, but its
+default features seem not to match that of pyCharm.
+
+An additional tool is jupyter, with its successor jupyter-lab. It
+provides a web browser interface to interactive python notebooks
+(ipynb). The strength here is a rich external ecosystem that allows to
+run [rograms in interactive fashion while integrating graphics
+components and data frames to conduct data analysis.  The biggest
+disadvantage we saw in using notebooks is that the code developed by
+the students is not following proper software engineering practices
+such as defining and using functions, classes, and self-defined
+installable python libraries that make code management sustainable and
+easier. Often we found that code developed as jupyter notebook is also
+poorly documented although the integration of markdown as a document
+feature is built in. This relates to a general problem at the
+university level. While the material taught in ML fills more of a
+semester, students often come ill-prepared for ML classes as typical
+classes to teach python do only deal with language aspects but not
+with a sustainable {\em practical} software engineering approach for
+example in python.
+
+\subsection{Infrastructure}
+
+An additional aspect ML students are exposed to is the need for access
+to computational resources due to the computational needs posed by the
+ML implementations for applications. One common way of dealing with
+this is to use Google Collab which is easy to get access to, and use,
+in a limited fashion for free (larger computational needs will need a
+paid subscription).  However, as Collab is based on jupyter we
+experience the same disadvantages as discussed in
+Section~/ref{sec:tools}
+
+Other resources for machine learning can be found in the cloud. This
+may include IaaS and PaaS offerings from Amazon, Azure, Google Cloud,
+Salesforce, and others.  In addition to the computational needs for
+executing neural networks and deep learning algorithms, we find also
+services that can be accessed mainly through REST APIs to be
+integrated into the application research. Most popular for such tools
+are focussing on natural language processing such as translation and
+more recently of text analysis and responses through ChatGPT and Bart.
+
+However, many academic institutions have access to campus-level and
+national-level computing resources in HPC centers.  This includes
+resources from DOE and NSF. Such computing resources are accessed
+mostly through traditional batch queues (such as SLURM).  To allow
+sharing of the limited resources with the large user community. For
+this reason, centers often implement a scheduling policy putting
+significant restrictions on the computational resources that can be
+used at the same time, and/or for a particular period. The number of
+files and the access to a local disk on compute nodes constituting the
+HPC resources may also be limited.  This provides a potential very high
+entry barrier as these policy restrictions may not be integrated into
+the application design from the start.  Moreover, in some cases, these
+restrictions may provide a significant performance penalty when data
+is placed in a slow NFS file system instead of directly in memory
+(often the data does not fit in memory) or in NVMe storage if it
+exists on the computing nodes.  It is also important to understand
+that such nodes may also be shared with other users and it is
+important to provision the requirements in regards to computation
+time, memory footprint, and file storage requirements accurately so
+that scheduling can be performed most expediently.  Furthermore, the
+software on these systems is managed by the computing staff and it is
+best to develop with the version provided, which may already be
+outdated versions.  Container technologies limit this issue, by
+allowing for centers that support this to develop their own software
+stack in containers. The most popular for this is singularity, but
+some centers offer also docker.  As images developed can be rather
+large it is not sufficient to just copy the image from your local
+computer, but the center must allow the ability to create the image
+within the HPC infrastructure. This is especially true when the
+University requires all resources to be accessed through a VPN. Here
+you can often see a factor of 10 or more slowdown in transfer and
+access speeds.
+
+All this has to be learned and will take up a considerable
+time. Hence, using HPC resources has to be introduced with specialized
+educational efforts often provided by the HPC center. However,
+sometimes these courses are not targeted specifically to running a
+particular version of PyTorch or TensorFlow with cuDNN, but just the
+general aspect of accessing the queues.
+
+Furthermore, specifically customized queues demanding allocations,
+partitions and resource requirements may not be published and a burden
+is placed on the faculty member to integrate this accurately into the
+course curriculum.
+
+Access to national-scale infrastructure is often restricted to
+research projects that require following a detailed application
+process. This process is done by the faculty supervisor and not the
+student. Background checks and review of the project may delay the
+application. Additional security requirements such as the use of DUO,
+and multifactor authentication has to be carefully taught.
+
+In case the benchmark includes environmental monitoring such as
+temperatures on the CPU/GPU and power consumption, access may be
+enabled through default libraries and can be generalized while
+monitoring the environmental controls over time. However, HPC centers
+may not allow access to the overall power consumption of entire
+compute racks as it is often very tightly controlled and only
+accessible for the HPC operational support staff.
+
+\section{Insights of MLCommons in Education}
+\label{sec:edu-mlcommons-insights}
+
+The MLCommons benchmarks provide a valuable starting point for
+educational material addressing various aspects of the machine and
+deep learning ecosystem. This includes benchmarks targeted to a
+variety of system resources from tiny devices to the largest High
+Performance Computing and Data Systems in the world, while being able
+to adapt and test them on platforms in-between these two
+extremes. Thus they become ideal targets for adaptation in AI classes
+that want to go beyond typical starting applications such as MNIST.
+
+We have gained practical experience while adapting benchmarks from the
+MLCommons Science Working group while collaborating with various
+universities and student groups from the University of Virginia, New
+York University, and Indiana University. Furthermore, it was used in
+undergraduate education that was continued from FAMU as an REU and is
+now executed at the University of Virginia as research activity by a
+past student from the REU. We found that the examples provide value
+for classes, capstones, Research Experiences for Undergraduates (REU),
+team project-oriented software engineering and computer science
+classes, and internships.
+
+We observed that while traditional classes limit their resource needs
+and thus the target application to a very short period so assignments
+can be conducted in a short period, some MLCommons benchmarks go well
+beyond this while confronting the students not only with
+the theoretical background of the ML algorithm, but also with the Big Data
+Systems on which such benchmarks need to be executed due to the
+complexity and time requirements of some of the benchmarks. This is
+especially the case when hyperparameters are identified to derive more
+scientific accurate examples. It also allows the students to explore
+different algorithms applied to these problems.
+
+From our experiences with these various efforts, we found that the
+following lessons provided significant add-on learning experiences:
+
+
+\begin{itemize}
+
+
+  \item {\bf Teamwork.} Students benefit from focusing on the success
+    and collaboration of the entire team rather than mere
+    individualism, as after graduation students may work in large
+    teams. This includes the opportunity for pair programming, but also
+    the fact that careful time planning in the team is needed to
+    succeed.  This also includes how to collaborate with peers using
+    professional, industry-standard coding software and management of
+    code in a team through the Git version control system.
+
+  \item {\bf Interdisciplinary Research.} Many of the applications in
+    MLCommons are requiring interdisciplinary research between the domain
+    scientists, ML experts, and IT engineers. As part of the teamwork
+    students have the opportunity to participate not only in their
+    discipline, but learn about how to operate in an interdisciplinary
+    team.
+
+  \item {\bf System Benchmarking vs. Science Benchmarking.} Students
+    can learn about two different benchmarking efforts. The first is
+    system-level benchmarking in which a system is compared based
+    on a predefined algorithm and its parameters. The second is the
+    benchmarking of a scientific algorithm in which the quality of the
+    algorithm is compared with each other.
+
+  \item {\bf Software ecosystem.} Students are often only using a
+    pre-setup environment prepared explicitly for a class that makes
+    management for the class easier, but does not expose the students
+    to various ways of setting up and utilizing the large variety of
+    software related to big data systems. This includes setting up
+    Python beyond the use of conda and Colab notebooks, the use of
+    queueing systems, containers, and cloud computing software for
+    AI, DL, and HPC experiments as well as other advanced aspects of
+    software engeneering.
+
+  \item {\bf Execution ecosystem.} While in-class problems typically
+    do not require as many computing resources, some of the examples in
+    MLCommons require a significant organizational aspect to select
+    and run meaningful calculations that enhance the accuracy of the
+    results. Careful planning with workflows and the potential use
+    of hybrid heterogeneous systems significantly improves the
+    awareness to deal with not only the laptop but also the large
+    available resources students may get access to while leveraging
+    leadership-class computing resources, or their own local HPC
+    system when available. This includes dealing with system policies,
+    remote system access, and frugal planning of experiments through
+    prediction of runtimes and planning of hyperparameter searches. This
+    also can include dealing with energy consumption and other
+    environmental parameters.
+
+  \item {\bf Parallelization.} The examples provide a basis for
+    learning about various parallelization aspects. This includes the
+    parallelization on the job level and hyperparameters searches, but
+    also on the use of parallelization methods provided by large-scale
+    GPU bases big data systems.
+
+  \item {\bf IO Data management.} One other important lesson is the
+    efficient and effective use of data stores to execute for example
+    DL algorithms that require a large number of fast IO interactions.
+
+  \item {\bf Data Analysis.} The examples provide valuable input to
+    further, enhance abilities to conduct non-trivial data analysis
+    through advanced Python scripts while integrating them in
+    coordinated runs to analyze log files that are created to
+    validate the numerical stability of the benchmarks. This obviously
+    includes the utilization of popular data analysis libraries (such
+    as pandas) as well as vizualization. It also allows students to
+    focus on identifying a result that can be communicated in a
+    professional manner as the next point illustrates.
+
+
+  \item {\bf Professional and Academic Communication.} The results
+    achieved need to be communicated to a larger audience and the
+    students can engage in a report, paper, and
+    presentation writing opportunities addressing scientific and
+    professional communities.
+
+  \item {\bf Benefits to Society.} The MLCommons benchmarks are
+    including opportunities to improve the quality of ML algorithms
+    that can be applied to societal tasks. Obviously, improving
+    benchmarks such as earthquake forecasting are beneficial to the
+    society and can motivate students to participate in such
+    educational opportunities.
+
+\end{itemize}
+
+
+\subsection{MLCommons Deep-Learning based Course Curriculumn}
+
+We can utilize the MLCommons effort to center a course curiculumn
+around it. For this to work the course will be focussing on deep
+learning while using examples from MLCommons benchmarks as well as
+additional enhancements into other topics that may not be covered.
+
+In contarst to other courses that may only focus on DL technologies
+this course will have the requirement to utilize a significant
+computational resources as for example available on many campuses as
+part of an HPC or a national scale facility such as
+Access. Alternatively Google Collab can be used.
+
+The curriculum is devided into 6 sections that can be taught over a
+semester in either a graduate or under graduate clas or a combination
+therof.
+
+\begin{enumerate}
+  
+\item{\bf Course overview and Introduction:} here the overview of the
+  course is provided. Goals and expectations are explained. An
+  introduction to deep learning is provided. This includes the history and
+  applications of deep learning. A basic introduction to optimization
+  technologies and neural networks is given. The connection between
+  MLCommons Applications is presented.
+
+\item{\bf Infrastructure and Benchmarking :} An overview of
+  MLCommons-based deep learning applications and benchmarks are
+  discussed. This will include a wide variety reaching from tiny
+  devices to supercomputers and hyperscale clouds. Google Collab will
+  be introduced. Practical topics such as using ssh and batch queues
+  are discussed. An explicit effort is placed on using a code editor
+  such as pyCHarm or VScode. Elementary software infrastructure is
+  discussed while reviewing python concepts for functions, classes,
+  and code packaging with pip. The use of GitHub is introduced.
+  
+\item{\bf Convolutional Neural Networks:} A deeper understanding is taught
+  by focussing on convolutional neural networks (CNNs). The example of
+  Mask R-CNN is explained.
+
+\item{\bf Recurrent Neural Networks:} RNNs are taught and applications of
+  RNNs are discussed. The RNN-T application focusing on speech
+  recognition is presented and analyzed
+
+\item{\bf Natural Language Processing:} As natural language processing has
+  such a big impact on industry and academia additional lectures in that area
+   are presented. This includes large language models,
+  analyzing text, applications of NLP, language translation, and sentiment
+  analysis.  Practical examples are introduced while looking at
+  ChatGPT. From MLcommons the applications DLRM, BERT, RNN-T are
+  discussed.
+
+\item{\bf Project Presentations:} The last part of the class is
+  focused on a project presentation that students can conduct in a
+  team or individually. It should showcase an application and
+  performance results on one or multiple HPC data systems, or include
+  an improvement to an existing MLCommons benchmark. It is expected
+  that the students write a high-quality project report.
+  
+ \end{enumerate}
+
+Adaptations of this material are possible and can be adapted
+accordingly. The semester-long project is accompanied by bi-weekly
+practical mini-assignments showcasing selected results and
+implementations of a particular topic.
+
+\section{Earthquake Forecasting}
+\label{sec:eq}
+
+The scientific objective of the earthquake benchmark is to extract the
+evolution using earthquake forecasting while utilizing time series forecasting.
+
+The earthquake benchmark uses a subset of the overall earthquake
+dataset for the region of Southern California. While conventional
+forecasting methods rely on statistical techniques, we use ML
+for extracting the evolution and testing the effectiveness of the
+forecast.  As a metric, we use the Nash-Sutcliffe Efficiency (NSE)
+\citep{nash-79}.  Other qualitative predictions are discussed in
+~\citep{fox2022-jm}.
+
+One of the common tasks when dealing with time series is the ability
+to predict or forecast them in advance.  Time series capture the
+variation of values against time and can have multiple dimensions. For
+example, in earthequake forecasting, we use geospatial datasets that have
+two dimensions based both on time and spatial position. The prediction
+is considerably easier when we can identify an evolution structure
+across dimensions. For example, in earthquakes, we find a strong
+correlation between nearby spatial points. Hence close by spacial
+points influence each other and simplify the time series prediction
+for an area.  However, as earthquake faults and other geometric features
+are not uniformly distributed, such correlations are often not clearly
+defined in spatial regions. Thus it is important not just to look at
+the region, but also at the evolution in time series. This benchmark
+extracts the evolution of time series applied to earthquake forecasting.
+
+
+\subsection{Earthquake Data}
+
+The data for this earthquake is described in
+\citep{las-22-mlcommons-science}.  It uses a subset of the earthquake
+data from the United States Geological Survey (USGS) focused on Southern
+California between latitude: $32^\circ$N to $36^\circ$N and longitude:
+$-120^\circ$S to $-114^\circ$S). The data for this region covers all
+earthquakes since 1950. The data includes four measurements per
+record: magnitude, spatial location, depth from the crust, and
+time. We curated the dataset and reorganized it in different
+temporal and spatial bins. ``Although the actual time lapse between
+measurements is one day, we accumulate this into fortnightly
+data. The region is then divided into a grid of $40\times 60$ with
+each pixel covering an actual zone of $0.1\deg\times 0.1$ or
+$11km\times 11km$ grid. The dataset also includes an assignment of
+pixels to known faults and a list of the largest earthquakes in that
+region from 1950. We have chosen various samplings of the dataset to
+provide both input and predicted values. These include time ranges
+from a fortnight up to four years. Furthermore, we calculate summed
+magnitudes and depths and counts of significant quakes (magnitude $<
+3.29$).''  Table~\ref{tab:eq-summary} depicts the key features of the
+benchmark \citep{las-22-mlcommons-science}.
+
+
+\begin{table}
+\caption{Summary of the Earthquake {\em tevelop} Benchmark}\label{tab:eq-summary}
+% \resizebox{1.0\textwidth}{!}{
+\begin{center}
+  {\footnotesize
+\begin{tabular}{p{0.2\columnwidth}p{0.2\columnwidth}p{0.45\columnwidth}}
+\hline
+{\bf Area} & \multicolumn{2}{l}{Earthquake Forecasting~\citep{fox2022-jm,TFT-21,eq-code,eq-data}.}\\
+\hline
+{\bf Objectives} &  \multicolumn{2}{l}{Improve the quality of Earthquake
+forecasting in a region of Southern California.}\\
+\hline
+{\bf Metrics} & \multicolumn{2}{l}{Normalized Nash-Sutcliffe model efficiency coefficient (NNSE)with $0.8\leq NNSE\leq 0.99$}\\
+\hline
+{\bf Data}  & Type:  & Richter Measurements with spatial and temporal information (Events). \\
+  &  Input:  & Earthquakes since 1950.\\
+  &  Size:  & 11.3GB (Uncompressed), 21.3MB (Compressed)\\
+  & Training samples: & 2,400 spatial bins\\
+  & Validation samples:  &  100 spatial bins\\
+  & Source:  & USGS Servers~\citep{eq-data}\\
+\hline
+{\bf Reference Implementation} & \citep{eq-code} & \\
+% \hline
+\hline
+\end{tabular}
+}
+\end{center}
+%}
+\end{table}
+
+
+\subsection{Implementation}
+
+The reference implementation of the benchmark includes three
+distinct deep learning-based reference implementations. These are Long
+short-term memory (LSTM)-based model, Google Temporal Fusion
+Transformer (TFT)~\citep{TFT-21}-based model and a custom hybrid
+transformer model. The TFT-based model uses two distinct LSTMs,
+covering an encoder and a decoder with a temporal attention-based
+transformer. The custom model includes a space-time transformer for
+the Decoder and a two-layer LSTM for the encoder. Each model predicts
+NSE and generates visualizations illustrating the TFT for
+interpretable multi-horizon time series
+forecasting~\citep{TFT-21}. Details of the current reference models can
+be found in~\citep{fox2022-jm}.  In this paper, we only focus on the
+LSTM implementation.
+
+\subsection{Insights into Development from the Earthquake Code}
+
+The original code was developed with the goal to create a DL method
+called {\em tevelop} to apply special time-series evolution for
+multiple applications including earthquake, hydrology, and COVID
+prediction. The code was presented in a large Python Jupyter notebook
+on Google Collab.  Due to the integration of multiple applications, the
+code was difficult to understand and maintain. For this reason, the
+total number of lines of 13500 was reduced by more than 2400 lines
+when the hydrology and the covid code were removed.  However, at the
+same time, we restructured the code and reached a final length of about
+11100 lines of code.  The original code contained all hyperparameters
+and needed to be changed every time a hyperparameter was modified.
+The code included all definitions of variables and hyperparameters in
+the code itself.
+
+As we can see from this code has some major issues that future
+versions ought to address. First, the code includes every aspect that
+is not covered by TensorFlow and also contains a customized version of
+TFT. Second, due to this the code is very large, and manipulating and
+editing the code is time-consuming and error-prone. Third, as many
+code-related parameters are managed still in the code running the
+same code with various parameters becomes cumbersome. In fact, multiple
+copies of the code need to be maintained when new parameters are
+chosen, instead of making such parameters part of a configuration
+file. Hence we started moving towards the simplification of the code
+by introducing the concept of libraries that can be pip installed, as
+well as adding gradually more parameters to configuration files that
+are used by the program.
+
+The advantage of using a notebook is that it can be augmented with lots
+of graphs that give in-situ updates on the progress and its measured
+accuracy. It is infeasible for students to use and replicate the run
+of this notebook as the runtime can be up to two days. Students for
+sure have to use their computers for other things and need to be able
+to use them on the go. Often HPC venters provide interactive jobs in
+the batch queues, but also here this is not sufficient. Instead, we
+adapted to use jupyter notebooks in full batch mode by the HPC queuing
+system by generation a special batch script that internally uses
+papermill to execute the notebook in the background. Papermill, will
+also include all cells that have to be updated during runtime
+including graphics. The script we developed needed however to be run
+multiple times and with different hyperparameters such as the number of
+epochs, to give just one example. As the HPC system is a heterogeneous
+GPU system having access to A100, V100, P100, RTX2080 the choice of
+the GPU system must ba able to be configurable. Hence the batch script
+includes the ability to also read in the configuration file and adapt
+itself to the needed parameters. This is controlled by a sofisticated but
+simple batch job generator which we discuss in a later Section.
+
+
+
+%libraries for mlcommons benchmarking, cloudmesh
+%portable way to define data locations via config
+%experiment permutation over hyperparameters.
+%* repeated experiments
+%* separate evaluation and comparison of accuracy which was not in the original code.
+%* comparison of accuracy across different hyperparameter searches.
+
+\section{Insights into Data Management from the Earthquake Forecasting Application}}
+\label{sec:eq-data}
+
+In data management, we are currently concerned with various aspects of
+the data set, the data compression and storage, as well as the data
+access speed. We discuss insights into each of them in the next Sections.
+
+\subsection{Data Sets}
+
+When dealing with datasets we typically encounter several issues.
+These issues are addressed by the MLCommons benchmarks and
+data management activities so that they provide ideal candidates for
+education without spending an exorbitant amount of time on data. Such
+issues typically include access to data wihout privacy restrictions,
+data preprocessing that makes the data suitable for deep learning,
+data labeling in case they are part of a well-defined MLCommons
+benchmark. Other issues include data bias, noisy or missing data, as
+well as overfitting while using training data. Typically the MLCommons
+benchmarks will be designed to have no such issues, or they have
+minimal issues. However, some benchmarks such as the science group
+benchmarks which are concerned with improving the science will have to
+potentially address these issues in order o improve the accuracy. This
+could include even injecting new data and different preprocessing
+methods.
+
+
+\subsection{Data compression}
+
+An issue that is of utmost importance especially for large data sets
+is how the data is represented. For example, for the earthquake
+benchmark, we found that the original dataset was 11GB big. However,
+we found that the data can be easily compressed by a factor of
+100. This is significant, as in this case the entire dataset can be
+stored in Github. The compressed xz archive file is only 21 MB and
+downloading only the archive file using wget takes 0.253s. In case the
+dataset and its repository are downloaded with Git we note that the
+entire Git repository is
+108MB~\citep{mlcommons-earthquake-data}. Downloading this compressed
+dataset only takes 7.723s. Thus it is preferred to just download the
+explicitly used data using for example wget. In both cases, the data
+is compressed. To uncompress the data it will take an additional 1
+minute and 2.522 seconds. However, if we were to download the data in
+uncompressed form it would take approximately 3 hours and 51 seconds.
+
+From this simple example, it is clear that MLCommons benchmarks can
+provide insights into how data is managed and delivered to for example
+large-scale compute clusters with many nodes while utilizing
+compression algorithms. We will next discuss insights into
+infrastructure management while using filesystems in HPC resources.
+While often object stores are discussed to host such large datasets it
+is imperative to identify the units of storage in such object stores.
+In our case, an object store that would host individual data records is
+not useful due to the vast number of data points. Therefore the best
+way to store this data even in an object store is as a single entry of
+compressed overall data.
+
+
+\subsection{Data Access}
+
+Besides having proper data and being able to download it efficiently
+from the location of storage, it is imperative to be able to access it
+in such a way that the GPUs used for deep learning are being fed with
+enough data without being idle. The performance results were somewhat
+surprising and had a devastating effect on the overall execution time
+that were twice as fast on the personal computer while using an
+RTX3090 in contrast to using the HPC center recommended filesystems
+when using an A100. For this reason, we have made a simple test and
+measure the performance to read access the various file systems. The
+results are shown in Table~\ref{tab:file-performance} which include
+various file systems at the University of Virginias Rivanna HPC but also a
+comparison with a personal computer from a student.
+
+Based on this observation it was infeasible to consider running the
+earthquake benchmark on the regularl configured HPC nodes as they ran
+on some resources for almost 24 hours. This is also the limit the
+Rivana system allows for one job. Hence we were allowed to use a
+special compute node that has additional NVMe storage available and
+accessible to us. On those nodes (in the Table listed as
+\verb|/localsratch|) we were able to obtain a very suitable performance
+for this application while having a 10 times fold increase in access in
+contrast to the scratch file system and almost double the performance
+given to us on the project file system. The /tmp system although being
+fast was for our application not sufficiently large and also performs
+slower than the \verb|/localscratch| set up for us. In addition, we
+also made an experiment using a shared memory-based hosted filesystem
+in the nodes RAM.
+
+
+What we learn from this experience is that an HPC system must provide
+a fast file system locally available on the nodes to serve the GPUs
+adequately. The computer should be designed form that start to not
+only have the fastest possible GPUs for large data processing, but
+also a very fast filesystem that can keep up with the data input
+requirements presented by the GPU. Furthermore, in case updated GPUs
+are purchased it is not sufficient to just take the previous
+generation motherboard and CPU processor and memory, but to update the
+hardware components and include a state-of-the-art compute note. This
+often prevents the repurposing of the node while adding just GPUs.
+
+\begin{table}[htb]
+  \caption{Filetransfer performance of various file systems on Rivanna}
+  \label{tab:file-performance}
+  \begin{center}
+  {\footnotesize 
+  \begin{tabular}{llrrrp{4.5cm}}
+    Machine & File systems & \multicolumn{2}{l}{Bandwidth Performance} & Speedup & Description \\
+    \hline
+    Rivanna & \verb|/scratch/$USER  (sbatch)|     & 30.6MiB/s & 32.1MB/s  & 1.0 & shared scratch space, batch mode \\
+    Rivanna & \verb|/scratch/$USER (interactive)| & 33.2MiB/s &  34.8MB/s  & 1.1 & shared scratch space, interactive \\
+    Rivanna & \verb|/home/$USER|                    & 40.9MiB/s & 42.9MB/s  & 1.3 & users home directory \\
+    MacM1   & \verb|/| & 93.2MiB/s & 97.7MB/s & 3.0 & users homedir \\
+    Rivanna & \verb|/project/$PROJECTID |     & 100 MiB/s  & 105 MB/s  & 3.3 & project specific filesystem \\
+    Personal Computer  & \verb|c:| & 187 MiB/s  & 196 MB/s  & 6.1 &  file system on a personal computer \\
+    Rivanna & \verb|/tmp|                         & 271 MiB/s  & 285 MB/s  & 8.9 & temporary file system on a node \\
+    \hline
+    Special Node Rivanna & \verb|/localscratch|  &  384 MiB/s & 403 MB/s  & 12.6 & NVMe storage of the node\\
+    RAM disk Rivanna  & \verb|/dev/shm/*|      &             461 MiB/s & 483MB/s  & 15.1 & simulated filesystem in a RAM disk\\
+    Personal Computer & \verb|/home/$USER| & 579 MiB/s & 607 MB/s &  18.9 & Sabrent 2TB NVMe\\
+    \hline                                             
+    \end{tabular}
+  \end{table}
+  \end{center}
+  }
+
+
+  
+
+
+\section{Insights into DL Benchmark Workflows}
+\label{sec:workflow-main}
+
+As we are trying to benchmark various aspects of the applications and
+the systems utilizing Deepl Learning, we need to be able to easily
+formulate runtime variables that thake into account different control
+parameters either of the algorithm or the underlaying system and
+hardware.
+
+Furthermore it is beneficial to be able to coordinate benchmarks on
+remote machines either on a single system or while using multiple
+system in conjunction as hybrid and heterogeneous multi HPC
+systems. These concepts are similar to thos found in cloud and Grid
+computing for job services \citep{las-infogram} and for workflows
+\citep{las-workflow,las07-workflow}. However, the focus here is on
+that the services provided are controled by the application user and
+not necessarily by the cloud or HPC provider. THus we distigush the
+need for a workflow service that can utilize heterogeneous HPC systems
+while leveraging the same parameter set to conduct a benchmark for
+comparision. Such a framework was presented by von Laszewski,
+Fleisher, et.al. in \citep{las-22-arxiv-workflow-cc}.
+
+In addition, we need a mechanism to create various runs with different
+parameters. One of the issues we run into is that often our runtime
+needs exceed that of a single job submission and although job arrays
+and custom configurations while allowing longer scheduling times could
+be applied, they are typically not implemented in an educational
+setting. Thus it is often more convenient to create jobs that fall
+within the limits of the HPC centers policies and split the
+benchmarking tasks across a number of jobs, based on the parameter
+permutations.
+
+For this reason von Laszewski, Knuuti at.al. have implemented
+cloudmesh-sbatch that provides a batch job generator creating a over a
+permutation of experiment parameters that are defined in a
+configuration file. The tool will create for each job its own
+subdirectory, copy the code and configuration files into it and create
+a shell script that lists all jobs to be submitted to the queuing
+system.
+
+Furthermore we need a simple system to measure the performance and
+energy, while communicationg the data in an easy fashion to the
+users. THis system was developed by von Laszewski and contains two
+components (a) a general stopwatch (b) a mechanism to monitor the GPU
+as discussed in \label{sec:monitoring}.
+
+We describe these systems briefly while focussing on the applicability
+for benchmarks.
+
+\subsection{Cloudmesh Monitoring}
+\label{sec:monitoring}
+
+To conduct monitoring of time we have provided for years a conveneient
+StopWatch package in Python \cite{cloudmesh-stopwatch}.  It is very
+easy to use and is focused on runtime execution monitoring of time
+consuming portions in a single threaded Python application. Althouh
+MLCommons provides their own time measuring component, called mllog,
+it is clear form the name that the focus is to create entries in a log
+file that may not easily readable by a human and may require
+postprocessing to make usable. In contrast our library contans not
+only simple labeled \vreb|start| and \verb|stop| methods, It also
+provides a convenient mechanism to print human readbale customizable
+performance tables. However it is possible to also generate a result
+table in other formats such as CSV, JSON, YAML, TXT, and others).
+This is especially important during a debugging phase when benchmarks
+are developed. Morover we also have developw a plugin interface to
+mllog, that allows us to automatically create mllog entries into an
+additonal log file, so the data may be used within MLCommons through
+specialized anlaytics programs also. A simple use case is depicted
+next (we have ommitted other advanced features such as function
+decorators for the StopWatch to keep the example simple):
+
+{\footnotesize
+\begin{Verbatim}[commandchars=\\\{\}]
+    from cloudmesh.common import StopWatch 
+    ...
+    StopWatch.event("start")                    \textcolor{blue}{\it # this where the timer starts}
+    Stopwatch.start("earthquake")               \textcolor{blue}{\it # this is when the main benchmark starts}
+    {\it ... run the earthqake code}
+    {\it ... additional timers could be used here}
+    with StopWatchBlock("name")                 \textcolor{blue}{\it # this demonstrates how to use a block timer}
+       run_long_calculation()
+    Stopwatch.stop("earthquake")                \textcolor{blue}{\it # this is where the main benchmark ends}
+    Stopwatch.benchmark()                       \textcolor{blue}{\it # prints the current results}
+\end{Verbatim}
+}
+
+To have also direct access to MLCommons events, we have recently added
+the ability to call events.
+
+
+In addition to the StopWatch we have developed a simple commandline
+tool that can be used for example in batch scripts to monitor the GPU
+performance characteristics such as energy, temperature and other
+arameters \cite{cloudmesh-gpu}. The tool can be started in a batch
+script as follwos and is currently supporting NVIDIA GPUs
+
+{\footnotesize
+\begin{Verbatim}[commandchars=\\\{\}]
+    cms gpu watch --gpu=0 --delay=0.5 --dense > gpu0.log &
+\end{Verbatim}
+}
+
+Monitoring time and system GPU information can provide significant
+insights into the applications performance characteristics. It is
+significant for planing a time effective scedule for parameters while
+running a subset of planed experiments.
+
+
+\subsection{Cloudmesh-sbatch}
+\label{sec:workflow-sbatch}
+
+We describe cloudmesh-sbatch
+
+\subsection{TODO}
+
+
+todo 
+
+\begin{itemize}
+\item Different graphics cards
+
+\item Different epochs of training
+
+\item Create workflow for cloudmask
+\end{itemize}
+
+
+\subsubsection{Analytics Service Pipelines}
+
+In many cases, a big data analysis is split up into multiple
+subtasks. These subtasks may be reusable in other analytics
+pipelines. Hence it is desirable to be able to specify and use them in
+a coordinated fashion allowing the reuse of the logic represented by
+the analysis. Users must have a clear understanding of what the
+analysis is doing and how it can be invoked and integrated.
+
+The analysis must include a clear and easy-to-understand specification
+that encourages reuse and provides sufficient details about its
+functionality, data dependency, and performance. Analytics services
+may have authentication, autorotation, and access controls built in
+that enable access by users controlled by the service providers.
+
+The overall architectuere is depicted in Figure \ref{fig:cc-2}. It
+showcases a layerd architecture with componnets dealing with batch job
+generation, storage management, compute coordination, and
+monitoring. Thesse components sit on top of other specialized systems
+that can easily be ported to other systems while using sommon system
+abstractions.
+
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.50\columnwidth]{images/cloudmesh-cc-new.pdf}
+    \caption{Architecture Workflow Service.}
+    \label{fig:cc-2}
+\end{figure}
+
+Instead of focussing on the details of this architecture we found that
+the higl level use of it is very important as part of the educational
+activities which also has an implication in general on the use within
+any resarch activity.
+
+We identified for analytics service pipelines three concepts (see
+Figure \ref{fig:service-interaction}).
+
+\begin{description}
+\item [Selection] -- instead of performing all possible benchmarks a
+  specific parameter set is selected and only that is run.  may be for
+  example the best of n benchmark runs
+\item [Competition] -- from a number of runs a result is selected. This
+  may be for example the best of n benchmark runs.
+\item [Cooperation] -- A number of analytics components is run
+  (possibly in parallel) and the final result is a combination of the
+  benchmark experiments run in cooperation. This for example could be
+  that the job is split across multiple jobs due to resource
+  limitations.
+\end{description}
+
+In the earthquake code we have observed all three patterns and used
+them in the the benchmark process.
+
+\begin{figure}[htb]
+\centering\includegraphics[width=0.75\columnwidth]{images/processes-nist.pdf}
+\label{fig:service-interaction}
+\caption{Service Interaction.}
+\end{figure}
+
+
+
+
+\subsubsection{Workflow Compute Coordinator}
+\label{sec:workflow-cc}
+
+High-performance computing (HPC) is for decades a very important tool
+for science. Scientific tasks can be leveraging the processing power
+of a supercomputer so they can run at previously unobtainable high
+speeds or utilize specialized hardware for acceleration that otherwise
+are not available to the user. HPC can be used for analytic programs
+that leverage machine learning applied to large data sets to, for
+example, predict future values or to model current states. For such
+high-complexity projects, there are often multiple complex programs
+that may be running repeatedly in either competition or cooperation.
+This may include resources in the same or different data centers. We
+developed a hybrid multi-cloud analytics service framework that was
+created to manage heterogeneous and remote workflows, queues, and
+jobs.  It can be used through a Python API, the command line, and a
+REST service. It is supported on multiple operating systems like
+macOS, Linux, and Windows 10 and 11.  The workflow is specified via an
+easy-to-define YAML file.  Specifically, we have developed a library
+called Cloudmesh Compute Coordinator (cloudmesh-cc)
+\citep{las-22-arxiv-workflow-cc} that adds workflow features to
+control the execution of jobs on remote compute resources, while at
+the same time leveraging capabilities provided by the local compute
+environments to direct interface with graphical visualizations better
+suited for the desktop. The goal is to provide numerous workflows that
+in cooperation enhance the experience of the analytics tasks. This
+includes a REST service (see Figure {fig:fastapi-cc}) and command line
+tools to interact with it.
+
+
+\begin{figure}[htb]
+\centering\includegraphics[width=0.7\columnwidth]{images/fastapi-service.png}
+\caption{Fast API Workflow Service.}
+% better resolution
+\label{fig:fastapi-cc}
+\end{figure}
+
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.70\columnwidth]{images/cloudmesh-sbatch-new.pdf}
+    \caption{Workflow Script Batch Generator.}
+    \label{fig:cm-sbatch}
+\end{figure}
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.70\columnwidth]{images/cc-1.png}
+    \caption{Workflow user interface. }
+    \label{fig:cc-3}
+\end{figure}
+
+
+We have tested the framework while running various MNIST application
+examples, including include Multilayer Perceptron, LSTM (Long
+short-term memory), Auto-Encoder, Convolutional, and Recurrent Neural
+Networks, Distributed Training, and PyTorch training.  A much lager
+application using earthquake prediction has also been used.
+
+Figure \ref{fig:fastapi-cc} shows the REST specification and
+\ref{fig:cc-2} shows the architecture.
+
+\section{Earthquake Forecast Performance Measurements}
+\label{sec:perf-main}
+
+
+
+\subsection{Runtime}
+
+\label{sec:perf-runtime}
+
+implemented a GPU monitoring tool that has some features others did not have 
+events
+timer start, stop, status
+with statements
+summary table
+info about cpus
+various formats: table, json, csv
+
+
+
+\subsection{Perfomance projection}
+
+
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.70\columnwidth]{images/performance-projection.png}
+    \caption{Performance projection. }
+    \label{fig:performance-projection}
+\end{figure}
+
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.70\columnwidth]{images/loss.png}
+    \caption{Loss}
+    \label{fig:loss}
+  \end{figure}
+
+
+  \begin{table}[htb]
+    \caption{Runtime of the 2 epoch case in seconds}
+    \LABEL{tab:2-epoch-case}
+    {\footnotesize              
+      \begin{center}
+        \begin{table}[]
+          \begin{tabular}{lrrrrr}
+            Timer             & RTX3090 & RTX3080 & A100    & V100    & K80     \\
+            \hline
+            Machine           & Desktop & Laptop  & Rivanna & Rivanna & Rivanna \\
+            Total             & 6589.4  & 8348.5  & 17574.8 & 20295.0 & 28343.3 \\
+            Sampling location &  457.9  &  532.5  &  1227.0 &  1546.4 &  1779.6 \\
+            Init              &    0.8  &    3.6  &    8.1  &     5.6 &     5.3 \\
+            Train             & 1103.2  & 2068.9  &  1373.0 &  1671.4 &  6967.3 \\
+            Bestfit           & 4420.3  & 4997.1  & 13022.1 & 14795.1 & 17037.6 \\
+            \hline
+          \end{tabular}
+        \end{table}
+        \end{center} 
+    }
+\end{table}
+
+code management is important, github is essential
+Need to have better sbatch to make code management easier
+cluster design is important and access to local storage on nodes is important
+shared file systems are less effective 
+Predicting behavior of code is great with our timer library as it allows us to estimate runtines and report results in easy fashion. Helps debugging.
+Need to look into the implementation of bestfit 
+Need to look into memory dependency of epochs
+Should we stop at 34 epochs or run 66?
+
+\TODO{add k80 elsewher}
+
+{\footnotesize
+\begin{verbatim}
+Cloudmesh Data Submodule - https://github.com/cloudmesh/cloudmesh-data
+Cloudmesh GPU Submodule - https://github.com/cloudmesh/cloudmesh-gpu
+Cloudmesh sbatch Submodule - https://github.com/cloudmesh/cloudmesh-sbatch 
+\end{verbatim}
+}
+
+\subsection{Accuracy}
+\label{sec:perf-accuracy}
+
+%%% max 15 figures abd table, subfig is one figure
+
+%%%  NB logo1.eps is required in the path in order to correctly compile front page header %%%
+
+
+
+\begin{figure}[htb]
+
+  \begin{center}
+
+     \begin{minipage}[b]{0.45\textwidth}
+       \includegraphics[width=1.0\linewidth]{images/2_training-MSE-and-NNSE.pdf}
+        {\bf (A)} MSE and NNSE - 2 epochs training.
+    \end{minipage}
+     \ \
+     \begin{minipage}[b]{0.45\textwidth}
+        \includegraphics[width=1.0\linewidth]{images/2_validation-MSE-and-NNSE.pdf}
+        {\bf (B)}  MSE and NNSE - 2 epochs validation.
+     \end{minipage}
+
+     \begin{minipage}[b]{0.45\textwidth}
+        \includegraphics[width=1.0\linewidth]{images/30_training-MSE-and-NNSE.pdf}
+        {\bf (C)} MSE and NNSE - 30 epochs training.
+     \end{minipage}
+     \ \
+     \begin{minipage}[b]{0.45\textwidth}
+        \includegraphics[width=1.0\linewidth]{images/30_validation-MSE-and-NNSE.pdf}
+        {\bf (D)} MSE and NNSE - 30 epochs validation.
+     \end{minipage}
+
+     \begin{minipage}[b]{0.45\textwidth}
+        \includegraphics[width=1.0\linewidth]{images/70_training-MSE-and-NNSE.pdf}
+        {\bf (E)} MSE and NNSE - 70 epochs training.
+     \end{minipage}
+     \ \
+     \begin{minipage}[b]{0.45\textwidth}
+        \includegraphics[width=1.0\linewidth]{images/70_validation-MSE-and-NNSE.pdf}
+        {\bf (F)}  MSE and NNSE - 70 epochs validation.
+     \end{minipage}
+\end{center}
+
+     \caption{NNSE and MSE values for training and validation for epochs 2 (A, B), 30 (C, D), 70 (E, F).}
+     \label{fig:six graphs}
+\end{figure}
+
+%we have finalized the EQ code but want to make absolutely sure that we
+%look at the correct values for the scientific comparison.
+%
+%This also requires a small sentence to each variable. Could we have a
+%small meeting and I take then some notes on what these values are
+%tomorrow. I will then add the explanations to the MLCommons EQ benchmark
+%policy document.
+%
+%I just want to make sure I understand over which domain we average and
+%sum up.
+%
+%Also if we were to just do one value (just in case they ask, I think we
+%would use the summed up total right. However I think it is better to
+%keep all of them.)
+%
+%Also I forgot what the +26 refers to
+%
+%I think something like this is almost correct, but we need to +26
+%explanation and get verification from you.
+%
+%The Magnification based on a years worth of back data, while looking two
+%weeks ahead + 26 what?
+
+\begin{table}[p]
+
+  \caption{Training and validation with time-based hyperparameters
+    sorted by NNSE accuracy. The table includes the best two
+    values highlighted in the training and validation results to
+    showcase the accuracy of the validation. In the validation,
+    we see that the best value for training is in rank four for the
+    validation. The number of Epochs for this experiment is 2.
+    26 is half of 52 and so 26 2-week intervals is a year.}
+  \label{tab:training-2}
+
+  \renewcommand{\arraystretch}{1.2}
+  \begin{center}
+    {\footnotesize
+\begin{tabular}{|r|rl||rl|}
+  \hline
+{\bf Rank} & \multicolumn{2}{c||}{\bfseries Training} & \multicolumn{2}{c|}{\bfseries Validation}  \\
+     &   {\bf NNSE} & {\bf Hyperparameters} & {\bf NNSE} & {\bf Hyperparameters} \\
+\hline
+1 & \color{red} 0.191300 & \color{red} Year Back & \color{blue} 0.195200 & \color{blue} 6M 2wk+7AVG \\
+2 & 0.192700 & \color{blue} 6M 2wk+7AVG & \color{teal} 0.201000 & \color{teal} 6 Months Back \\
+3 & 0.197000 & 6M 2wk+13AVG & 0.201600 & 6M 2wk+13AVG \\
+4 & \color{teal} 0.201600 & \color{teal} 6 Months Back & \color{red} 0.204500 & \color{red} Year Back \\
+5 & 0.232600 & 1Y 2wk+13AVG & 0.219700 & 3 Months Back \\
+6 & 0.233000 & 3 Months Back & 0.228900 & 3M 2wk+7AVG \\
+7 & 0.235800 & 1Y 2wk+7AVG & 0.238200 & 1Y 2wk+13AVG \\
+8 & 0.243000 & 3M 2wk+7AVG & 0.249500 & 1Y 2wk+7AVG \\
+9 & 0.251600 & 1Y 2wk+26AVG & 0.264400 & 6M 2wk+26AVG \\
+10 & 0.251700 & 6M 2wk+26AVG & 0.266200 & 3M 2wk+13AVG \\
+11 & 0.278800 & 3M 2wk+13AVG & 0.270300 & 1Y 2wk+26AVG \\
+12 & 0.302500 & 3M 2wk+26AVG & 0.295800 & 3M 2wk+26AVG \\
+13 & 0.405600 & Now 2wk+7AVG & 0.379700 & Now 2wk+7AVG \\
+14 & 0.429900 & Now 2wk+13AVG & 0.412700 & Now 2wk+13AVG \\
+15 & 0.506800 & 2 weeks Now & 0.470100 & 2 weeks Now \\
+16 & 0.521800 & Now 2wk+26AVG & 0.502300 & Now 2wk+26AVG \\
+\hline
+\end{tabular}
+}
+\end{center}
+
+%\end{table}
+
+%\begin{table}[htb]
+
+  \caption{Training and validation with time-based hyperparameters
+    sorted by NNSE accuracy. The table includes the best two
+    values highlighted in the training and validation results to
+    showcase the accuracy of the validation. In the validation,
+    we see that the best value for training is in rank four for the
+    validation. The number of Epochs for this experiment is 30.
+  }
+  \label{tab:training-30}
+
+  \renewcommand{\arraystretch}{1.2}
+  \begin{center}
+        {\footnotesize
+\begin{tabular}{|r|rl||rl|}
+\hline
+{\bf Rank} &
+\multicolumn{2}{c||}{\bfseries Training} &
+\multicolumn{2}{c|}{\bfseries Validation} \\
+     {\bf NNSE} &
+     {\bf Hyperparameters} &
+     {\bf NNSE} &
+     {\bf Hyperparameters} \\
+\hline
+ 1 & \color{red} 0.047600 & \color{red} Year Back & \color{red} 0.050500 & \color{red} Year Back \\
+ 2 & \color{blue} 0.069500 & \color{blue} 6 Months Back & \color{blue} 0.070300 & \color{blue} 6 Months Back \\
+ 3 & 0.082900 & 1Y 2wk+7AVG & 0.076500 & 1Y 2wk+7AVG \\
+ 4 & 0.089700 & 3 Months Back & 0.090400 & 3 Months Back \\
+ 5 & 0.171600 & 1Y 2wk+13AVG & 0.153600 & 1Y 2wk+13AVG \\
+ 6 & 0.208100 & 6M 2wk+7AVG & 0.186200 & 6M 2wk+7AVG \\
+ 7 & 0.319600 & 1Y 2wk+26AVG & 0.290100 & 1Y 2wk+26AVG \\
+ 8 & 0.330300 & 3M 2wk+7AVG & 0.291900 & 3M 2wk+7AVG \\
+ 9 & 0.341800 & 6M 2wk+13AVG & 0.302800 & 6M 2wk+13AVG \\
+10 & 0.394600 & 3M 2wk+13AVG & 0.343400 & 3M 2wk+13AVG \\
+11 & 0.418900 & 6M 2wk+26AVG & 0.374500 & 6M 2wk+26AVG \\
+12 & 0.450800 & 3M 2wk+26AVG & 0.384100 & 2 weeks Now \\
+13 & 0.488800 & 2 weeks Now & 0.398900 & 3M 2wk+26AVG \\
+14 & 0.517900 & Now 2wk+7AVG & 0.409300 & Now 2wk+7AVG \\
+15 & 0.559200 & Now 2wk+13AVG & 0.453000 & Now 2wk+13AVG \\
+16 & 0.586000 & Now 2wk+26AVG & 0.484100 & Now 2wk+26AVG \\
+\hline
+\end{tabular}
+}
+
+\end{center}
+\end{table}
+
+
+\begin{table}[htb]
+
+  \caption{Training and validation with time-based hyperparameters
+    sorted by NNSE accuracy. The table includes the best two
+    values highlighted in the training and validation results to
+    showcase the accuracy of the validation. In the validation,
+    we see that the best value for training is in rank four for the
+    validation. The number of Epochs for this experiment is 70.}
+  \label{tab:training-70}
+
+  \renewcommand{\arraystretch}{1.2}
+  \begin{center}
+        {\footnotesize
+\begin{tabular}{|r|rl||rl|}
+  \hline
+{\bf Rank} & \multicolumn{2}{c||}{\bfseries Training} & \multicolumn{2}{c|}{\bfseries Validation} \\
+     &   {\bf NNSE} & {\bf Hyperparameters} & {\bf NNSE} & {\bf Hyperparameters} \\
+              \hline
+ 1 & \color{red} 0.067400 & \color{red} 3 Months Back & \color{red}0.069800 & \color{red} 3 Months Back \\
+ 2 & \color{blue} 0.073500 & \color{blue} Year Back & \color{blue} 0.071200 & \color{blue} Year Back \\
+ 3 & 0.083100 & 1Y 2wk+7AVG & 0.084300 & 1Y 2wk+7AVG \\
+ 4 & 0.105300 & 6 Months Back & 0.102200 & 6 Months Back \\
+ 5 & 0.138400 & 6M 2wk+7AVG & 0.133700 & 6M 2wk+7AVG \\
+ 6 & 0.153500 & 1Y 2wk+13AVG & 0.142800 & 1Y 2wk+13AVG \\
+ 7 & 0.252100 & 6M 2wk+13AVG & 0.235400 & 6M 2wk+13AVG \\
+ 8 & 0.295900 & 6M 2wk+26AVG & 0.269700 & 6M 2wk+26AVG \\
+ 9 & 0.318800 & 1Y 2wk+26AVG & 0.291100 & 3M 2wk+7AVG \\
+10 & 0.335400 & 3M 2wk+7AVG & 0.293500 & 1Y 2wk+26AVG \\
+11 & 0.385200 & 3M 2wk+13AVG & 0.333000 & 3M 2wk+13AVG \\
+12 & 0.421000 & 3M 2wk+26AVG & 0.344500 & 2 weeks Now \\
+13 & 0.425700 & 2 weeks Now & 0.359400 & Now 2wk+7AVG \\
+14 & 0.441300 & Now 2wk+7AVG & 0.370700 & 3M 2wk+26AVG \\
+15 & 0.465800 & Now 2wk+13AVG & 0.385800 & Now 2wk+13AVG \\
+16 & 0.490400 & Now 2wk+26AVG & 0.412500 & Now 2wk+26AVG \\
+\hline
+\end{tabular}
+\end{center}
+}
+
+\end{table}
+
+
+\subsection{Energy}
+\label{sec:perf-energy}
+
+\begin{figure}[htb]
+
+  \begin{center}
+     \begin{minipage}[t]{0.30\textwidth}
+        \includegraphics[width=1.0\linewidth]{images/card-name-v100-gpu-count-1-cpu-num-6-mem-32gb-repeat-1-tfttransformerepochs-2.png}
+        {\bf (A)} Energy consumption for 2 epochs training and validation.
+     \end{minipage}
+     \ \
+     \begin{minipage}[t]{0.30\textwidth}
+        \includegraphics[width=1.0\linewidth]{images/card-name-v100-gpu-count-1-cpu-num-6-mem-32gb-repeat-1-tfttransformerepochs-30.png}
+        {\bf (B)} Energy consumption for 30 epochs training and validation.
+     \end{minipage}
+     \ \
+     \begin{minipage}[t]{0.30\textwidth}
+        \includegraphics[width=1.0\linewidth]{images/card-name-v100-gpu-count-1-cpu-num-6-mem-32gb-repeat-1-tfttransformerepochs-70.png}
+        {\bf (C)} Energy consumption for 70 epochs training and validation.
+     \end{minipage}
+  \end{center}
+
+  \caption {Energy monitoring for 2, 30, and 70 epochs for training and validation.}
+  \label{fig:energy}
+
+\end{figure}
+
+\begin{figure}[p]
+
+  \begin{center}
+     \begin{minipage}[t]{0.65\textwidth}
+        \includegraphics[width=1.0\linewidth]{images/NNSE-all-epochs-training}
+        {\bf (A)} NNSE for training.
+     \end{minipage}
+  \end{center}
+  \ \
+  \begin{center}
+     \begin{minipage}[t]{0.65\textwidth}
+        \includegraphics[width=1.0\linewidth]{images/NNSE-all-epochs-validation}
+        {\bf (B)} NNSE for validation.
+     \end{minipage}
+  \end{center}
+
+  \caption {NNSE comparison}
+  \label{fig:NNSE-comparison}
+
+\end{figure}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
