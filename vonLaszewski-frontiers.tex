@@ -26,6 +26,8 @@
 \usepackage{xcolor}
 
 \newcommand{\TODO}[1]{\todo[inline]{#1}}
+\newcommand{\REPLACE}[2]{\textcolor{red}{\it #1} \begin{quote}\textcolor{blue}{#2}\end{quote}}
+%\newcommand{\REPLACE}[2]{\begin{quote}\textcolor{red}{#1}\end{quote}\\{\textcolor{blue}{#2}}
 
 \newcommand{\YES}{yes}
 \makeatletter\newcommand{\tableofcontents}{\@starttoc{toc}}\makeaother
@@ -132,12 +134,18 @@ here comes abstarct text
 
 \section{Introduction}
 
+\REPLACE{
 In this paper, we summarize some of the insights that e we obtained for
 a High-Performance Computing Big Data Systems applied to the
 MLCommons Earthquake Benchmarks Efforts. This includes
 insights into the usability of the HPC Big Data Systems, The usage of
 an MLCommons benchmarks and the insights from the applicability in
 educational efforts.
+}{
+  new
+}
+
+
 
 Benchmarking is an important effort in using HPC Big Data systems.
 While using benchmarks we can compare the performance of various
