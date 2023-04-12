@@ -1034,24 +1034,6 @@ significant for planing a time effective scedule for parameters while
 running a subset of planed experiments.
 
 
-\subsection{Cloudmesh-sbatch}
-\label{sec:workflow-sbatch}
-
-We describe cloudmesh-sbatch
-
-\subsection{TODO}
-
-
-todo 
-
-\begin{itemize}
-\item Different graphics cards
-
-\item Different epochs of training
-
-\item Create workflow for cloudmask
-\end{itemize}
-
 
 \subsubsection{Analytics Service Pipelines}
 
@@ -1154,12 +1136,6 @@ tools to interact with it.
 \end{figure}
 
 
-\begin{figure}[htb]
-    \centering
-    \includegraphics[width=0.70\columnwidth]{images/cloudmesh-sbatch-new.pdf}
-    \caption{Workflow Script Batch Generator.}
-    \label{fig:cm-sbatch}
-\end{figure}
 
 \begin{figure}[htb]
     \centering
@@ -1177,6 +1153,43 @@ application using earthquake prediction has also been used.
 
 Figure \ref{fig:fastapi-cc} shows the REST specification and
 \ref{fig:cc-2} shows the architecture.
+
+\subsection{Workflow Parameterized Job Generator}
+\label{sec:workflow-sbatch}
+
+
+Cloudmesh sbatch is a command-line tool for creating batch jobs based
+on parameterized job specifications and configuration files.
+Cloudmesh sbatch is part of the Cloudmesh toolkit, a set of tools and
+libraries for managing cloud and HPC resources from the command line,
+REST interfaces or GUI's. Cloudmesh sbatch can use a variety of
+queuing systems and submission commands. Currently we provide
+interfaces to SLURM, LSF, and ssh. As the original system was
+developer first for SLURM sbatch submissions we used the name
+cloudmesh sbatch. In future we may find a better name showcasing the
+generality of the system while using arbitrary queuing systems and
+submission commands.
+
+The architecture of the cloudmesh-sbatch framework is depicted in Fiure \ref{}.
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.70\columnwidth]{images/cloudmesh-sbatch-new.pdf}
+    \caption{Workflow Script Batch Generator.}
+    \label{fig:cm-sbatch}
+\end{figure}
+
+Important to know is that in a bench
+
+\begin{itemize}
+\item Different graphics cards
+
+\item Different epochs of training
+
+\item Create workflow for cloudmask
+\end{itemize}
+
+
 
 \setion{Benchmark Carpentry}
 
@@ -1205,7 +1218,6 @@ benchmark carpentry.
 
 \section{Earthquake Forecast Performance Measurements}
 \label{sec:perf-main}
-
 
 
 \subsection{Runtime}
