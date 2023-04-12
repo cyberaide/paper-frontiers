@@ -290,9 +290,9 @@ that we discuss in this paper.
 \section{Insights of Machine Learning in Education}
 \label{sec:edu-ml}
 
-Before we start with the insights from MLCommons we like to first
+Before we start with the insights from MLCommons, we like to first
 review some of our experience regarding topics taught in educational
-activities in machine learning in general.  We distinguish machine
+activities in machine learning in general. We distinguish machine
 learning {\em methods}, {\em applications} that use or can use machine
 learning, the {\em libraries} that are used to apply these methods for
 applications, software development {\em tools}, and the {\em
@@ -446,8 +446,8 @@ Access to national-scale infrastructure is often restricted to
 research projects that require following a detailed application
 process. This process is done by the faculty supervisor and not the
 student. Background checks and review of the project may delay the
-application. Additional security requirements such as the use of DUO,
-and multifactor authentication has to be carefully taught.
+application. Additional security requirements such as the use of Duo Mobile,
+SSH keys, and other multifactor authentication tools must be carefully taught.
 
 In case the benchmark includes environmental monitoring such as
 temperatures on the CPU/GPU and power consumption, access may be
@@ -1539,22 +1539,22 @@ each of the epochs and sorted them by value.
 {\bf Rank} & \multicolumn{2}{c||}{\bfseries Training} & \multicolumn{2}{c|}{\bfseries Validation}  \\
      &   {\bf NNSE} & {\bf Hyperparameters} & {\bf NNSE} & {\bf Hyperparameters} \\
 \hline
-1 & \color{red} 0.191300 & \color{red} Year Back & \color{blue} 0.195200 & \color{blue} 6M 2wk+7AVG \\
-2 & 0.192700 & \color{blue} 6M 2wk+7AVG & \color{teal} 0.201000 & \color{teal} 6 Months Back \\
-3 & 0.197000 & 6M 2wk+13AVG & 0.201600 & 6M 2wk+13AVG \\
-4 & \color{teal} 0.201600 & \color{teal} 6 Months Back & \color{red} 0.204500 & \color{red} Year Back \\
-5 & 0.232600 & 1Y 2wk+13AVG & 0.219700 & 3 Months Back \\
-6 & 0.233000 & 3 Months Back & 0.228900 & 3M 2wk+7AVG \\
-7 & 0.235800 & 1Y 2wk+7AVG & 0.238200 & 1Y 2wk+13AVG \\
-8 & 0.243000 & 3M 2wk+7AVG & 0.249500 & 1Y 2wk+7AVG \\
-9 & 0.251600 & 1Y 2wk+26AVG & 0.264400 & 6M 2wk+26AVG \\
-10 & 0.251700 & 6M 2wk+26AVG & 0.266200 & 3M 2wk+13AVG \\
-11 & 0.278800 & 3M 2wk+13AVG & 0.270300 & 1Y 2wk+26AVG \\
-12 & 0.302500 & 3M 2wk+26AVG & 0.295800 & 3M 2wk+26AVG \\
-13 & 0.405600 & Now 2wk+7AVG & 0.379700 & Now 2wk+7AVG \\
-14 & 0.429900 & Now 2wk+13AVG & 0.412700 & Now 2wk+13AVG \\
-15 & 0.506800 & 2 weeks Now & 0.470100 & 2 weeks Now \\
-16 & 0.521800 & Now 2wk+26AVG & 0.502300 & Now 2wk+26AVG \\
+1 & 0.521800 & Now 2wk+26AVG & 0.502300 & Now 2wk+26AVG \\
+2 & 0.506800 & 2 weeks Now & 0.470100 & 2 weeks Now \\
+3 & 0.429900 & Now 2wk+13AVG & 0.412700 & Now 2wk+13AVG \\
+4 & 0.405600 & Now 2wk+7AVG & 0.379700 & Now 2wk+7AVG \\
+5 & 0.302500 & 3M 2wk+26AVG & 0.295800 & 3M 2wk+26AVG \\
+6 & 0.278800 & 3M 2wk+13AVG & 0.270300 & 1Y 2wk+26AVG \\
+7 & 0.251700 & 6M 2wk+26AVG & 0.266200 & 3M 2wk+13AVG \\
+8 & 0.251600 & 1Y 2wk+26AVG & 0.264400 & 6M 2wk+26AVG \\
+9 & 0.243000 & 3M 2wk+7AVG & 0.249500 & 1Y 2wk+7AVG \\
+10 & 0.235800 & 1Y 2wk+7AVG & 0.238200 & 1Y 2wk+13AVG \\
+11 & 0.233000 & 3 Months Back & 0.228900 & 3M 2wk+7AVG \\
+12 & 0.232600 & 1Y 2wk+13AVG & 0.219700 & 3 Months Back \\
+13 & \color{teal} 0.201600 & \color{teal} 6 Months Back & \color{red} 0.204500 & \color{red} Year Back \\
+14 & 0.197000 & 6M 2wk+13AVG & 0.201600 & 6M 2wk+13AVG \\
+15 & 0.192700 & \color{blue} 6M 2wk+7AVG & \color{teal} 0.201000 & \color{teal} 6 Months Back \\
+16 & \color{red} 0.191300 & \color{red} Year Back & \color{blue} 0.195200 & \color{blue} 6M 2wk+7AVG \\
 \hline
 \end{tabular}
 }
@@ -1586,22 +1586,22 @@ each of the epochs and sorted them by value.
      {\bf NNSE} &
      {\bf Hyperparameters} \\
 \hline
- 1 & \color{red} 0.047600 & \color{red} Year Back & \color{red} 0.050500 & \color{red} Year Back \\
- 2 & \color{blue} 0.069500 & \color{blue} 6 Months Back & \color{blue} 0.070300 & \color{blue} 6 Months Back \\
- 3 & 0.082900 & 1Y 2wk+7AVG & 0.076500 & 1Y 2wk+7AVG \\
- 4 & 0.089700 & 3 Months Back & 0.090400 & 3 Months Back \\
- 5 & 0.171600 & 1Y 2wk+13AVG & 0.153600 & 1Y 2wk+13AVG \\
- 6 & 0.208100 & 6M 2wk+7AVG & 0.186200 & 6M 2wk+7AVG \\
- 7 & 0.319600 & 1Y 2wk+26AVG & 0.290100 & 1Y 2wk+26AVG \\
- 8 & 0.330300 & 3M 2wk+7AVG & 0.291900 & 3M 2wk+7AVG \\
- 9 & 0.341800 & 6M 2wk+13AVG & 0.302800 & 6M 2wk+13AVG \\
-10 & 0.394600 & 3M 2wk+13AVG & 0.343400 & 3M 2wk+13AVG \\
-11 & 0.418900 & 6M 2wk+26AVG & 0.374500 & 6M 2wk+26AVG \\
-12 & 0.450800 & 3M 2wk+26AVG & 0.384100 & 2 weeks Now \\
-13 & 0.488800 & 2 weeks Now & 0.398900 & 3M 2wk+26AVG \\
-14 & 0.517900 & Now 2wk+7AVG & 0.409300 & Now 2wk+7AVG \\
-15 & 0.559200 & Now 2wk+13AVG & 0.453000 & Now 2wk+13AVG \\
-16 & 0.586000 & Now 2wk+26AVG & 0.484100 & Now 2wk+26AVG \\
+1 & 0.586000 & Now 2wk+26AVG & 0.484100 & Now 2wk+26AVG \\
+2 & 0.559200 & Now 2wk+13AVG & 0.453000 & Now 2wk+13AVG \\
+3 & 0.517900 & Now 2wk+7AVG & 0.409300 & Now 2wk+7AVG \\
+4 & 0.488800 & 2 weeks Now & 0.398900 & 3M 2wk+26AVG \\
+5 & 0.450800 & 3M 2wk+26AVG & 0.384100 & 2 weeks Now \\
+6 & 0.418900 & 6M 2wk+26AVG & 0.374500 & 6M 2wk+26AVG \\
+7 & 0.394600 & 3M 2wk+13AVG & 0.343400 & 3M 2wk+13AVG \\
+8 & 0.341800 & 6M 2wk+13AVG & 0.302800 & 6M 2wk+13AVG \\
+9 & 0.330300 & 3M 2wk+7AVG & 0.291900 & 3M 2wk+7AVG \\
+10 & 0.319600 & 1Y 2wk+26AVG & 0.290100 & 1Y 2wk+26AVG \\
+11 & 0.208100 & 6M 2wk+7AVG & 0.186200 & 6M 2wk+7AVG \\
+12 & 0.171600 & 1Y 2wk+13AVG & 0.153600 & 1Y 2wk+13AVG \\
+13 & 0.089700 & 3 Months Back & 0.090400 & 3 Months Back \\
+14 & 0.082900 & 1Y 2wk+7AVG & 0.076500 & 1Y 2wk+7AVG \\
+15 & \color{blue} 0.069500 & \color{blue} 6 Months Back & \color{blue} 0.070300 & \color{blue} 6 Months Back \\
+16 & \color{red} 0.047600 & \color{red} Year Back & \color{red} 0.050500 & \color{red} Year Back \\
 \hline
 \end{tabular}
 }
