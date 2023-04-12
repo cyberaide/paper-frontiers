@@ -1189,6 +1189,29 @@ The architecture of the cloudmesh-sbatch framework is depicted in Fiure \ref{}.
 
 Important to know is that in a bench
 
+In traditional machine learning workflows, hyperparameter tuning and
+configuration are key elements in assessing and optimizing the
+performance of models. However, scaling hyperparameters for highly
+parallel execution with hetrogenious hardware is complex.  Cloudmesh
+Sbatch is a hyperparameter and configuration management toolkit
+designed to address the generation of slurm and LSF jobs with a
+consistent and configurable interface based upon hyperparameter values
+across multiple development toolchains.  Cloudmesh Sbatch performs
+this by processes a template file targeting either the SLURM or the
+LSF scheduling software and a configuration file.  Where Cloudmesh
+Sbatch differenciates itself from other template engines is its
+ability to generate a cartistian product of hyperparameter values
+underneath of its \emphasis{experiment} heading, making it trivial to
+scale an experiment from one execution to thousands of configurations
+based on the ranges and their unique combanations.  The resulting
+output provides a compiled SLURM or LSF script and a YAML
+configuration file representing the specific hyperparameters.  By
+managing highly configurable jobs with Cloudmesh Sbatch, focus is
+placed on what hyperparameters to use for experiments and reduce the
+possibility of human error when running experiments over a range of
+hyperparameters.
+
+
 \begin{itemize}
 \item Different graphics cards
 
