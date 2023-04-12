@@ -1358,22 +1358,43 @@ benchmark carpentry.
 \label{sec:perf-main}
 
 
-\subsection{Runtime}
-
+\subsection{Measuring Runtime}
 \label{sec:perf-runtime}
 
-implemented a GPU monitoring tool that has some features others did not have 
-events
-timer start, stop, status
-with statements
-summary table
-info about cpus
-various formats: table, json, csv
-
-
+The code was significantly modified by removing other code that was
+not related to the erathquake prediction application. This included
+removing code for a hydrology, and COVID prediction that used the same
+DL predition algorithm but with different data and optimization
+parameters. To be able to obtain the runtime the code was augmented
+with the cloudmesh StopWatch methods to report on relevant start,
+stop, status, and event actions. In addition we augmented the
+execution of the batch scripts with code that reports energy and
+temperature.
 
 \subsection{Perfomance projection}
 
+
+Through this augmentation it was possible to identify a projected
+runtime on various systems while running at predifined
+times. Figure~\ref{fig:performance-projection} shows such a predition
+for a machine that has RTX3090 GPU. This machine performs quite fast
+as it not only has large fast memory (128MB), but also stores all the
+data on a fast NVMe. In fact, this machine was faster that the
+available systems at University of Virginia due to its superior file
+system performance. As the earthquake application uses lots of data
+IO, this makes a big difference and has buided us through the approach
+we needed to tak on the HPC machine including suggestions for
+improving data access speeds to the system staff.
+
+To showcase the different runtimes we showcase the results for a 2
+epoch case in Table {tab:2-epoch-case}. To our initial surprise we
+found that the RTX3090 machine was originally almost 2.67 times better
+than the HPC machine with an A100. Fatser processor, better memory,
+and espacially the fast NVMe instead of a slow NSF mounted filesystem
+are the reason for this performance. Initially everyone was surprised
+about these numbers, but it lead to suggestions on how to imporve
+performance by for example adding an NVMe storage and access to a
+filesystem locally available to the compute node.
 
 
 \begin{figure}[htb]
@@ -1384,15 +1405,7 @@ various formats: table, json, csv
 \end{figure}
 
 
-\begin{figure}[htb]
-    \centering
-    \includegraphics[width=0.70\columnwidth]{images/loss.png}
-    \caption{Loss}
-    \label{fig:loss}
-  \end{figure}
-
-
-  \begin{table}[htb]
+\begin{table}[htb]
     \caption{Runtime of the 2 epoch case in seconds}
     \LABEL{tab:2-epoch-case}
     {\footnotesize              
@@ -1414,31 +1427,34 @@ various formats: table, json, csv
     }
 \end{table}
 
-code management is important, github is essential
-Need to have better sbatch to make code management easier
-cluster design is important and access to local storage on nodes is important
-shared file systems are less effective 
-Predicting behavior of code is great with our timer library as it allows us to estimate runtines and report results in easy fashion. Helps debugging.
-Need to look into the implementation of bestfit 
-Need to look into memory dependency of epochs
-Should we stop at 34 epochs or run 66?
 
-\TODO{add k80 elsewher}
-
-{\footnotesize
-\begin{verbatim}
-Cloudmesh Data Submodule - https://github.com/cloudmesh/cloudmesh-data
-Cloudmesh GPU Submodule - https://github.com/cloudmesh/cloudmesh-gpu
-Cloudmesh sbatch Submodule - https://github.com/cloudmesh/cloudmesh-sbatch 
-\end{verbatim}
-}
-
+\subsection{Accuracy performance}
 \subsection{Accuracy}
 \label{sec:perf-accuracy}
 
 %%% max 15 figures abd table, subfig is one figure
 
 %%%  NB logo1.eps is required in the path in order to correctly compile front page header %%%
+
+As the focus of the MLCOmmons science working group is the improvement
+of the accuracy of an application, we focus our next discussion on
+reporting the accuracy for the earthquake application.
+
+We observe that the loss of the application intersects valitaion and
+training at about the epoch value of 30-33 (see Figure~\ref{fig:loss}).  However we have
+constiently also run higher numbers of epochs just to be sure.
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.70\columnwidth]{images/loss.png}
+    \caption{Loss}
+    \label{fig:loss}
+  \end{figure}
+
+Figures~\ref{fig:six-graphs} shows accuracy values of NNSE with
+various epoch values for training and validation. We chose here 2, 30,
+and 70 epochs.  We have then created tables for the NNSE values for
+each of the epochs and sorted them by value.
 
 
 
@@ -1478,7 +1494,7 @@ Cloudmesh sbatch Submodule - https://github.com/cloudmesh/cloudmesh-sbatch
 \end{center}
 
      \caption{NNSE and MSE values for training and validation for epochs 2 (A, B), 30 (C, D), 70 (E, F).}
-     \label{fig:six graphs}
+     \label{fig:six-graphs}
 \end{figure}
 
 %we have finalized the EQ code but want to make absolutely sure that we
@@ -1612,28 +1628,49 @@ Cloudmesh sbatch Submodule - https://github.com/cloudmesh/cloudmesh-sbatch
 {\bf Rank} & \multicolumn{2}{c||}{\bfseries Training} & \multicolumn{2}{c|}{\bfseries Validation} \\
      &   {\bf NNSE} & {\bf Hyperparameters} & {\bf NNSE} & {\bf Hyperparameters} \\
               \hline
- 1 & \color{red} 0.067400 & \color{red} 3 Months Back & \color{red}0.069800 & \color{red} 3 Months Back \\
- 2 & \color{blue} 0.073500 & \color{blue} Year Back & \color{blue} 0.071200 & \color{blue} Year Back \\
- 3 & 0.083100 & 1Y 2wk+7AVG & 0.084300 & 1Y 2wk+7AVG \\
- 4 & 0.105300 & 6 Months Back & 0.102200 & 6 Months Back \\
- 5 & 0.138400 & 6M 2wk+7AVG & 0.133700 & 6M 2wk+7AVG \\
- 6 & 0.153500 & 1Y 2wk+13AVG & 0.142800 & 1Y 2wk+13AVG \\
- 7 & 0.252100 & 6M 2wk+13AVG & 0.235400 & 6M 2wk+13AVG \\
- 8 & 0.295900 & 6M 2wk+26AVG & 0.269700 & 6M 2wk+26AVG \\
- 9 & 0.318800 & 1Y 2wk+26AVG & 0.291100 & 3M 2wk+7AVG \\
-10 & 0.335400 & 3M 2wk+7AVG & 0.293500 & 1Y 2wk+26AVG \\
-11 & 0.385200 & 3M 2wk+13AVG & 0.333000 & 3M 2wk+13AVG \\
-12 & 0.421000 & 3M 2wk+26AVG & 0.344500 & 2 weeks Now \\
-13 & 0.425700 & 2 weeks Now & 0.359400 & Now 2wk+7AVG \\
-14 & 0.441300 & Now 2wk+7AVG & 0.370700 & 3M 2wk+26AVG \\
-15 & 0.465800 & Now 2wk+13AVG & 0.385800 & Now 2wk+13AVG \\
-16 & 0.490400 & Now 2wk+26AVG & 0.412500 & Now 2wk+26AVG \\
+ 01 & \color{red} 0.490400 & \color{red} Now 2wk+26AVG & \color{red} 0.412500 & \color{red} Now 2wk+26AVG \\
+ 02 & \color{blue} 0.465800 & \color{blue}  Now 2wk+13AVG & \color{blue} 0.385800 & \color{blue} Now 2wk+13AVG \\
+ 03 & \color{teal} 0.441300 & \color{teal} Now 2wk+7AVG & \color{teal} 0.370700 & \color{teal} 3M 2wk+26AVG \\
+ 04 & 0.425700 & 2 weeks Now & 0.359400 & Now 2wk+7AVG \\
+ 05 & 0.421000 & 3M 2wk+26AVG & 0.344500 & 2 weeks Now \\
+ 06 & 0.385200 & 3M 2wk+13AVG & 0.333000 & 3M 2wk+13AVG \\
+ 07 & 0.335400 & 3M 2wk+7AVG & 0.293500 & 1Y 2wk+26AVG \\
+ 08 & 0.318800 & 1Y 2wk+26AVG & 0.291100 & 3M 2wk+7AVG \\
+ 09 & 0.295900 & 6M 2wk+26AVG & 0.269700 & 6M 2wk+26AVG \\
+ 10 & 0.252100 & 6M 2wk+13AVG & 0.235400 & 6M 2wk+13AVG \\
+ 11 & 0.153500 & 1Y 2wk+13AVG & 0.142800 & 1Y 2wk+13AVG \\
+ 12 & 0.138400 & 6M 2wk+7AVG & 0.133700 & 6M 2wk+7AVG \\
+ 13 & 0.105300 & 6 Months Back & 0.102200 & 6 Months Back \\
+ 14 & 0.083100 & 1Y 2wk+7AVG & 0.084300 & 1Y 2wk+7AVG \\
+ 15 & 0.073500 & Year Back & 0.071200 & Year Back \\
+ 16 & 0.067400 & 3 Months Back & 0.069800 & 3 Months Back \\
 \hline
 \end{tabular}
 \end{center}
 }
 
 \end{table}
+
+
+code management is important, github is essential
+Need to have better sbatch to make code management easier
+cluster design is important and access to local storage on nodes is important
+shared file systems are less effective 
+Predicting behavior of code is great with our timer library as it allows us to estimate runtines and report results in easy fashion. Helps debugging.
+Need to look into the implementation of bestfit 
+Need to look into memory dependency of epochs
+Should we stop at 34 epochs or run 66?
+
+\TODO{add k80 elsewher}
+
+{\footnotesize
+\begin{verbatim}
+Cloudmesh Data Submodule - https://github.com/cloudmesh/cloudmesh-data
+Cloudmesh GPU Submodule - https://github.com/cloudmesh/cloudmesh-gpu
+Cloudmesh sbatch Submodule - https://github.com/cloudmesh/cloudmesh-sbatch 
+\end{verbatim}
+}
+
 
 
 \subsection{Energy}
