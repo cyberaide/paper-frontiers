@@ -286,17 +286,18 @@ that we discuss in this paper.
 \section{Insights of Machine Learning in Education}
 \label{sec:edu-ml}
 
-Before we start with the insights from MLCommons, we like to first
-review some of our experience regarding topics taught in educational
-activities in machine learning in general. We distinguish machine
+Before we start with the insights from MLCommons, we will first
+consider some of our experience regarding topics taught in educational
+activities for machine learning in general. We will distinguish machine
 learning {\em methods}, {\em applications} that use or can use machine
-learning, the {\em libraries} that are used to apply these methods for
-applications, software development {\em tools}, and the {\em
-  infrastructure} that is needed to execute them.
+learning, the {\em libraries} used to apply these methods for
+applications, software development {\em tools}, and finally the
+{\em infrastructure} that is needed to execute them.
 
 \subsection{Methods}
 
-We list a number of keywords that relate to typical methods in machine
+\REPLACE{
+We list some keywords that relate to typical methods in machine
 learning (ML) and artificial intelligence (AI) that may be taught in
 classes. This includes Clustering (exemplified via k-means), image
 classification, sentiment analysis, time series prediction, surrogates
@@ -305,99 +306,114 @@ its modifications such as CNN, KNN, ANN, SVM).  In addition, general
 topics of interest are supervised learning and unsupervised learning.
 More traditional methods include random forests, decision trees, and
 genetic algorithms.
+}{
+We list some keywords associated with traditional methods in machine
+learning (ML) and artificial intelligence (AI) that may be taught in
+classes. This includes clustering (exemplified via k-means), image
+classification, sentiment analysis, time series prediction, surrogates
+(a new topic, often not taught), and neural networks (with
+various standard architectures such as Convolutional Neural Networks [CNN],
+Recurrent Neural Networks [RNN], Artificial Neural Networks (ANN)).
+More traditional methods also include modeling techniques such as random
+forests, decision trees, K-Nearest Neighbor (KNN), Support Vector Machines
+(SVM) and genetic algorithms.  These methods are frequently collected into
+three distinct algorithmic groups: supervised learning, unsupervised
+learning, and reinforcement learning.
+}
 
-From this small list, we can already see that this can not be taught
+From this small list, we can see that this can not be taught
 in a one-semester course in sufficient depth, but needs to span the
 duration of a student's curriculum.
 
 \subsection{Libraries}
 
-Many libraries and tools exist that support AI.  We list here a subset
+There are several diverse libraries and tools that exist to support the
+development of AI and ML products.  As an example, we list a subset
 of frequently used software libraries and tools that enable the
 machine learning engineer and student to write ML applications.
 
-First, we note that at the university level, the predominant language
-in machine learning and data science has become Python. This is
-explainable due to the availability of sophisticated libraries thus as
-scikitlearn, PyTorch, and TensorFlow.
+First, we note that at the university level, the predominant programming language
+used for machine learning and data science is Python. This is
+evident from the success and popularity of sophisticated libraries such as
+scikit-learn, PyTorch, and TensorFlow.
 
-Most recently we see a trend that PyTorch has become more popular at
+In recent years, we've seen a trend that PyTorch has become more popular at
 the university level than TensorFlow.  Although the learning curve of
 these tools is significant, they provide invaluable opportunities
-while applying them to many different applications.
+while applying them to several different applications.
 
 In contrast, other specialized classes that focus on the development
-of faster, GPU-based methods use typically C++ code leveraging the
+of faster, GPU-based methods typically use C++ code leveraging the
 vendor's specialized libraries to interface with the GPUs such as
 NVIDIA CUDA.
 
 \subsection{Tools}\label{sec:tools}
 
-In order to efficiently use the methods and libraries, and also the
-infrastructure which we discuss later students need a basic
-understanding of software engineering tools. This includes an editor
-and code management system.
+To efficiently use the libraries and methods, and also the
+infrastructure used to execute software, students need a basic understanding of software engineering
+tools such as a text editor and code management system.
 
-The common choice for managing codes is git, while GitHub is
-used. Alternatively one finds also the use of GitLab.  These code
-management systems are key to implementing teams that share the
-developed code and allow collaborative code management.  However, they
-require a significant learning curve.
+The common choice for code management is git, with successful social coding
+platforms such as GitHub and GitLab.  These code management systems are key
+for teams to share their developed code and enable collaborative code management.
+However, they require a significant learning curve.
 
-Another important aspect is the use of a capable editor in support of
-python syntax with code highlighting and code inspection. The use of
-tools such as notepad++, IDLE, or other simplistic editors is
-insufficient. Instead, students ought to use tools such as {\em
-  pycharm} and as alternative choice {\em vscode}. These editors
-provide sophisticated features to improve code quality and also
-integrate with git. One of the strengths of pyCharm is that it has a
+Another important aspect is the use of a text editor with advanced features such as
+syntax highlighting and code inspection. The use of
+tools such as Notepad++, IDLE, or other simplistic text editors is
+insufficient, as they provide only limited tooling in terms of code inspection.
+Instead, it is more effective for students to use tools such as {\em
+  PyCharm} and alternatively {\em Visual Studio Code} (vscode) as they provide
+sophisticated features to improve code quality and also provide strong
+integration with git. One of the strengths of PyCharm is that it has a
 sophisticated code inspector and auto-completion, making writing
 reliable code faster. Vscode may be known to some students, but its
-default features seem not to match that of pyCharm.
+default features seem not to match that of PyCharm, and configuring its
+plugin engine to add similar features to Pycharm requires additional work.
 
-An additional tool is jupyter, with its successor jupyter-lab. It
-provides a web browser interface to interactive python notebooks
-(ipynb). The strength here is a rich external ecosystem that allows to
-run [rograms in interactive fashion while integrating graphics
+An additional tool is jupyter notebooks, with its successor JupyterLab. Both
+provide a web browser interface to interactive python notebooks
+(ipynb). The strength here is a rich external ecosystem that allows a student
+to run programs interactively while integrating graphics
 components and data frames to conduct data analysis.  The biggest
 disadvantage we saw in using notebooks is that the code developed by
-the students is not following proper software engineering practices
+the students coding in notebooks makes it difficult to follow proper software engineering practices
 such as defining and using functions, classes, and self-defined
 installable python libraries that make code management sustainable and
-easier. Often we found that code developed as jupyter notebook is also
-poorly documented although the integration of markdown as a document
+easier. We found that code developed as a jupyter notebook frequently
+is missing documentation although the integration of markdown as a document
 feature is built in. This relates to a general problem at the
-university level. While the material taught in ML fills more of a
-semester, students often come ill-prepared for ML classes as typical
-classes to teach python do only deal with language aspects but not
-with a sustainable {\em practical} software engineering approach for
-example in python.
+university level. While the subject of ML fills most of a
+semester, students often come ill-prepared as typical
+classes introduce python as a language, but may not introduce sustainable,
+{\em practical} software engineering approaches.
 
 \subsection{Infrastructure}
 
 An additional aspect ML students are exposed to is the need for access
-to computational resources due to the computational needs posed by the
-ML implementations for applications. One common way of dealing with
-this is to use Google Collab which is easy to get access to, and use,
-in a limited fashion for free (larger computational needs will need a
-paid subscription).  However, as Collab is based on jupyter we
-experience the same disadvantages as discussed in
-Section~/ref{sec:tools}
+to computational resources due to distinct hardware needs resulting from
+the use of an ML framework. One common way of dealing with
+this is to use Google Colab which is easy to obtain access and use
+with limted capability for free (with the option of obtaining a larger
+computational capability with a paid subscription).  However, as Colab is
+based on jupyter we experience the same disadvantages as discussed in
+Section~\ref{sec:tools}
 
 Other resources for machine learning can be found in the cloud. This
-may include IaaS and PaaS offerings from Amazon, Azure, Google Cloud,
+may include Infrastructure as a Service (IaaS) and Platform as a Service (PaaS)
+offerings from Amazon, Azure, Google Cloud,
 Salesforce, and others.  In addition to the computational needs for
 executing neural networks and deep learning algorithms, we find also
-services that can be accessed mainly through REST APIs to be
+services that can be accessed through REST APIs to be
 integrated into the application research. Most popular for such tools
 are focussing on natural language processing such as translation and
-more recently of text analysis and responses through ChatGPT and Bart.
+more recently text analysis and responses through ChatGPT and BART.
 
 However, many academic institutions have access to campus-level and
-national-level computing resources in HPC centers.  This includes
-resources from DOE and NSF. Such computing resources are accessed
-mostly through traditional batch queues (such as SLURM).  To allow
-sharing of the limited resources with the large user community. For
+national-level computing resources in High-Performance Computing (HPC) centers.  This includes
+resources from the Department of Energy (DOE) and the National Science Foundation (NSF). Such computing resources are accessed
+mostly through traditional batch scheduling solutions (such as SLURM), which allows
+for the sharing of limited resources with a large user community. For
 this reason, centers often implement a scheduling policy putting
 significant restrictions on the computational resources that can be
 used at the same time, and/or for a particular period. The number of
@@ -406,32 +422,32 @@ HPC resources may also be limited.  This provides a potential very high
 entry barrier as these policy restrictions may not be integrated into
 the application design from the start.  Moreover, in some cases, these
 restrictions may provide a significant performance penalty when data
-is placed in a slow NFS file system instead of directly in memory
+is placed in a slow Network File System (NFS) instead of directly in memory
 (often the data does not fit in memory) or in NVMe storage if it
 exists on the computing nodes.  It is also important to understand
 that such nodes may also be shared with other users and it is
-important to provision the requirements in regards to computation
-time, memory footprint, and file storage requirements accurately so
-that scheduling can be performed most expediently.  Furthermore, the
-software on these systems is managed by the computing staff and it is
-best to develop with the version provided, which may already be
-outdated versions.  Container technologies limit this issue, by
-allowing for centers that support this to develop their own software
-stack in containers. The most popular for this is singularity, but
-some centers offer also docker.  As images developed can be rather
-large it is not sufficient to just copy the image from your local
-computer, but the center must allow the ability to create the image
-within the HPC infrastructure. This is especially true when the
-University requires all resources to be accessed through a VPN. Here
+important to provide the infrastructure requirements upfront in regards to computation
+time, memory footprint, and file storage so
+scheduling can be performed most expediently.  Furthermore, the
+software on these systems is maintained by the computing staff and is
+typically tailored for the HPC environment.  It is best to develop with the
+version provided, which may target outdated versions of software.  Container technologies reduce the impact of this issue, by
+enabling users of the center to provide their own custom software dependencies as an image, rather than depending on the center's specific implementations and capabilities.
+The most popular tool for this at HPC centers is singularity, but
+some centers offer also docker.  As images must bring all the software needed to run a task, they quickly become
+large in size, and it is not sufficient to just copy the image from your local
+computer, but to work with the center to create the image
+within the HPC infrastructure. This is especially true when a
+university requires all resources to be accessed through a VPN. Here
 you can often see a factor of 10 or more slowdown in transfer and
 access speeds.
 
-All this has to be learned and will take up a considerable
+All these elements must be considered and learned, and establishing an understanding of these subjects can take considerable
 time. Hence, using HPC resources has to be introduced with specialized
 educational efforts often provided by the HPC center. However,
 sometimes these courses are not targeted specifically to running a
 particular version of PyTorch or TensorFlow with cuDNN, but just the
-general aspect of accessing the queues.
+general aspect of accessing queues and monitoring jobs.
 
 Furthermore, specifically customized queues demanding allocations,
 partitions and resource requirements may not be published and a burden
