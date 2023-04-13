@@ -30,7 +30,7 @@
 %\newcommand{\REPLACE}[2]{\begin{quote}\textcolor{red}{#1}\end{quote}\\{\textcolor{blue}{#2}}
 
 \newcommand{\YES}{yes}
-\makeatletter\newcommand{\tableofcontents}{\@starttoc{toc}}\makeaother
+% \makeatletter\newcommand{\tableofcontents}{\@starttoc{toc}}\makeaother
 
 \linenumbers
 
@@ -85,15 +85,15 @@ Town Center Four,
 
 \onecolumn
 
-{\bf \TITLE}
+%{\bf \TITLE}
 
-{\Authors}
+%{\Authors}
 
-{\Address}
+%{\Address}
 
-\bigskip
+%\bigskip
 
-\tableofcontents
+% \tableofcontents
 
 \title{\TITLE}
 
@@ -134,18 +134,12 @@ here comes abstarct text
 
 \section{Introduction}
 
-\REPLACE{
 In this paper, we summarize some of the insights that we obtained for
 a High-Performance Computing Big Data Systems applied to the
 MLCommons Earthquake Benchmarks Efforts. This includes
 insights into the usability of the HPC Big Data Systems, the usage of
 the MLCommons benchmarking system, and the insights from the applicability in
 educational efforts.
-}{
-  new
-}
-
-
 
 Benchmarking is an important effort in using HPC Big Data systems.
 While using benchmarks, we can compare the performance of various
@@ -811,7 +805,7 @@ simple batch job generator which we discuss in a later Section.
 %* separate evaluation and comparison of accuracy which was not in the original code.
 %* comparison of accuracy across different hyperparameter searches.
 
-\section{Insights into Data Management from the Earthquake Forecasting Application}}
+\section{Insights into Data Management from the Earthquake Forecasting Application}
 \label{sec:eq-data}
 
 In data management, we are currently concerned with various aspects of
@@ -883,33 +877,6 @@ results are shown in Table~\ref{tab:file-performance} which include
 various file systems at the University of Virginias Rivanna HPC but also a
 comparison with a personal computer from a student.
 
-Based on this observation it was infeasible to consider running the
-earthquake benchmark on the regularl configured HPC nodes as they ran
-on some resources for almost 24 hours. This is also the limit the
-Rivana system allows for one job. Hence we were allowed to use a
-special compute node that has additional NVMe storage available and
-accessible to us. On those nodes (in the Table listed as
-\verb|/localsratch|) we were able to obtain a very suitable performance
-for this application while having a 10 times fold increase in access in
-contrast to the scratch file system and almost double the performance
-given to us on the project file system. The /tmp system although being
-fast was for our application not sufficiently large and also performs
-slower than the \verb|/localscratch| set up for us. In addition, we
-also made an experiment using a shared memory-based hosted filesystem
-in the nodes RAM.
-
-
-What we learn from this experience is that an HPC system must provide
-a fast file system locally available on the nodes to serve the GPUs
-adequately. The computer should be designed form that start to not
-only have the fastest possible GPUs for large data processing, but
-also a very fast filesystem that can keep up with the data input
-requirements presented by the GPU. Furthermore, in case updated GPUs
-are purchased it is not sufficient to just take the previous
-generation motherboard and CPU processor and memory, but to update the
-hardware components and include a state-of-the-art compute note. This
-often prevents the repurposing of the node while adding just GPUs.
-
 \begin{table}[htb]
   \caption{Filetransfer performance of various file systems on Rivanna}
   \label{tab:file-performance}
@@ -931,10 +898,37 @@ often prevents the repurposing of the node while adding just GPUs.
     Personal Computer & \verb|/home/$USER| & 579 MiB/s & 607 MB/s &  18.9 & Sabrent 2TB NVMe\\
     \hline                                             
     \end{tabular}
-  \end{table}
-  \end{center}
   }
+    \end{center}
+  \end{table}
+  
 
+
+Based on this observation it was infeasible to consider running the
+earthquake benchmark on the regularl configured HPC nodes as they ran
+on some resources for almost 24 hours. This is also the limit the
+Rivana system allows for one job. Hence we were allowed to use a
+special compute node that has additional NVMe storage available and
+accessible to us. On those nodes (in the Table listed as
+\verb|/localsratch|) we were able to obtain a very suitable performance
+for this application while having a 10 times fold increase in access in
+contrast to the scratch file system and almost double the performance
+given to us on the project file system. The /tmp system although being
+fast was for our application not sufficiently large and also performs
+slower than the \verb|/localscratch| set up for us. In addition, we
+also made an experiment using a shared memory-based hosted filesystem
+in the nodes RAM.
+
+What we learn from this experience is that an HPC system must provide
+a fast file system locally available on the nodes to serve the GPUs
+adequately. The computer should be designed form that start to not
+only have the fastest possible GPUs for large data processing, but
+also a very fast filesystem that can keep up with the data input
+requirements presented by the GPU. Furthermore, in case updated GPUs
+are purchased it is not sufficient to just take the previous
+generation motherboard and CPU processor and memory, but to update the
+hardware components and include a state-of-the-art compute note. This
+often prevents the repurposing of the node while adding just GPUs.
 
   
 
@@ -983,7 +977,7 @@ Furthermore we need a simple system to measure the performance and
 energy, while communicationg the data in an easy fashion to the
 users. THis system was developed by von Laszewski and contains two
 components (a) a general stopwatch (b) a mechanism to monitor the GPU
-as discussed in \label{sec:monitoring}.
+as discussed in \ref{sec:monitoring}.
 
 We describe these systems briefly while focussing on the applicability
 for benchmarks.
@@ -999,7 +993,7 @@ MLCommons provides their own time measuring component, called mllog,
 it is clear form the name that the focus is to create entries in a log
 file that may not easily readable by a human and may require
 postprocessing to make usable. In contrast our library contans not
-only simple labeled \vreb|start| and \verb|stop| methods, It also
+only simple labeled \verb|start| and \verb|stop| methods, It also
 provides a convenient mechanism to print human readbale customizable
 performance tables. However it is possible to also generate a result
 table in other formats such as CSV, JSON, YAML, TXT, and others).
@@ -1008,8 +1002,8 @@ are developed. Morover we also have developw a plugin interface to
 mllog, that allows us to automatically create mllog entries into an
 additonal log file, so the data may be used within MLCommons through
 specialized anlaytics programs also. A simple use case is depicted
-next (we have ommitted other advanced features such as function
-decorators for the StopWatch to keep the example simple):
+next  (we have ommitted other advanced features such as function
+decorators for the StopWatch to keep the example simple).
 
 {\footnotesize
 \begin{Verbatim}[commandchars=\\\{\}]
@@ -1033,14 +1027,16 @@ the ability to call events.
 In addition to the StopWatch we have developed a simple commandline
 tool that can be used for example in batch scripts to monitor the GPU
 performance characteristics such as energy, temperature and other
-arameters \citep{cloudmesh-gpu}. The tool can be started in a batch
-script as follwos and is currently supporting NVIDIA GPUs
+arameters \citep{cloudmesh-gpu}. The tool
+can be started in a batch script as follwos and is currently
+supporting NVIDIA GPUs:
 
 {\footnotesize
 \begin{Verbatim}[commandchars=\\\{\}]
     cms gpu watch --gpu=0 --delay=0.5 --dense > gpu0.log &
 \end{Verbatim}
 }
+
 
 Monitoring time and system GPU information can provide significant
 insights into the applications performance characteristics. It is
@@ -1071,7 +1067,6 @@ monitoring. Thesse components sit on top of other specialized systems
 that can easily be ported to other systems while using sommon system
 abstractions.
 
-
 \begin{figure}[htb]
     \centering
     \includegraphics[width=0.50\columnwidth]{images/cloudmesh-cc-new.pdf}
@@ -1079,34 +1074,35 @@ abstractions.
     \label{fig:cc-2}
 \end{figure}
 
+
 Instead of focussing on the details of this architecture we found that
 the higl level use of it is very important as part of the educational
 activities which also has an implication in general on the use within
 any resarch activity.
 
-We identified for analytics service pipelines three concepts (see
-Figure \ref{fig:service-interaction}).
+We identified for analytics service pipelines
+three concepts (see Figure \ref{fig:service-interaction}).
 
-\begin{description}
-\item [Selection] -- instead of performing all possible benchmarks a
+\begin{itemize}
+\item {\bf Selection} -- instead of performing all possible benchmarks a
   specific parameter set is selected and only that is run.  may be for
   example the best of n benchmark runs
-\item [Competition] -- from a number of runs a result is selected. This
+\item {\bf Competition} -- from a number of runs a result is selected. This
   may be for example the best of n benchmark runs.
-\item [Cooperation] -- A number of analytics components is run
+\item {\bf Cooperation} -- A number of analytics components is run
   (possibly in parallel) and the final result is a combination of the
   benchmark experiments run in cooperation. This for example could be
   that the job is split across multiple jobs due to resource
   limitations.
-\end{description}
+\end{itemize}
 
 In the earthquake code we have observed all three patterns and used
 them in the the benchmark process.
 
 \begin{figure}[htb]
 \centering\includegraphics[width=0.75\columnwidth]{images/processes-nist.pdf}
-\label{fig:service-interaction}
 \caption{Service Interaction.}
+\label{fig:service-interaction}
 \end{figure}
 
 
@@ -1193,7 +1189,7 @@ generality of the system while using arbitrary queuing systems and
 submission commands.
 
 The architecture of the cloudmesh-sbatch framework is depicted in
-Fiure \ref{fig:cm-sbatch}.
+Figure \ref{fig:cm-sbatch}.
 
 \begin{figure}[htb]
     \centering
@@ -1205,7 +1201,7 @@ Fiure \ref{fig:cm-sbatch}.
 
 Where cloudmesh-sbatch differenciates itself from other template engines is its
 ability to generate a cartistian product of hyperparameter values
-underneath of its \emphasis{experiment} heading, making it trivial to
+underneath of its {\it experiment} heading, making it trivial to
 scale an experiment from one execution to thousands of configurations
 based on the ranges and their unique combanations.  The resulting
 output provides a generated SLURM or LSF script and a YAML
@@ -1236,16 +1232,15 @@ An example of a configuration file \verb|config| includes
 
 {\footnotesize
 \begin{Verbatim}
+    application:
+        name: earthquake
 
-  application:
-    name: earthquake
-
-  data: /scratch/{os.USER}/{application.name}
+    data: /scratch/{os.USER}/{application.name}
        
-  experiment:
-    epoch: "1,30,60"
-    gpu: "a100,v100"
-    repeat: "1,2,3,4,5"
+    experiment:
+        epoch: "1,30,60"
+        gpu: "a100,v100"
+        repeat: "1,2,3,4,5"
 \end{Verbatim}
 }
 
@@ -1253,30 +1248,29 @@ An example of a templated batch script is
 
 {\footnotesize
 \begin{Verbatim}
-#!/bin/bash
+    #!/bin/bash
 
-#SBATCH --job-name={experiment.repeat}-{application.earthquake}
-#SBATCH --nodes=1
-#SBATCH --gres=gpu:{experiment.gpu}:1
-#SBATCH --time=02:00:00
-#SBATCH --mem=64G
-#SBATCH -o {experiment.gpu}-{application.earthquake}/{experiment.repeat}-%j.out
-#SBATCH -o {experiment.gpu}-{application.earthquake}/{experiment.repeat}-%j.err
-#SBATCH --partition=bii-gpu
-#SBATCH --account=bii_dsc_community
+    #SBATCH --job-name={experiment.repeat}-{application.earthquake}
+    #SBATCH --nodes=1
+    #SBATCH --gres=gpu:{experiment.gpu}:1
+    #SBATCH --time=02:00:00
+    #SBATCH --mem=64G
+    #SBATCH -o {experiment.gpu}-{application.earthquake}/{experiment.repeat}-%j.out
+    #SBATCH -o {experiment.gpu}-{application.earthquake}/{experiment.repeat}-%j.err
+    #SBATCH --partition=bii-gpu
+    #SBATCH --account=bii_dsc_community
 
-export USER_SCRATCH=/scratch/$USER
-cd USER_SCRATCH
-mkdir -p $USER_SCRATCH/{experiment.gpu}-{application.earthquake}/%j.out
+    export USER_SCRATCH=/scratch/$USER
+    cd USER_SCRATCH
+    mkdir -p $USER_SCRATCH/{experiment.gpu}-{application.earthquake}/%j.out
 
-nvidia-smi
+    nvidia-smi
 
-cms gpu watch --gpu=0 --delay=0.5 --dense > outputs/gpu0.log &
+    cms gpu watch --gpu=0 --delay=0.5 --dense > outputs/gpu0.log &
 
-python earthquake.py --config config.yaml
+    python earthquake.py --config config.yaml
 
-seff $SLURM_JOB_D
-
+    seff $SLURM_JOB_D
 \end{Verbatim}
 }
 
@@ -1389,7 +1383,7 @@ we needed to tak on the HPC machine including suggestions for
 improving data access speeds to the system staff.
 
 To showcase the different runtimes we showcase the results for a 2
-epoch case in Table {tab:2-epoch-case}. To our initial surprise we
+epoch case in Table \ref{tab:2-epoch-case}. To our initial surprise we
 found that the RTX3090 machine was originally almost 2.67 times better
 than the HPC machine with an A100. Fatser processor, better memory,
 and espacially the fast NVMe instead of a slow NSF mounted filesystem
@@ -1409,10 +1403,10 @@ filesystem locally available to the compute node.
 
 \begin{table}[htb]
     \caption{Runtime of the 2 epoch case in seconds}
-    \LABEL{tab:2-epoch-case}
+    \label{tab:2-epoch-case}
+    \begin{center}
     {\footnotesize              
-      \begin{center}
-        \begin{table}[]
+
           \begin{tabular}{lrrrrr}
             Timer             & RTX3090 & RTX3080 & A100    & V100    & K80     \\
             \hline
@@ -1424,9 +1418,9 @@ filesystem locally available to the compute node.
             Bestfit           & 4420.3  & 4997.1  & 13022.1 & 14795.1 & 17037.6 \\
             \hline
           \end{tabular}
-        \end{table}
-        \end{center} 
+
     }
+    \end{center}
 \end{table}
 
 
@@ -1438,26 +1432,39 @@ filesystem locally available to the compute node.
 
 %%%  NB logo1.eps is required in the path in order to correctly compile front page header %%%
 
-As the focus of the MLCOmmons science working group is the improvement
+As the focus of the MLCommons science working group is the improvement
 of the accuracy of an application, we focus our next discussion on
 reporting the accuracy for the earthquake application.
 
-We observe that the loss of the application intersects valitaion and
-training at about the epoch value of 30-33 (see Figure~\ref{fig:loss}).  However we have
-constiently also run higher numbers of epochs just to be sure.
+We observe that the loss of the application intersects validation and
+training at about the epoch value of 30-33 (see Figure~\ref{fig:loss}). However, we have
+also consistently run higher numbers of epochs just to be sure.
 
 \begin{figure}[htb]
     \centering
     \includegraphics[width=0.70\columnwidth]{images/loss.png}
     \caption{Loss}
     \label{fig:loss}
-  \end{figure}
+\end{figure}
 
 Figures~\ref{fig:six-graphs} shows accuracy values of NNSE with
 various epoch values for training and validation. We chose here 2, 30,
 and 70 epochs.  We have then created tables for the NNSE values for
-each of the epochs and sorted them by value.
+each of the epochs and sorted them by value. The higher the NNSE
+accuracy value is the better. We have created tables for the 2, 30,
+and 70 epoch hyper parameter. In addition we highlighted in the table
+the best training value with red, the second best with blue and the
+third best with three. We also highlight the corresponding value in
+the inference column that corresponds to the hyperparameter for the
+time period used in the input and output parameters. While we see for
+the 2 and 30 epoch case the same order for these three values, we see
+a different order for the 70 epoch case. This can be explained through
+overfitting. Overall we find that the best accuracy can be found for
 
+An epoch value of 30  and the hyperparameter {\em Now 2wk+26AV} which has an NNSE value for training of 
+0.5218 and a validation value of 0.502300 
+
+\TODO{what is Now 2wk+26AV}
 
 
 \begin{figure}[htb]
@@ -1541,9 +1548,9 @@ each of the epochs and sorted them by value.
 {\bf Rank} & \multicolumn{2}{c||}{\bfseries Training} & \multicolumn{2}{c|}{\bfseries Validation}  \\
      &   {\bf NNSE} & {\bf Hyperparameters} & {\bf NNSE} & {\bf Hyperparameters} \\
 \hline
-1 & 0.521800 & Now 2wk+26AVG & 0.502300 & Now 2wk+26AVG \\
-2 & 0.506800 & 2 weeks Now & 0.470100 & 2 weeks Now \\
-3 & 0.429900 & Now 2wk+13AVG & 0.412700 & Now 2wk+13AVG \\
+1 & \color{red}  0.521800 & \color{red} Now 2wk+26AVG & \color{red} 0.502300 & \color{red} Now 2wk+26AVG \\
+2 & \color{blue} 0.506800 & \color{blue} 2 weeks Now & \color{blue} 0.470100 & \color{blue} 2 weeks Now \\
+3 & \color{teal} 0.429900 & \color{teal} Now 2wk+13AVG & \color{teal} 0.412700 & \color{teal} Now 2wk+13AVG \\
 4 & 0.405600 & Now 2wk+7AVG & 0.379700 & Now 2wk+7AVG \\
 5 & 0.302500 & 3M 2wk+26AVG & 0.295800 & 3M 2wk+26AVG \\
 6 & 0.278800 & 3M 2wk+13AVG & 0.270300 & 1Y 2wk+26AVG \\
@@ -1553,10 +1560,10 @@ each of the epochs and sorted them by value.
 10 & 0.235800 & 1Y 2wk+7AVG & 0.238200 & 1Y 2wk+13AVG \\
 11 & 0.233000 & 3 Months Back & 0.228900 & 3M 2wk+7AVG \\
 12 & 0.232600 & 1Y 2wk+13AVG & 0.219700 & 3 Months Back \\
-13 & \color{teal} 0.201600 & \color{teal} 6 Months Back & \color{red} 0.204500 & \color{red} Year Back \\
+13 & 0.201600 &  6 Months Back & 0.204500 & Year Back \\
 14 & 0.197000 & 6M 2wk+13AVG & 0.201600 & 6M 2wk+13AVG \\
-15 & 0.192700 & \color{blue} 6M 2wk+7AVG & \color{teal} 0.201000 & \color{teal} 6 Months Back \\
-16 & \color{red} 0.191300 & \color{red} Year Back & \color{blue} 0.195200 & \color{blue} 6M 2wk+7AVG \\
+15 & 0.192700 &  6M 2wk+7AVG &  0.201000 & 6 Months Back \\
+16 &  0.191300 & Year Back & 0.195200 & 6M 2wk+7AVG \\
 \hline
 \end{tabular}
 }
@@ -1588,9 +1595,9 @@ each of the epochs and sorted them by value.
      {\bf NNSE} &
      {\bf Hyperparameters} \\
 \hline
-1 & 0.586000 & Now 2wk+26AVG & 0.484100 & Now 2wk+26AVG \\
-2 & 0.559200 & Now 2wk+13AVG & 0.453000 & Now 2wk+13AVG \\
-3 & 0.517900 & Now 2wk+7AVG & 0.409300 & Now 2wk+7AVG \\
+1 & \color{red} 0.586000 & \color{red} Now 2wk+26AVG & \color{red} 0.484100 & \color{red} Now 2wk+26AVG \\
+2 & \color{blue} 0.559200 & \color{blue} Now 2wk+13AVG & \color{blue} 0.453000 & \color{blue} Now 2wk+13AVG \\
+3 & \color{teal} 0.517900 & \color{teal} Now 2wk+7AVG & \color{teal}0.409300 & \color{teal} Now 2wk+7AVG \\
 4 & 0.488800 & 2 weeks Now & 0.398900 & 3M 2wk+26AVG \\
 5 & 0.450800 & 3M 2wk+26AVG & 0.384100 & 2 weeks Now \\
 6 & 0.418900 & 6M 2wk+26AVG & 0.374500 & 6M 2wk+26AVG \\
@@ -1602,8 +1609,8 @@ each of the epochs and sorted them by value.
 12 & 0.171600 & 1Y 2wk+13AVG & 0.153600 & 1Y 2wk+13AVG \\
 13 & 0.089700 & 3 Months Back & 0.090400 & 3 Months Back \\
 14 & 0.082900 & 1Y 2wk+7AVG & 0.076500 & 1Y 2wk+7AVG \\
-15 & \color{blue} 0.069500 & \color{blue} 6 Months Back & \color{blue} 0.070300 & \color{blue} 6 Months Back \\
-16 & \color{red} 0.047600 & \color{red} Year Back & \color{red} 0.050500 & \color{red} Year Back \\
+15 & 0.069500 &  6 Months Back & 0.070300 & 6 Months Back \\
+16 &  0.047600 & Year Back & 0.050500 & Year Back \\
 \hline
 \end{tabular}
 }
@@ -1648,8 +1655,9 @@ each of the epochs and sorted them by value.
  16 & 0.067400 & 3 Months Back & 0.069800 & 3 Months Back \\
 \hline
 \end{tabular}
-\end{center}
 }
+  \end{center}
+
 
 \end{table}
 
@@ -1663,22 +1671,24 @@ Need to look into the implementation of bestfit
 Need to look into memory dependency of epochs
 Should we stop at 34 epochs or run 66?
 
-\TODO{add k80 elsewher}
-
-{\footnotesize
-\begin{verbatim}
-Cloudmesh Data Submodule - https://github.com/cloudmesh/cloudmesh-data
-Cloudmesh GPU Submodule - https://github.com/cloudmesh/cloudmesh-gpu
-Cloudmesh sbatch Submodule - https://github.com/cloudmesh/cloudmesh-sbatch 
-\end{verbatim}
-}
+\TODO{add k80 elsewhere}
 
 
 
 \subsection{Energy}
 \label{sec:perf-energy}
 
-\begin{figure}[htb]
+
+While initially observing the fast runtime of the RTX3090 on a custom
+desktop in contrast to the A100 performance on the HPC, we were asked
+to provide evidence that we use the A100 processor. The energy monitor
+we developed and the event notifications we interwove throughout the
+program provided evidence that we used the machine properly. The
+energy traces are generated periodically every \TODO{how many seconds?}
+seconds. The traces for 2, 30, and 70 epochs are depicted in Figure
+
+
+\begin{figure}[p]
 
   \begin{center}
      \begin{minipage}[t]{0.30\textwidth}
@@ -1697,10 +1707,14 @@ Cloudmesh sbatch Submodule - https://github.com/cloudmesh/cloudmesh-sbatch
      \end{minipage}
   \end{center}
 
-  \caption {Energy monitoring for 2, 30, and 70 epochs for training and validation.}
+  \caption {Energy monitoring for 2, 30, and 70 epochs for training and validation for the A100.}
   \label{fig:energy}
 
 \end{figure}
+
+%%%%%%%
+
+
 
 \begin{figure}[p]
 
@@ -1724,7 +1738,23 @@ Cloudmesh sbatch Submodule - https://github.com/cloudmesh/cloudmesh-sbatch
 \end{figure}
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{comment}
+\TODO{TODO}
+
+{\footnotesize
+\begin{verbatim}
+Cloudmesh Data Submodule - https://github.com/cloudmesh/cloudmesh-data
+Cloudmesh GPU Submodule - https://github.com/cloudmesh/cloudmesh-gpu
+Cloudmesh sbatch Submodule - https://github.com/cloudmesh/cloudmesh-sbatch 
+\end{verbatim}
+}
+\end{comment}
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
 
 \section{Nomenclature}
 
@@ -1768,6 +1798,8 @@ initial runs of the code, and experimenting with modifications to the
 code including logging. Please note that since this team finished
 their work, significant improvements have been made by the authors of
 this paper.
+
+
 
 \section*{Data Availability Statement}
 
