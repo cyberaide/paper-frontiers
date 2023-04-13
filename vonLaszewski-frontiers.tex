@@ -1474,7 +1474,7 @@ temperature.
 
 Through this augmentation it was possible to identify a projected
 runtime on various systems while running at predifined
-times. Figure~\ref{fig:performance-projection} shows such a predition
+times. Figure~\ref{fig:performance-projection-a} shows such a predition
 for a machine that has RTX3090 GPU. This machine performs quite fast
 as it not only has large fast memory (128MB), but also stores all the
 data on a fast NVMe. In fact, this machine was faster that the
@@ -1494,14 +1494,32 @@ about these numbers, but it lead to suggestions on how to imporve
 performance by for example adding an NVMe storage and access to a
 filesystem locally available to the compute node.
 
-
-\begin{figure}[htb]
-    \centering
+  \begin{comment}
+  \centering
     \includegraphics[width=0.70\columnwidth]{images/performance-projection.png}
     \caption{Performance projection. }
     \label{fig:performance-projection}
+  \end{comment}
+    
+UUUUUUU
+  
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.70\columnwidth]{images/Benchmark_comp_resource.png}
+    \caption{Performance projection.}
+    \label{fig:performance-projection-b}
 \end{figure}
 
+\begin{comment}
+\begin{figure}[htb]    
+    \centering
+    \includegraphics[width=0.70\columnwidth]{images/Graphics_Cards_BestFit_bar.png}
+    \caption{Performance projection.}
+    \label{fig:performance-projection-c}
+\end{figure}
+\end{comment}
+    
 
 \begin{table}[htb]
     \caption{Runtime of the 2 epoch case in seconds}
