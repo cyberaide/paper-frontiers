@@ -1570,7 +1570,42 @@ An epoch value of 30  and the hyperparameter {\em Now 2wk+26AV} which has an NNS
 
 \TODO{what is Now 2wk+26AV}
 
+In the following benchmarks a number of hyper parameters were used to
+derive accuracy values with the earthquake benchmark code.
 
+We distinguish the following abbreviations. The first term defines <TBD> and we used the values
+{\em Now} meaning ....,
+2 weeks meaning ...,
+3M meaning ...,
+6M meaning ...,
+1Y meaning ... .
+
+In addition we also have the values
+3 Months Back meaning ...
+Year Back meaning ...
+2 weeks Now meaning ...
+
+The second parameter has two values the first defines a time period ??? which is set in the current experiments to 2 weeks indicated by 2wk, the sedond devines ???
+
+
+\begin{description}
+\item  {\bf Now 2wk+26AVG} --
+\item  {\bf Now 2wk+13AVG} --
+\item  {\bf Now 2wk+7AVG} --
+\item  {\bf 2 weeks Now} --
+\item  {\bf 3M 2wk+26AVG} --
+\item  {\bf 3M 2wk+13AVG} --
+\item  {\bf 3M 2wk+7AVG} --
+\item  {\bf 1Y 2wk+26AVG} --
+\item  {\bf 6M 2wk+26AVG} --
+\item  {\bf 6M 2wk+13AVG} --
+\item  {\bf 1Y 2wk+13AVG} --
+\item  {\bf 6M 2wk+7AVG} --
+\item  {\bf 6 Months Back} --
+\item  {\bf 1Y 2wk+7AVG} --
+\item  {\bf Year Back} --
+\item  {\bf 3 Months Back} --
+\end{description}
 
 \begin{figure}[htb]
 
@@ -1780,6 +1815,7 @@ Should we stop at 34 epochs or run 66?
 
 
 
+
 \subsection{Energy}
 \label{sec:perf-energy}
 
@@ -1817,9 +1853,70 @@ energy traces are generated periodically every second. The traces for
 
 \end{figure}
 
+
+
+
+
+
+\begin{comment}
+\begin{figure}[p]
+
+  \begin{center}
+     \begin{minipage}[t]{0.30\textwidth}
+        \includegraphics[width=1.0\linewidth]{images/a100-shaded-energy-2-epochs.pdf}
+        {\bf (A)} Energy consumption for 2 epochs training and validation.
+     \end{minipage}
+     \ \
+     \begin{minipage}[t]{0.30\textwidth}
+        \includegraphics[width=1.0\linewidth]{images/a100-shaded-energy-30-epochs.pdf}
+        {\bf (B)} Energy consumption for 30 epochs training and validation.
+     \end{minipage}
+     \ \
+     \begin{minipage}[t]{0.30\textwidth}
+        \includegraphics[width=1.0\linewidth]{images/a100-shaded-energy-70-epochs.pdf}
+        {\bf (C)} Energy consumption for 70 epochs training and validation.
+     \end{minipage}
+  \end{center}
+
+  \caption {Energy monitoring for 2, 30, and 70 epochs for training and validation for the A100.}
+  \label{fig:energy}
+
+\end{figure}
+
+\end{comment}
+
+%images/v100-shaded-energy-25-epochs.pdf
+%images/v100-shaded-energy-29-epochs.pdf
+%images/v100-shaded-energy-33-epochs.pdf
+%images/v100-shaded-energy-35-epochs.pdf
+
+\begin{figure}[p]
+
+  \begin{center}
+     \begin{minipage}[t]{0.30\textwidth}
+        \includegraphics[width=1.0\linewidth]{images/v100-shaded-energy-2-epochs.pdf}
+        {\bf (A)} Energy consumption for 2 epochs training and validation.
+     \end{minipage}
+     \ \
+     \begin{minipage}[t]{0.30\textwidth}
+        \includegraphics[width=1.0\linewidth]{images/v100-shaded-energy-30-epochs.pdf}
+        {\bf (B)} Energy consumption for 30 epochs training and validation.
+     \end{minipage}
+     \ \
+     \begin{minipage}[t]{0.30\textwidth}
+       \includegraphics[width=1.0\linewidth]{images/v100-shaded-energy-70-epochs.pdf}
+        {\bf (C)} Energy consumption for 70 epochs training and validation.
+     \end{minipage}
+  \end{center}
+
+  \caption {Energy monitoring for 2, 30, and 70 epochs for training and validation for the A100.}
+  \label{fig:energy}
+
+\end{figure}
+
 %%%%%%%
 
-
+\begin{comment}
 
 \begin{figure}[p]
 
@@ -1838,9 +1935,38 @@ energy traces are generated periodically every second. The traces for
   \end{center}
 
   \caption {NNSE comparison}
-  \label{fig:NNSE-comparison}
+  \label{fig:NNSE-comparison-v100}
 
 \end{figure}
+
+\end{comment}
+
+\begin{figure}[p]
+
+  \begin{center}
+     \begin{minipage}[t]{0.65\textwidth}
+        \includegraphics[width=1.0\linewidth]{images/A100-NNSE-all-epochs-training.pdf}
+        {\bf (A)} NNSE for training.
+     \end{minipage}
+  \end{center}
+  \ \
+  \begin{center}
+     \begin{minipage}[t]{0.65\textwidth}
+        \includegraphics[width=1.0\linewidth]{images/A100-NNSE-all-epochs-validation.pdf}
+        {\bf (B)} NNSE for validation.
+     \end{minipage}
+  \end{center}
+
+  \caption {NNSE comparison}
+  \label{fig:NNSE-comparison-a100}
+
+\end{figure}
+
+
+
+
+
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
