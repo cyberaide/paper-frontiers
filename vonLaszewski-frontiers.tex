@@ -138,12 +138,28 @@ Town Center Four,
 
 \section{}
 
-here comes abstarct text
+In this paper, we focus on identifying insights that we obtained for a
+High-Performance Computing Big Data Systems while using them to obtain
+science benchmarks from an earthquake prediction code. This activity
+was conducted as part of several educational efforts and has
+identified lessons learned have such complex benchmarks can be
+integrated into courses and research activities at universities. As
+such we have outlined the many lessons that we learned throughout these
+efforts culmulating in the need for benchmark carpentry for scientists
+using advanced computational resources. The paper also presents
+several benchmarks while focussing on the accuracy of the
+result. Energy traces were produced throughout these benchmarks
+showcasing that in addition to the usual time related benchmarks
+energy-related benchmarks can be useful. The activity was only
+possible by addressing a simplification of the benchmark pipeline
+while developing and using software to automatically generate
+hyperparameter jobs while using templates in a collection of software
+called cloudmesh-sbatch and cloudmesh-cc.
 
 
 \tiny \keyFont{ \section{Keywords:} deep learning, benchmarking, hyper
   parameter search, hybrid heterogeneous hyperparameter search,
-  earthquake forecasting}
+  earthquake forecasting, cloudmesh}
 
 % All article types: you may provide up to 8 keywords; at least 5 are mandatory.
 
@@ -152,11 +168,12 @@ here comes abstarct text
 \section{Introduction}
 
 In this paper, we summarize some of the insights that we obtained for
-a High-Performance Computing Big Data Systems applied to the MLCommons
-earthquake benchmarks efforts. This includes insights into the
-usability of the HPC Big Data Systems, the usage of the MLCommons
-benchmarking system, and insights from the applicability in
-educational efforts.
+a High-Performance Computing Big Data Systems applied to the
+MLCommons\textsuperscript{\texttrademark} earthquake benchmarks
+efforts. This includes insights into the usability of the HPC Big Data
+Systems, the usage of the MLCommons benchmarking science
+applications\citep{las-22-mlcommons-science}, and insights from the
+applicability in educational efforts.
 
 Benchmarking is an important effort in using HPC Big Data systems.
 While using benchmarks, we can compare the performance of various
@@ -169,13 +186,13 @@ replicate the performance and find enhancements to accuracy, modeling
 time, or other measurements.
 
 While for traditional HPC systems often the pure computational power
-is measured such as projected by the TOP500, it is also important to
-incorporate more sophisticated benchmarks that integrate different
-applications, but also the file system performance as it can
-considerably impact the computation time. This is especially the case
-when fast GPUs are used that need to be fed with data at an adequate
-rate to perform well. If file systems are too slow, then the expensive
-specialized GPUs can not be adequately utilized.
+is measured such as projected by the TOP500 \cite{dongarra1997top500,www-top500}, it is
+also important to incorporate more sophisticated benchmarks that
+integrate different applications, but also the file system performance
+as it can considerably impact the computation time. This is especially
+the case when fast GPUs are used that need to be fed with data at an
+adequate rate to perform well. If file systems are too slow, then the
+expensive specialized GPUs can not be adequately utilized.
 
 Benchmarks also offer a common way to communicate the results to its
 users so that expectations on what is possible are communicated to the
@@ -445,7 +462,7 @@ this is to use Google Collab which is easy to get access to, and use,
 in a limited fashion for free (larger computational needs will need a
 paid subscription).  However, as Collab is based on Jupyter we
 experience the same disadvantages as discussed in
-Section~/ref{sec:tools}
+Section~/ref{sec:tools}.
 
 Other resources for machine learning can be found in the cloud. This
 may include IaaS and PaaS offerings from Amazon, Azure, Google Cloud,
@@ -459,29 +476,29 @@ more recently of text analysis and responses through ChatGPT and Bart.
 However, many academic institutions have access to campus-level and
 national-level computing resources in HPC centers.  This includes
 resources from NSF and DOE. Such computing resources are accessed
-mostly through traditional batch queues (such as SLURM).  To allow
-sharing of the limited resources with the large user community. For
-this reason, centers often implement a scheduling policy putting
-significant restrictions on the computational resources that can be
-used at the same time, and/or for a particular period. The number of
-files and the access to a local disk on compute nodes constituting the
-HPC resources may also be limited.  This provides a potential very
-high entry barrier as these policy restrictions may not be integrated
-into the application design from the start.  Moreover, in some cases,
-these restrictions may provide a significant performance penalty when
-data is placed in a slow NFS file system instead of directly in memory
-(often the data does not fit in memory) or in NVMe storage if it
-exists on the computing nodes.  It is also important to understand
-that such nodes may also be shared with other users and it is
-important to provision the requirements in regards to computation
-time, memory footprint, and file storage requirements accurately so
-that scheduling can be performed most expediently.  Furthermore, the
-software on these systems is managed by the computing staff supporting
-a particular software version or not providing the software
-needed. Hence we face the problem of non-available software or
-outdated versions. Container technologies limit this issue, by
-allowing users in the centers to access them and to develop their own
-software stack in containers.
+mostly through traditional batch queues (such as SLURM
+\citep{www-slurm}).  To allow sharing of the limited resources with
+the large user community. For this reason, centers often implement a
+scheduling policy putting significant restrictions on the
+computational resources that can be used at the same time, and/or for
+a particular period. The number of files and the access to a local
+disk on compute nodes constituting the HPC resources may also be
+limited.  This provides a potential very high entry barrier as these
+policy restrictions may not be integrated into the application design
+from the start.  Moreover, in some cases, these restrictions may
+provide a significant performance penalty when data is placed in a
+slow NFS file system instead of directly in memory (often the data
+does not fit in memory) or in NVMe storage if it exists on the
+computing nodes.  It is also important to understand that such nodes
+may also be shared with other users and it is important to provision
+the requirements in regards to computation time, memory footprint, and
+file storage requirements accurately so that scheduling can be
+performed most expediently.  Furthermore, the software on these
+systems is managed by the computing staff supporting a particular
+software version or not providing the software needed. Hence we face
+the problem of non-available software or outdated versions. Container
+technologies limit this issue, by allowing users in the centers to
+access them and to develop their own software stack in containers.
  
 \begin{comment}
   
@@ -557,9 +574,10 @@ universities and student groups from the University of Virginia, New
 York University, and Indiana University. Furthermore, it was used in
 Florida A\&M University (FAMU) as an REU and is now executed at the
 University of Virginia as research activity by a past student from the
-REU. We found that the examples provide value for classes, capstones,
-Research Experiences for Undergraduates (REU), team project-oriented
-software engineering and computer science classes, and internships.
+REU \cite{las-2022-mdpi-crypto}. We found that the examples provide
+value for classes, capstones, Research Experiences for Undergraduates
+(REU), team project-oriented software engineering and computer science
+classes, and internships.
 
 We observed that while traditional classes limit their resource needs
 and thus the target application to a very short period so assignments
@@ -796,7 +814,7 @@ benchmark \citep{las-22-mlcommons-science}.
   {\footnotesize
 \begin{tabular}{p{0.2\columnwidth}p{0.2\columnwidth}p{0.45\columnwidth}}
 \hline
-{\bf Area} & \multicolumn{2}{l}{Earthquake Forecasting~\citep{fox2022-jm,TFT-21,eq-code,eq-data}.}\\
+{\bf Area} & \multicolumn{2}{l}{Earthquake Forecasting~\citep{fox2022-jm,TFT-21,eq-code,mlcommons-earthquake-data}.}\\
 \hline
 {\bf Objectives} &  \multicolumn{2}{l}{Improve the quality of Earthquake
 forecasting in a region of Southern California.}\\
@@ -1826,39 +1844,13 @@ to provide evidence that we use the A100 processor. The energy monitor
 we developed and intermittent event notifications throughout the
 program provided evidence that we used the machine properly. The
 energy traces are generated periodically every second. The traces for
-2, 30, and 70 epochs are depicted in Figure \ref{fig:energy}
+2, 30, and 70 epochs are depicted in Figure \ref{fig:energy}.
 
 
-\begin{figure}[p]
-
-  \begin{center}
-     \begin{minipage}[t]{0.30\textwidth}
-        \includegraphics[width=1.0\linewidth]{images/card-name-v100-gpu-count-1-cpu-num-6-mem-32gb-repeat-1-tfttransformerepochs-2.png}
-        {\bf (A)} Energy consumption for 2 epochs training and validation.
-     \end{minipage}
-     \ \
-     \begin{minipage}[t]{0.30\textwidth}
-        \includegraphics[width=1.0\linewidth]{images/card-name-v100-gpu-count-1-cpu-num-6-mem-32gb-repeat-1-tfttransformerepochs-30.png}
-        {\bf (B)} Energy consumption for 30 epochs training and validation.
-     \end{minipage}
-     \ \
-     \begin{minipage}[t]{0.30\textwidth}
-        \includegraphics[width=1.0\linewidth]{images/card-name-v100-gpu-count-1-cpu-num-6-mem-32gb-repeat-1-tfttransformerepochs-70.png}
-        {\bf (C)} Energy consumption for 70 epochs training and validation.
-     \end{minipage}
-  \end{center}
-
-  \caption {Energy monitoring for 2, 30, and 70 epochs for training and validation for the A100.}
-  \label{fig:energy}
-
-\end{figure}
+\citep{green500}
 
 
 
-
-
-
-\begin{comment}
 \begin{figure}[p]
 
   \begin{center}
@@ -1883,14 +1875,47 @@ energy traces are generated periodically every second. The traces for
 
 \end{figure}
 
+
+
+\begin{comment}
+\begin{figure}[p]
+
+  \begin{center}
+     \begin{minipage}[t]{0.30\textwidth}
+        \includegraphics[width=1.0\linewidth]{images/card-name-v100-gpu-count-1-cpu-num-6-mem-32gb-repeat-1-tfttransformerepochs-2.png}
+        {\bf (A)} Energy consumption for 2 epochs training and validation.
+     \end{minipage}
+     \ \
+     \begin{minipage}[t]{0.30\textwidth}
+        \includegraphics[width=1.0\linewidth]{images/card-name-v100-gpu-count-1-cpu-num-6-mem-32gb-repeat-1-tfttransformerepochs-30.png}
+        {\bf (B)} Energy consumption for 30 epochs training and validation.
+     \end{minipage}
+     \ \
+     \begin{minipage}[t]{0.30\textwidth}
+        \includegraphics[width=1.0\linewidth]{images/card-name-v100-gpu-count-1-cpu-num-6-mem-32gb-repeat-1-tfttransformerepochs-70.png}
+        {\bf (C)} Energy consumption for 70 epochs training and validation.
+     \end{minipage}
+  \end{center}
+
+  \caption {Energy monitoring for 2, 30, and 70 epochs for training and validation for the A100.}
+  \label{fig:energy}
+
+\end{figure}
 \end{comment}
 
-%images/v100-shaded-energy-25-epochs.pdf
-%images/v100-shaded-energy-29-epochs.pdf
-%images/v100-shaded-energy-33-epochs.pdf
-%images/v100-shaded-energy-35-epochs.pdf
 
-\begin{figure}[p]
+
+
+\begin{comment}
+
+  %images/v100-shaded-energy-25-epochs.pdf
+  %images/v100-shaded-energy-29-epochs.pdf
+  %images/v100-shaded-energy-33-epochs.pdf
+  %images/v100-shaded-energy-35-epochs.pdf
+
+
+
+  \begin{figure}[p]
 
   \begin{center}
      \begin{minipage}[t]{0.30\textwidth}
@@ -1912,7 +1937,8 @@ energy traces are generated periodically every second. The traces for
   \caption {Energy monitoring for 2, 30, and 70 epochs for training and validation for the A100.}
   \label{fig:energy}
 
-\end{figure}
+  \end{figure}
+\end{comment}
 
 %%%%%%%
 
@@ -1940,6 +1966,8 @@ energy traces are generated periodically every second. The traces for
 \end{figure}
 
 \end{comment}
+
+
 
 \begin{figure}[p]
 
