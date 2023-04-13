@@ -1612,7 +1612,17 @@ a single 2 week occurrence one year ago from the rolling training date.
 
 \section{Competitive Accuracy Benchmarks}
 
-In this section we summarize the competitive accuracy nemchmark where we use the nomencalture for the input and output hyperparameters defining the time period used for the training and validation.
+In this section we summarize the competitive accuracy nemchmark where
+we use the nomencalture for the input and output hyperparameters
+defining the time period used for the training and validation.  To
+simplify our presentation we have chosen for this papers experiments
+using 2, 30, and 70 epochs. We took all results and sorted them for
+training and validation seperatly by the accuracy values. This leads
+to a ranking of the experiments by accuracy. In Table \ref{tab:ranking-accuracy} we present the top 20 acuracy values, while in Figure ??? we created a histogram showcasing how many accuracy values fall into a certain bucket over all experiments.
+
+From the table and the histogram we see that we achieve the best
+results using the parameters (epoch=2, Now 2wk+26AVG).
+
 
 \begin{table}[htb]
   \caption{The top 20 accuracy values based on hyperparameters with 2, 30, and 70 epochs}
@@ -1652,61 +1662,6 @@ In this section we summarize the competitive accuracy nemchmark where we use the
 \end{table}
 
 
-
-training
-
-rank, nnse, epoch, name
-17, 0.5818, 2, 2 weeks Now
-40, 0.4473, 2, 2 weeks Now
-56, 0.4098, 2, 2 weeks Now
-65, 0.3800, 2, 2 weeks Now
-109, 0.2969,2, 2 weeks Now
-
-[5:30 PM]J.P.: VALIDATION
-rank, nnse, epoch, name
-3, 0.5377, 2, 2 weeks Now
-33, 0.4221, 2, 2 weeks Now
-55, 0.3646, 2, 2 weeks Now
-61, 0.3518, 2, 2 weeks Now
-116, 0.2647, 2, 2 weeks Now
-
-
-
-%we have finalized the EQ code but want to make absolutely sure that we
-%look at the correct values for the scientific comparison.
-%
-%This also requires a small sentence to each variable. Could we have a
-%small meeting and I take then some notes on what these values are
-%tomorrow. I will then add the explanations to the MLCommons EQ benchmark
-%policy document.
-%
-%I just want to make sure I understand over which domain we average and
-%sum up.
-%
-%Also if we were to just do one value (just in case they ask, I think we
-%would use the summed up total right. However I think it is better to
-%keep all of them.)
-%
-%Also I forgot what the +26 refers to
-%
-%I think something like this is almost correct, but we need to +26
-%explanation and get verification from you.
-%
-%The Magnification based on a years worth of back data, while looking two
-%weeks ahead + 26 what?
-
-
-
-code management is important, github is essential
-Need to have better sbatch to make code management easier
-cluster design is important and access to local storage on nodes is important
-shared file systems are less effective 
-Predicting behavior of code is great with our timer library as it allows us to estimate runtines and report results in easy fashion. Helps debugging.
-Need to look into the implementation of bestfit 
-Need to look into memory dependency of epochs
-Should we stop at 34 epochs or run 66?
-
-\TODO{add k80 elsewhere}
 
 
 
@@ -1790,6 +1745,18 @@ energy traces are generated periodically every second. The traces for
 
 \end{figure}
 
+
+
+\section{Conlusion}
+
+code management is important, github is essential
+Need to have better sbatch to make code management easier
+cluster design is important and access to local storage on nodes is important
+shared file systems are less effective 
+Predicting behavior of code is great with our timer library as it allows us to estimate runtines and report results in easy fashion. Helps debugging.
+Need to look into the implementation of bestfit 
+Need to look into memory dependency of epochs
+Should we stop at 34 epochs or run 66?
 
 
 
