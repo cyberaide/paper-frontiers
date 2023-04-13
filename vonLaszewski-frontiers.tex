@@ -808,23 +808,23 @@ The original code was developed with the goal to create a DL method
 called {\em tevelop} to apply special time-series evolution for
 multiple applications including earthquake, hydrology, and COVID
 prediction. The code was presented in a large Python Jupyter notebook
-on Google Collab.  Due to the integration of multiple applications, the
+on Google Collab.  Due to the integration of multiple applications (hydrology and covid), the
 code was difficult to understand and maintain. For this reason, the
 total number of lines of 13500 was reduced by more than 2400 lines
-when the hydrology and the covid code were removed.  However, at the
+when the hydrology and the COVID code were removed.  However, at the
 same time, we restructured the code and reached a final length of about
 11100 lines of code.  The original code contained all hyperparameters
 and needed to be changed every time a hyperparameter was modified.
 The code included all definitions of variables and hyperparameters in
-the code itself.
+the code itself. The code could be further made shorter by separating the model code into a library.
 
 As we can see from this code has some major issues that future
 versions ought to address. First, the code includes every aspect that
 is not covered by TensorFlow and also contains a customized version of
 TFT. Second, due to this the code is very large, and manipulating and
 editing the code is time-consuming and error-prone. Third, as many
-code-related parameters are managed still in the code running the
-same code with various parameters becomes cumbersome. In fact, multiple
+code-related parameters are managed still in the code running the same
+code with various parameters becomes cumbersome. In fact, multiple
 copies of the code need to be maintained when new parameters are
 chosen, instead of making such parameters part of a configuration
 file. Hence we started moving towards the simplification of the code
@@ -832,27 +832,27 @@ by introducing the concept of libraries that can be pip installed, as
 well as adding gradually more parameters to configuration files that
 are used by the program.
 
-The advantage of using a notebook is that it can be augmented with lots
-of graphs that give in-situ updates on the progress and its measured
-accuracy. It is infeasible for students to use and replicate the run
-of this notebook as the runtime can be up to two days. Students for
-sure have to use their computers for other things and need to be able
-to use them on the go. Often HPC venters provide interactive jobs in
-the batch queues, but also here this is not sufficient. Instead, we
-adapted to use jupyter notebooks in full batch mode by the HPC queuing
-system by generation a special batch script that internally uses
-papermill to execute the notebook in the background. Papermill, will
-also include all cells that have to be updated during runtime
-including graphics. The script we developed needed however to be run
-multiple times and with different hyperparameters such as the number of
-epochs, to give just one example. As the HPC system is a heterogeneous
-GPU system having access to A100, V100, P100, RTX2080 the choice of
-the GPU system must ba able to be configurable. Hence the batch script
+The advantage of using a notebook is that it can be augmented with
+lots of graphs that give in-situ updates on the progress and its
+measurement accuracy. It is infeasible for students to use and
+replicate the run of this notebook on their own computers as the
+runtime can be up to two days. Students for sure have to use their
+computers for other things and need to be able to use them on the
+go. Often HPC centers provide interactive jobs in the batch queues,
+but also here this is not sufficient. Instead, we adapted to use
+Jupyter notebooks in full batch mode of the HPC queuing system by
+generation a special batch script that internally uses papermill to
+execute the notebook in the background. Papermill, will also include
+all cells that have to be updated during runtime including
+graphics. The script we developed needed however to be run multiple
+times and with different hyperparameters such as the number of epochs,
+to give just one example. As the HPC system is a heterogeneous GPU
+system having access to A100, V100, P100, RTX2080 the choice of the
+GPU system must be able to be configurable. Hence the batch script
 includes the ability to also read in the configuration file and adapt
-itself to the needed parameters. This is controlled by a sofisticated but
-simple batch job generator which we discuss in a later Section.
-
-
+itself to the needed parameters. This is controlled by a sophisticated
+but simple batch job generator which we discuss in Section
+\ref{sec:workflow-sbatch}.
 
 %libraries for mlcommons benchmarking, cloudmesh
 %portable way to define data locations via config
@@ -860,6 +860,7 @@ simple batch job generator which we discuss in a later Section.
 %* repeated experiments
 %* separate evaluation and comparison of accuracy which was not in the original code.
 %* comparison of accuracy across different hyperparameter searches.
+
 
 \section{Insights into Data Management from the Earthquake Forecasting Application}
 \label{sec:eq-data}
@@ -869,6 +870,7 @@ the data set, the data compression and storage, as well as the data
 access speed. We discuss insights into each of them in the next Sections.
 
 \subsection{Data Sets}
+
 
 When dealing with datasets we typically encounter several issues.
 These issues are addressed by the MLCommons benchmarks and
@@ -882,7 +884,7 @@ well as overfitting while using training data. Typically the MLCommons
 benchmarks will be designed to have no such issues, or they have
 minimal issues. However, some benchmarks such as the science group
 benchmarks which are concerned with improving the science will have to
-potentially address these issues in order o improve the accuracy. This
+potentially address these issues in order to improve the accuracy. This
 could include even injecting new data and different preprocessing
 methods.
 
@@ -912,10 +914,14 @@ compression algorithms. We will next discuss insights into
 infrastructure management while using filesystems in HPC resources.
 While often object stores are discussed to host such large datasets it
 is imperative to identify the units of storage in such object stores.
-In our case, an object store that would host individual data records is
-not useful due to the vast number of data points. Therefore the best
-way to store this data even in an object store is as a single entry of
-compressed overall data.
+In our case, an object store that would host individual data records
+is not useful due to the vast number of data points. Therefore the
+best way to store this data even in an object store is as a single
+entry of compressed overall data.  Other MLCommons Science working
+group benchmarks have datasets in the order of 500GB to
+12TB. Obviously the need special considerations whne placed on a
+compute system where the students storage capacaties may be limited by
+policy.
 
 
 \subsection{Data Access}
