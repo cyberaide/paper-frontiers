@@ -30,7 +30,7 @@
 %\newcommand{\REPLACE}[2]{\begin{quote}\textcolor{red}{#1}\end{quote}\\{\textcolor{blue}{#2}}
 
 \newcommand{\YES}{yes}
-\makeatletter\newcommand{\tableofcontents}{\@starttoc{toc}}\makeaother
+% \makeatletter\newcommand{\tableofcontents}{\@starttoc{toc}}\makeaother
 
 \linenumbers
 
@@ -93,7 +93,7 @@ Town Center Four,
 
 \bigskip
 
-\tableofcontents
+% \tableofcontents
 
 \title{\TITLE}
 
@@ -803,7 +803,7 @@ simple batch job generator which we discuss in a later Section.
 %* separate evaluation and comparison of accuracy which was not in the original code.
 %* comparison of accuracy across different hyperparameter searches.
 
-\section{Insights into Data Management from the Earthquake Forecasting Application}}
+\section{Insights into Data Management from the Earthquake Forecasting Application}
 \label{sec:eq-data}
 
 In data management, we are currently concerned with various aspects of
@@ -896,9 +896,10 @@ comparison with a personal computer from a student.
     Personal Computer & \verb|/home/$USER| & 579 MiB/s & 607 MB/s &  18.9 & Sabrent 2TB NVMe\\
     \hline                                             
     \end{tabular}
-  \end{table}
-  \end{center}
   }
+    \end{center}
+  \end{table}
+  
 
 
 Based on this observation it was infeasible to consider running the
@@ -974,7 +975,7 @@ Furthermore we need a simple system to measure the performance and
 energy, while communicationg the data in an easy fashion to the
 users. THis system was developed by von Laszewski and contains two
 components (a) a general stopwatch (b) a mechanism to monitor the GPU
-as discussed in \label{sec:monitoring}.
+as discussed in \ref{sec:monitoring}.
 
 We describe these systems briefly while focussing on the applicability
 for benchmarks.
@@ -990,7 +991,7 @@ MLCommons provides their own time measuring component, called mllog,
 it is clear form the name that the focus is to create entries in a log
 file that may not easily readable by a human and may require
 postprocessing to make usable. In contrast our library contans not
-only simple labeled \vreb|start| and \verb|stop| methods, It also
+only simple labeled \verb|start| and \verb|stop| methods, It also
 provides a convenient mechanism to print human readbale customizable
 performance tables. However it is possible to also generate a result
 table in other formats such as CSV, JSON, YAML, TXT, and others).
@@ -999,10 +1000,9 @@ are developed. Morover we also have developw a plugin interface to
 mllog, that allows us to automatically create mllog entries into an
 additonal log file, so the data may be used within MLCommons through
 specialized anlaytics programs also. A simple use case is depicted
-next (we have ommitted other advanced features such as function
-decorators for the StopWatch to keep the example simple):
+next  (we have ommitted other advanced features such as function
+decorators for the StopWatch to keep the example simple).
 
-\begin{figure}[htb]
 {\footnotesize
 \begin{Verbatim}[commandchars=\\\{\}]
     from cloudmesh.common import StopWatch 
@@ -1018,11 +1018,6 @@ decorators for the StopWatch to keep the example simple):
 \end{Verbatim}
 }
 
-    \caption{Cloudmesh monitoring components.}
-    \label{fig:cc-2}
-\end{figure}
-
-
 To have also direct access to MLCommons events, we have recently added
 the ability to call events.
 
@@ -1030,14 +1025,16 @@ the ability to call events.
 In addition to the StopWatch we have developed a simple commandline
 tool that can be used for example in batch scripts to monitor the GPU
 performance characteristics such as energy, temperature and other
-arameters \citep{cloudmesh-gpu}. The tool can be started in a batch
-script as follwos and is currently supporting NVIDIA GPUs
+arameters \citep{cloudmesh-gpu}. The tool
+can be started in a batch script as follwos and is currently
+supporting NVIDIA GPUs:
 
 {\footnotesize
 \begin{Verbatim}[commandchars=\\\{\}]
     cms gpu watch --gpu=0 --delay=0.5 --dense > gpu0.log &
 \end{Verbatim}
 }
+
 
 Monitoring time and system GPU information can provide significant
 insights into the applications performance characteristics. It is
@@ -1068,13 +1065,13 @@ monitoring. Thesse components sit on top of other specialized systems
 that can easily be ported to other systems while using sommon system
 abstractions.
 
-
 \begin{figure}[htb]
     \centering
     \includegraphics[width=0.50\columnwidth]{images/cloudmesh-cc-new.pdf}
     \caption{Architecture Workflow Service.}
     \label{fig:cc-2}
 \end{figure}
+
 
 Instead of focussing on the details of this architecture we found that
 the higl level use of it is very important as part of the educational
@@ -1083,7 +1080,6 @@ any resarch activity.
 
 We identified for analytics service pipelines
 three concepts (see Figure \ref{fig:service-interaction}).
-\TODO{WHYIS FIGURE NOT numbered}
 
 \begin{itemize}
 \item {\bf Selection} -- instead of performing all possible benchmarks a
@@ -1103,8 +1099,8 @@ them in the the benchmark process.
 
 \begin{figure}[htb]
 \centering\includegraphics[width=0.75\columnwidth]{images/processes-nist.pdf}
-\label{fig:service-interaction}
 \caption{Service Interaction.}
+\label{fig:service-interaction}
 \end{figure}
 
 
@@ -1191,7 +1187,7 @@ generality of the system while using arbitrary queuing systems and
 submission commands.
 
 The architecture of the cloudmesh-sbatch framework is depicted in
-Fiure \ref{fig:cm-sbatch}.
+Figure \ref{fig:cm-sbatch}.
 
 \begin{figure}[htb]
     \centering
@@ -1203,7 +1199,7 @@ Fiure \ref{fig:cm-sbatch}.
 
 Where cloudmesh-sbatch differenciates itself from other template engines is its
 ability to generate a cartistian product of hyperparameter values
-underneath of its \emphasis{experiment} heading, making it trivial to
+underneath of its {\it experiment} heading, making it trivial to
 scale an experiment from one execution to thousands of configurations
 based on the ranges and their unique combanations.  The resulting
 output provides a generated SLURM or LSF script and a YAML
@@ -1234,16 +1230,15 @@ An example of a configuration file \verb|config| includes
 
 {\footnotesize
 \begin{Verbatim}
+    application:
+        name: earthquake
 
-  application:
-    name: earthquake
-
-  data: /scratch/{os.USER}/{application.name}
+    data: /scratch/{os.USER}/{application.name}
        
-  experiment:
-    epoch: "1,30,60"
-    gpu: "a100,v100"
-    repeat: "1,2,3,4,5"
+    experiment:
+        epoch: "1,30,60"
+        gpu: "a100,v100"
+        repeat: "1,2,3,4,5"
 \end{Verbatim}
 }
 
@@ -1251,30 +1246,29 @@ An example of a templated batch script is
 
 {\footnotesize
 \begin{Verbatim}
-#!/bin/bash
+    #!/bin/bash
 
-#SBATCH --job-name={experiment.repeat}-{application.earthquake}
-#SBATCH --nodes=1
-#SBATCH --gres=gpu:{experiment.gpu}:1
-#SBATCH --time=02:00:00
-#SBATCH --mem=64G
-#SBATCH -o {experiment.gpu}-{application.earthquake}/{experiment.repeat}-%j.out
-#SBATCH -o {experiment.gpu}-{application.earthquake}/{experiment.repeat}-%j.err
-#SBATCH --partition=bii-gpu
-#SBATCH --account=bii_dsc_community
+    #SBATCH --job-name={experiment.repeat}-{application.earthquake}
+    #SBATCH --nodes=1
+    #SBATCH --gres=gpu:{experiment.gpu}:1
+    #SBATCH --time=02:00:00
+    #SBATCH --mem=64G
+    #SBATCH -o {experiment.gpu}-{application.earthquake}/{experiment.repeat}-%j.out
+    #SBATCH -o {experiment.gpu}-{application.earthquake}/{experiment.repeat}-%j.err
+    #SBATCH --partition=bii-gpu
+    #SBATCH --account=bii_dsc_community
 
-export USER_SCRATCH=/scratch/$USER
-cd USER_SCRATCH
-mkdir -p $USER_SCRATCH/{experiment.gpu}-{application.earthquake}/%j.out
+    export USER_SCRATCH=/scratch/$USER
+    cd USER_SCRATCH
+    mkdir -p $USER_SCRATCH/{experiment.gpu}-{application.earthquake}/%j.out
 
-nvidia-smi
+    nvidia-smi
 
-cms gpu watch --gpu=0 --delay=0.5 --dense > outputs/gpu0.log &
+    cms gpu watch --gpu=0 --delay=0.5 --dense > outputs/gpu0.log &
 
-python earthquake.py --config config.yaml
+    python earthquake.py --config config.yaml
 
-seff $SLURM_JOB_D
-
+    seff $SLURM_JOB_D
 \end{Verbatim}
 }
 
@@ -1387,7 +1381,7 @@ we needed to tak on the HPC machine including suggestions for
 improving data access speeds to the system staff.
 
 To showcase the different runtimes we showcase the results for a 2
-epoch case in Table {tab:2-epoch-case}. To our initial surprise we
+epoch case in Table \ref{tab:2-epoch-case}. To our initial surprise we
 found that the RTX3090 machine was originally almost 2.67 times better
 than the HPC machine with an A100. Fatser processor, better memory,
 and espacially the fast NVMe instead of a slow NSF mounted filesystem
@@ -1407,10 +1401,10 @@ filesystem locally available to the compute node.
 
 \begin{table}[htb]
     \caption{Runtime of the 2 epoch case in seconds}
-    \LABEL{tab:2-epoch-case}
+    \label{tab:2-epoch-case}
+    \begin{center}
     {\footnotesize              
-      \begin{center}
-        \begin{table}[]
+
           \begin{tabular}{lrrrrr}
             Timer             & RTX3090 & RTX3080 & A100    & V100    & K80     \\
             \hline
@@ -1422,9 +1416,9 @@ filesystem locally available to the compute node.
             Bestfit           & 4420.3  & 4997.1  & 13022.1 & 14795.1 & 17037.6 \\
             \hline
           \end{tabular}
-        \end{table}
-        \end{center} 
+
     }
+    \end{center}
 \end{table}
 
 
@@ -1659,8 +1653,9 @@ An epoch value of 30  and the hyperparameter {\em Now 2wk+26AV} which has an NNS
  16 & 0.067400 & 3 Months Back & 0.069800 & 3 Months Back \\
 \hline
 \end{tabular}
-\end{center}
 }
+  \end{center}
+
 
 \end{table}
 
