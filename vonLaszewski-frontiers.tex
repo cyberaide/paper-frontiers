@@ -40,8 +40,11 @@
 \def\firstAuthorLast{von Laszewski {et~al.}} 
 \def\Authors{Gregor von Laszewski\,$^{1,*}$,
  J.P. Fleischer\,$^{1}$
-Robert Knuuti\,$^{1}$
- and Geoffrey. C. Fox\,$^{1}$}
+Robert Knuuti\,$^{2}$
+Geoffrey. C. Fox\,$^{1}$
+Jake Kolesar\,$^{2}$
+Thomas Butler\,$^{2}$
+Judy Fox$^{2}$}
 
 % Affiliations should be keyed to the author's name with superscript
 % numbers and be listed as follows: Laboratory, Institute, Department,
@@ -60,6 +63,15 @@ University of Virginia,
 % 994 Research Park Boulevard,
  Charlottesville, VA, 22911, USA
 }
+
+\def\Address{$^{2}$
+School of Data Science,
+University of Virginia,
+% Town Center Four,
+% 994 Research Park Boulevard,
+ Charlottesville, VA, 22911, USA
+}
+
 
 % The Corresponding Author should be marked with an asterisk Provide
 % the exact contact address (this time including street name and city
@@ -1450,13 +1462,14 @@ month, while each job took many hours to complete.
 \subsection{Measuring Runtime}
 \label{sec:perf-runtime}
 
+
 The code was significantly modified by removing other code that was
-not related to the erathquake prediction application. This included
-removing code for a hydrology, and COVID prediction that used the same
-DL predition algorithm but with different data and optimization
+not related to the earthquake prediction application. This included
+removing code for hydrology, and COVID prediction that used the same
+DL prediction algorithm but with different data and optimization
 parameters. To be able to obtain the runtime the code was augmented
 with the cloudmesh StopWatch methods to report on relevant start,
-stop, status, and event actions. In addition we augmented the
+stop, status, and event actions. In addition, we augmented the
 execution of the batch scripts with code that reports energy and
 temperature.
 
@@ -1517,21 +1530,20 @@ filesystem locally available to the compute node.
 \end{table}
 
 
-\subsection{Accuracy performance}
-\subsection{Accuracy}
+\subsection{Accuracy Performance Benchmark}
 \label{sec:perf-accuracy}
 
 %%% max 15 figures abd table, subfig is one figure
 
 %%%  NB logo1.eps is required in the path in order to correctly compile front page header %%%
 
-As the focus of the MLCOmmons science working group is the improvement
+As the focus of the MLCommons science working group is the improvement
 of the accuracy of an application, we focus our next discussion on
-reporting the accuracy for the earthquake application.
+reporting the accuracy of the earthquake application.
 
-We observe that the loss of the application intersects valitaion and
-training at about the epoch value of 30-33 (see Figure~\ref{fig:loss}).  However we have
-constiently also run higher numbers of epochs just to be sure.
+We observe that the loss of the application intersects validation and
+training at about the epoch value of 30-33 (see Figure~\ref{fig:loss}).  However, we have
+constantly also run higher numbers of epochs just to be sure.
 
 \begin{figure}[htb]
     \centering
@@ -1540,24 +1552,25 @@ constiently also run higher numbers of epochs just to be sure.
     \label{fig:loss}
 \end{figure}
 
-Figures~\ref{fig:six-graphs} shows accuracy values of NNSE with
+Figures~\ref{fig:six-graphs} show accuracy values of NNSE with
 various epoch values for training and validation. We chose here 2, 30,
 and 70 epochs.  We have then created tables for the NNSE values for
 each of the epochs and sorted them by value. The higher the NNSE
 accuracy value is the better. We have created tables for the 2, 30,
-and 70 epoch hyper parameter. In addition we highlighted in the table
-the best training value with red, the second best with blue and the
-third best with three. We also highlightes the corrsponding value in
-the inference culum that corresponds to the hyperparameter for the
-time perid used in the input and output parameters. While we see for
-the 2 and 30 epoch case the same order for these three values, we see
+and 70 epoch hyper-parameters. In addition, we highlighted in the table
+the best training value with red, the second best with blue, and the
+third best with three. We also highlighted the corresponding value in
+the inference column that corresponds to the hyperparameter for the
+time period used in the input and output parameters. While we see for
+the 2 and 30 epoch cases the same order for these three values, we see
 a different order for the 70 epoch case. This can be explained through
 overfitting. Overall we find that the best accuracy can be found for
 
-An epoch value of 30  and the hyperparameter {\em Now 2wk+26AV} which has an NNSE value for training of 
+An epoch value of 30  and the hyperparameter {\em Now 2wk+26AV} which has an NNSE value for the training of 
 0.5218 and a validation value of 0.502300 
 
 \TODO{what is Now 2wk+26AV}
+
 
 
 \begin{figure}[htb]
@@ -1772,13 +1785,13 @@ Should we stop at 34 epochs or run 66?
 \label{sec:perf-energy}
 
 
-While observing initially the fat runtim of the RTX3090 on a custom
+While observing initially the fat runtime of the RTX3090 on a custom
 desktop in contrast to the A100 performance on the HPC we were asked
 to provide evidence that we use the A100 processor. The energy monitor
-we developed and intermittend event notifications through out the
+we developed and intermittent event notifications throughout the
 program provided evidence that we used the machine properly. The
-energy traces are generated periodically evey seconds. The traces for
-2, 30, and 70 epochs are depicted in Figure
+energy traces are generated periodically every second. The traces for
+2, 30, and 70 epochs are depicted in Figure \ref{fig:energy}
 
 
 \begin{figure}[p]
@@ -1872,7 +1885,12 @@ and to a number of executions and evaluations of experiment runs. {\em
 implementation of cloudmesh-sbatch and the porting of the effort to
 the UVA machine.  {\em GCF} is the author of the earthquake code and
 facilitates the interactions with the MLCommons Science Working group
-as a group leader of that effort.
+as a group leader of that effort. {\em TB} and {\em JK} participated
+in an erlier project that ported and improved the code while adding
+timers and the energy monitor developed by {\em GvL}. {\em JF} was
+enabeling the students {\em RK}, {\em TB}, and {\em JK} to participate
+in this project and provided administrative supervision to meet the
+class expectations and requirements needed for their partipation.
 
 \section*{Funding}
 
@@ -1881,7 +1899,7 @@ for Students and Technologies from Generation Z with the award numbers
 1829704 and 2200409 and NIST 60NANB21D151T.  The work was also funded
 by the Department of Energy under the grant Award
 No. DE-SC0023452. The work was conducted at the Biocomplexity
-Institute and Initiative at University of Virginia.
+Institute and Initiative at the University of Virginia.
 
 \section*{Acknowledgments}
 
@@ -1913,7 +1931,7 @@ The code is all in the public domain and available on GitHub at the following lo
   accessing cloud and HPC
   resources. \url{https://github.com/orgs/cloudmesh/repositories}
 
-\item {\bf mlcommons eartchquake production code} -- The MLCommons Sceience
+\item {\bf MLcommons earthquake production code} -- The MLCommons Science
   Working group is described at
   \url{https://mlcommons.org/en/groups/research-science/}. This page
   contains the links to the production-level earthquake code.
