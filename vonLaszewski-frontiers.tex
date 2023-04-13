@@ -1159,29 +1159,8 @@ insights into the applications performance characteristics. It is
 significant for planing a time effective scedule for parameters while
 running a subset of planed experiments.
 
-
 To have also direct access to MLCommons events, we have recently added
-the ability to call events.
-
-
-In addition to the StopWatch, we have developed a simple command line
-tool that can be used, for example, in batch scripts to monitor the
-GPU performance characteristics such as energy, temperature, and other
-arameters \citep{cloudmesh-gpu}. The tool can be started in a batch
-script as follows and is currently supporting NVIDIA GPUs:
-
-{\footnotesize
-\begin{Verbatim}[commandchars=\\\{\}]
-    cms gpu watch --gpu=0 --delay=0.5 --dense > gpu0.log &
-\end{Verbatim}
-}
-
-
-Monitoring time and system GPU information can provide significant
-insights into the application's performance characteristics. It is
-significant for planning a time-effective schedule for parameters
-while running a subset of planned experiments.
-
+the ability to call time events.
 
 
 \subsubsection{Analytics Service Pipelines}
@@ -1586,44 +1565,95 @@ overfitting. Overall we find that the best accuracy can be found for
 An epoch value of 30  and the hyperparameter {\em Now 2wk+26AV} which has an NNSE value for the training of 
 0.5218 and a validation value of 0.502300 
 
-\TODO{what is Now 2wk+26AV}
+
+\TODO{To be simplified by Thomas}
 
 In the following benchmarks a number of hyper parameters were used to
-derive accuracy values with the earthquake benchmark code.
+determine the training data that derive accuracy values with the
+earthquake benchmark code.
 
-We distinguish the following abbreviations. The first term defines <TBD> and we used the values
-{\em Now} meaning ....,
-2 weeks meaning ...,
-3M meaning ...,
-6M meaning ...,
-1Y meaning ... .
+All time data is grouped into 2 week time periods.
+
+We distinguish the following abbreviations. The first term defines the
+start point and we used the values
+
+{\em Now} means the first training time period starts at the current
+date,
+
+2 weeks means the first training time period starts at 2 weeks before
+the current date,
+
+3M means the first training time period starts at 3 months before the
+current date,
+
+6M means the first training time period starts at 6 months before the
+current date,
+
+1Y means the first training time period starts at 1 year before the
+current date.
+
+The second parameter has two values 2wk+xAVG where x is a number. The
+first defines a 2 week time period denoted by 2wk. The second defines
+how many total time groups are put in the training data.
 
 In addition we also have the values
-3 Months Back meaning ...
-Year Back meaning ...
-2 weeks Now meaning ...
 
-The second parameter has two values the first defines a time period ??? which is set in the current experiments to 2 weeks indicated by 2wk, the sedond devines ???
+3 Months Back means the first and only training time period starts at 3 months before the current date.
 
+Year Back means the first and only training time period starts at 1 year before the current date.
+
+2 weeks Now means the first and only training time period starts at the current date.
 
 \begin{description}
-\item  {\bf Now 2wk+26AVG} --
-\item  {\bf Now 2wk+13AVG} --
-\item  {\bf Now 2wk+7AVG} --
-\item  {\bf 2 weeks Now} --
-\item  {\bf 3M 2wk+26AVG} --
-\item  {\bf 3M 2wk+13AVG} --
-\item  {\bf 3M 2wk+7AVG} --
-\item  {\bf 1Y 2wk+26AVG} --
-\item  {\bf 6M 2wk+26AVG} --
-\item  {\bf 6M 2wk+13AVG} --
-\item  {\bf 1Y 2wk+13AVG} --
-\item  {\bf 6M 2wk+7AVG} --
-\item  {\bf 6 Months Back} --
-\item  {\bf 1Y 2wk+7AVG} --
-\item  {\bf Year Back} --
-\item  {\bf 3 Months Back} --
+\item {\bf Now 2wk+26AVG} -- 2 week training time periods starting at
+  the current date and ending either after 26 total time periods are
+  reached.
+\item {\bf Now 2wk+13AVG} -- 2 week training time periods starting at
+  the current date and ending either after 13 total time periods are
+  reached.
+\item {\bf Now 2wk+7AVG} -- 2 week training time periods starting at
+  the current date and ending either after 7 total time periods are
+  reached.
+\item {\bf 2 weeks Now} -- 2 week training time periods starting at
+  the current date and ending after 1 time period is reached.
+\item {\bf 3M 2wk+26AVG} -- 2 week training time periods starting at 3
+  months before the current date and ending either after 26 total time
+  periods are reached.
+\item {\bf 3M 2wk+13AVG} -- 2 week training time periods starting at 3
+  months before the current date and ending either after 13 total time
+  periods are reached.
+\item {\bf 3M 2wk+7AVG} -- 2 week training time periods starting at 3
+  months before the current date and ending either after 7 total time
+  periods are reached.
+\item {\bf 1Y 2wk+26AVG} -- 2 week training time periods starting at 1
+  year before the current date and ending either after 26 total time
+  periods are reached.
+\item {\bf 6M 2wk+26AVG} -- 2 week training time periods starting at 6
+  months before the current date and ending either after 26 total time
+  periods are reached.
+\item {\bf 6M 2wk+13AVG} -- 2 week training time periods starting at 6
+  months before the current date and ending either after 13 total time
+  periods are reached.
+\item {\bf 1Y 2wk+13AVG} -- 2 week training time periods starting at 1
+  year before the current date and ending either after 13 total time
+  periods are reached.
+\item {\bf 6M 2wk+7AVG} -- 2 week training time periods starting at 6
+  months before the current date and ending either after 7 total time
+  periods are reached.
+\item {\bf 6 Months Back} -- 2 week training time periods starting at
+  6 months before the current date and ending after 1 time period is
+  reached.
+\item {\bf 1Y 2wk+7AVG} -- 2 week training time periods starting at 1
+  year before the current date and ending either after 7 total time
+  periods are reached.
+\item {\bf Year Back} -- 2 week training time periods starting at 1
+  year before the current date and ending after 1 time period is
+  reached.
+\item {\bf 3 Months Back} -- 2 week training time periods starting at
+  3 months before the current date and ending after 1 time period is
+  reached.
 \end{description}
+
 
 
 
