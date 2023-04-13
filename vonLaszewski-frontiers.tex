@@ -409,7 +409,7 @@ to computational resources due to the computational needs posed by the
 ML implementations for applications. One common way of dealing with
 this is to use Google Collab which is easy to get access to, and use,
 in a limited fashion for free (larger computational needs will need a
-paid subscription).  However, as Collab is based on jupyter we
+paid subscription).  However, as Collab is based on Jupyter we
 experience the same disadvantages as discussed in
 Section~/ref{sec:tools}
 
@@ -424,43 +424,64 @@ more recently of text analysis and responses through ChatGPT and Bart.
 
 However, many academic institutions have access to campus-level and
 national-level computing resources in HPC centers.  This includes
-resources from DOE and NSF. Such computing resources are accessed
+resources from NSF and DOE. Such computing resources are accessed
 mostly through traditional batch queues (such as SLURM).  To allow
 sharing of the limited resources with the large user community. For
 this reason, centers often implement a scheduling policy putting
 significant restrictions on the computational resources that can be
 used at the same time, and/or for a particular period. The number of
 files and the access to a local disk on compute nodes constituting the
-HPC resources may also be limited.  This provides a potential very high
-entry barrier as these policy restrictions may not be integrated into
-the application design from the start.  Moreover, in some cases, these
-restrictions may provide a significant performance penalty when data
-is placed in a slow NFS file system instead of directly in memory
+HPC resources may also be limited.  This provides a potential very
+high entry barrier as these policy restrictions may not be integrated
+into the application design from the start.  Moreover, in some cases,
+these restrictions may provide a significant performance penalty when
+data is placed in a slow NFS file system instead of directly in memory
 (often the data does not fit in memory) or in NVMe storage if it
 exists on the computing nodes.  It is also important to understand
 that such nodes may also be shared with other users and it is
 important to provision the requirements in regards to computation
 time, memory footprint, and file storage requirements accurately so
 that scheduling can be performed most expediently.  Furthermore, the
-software on these systems is managed by the computing staff and it is
-best to develop with the version provided, which may already be
-outdated versions.  Container technologies limit this issue, by
-allowing for centers that support this to develop their own software
-stack in containers. The most popular for this is singularity, but
-some centers offer also docker.  As images developed can be rather
-large it is not sufficient to just copy the image from your local
-computer, but the center must allow the ability to create the image
-within the HPC infrastructure. This is especially true when the
-University requires all resources to be accessed through a VPN. Here
-you can often see a factor of 10 or more slowdown in transfer and
-access speeds.
+software on these systems is managed by the computing staff supporting
+a particular software version or not providing the software
+needed. Hence we face the problem of non-available software or
+outdated versions. Container technologies limit this issue, by
+allowing users in the centers to access them and to develop their own
+software stack in containers.
+ 
+\begin{comment}
+  
+  However, we experienced centers that although container images were
+  allowed by users to run on the system, the software to create the
+  images with the native tools was not allowed by the users and thus
+  making the offering of container technology mute.
 
-All this has to be learned and will take up a considerable
-time. Hence, using HPC resources has to be introduced with specialized
-educational efforts often provided by the HPC center. However,
-sometimes these courses are not targeted specifically to running a
-particular version of PyTorch or TensorFlow with cuDNN, but just the
-general aspect of accessing the queues.
+\end{comment}
+
+One of the popular container frameworks for campus HPC centers is
+singularity, but some centers offer also docker.  As images developed
+can be rather large it is not sufficient to just copy the image from
+your local computer, but the center must allow the ability to create
+the image within the HPC infrastructure. This is especially true when
+the university requires all resources to be accessed through a
+VPN. Here you can often see a factor of 10 or more slowdown in
+transfer and access speeds.
+
+All this has to be learned by the student and will take up a
+considerable time. Hence, using HPC resources has to be introduced
+with specialized educational efforts often provided by the HPC
+center. However, sometimes these general courses are not targeted
+specifically to running a particular version of PyTorch or TensorFlow
+with cuDNN, but just the general aspect of accessing the
+queues. Hence, although these efforts are often fall under the
+offereings of software carpeting the teaching objective may fall short
+as focus is placed on a limited number of software supported by the
+center instead of teaching how to install the latest version of for
+example tensorflow. Furthermore, the offered software may be limited
+in case the underlaying GPU card drivers are outdated and the software
+to be benchmarked not only needs the newest software libraries but
+also the newest device drivers which can only be installed by the HPC
+support team.
 
 Furthermore, specifically customized queues demanding allocations,
 partitions and resource requirements may not be published and a burden
@@ -471,8 +492,9 @@ Access to national-scale infrastructure is often restricted to
 research projects that require following a detailed application
 process. This process is done by the faculty supervisor and not the
 student. Background checks and review of the project may delay the
-application. Additional security requirements such as the use of Duo Mobile,
-SSH keys, and other multifactor authentication tools must be carefully taught.
+application. Additional security requirements such as the use of Duo
+Mobile, SSH keys, and other multifactor authentication tools must be
+carefully taught.
 
 In case the benchmark includes environmental monitoring such as
 temperatures on the CPU/GPU and power consumption, access may be
