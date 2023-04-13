@@ -401,6 +401,30 @@ using Python notebooks the ability to properly structure a Python code
 has been lost and the quality of writing a larger program is no longer
 prevalent with all students.
 
+\subsection{Benchmark Carpentry}
+
+Software carpentry \citep{software-carpentry} is a well-known concept
+and has been adapted to the community to teach basic lab skills for
+research computing.  The experiences from this effort have recently
+been reported to the MLCommons Science Working group. Throughout
+the discussion we identified the need is present o develop an effort
+focussing on {\em Benchmark Carpentry} that goes beyond the aspects
+typically thought in software carpentry while focussing on aspects
+about benchmarks that are not covered. This includes a review of other
+benchmark efforts such as Top500 and Geen 500, the technical
+discussion around system benchmarks including SPEC benchmarks, as
+well as tools and practices to better benchmark a system. Especial
+effort need not only to be placed on benchmarking the CPU and GPU
+capabilities, but also what effect the impact of the file system or
+the memory hierarchy has. Reproducibility while leveraging the FAIR
+principle and using software that can lead to easier reproducibility
+such as singularity, and docker, but also the creation of reproducible
+benchmark pipelines and workflows using cloudmesh-sbatch and
+cloudmesh-cc are beneficial. Such efforts can be included also in
+classes and the results of developing material for and by the
+participants can significantly lead to improving the concept of
+benchmark carpentry.
+
 
 \subsection{Infrastructure}
 
@@ -1144,14 +1168,14 @@ analysis is doing and how it can be invoked and integrated.
 The analysis must include a clear and easy-to-understand specification
 that encourages reuse and provides sufficient details about its
 functionality, data dependency, and performance. Analytics services
-may have authentication, autorotation, and access controls built in
+may have authentication, autorotation, and access controls built-in
 that enable access by users controlled by the service providers.
 
-The overall architectuere is depicted in Figure \ref{fig:cc-2}. It
-showcases a layerd architecture with componnets dealing with batch job
+The overall architecture is depicted in Figure \ref{fig:cc-2}. It
+showcases a layered architecture with components dealing with batch job
 generation, storage management, compute coordination, and
-monitoring. Thesse components sit on top of other specialized systems
-that can easily be ported to other systems while using sommon system
+monitoring. These components sit on top of other specialized systems
+that can easily be ported to other systems while using common system
 abstractions.
 
 \begin{figure}[htb]
@@ -1161,21 +1185,19 @@ abstractions.
     \label{fig:cc-2}
 \end{figure}
 
+Instead of focussing on the details of this architecture, we found that
+the high-level use of it is very important as part of the educational
+activities which also have an implication in general on the use within
+any research activity.
 
-Instead of focussing on the details of this architecture we found that
-the higl level use of it is very important as part of the educational
-activities which also has an implication in general on the use within
-any resarch activity.
-
-We identified for analytics service pipelines
-three concepts (see Figure \ref{fig:service-interaction}).
+We identified as part of the  analytics service pipelines
+three beneficial concepts (see Figure \ref{fig:service-interaction}).
 
 \begin{itemize}
 \item {\bf Selection} -- instead of performing all possible benchmarks a
-  specific parameter set is selected and only that is run.  may be for
-  example the best of n benchmark runs
-\item {\bf Competition} -- from a number of runs a result is selected. This
-  may be for example the best of n benchmark runs.
+  specific parameter set is selected and only that is run.  
+\item {\bf Competition} -- from a number of runs a result is identified that is better than others. This
+  may be, for example, the best of n benchmark runs.
 \item {\bf Cooperation} -- A number of analytics components is run
   (possibly in parallel) and the final result is a combination of the
   benchmark experiments run in cooperation. This for example could be
@@ -1183,8 +1205,8 @@ three concepts (see Figure \ref{fig:service-interaction}).
   limitations.
 \end{itemize}
 
-In the earthquake code we have observed all three patterns and used
-them in the the benchmark process.
+In the earthquake code, we have observed all three patterns are used
+in the benchmark process.
 
 \begin{figure}[htb]
 \centering\includegraphics[width=0.75\columnwidth]{images/processes-nist.pdf}
@@ -1197,6 +1219,8 @@ them in the the benchmark process.
 
 \subsubsection{Workflow Compute Coordinator}
 \label{sec:workflow-cc}
+
+% possibly some repitition here
 
 High-performance computing (HPC) is for decades a very important tool
 for science. Scientific tasks can be leveraging the processing power
@@ -1237,16 +1261,16 @@ tools to interact with it.
 \begin{figure}[htb]
     \centering
     \includegraphics[width=0.70\columnwidth]{images/cc-1.png}
-    \caption{Workflow user interface. }
+    \caption{Workflow user interface.}
     \label{fig:cc-3}
 \end{figure}
 
 
 We have tested the framework while running various MNIST application
-examples, including include Multilayer Perceptron, LSTM (Long
-short-term memory), Auto-Encoder, Convolutional, and Recurrent Neural
-Networks, Distributed Training, and PyTorch training.  A much lager
-application using earthquake prediction has also been used.
+examples, including Multilayer Perceptron, LSTM (Long short-term
+memory), Auto-Encoder, Convolutional, and Recurrent Neural Networks,
+Distributed Training, and PyTorch training.  A much lager application
+using earthquake prediction has also been used.
 
 Figure \ref{fig:fastapi-cc} shows the REST specification and
 \ref{fig:cc-2} shows the architecture.
@@ -1254,24 +1278,24 @@ Figure \ref{fig:fastapi-cc} shows the REST specification and
 \subsection{Parameterized Workflow Job Generator}
 \label{sec:workflow-sbatch}
 
-In traditional machine learning workflows, hyperparameter tuning and
+In traditional machine learning workflows, hyper-parameter tuning and
 configuration are key elements in assessing and optimizing the
 performance of models. However, scaling hyperparameters for highly
-parallel execution with hetrogenious hardware is complex.
+parallel execution with heterogeneous hardware is complex.
 
 Cloudmesh Sbatch is a hyperparameter and configuration management
 toolkit designed to address the generation of batch jobs with a
-consistent and configurable interface based upon hyperparameter values
+consistent and configurable interface based on hyperparameter values
 across multiple development toolchains. One of its functions is to
 create batch jobs based on parameterized job specifications and
-configuration files.  Cloudmesh sbatch is part of the Cloudmesh
+configuration files.  Cloudmesh-sbatch is part of the Cloudmesh
 toolkit, a set of tools and libraries for managing cloud and HPC
-resources from the command line, REST interfaces or GUI's.
-Cloudmesh sbatch can use a variety of
-queuing systems and submission commands. Currently we provide
+resources from the command line, REST interfaces, or GUI's.
+Cloudmesh-sbatch can use a variety of
+queuing systems and submission commands. Currently, we provide
 interfaces to SLURM, LSF, and ssh. As the original system was
-developer first for SLURM sbatch submissions we used the name
-cloudmesh sbatch. In future we may find a better name showcasing the
+developed first for SLURM sbatch submissions we used the name
+cloudmesh-sbatch. In the future, we may find a better name showcasing the
 generality of the system while using arbitrary queuing systems and
 submission commands.
 
@@ -1286,43 +1310,43 @@ Figure \ref{fig:cm-sbatch}.
 \end{figure}
 
 
-Where cloudmesh-sbatch differenciates itself from other template engines is its
-ability to generate a cartistian product of hyperparameter values
+Where cloudmesh-sbatch differentiates itself from other template engines is its
+ability to generate a cartesian product  (permutation) of hyperparameter values
 underneath of its {\it experiment} heading, making it trivial to
 scale an experiment from one execution to thousands of configurations
-based on the ranges and their unique combanations.  The resulting
+based on the ranges and their unique combinations.  The resulting
 output provides a generated SLURM or LSF script and a YAML
 configuration file representing the specific hyperparameters.  By
-managing highly configurable jobs with cloudmesh sbatch, focus is
+managing highly configurable jobs with cloudmesh-sbatch, the focus is
 placed on what hyperparameters to use for experiments and reduce the
 possibility of human error when running experiments over a range of
 hyperparameters.
 
 Cloudmesh-sbatch takes two configuration files. The first is a YAML
-file that includes all pameters used by the benchmark including an
+file that includes all parameters used by the benchmark including an
 experiment section that defines the cartesian product. It will 
-create slurm scripts via cloudmesh-sbatch while
+create SLURM scripts via cloudmesh-sbatch while
 
 \begin{enumerate}
-  \item create a uniqe directory for the experiment
-  \item take a parameter set from the cartesion product (permutation)
+  \item using a unique directory for the experiment
+  \item taking a parameter set from the cartesian product
     of the experiment parameters
-  \item create from a batch job template a instantiation of the
+  \item creating from a batch job template an instantiation of the
     template while replacing all variables from the configuration file
-    and replacing the specific experiment parmeters
-  \item create an instantiation of the configuration file while replacing all experiment parameters with the one for the current experiement.
+    and replacing the specific experiment parameters
+  \item creating an instantiation of the configuration file while replacing all experiment parameters with the one for the current experiment.
 \end{enumerate}
 
 This is executed for all permutations of the experiment parameters.
 
-An example of a configuration file \verb|config| includes
+An example of a configuration file \verb|config.yaml| includes
 
 {\footnotesize
 \begin{Verbatim}
     application:
         name: earthquake
 
-    data: /scratch/{os.USER}/{application.name}
+    data: /scratch/\textcolor{red}{os.USER}/{application.name}
        
     experiment:
         epoch: "1,30,60"
@@ -1350,7 +1374,6 @@ An example of a templated batch script is
     export USER_SCRATCH=/scratch/$USER
     cd USER_SCRATCH
     mkdir -p $USER_SCRATCH/{experiment.gpu}-{application.earthquake}/%j.out
-
     nvidia-smi
 
     cms gpu watch --gpu=0 --delay=0.5 --dense > outputs/gpu0.log &
@@ -1361,80 +1384,64 @@ An example of a templated batch script is
 \end{Verbatim}
 }
 
-The variables can easily be refered to with a dot notation in the
+The variables can easily be referred to with a dot notation in the
 templates.  Variables in the YAML file can also be replaced so it is
-possible to use abbreviations easily and in a consitant fashion in the
-YAML file as well as in the batch script.
+possible to use abbreviations easily and in a consistent fashion in
+the YAML file as well as in the batch script.
 
-The configuration files and sbatch can be used so that the files and
-directories are placed in the right location and repeatable
-experiments are created not only on the original machine, but the
-teplate can also be adapted easily onto other machines. An example of
-the replacement in a YAML file is given for the \verb|data| value
-where not only the operating system variable \verb|USER| is replaced,
-but also the variable \verb|{application.name}|. Obviously this is a
-significant functionality enhancement to a typical YAML file.
-Multiple values are only possible under the experiment tag, where a
-variable with multiple values is assigned a string with multiple
-values separated by commas.
+The configuration files and cloudmesh-sbatch can be configured with
+parameters so that the files and directories are placed in the right
+location and repeatable experiments are created not only on the
+original machine but the template can also be easily adapted onto
+other machines. An example of a variable replacement specification in
+YAML file is given for the \verb|data| value where not only the
+operating system variable \verb|os.USER| is replaced, but also the
+variable \verb|{application.name}|. Obviously, this is a significant
+functionality enhancement to a typical YAML file.  Multiple values are
+only possible under the experiment tag, where a variable with multiple
+values is assigned a string with multiple values separated by commas.
 
-Obciously, one can chose a number of important parameters as part of
-such a parameterization of graphics cards if available, memory, file
-systems sused, versions of python, tensorflow, epochs, leraningrate or
-other important parameters that can be varied and influence the
-benchmark.  The reason why we only allow the parameters with variation
-under \verb|experiment| is to assure that there is no confusion with
-other parameters that may not be modified with multiple values.
-Another interasting usecase is the introduction of a repeat parameter,
-allowing the program to be executed multiple times in order to for
-example support pattersn of competition or collaboration while
-selecting bets values, or creating averages.
+One can choose a number of important parameters as part of the
+permutation strategy to create different experiments. Common variables
+are names of graphics cards (if available), memory, file systems used,
+versions of Python, versions of TensorFlow, epochs, learning rate, and
+many other important parameters that can influence the benchmark.  The
+reason why we only allow the parameters with variation under
+\verb|experiment| is to assure that there is no confusion with other
+parameters that may not be modified and instead only represent a
+single value. However, variables under experiment are allowed to have
+just a single value.  Another interesting case is the introduction of
+a repeat parameter, allowing the program to be executed multiple times
+in order to for example support patterns of competition or
+collaboration while selecting best values, or creating averages.
+
 
 The final output of cloudmesh-sbatch is a shell script that contains
-all jobs to be executed with the defined permutations over the
+all jobs that are to be executed with the defined permutations over the
 parameters.
 
-One nice side effect of this is the this file can be run in parallel
-and have the queing system take over the scheduling of the job
-following the syste defined queing policies. However, it may also be
-possible to create a {\it collaborative group} submission, where
-multiple users submit a portion of the jobs so that policies by number
-of jobs per users can be avoided. Furthermore if access to multiple
-HPC machines is available the jobs could be split among the different
-machines. However, then timings may not be a useful parameter and
-accuracy output still will be meaningful.
+One nice side effect of this is that the jobs in the file can be run
+in parallel and have the queuing system take over the scheduling of
+the job following the system-defined queuing policies. However, it may
+also be possible to create a {\it collaborative group} submission ,
+using our earlier introduced collaborative pattern, where multiple
+users submit a portion of the jobs so that policies restricting the
+number of jobs per user can be avoided. Furthermore if access to
+multiple HPC machines is available the jobs could be split among the
+different machines. However, the in that case time measurements may
+not be a useful parameter. However, as in the science group, we are
+concerned about accuracy the combination of a system comprised of
+multiple resources is possible and meaningful.
 
-Our progress with the erathquake benchmark would not have been
-possible if we would not have had cloudmesh sbatch. One important
-aspect is that management of thausends of jobs that we ran was
-simplified and the jobs could be created easily while fostering
-reproducability. The resulting jobs were run in a time period of
-a month, while each job took many hours to complete. 
+Our progress with the earthquake benchmark would not have been
+possible if we would not have cloudmesh-sbatch. One important aspect
+is that the management of thousands of jobs that we ran was simplified
+and the jobs could be created easily while fostering
+reproducibility. The resulting jobs were run over a time period of a
+month, while each job took many hours to complete.
 
 
-\section{Benchmark Carpentry}
 
-Software carpentry \citep{software-carpentry} is a well known concept
-and has been adapted to the community to teach basic lab skills for
-research computing.  The experiences form this effort have recently
-been reported the MLCommons Science Working group. Throughout the
-discussion we identified that the need is presentt o develop an effort
-focussing on {\em Benchmark Carpentry} that goes beyond the aspects
-typically thought in software carpentry while focussing on aspects
-about benchmarks that are not covered. This includes a review of other
-benchmark efforts such as Top500 and Geen 500, the technical
-discussion arouns system benchmarks including specin and specfloat, as
-wll as tools and practices to better benchamrk a system. Especial
-effort need not only to be placed on benchmarking the CPU and GPU
-capabilities, but also what effect the impact of the file system or
-the memory hierachy have. Reporoducability while leveraging the FAIR
-principle and using software that can lead to easier reproducability
-such as singularity, docker, but also the creation of reproducable
-benchmark piplines and workflows using cloudmesh-sbatch and
-cloudmesh-cc are beneficial. Such efforts can be included also in
-classes and the results of developing material for and by the
-participants can significantly lead to improving the concept of
-benchmark carpentry.
 
 
 \section{Earthquake Forecast Performance Measurements}
