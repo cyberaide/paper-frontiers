@@ -1454,8 +1454,24 @@ constiently also run higher numbers of epochs just to be sure.
 Figures~\ref{fig:six-graphs} shows accuracy values of NNSE with
 various epoch values for training and validation. We chose here 2, 30,
 and 70 epochs.  We have then created tables for the NNSE values for
-each of the epochs and sorted them by value.
+each of the epochs and sorted them by value. The higher the NNSE
+accuracy value is the better. We have created tables for the 2, 30,
+and 70 epoch hyper parameter. In addition we highlighted in the table
+the best training value with red, the second best with blue and the
+third best with three. We also highlightes the corrsponding value in
+the inference culum that corresponds to the hyperparameter for the
+time perid used in the input and output parameters. While we see for
+the 2 and 30 epoch case the same order for these three values, we see
+a different order for the 70 epoch case. This can be explained through
+overfitting. Overall we find that the best accuracy can be found for
 
+An epoch value of 30  and the hyperparameter {\em Now 2wk+26AV}.
+
+\TODO{what is Now 2wk+26AV}
+
+
+
+1 & \color{red}  0.521800 & \color{red}  & \color{red} 0.502300 & \color{red} Now 2wk+26AVG \\
 
 
 \begin{figure}[htb]
@@ -1539,9 +1555,9 @@ each of the epochs and sorted them by value.
 {\bf Rank} & \multicolumn{2}{c||}{\bfseries Training} & \multicolumn{2}{c|}{\bfseries Validation}  \\
      &   {\bf NNSE} & {\bf Hyperparameters} & {\bf NNSE} & {\bf Hyperparameters} \\
 \hline
-1 & 0.521800 & Now 2wk+26AVG & 0.502300 & Now 2wk+26AVG \\
-2 & 0.506800 & 2 weeks Now & 0.470100 & 2 weeks Now \\
-3 & 0.429900 & Now 2wk+13AVG & 0.412700 & Now 2wk+13AVG \\
+1 & \color{red}  0.521800 & \color{red} Now 2wk+26AVG & \color{red} 0.502300 & \color{red} Now 2wk+26AVG \\
+2 & \color{blue} 0.506800 & \color{blue} 2 weeks Now & \color{blue} 0.470100 & \color{blue} 2 weeks Now \\
+3 & \color{teal} 0.429900 & \color{teal} Now 2wk+13AVG & \color{teal} 0.412700 & \color{teal} Now 2wk+13AVG \\
 4 & 0.405600 & Now 2wk+7AVG & 0.379700 & Now 2wk+7AVG \\
 5 & 0.302500 & 3M 2wk+26AVG & 0.295800 & 3M 2wk+26AVG \\
 6 & 0.278800 & 3M 2wk+13AVG & 0.270300 & 1Y 2wk+26AVG \\
@@ -1551,10 +1567,10 @@ each of the epochs and sorted them by value.
 10 & 0.235800 & 1Y 2wk+7AVG & 0.238200 & 1Y 2wk+13AVG \\
 11 & 0.233000 & 3 Months Back & 0.228900 & 3M 2wk+7AVG \\
 12 & 0.232600 & 1Y 2wk+13AVG & 0.219700 & 3 Months Back \\
-13 & \color{teal} 0.201600 & \color{teal} 6 Months Back & \color{red} 0.204500 & \color{red} Year Back \\
+13 & 0.201600 &  6 Months Back & 0.204500 & Year Back \\
 14 & 0.197000 & 6M 2wk+13AVG & 0.201600 & 6M 2wk+13AVG \\
-15 & 0.192700 & \color{blue} 6M 2wk+7AVG & \color{teal} 0.201000 & \color{teal} 6 Months Back \\
-16 & \color{red} 0.191300 & \color{red} Year Back & \color{blue} 0.195200 & \color{blue} 6M 2wk+7AVG \\
+15 & 0.192700 &  6M 2wk+7AVG &  0.201000 & 6 Months Back \\
+16 &  0.191300 & Year Back & 0.195200 & 6M 2wk+7AVG \\
 \hline
 \end{tabular}
 }
@@ -1586,9 +1602,9 @@ each of the epochs and sorted them by value.
      {\bf NNSE} &
      {\bf Hyperparameters} \\
 \hline
-1 & 0.586000 & Now 2wk+26AVG & 0.484100 & Now 2wk+26AVG \\
-2 & 0.559200 & Now 2wk+13AVG & 0.453000 & Now 2wk+13AVG \\
-3 & 0.517900 & Now 2wk+7AVG & 0.409300 & Now 2wk+7AVG \\
+1 & \color{red} 0.586000 & \color{red} Now 2wk+26AVG & \color{red} 0.484100 & \color{red} Now 2wk+26AVG \\
+2 & \color{blue} 0.559200 & \color{blue} Now 2wk+13AVG & \color{blue} 0.453000 & \color{blue} Now 2wk+13AVG \\
+3 & \color{teal} 0.517900 & \color{teal} Now 2wk+7AVG & \color{teal}0.409300 & \color{teal} Now 2wk+7AVG \\
 4 & 0.488800 & 2 weeks Now & 0.398900 & 3M 2wk+26AVG \\
 5 & 0.450800 & 3M 2wk+26AVG & 0.384100 & 2 weeks Now \\
 6 & 0.418900 & 6M 2wk+26AVG & 0.374500 & 6M 2wk+26AVG \\
@@ -1600,8 +1616,8 @@ each of the epochs and sorted them by value.
 12 & 0.171600 & 1Y 2wk+13AVG & 0.153600 & 1Y 2wk+13AVG \\
 13 & 0.089700 & 3 Months Back & 0.090400 & 3 Months Back \\
 14 & 0.082900 & 1Y 2wk+7AVG & 0.076500 & 1Y 2wk+7AVG \\
-15 & \color{blue} 0.069500 & \color{blue} 6 Months Back & \color{blue} 0.070300 & \color{blue} 6 Months Back \\
-16 & \color{red} 0.047600 & \color{red} Year Back & \color{red} 0.050500 & \color{red} Year Back \\
+15 & 0.069500 &  6 Months Back & 0.070300 & 6 Months Back \\
+16 &  0.047600 & Year Back & 0.050500 & Year Back \\
 \hline
 \end{tabular}
 }
