@@ -1625,44 +1625,46 @@ The second parameter has two values the first defines a time period ??? which is
 \item  {\bf 3 Months Back} --
 \end{description}
 
-\begin{figure}[htb]
 
+
+
+\begin{table}[htb]
+  \caption{The top 20 accuracy values based on hyperparameters with 2, 30, and 70 epochs}
+  \label{tab:ranking-accuracy}
+  \renewcommand{\arraystretch}{1.2}
   \begin{center}
-
-     \begin{minipage}[b]{0.45\textwidth}
-       \includegraphics[width=1.0\linewidth]{images/2_training-MSE-and-NNSE.pdf}
-        {\bf (A)} MSE and NNSE - 2 epochs training.
-    \end{minipage}
-     \ \
-     \begin{minipage}[b]{0.45\textwidth}
-        \includegraphics[width=1.0\linewidth]{images/2_validation-MSE-and-NNSE.pdf}
-        {\bf (B)}  MSE and NNSE - 2 epochs validation.
-     \end{minipage}
-
-     \begin{minipage}[b]{0.45\textwidth}
-        \includegraphics[width=1.0\linewidth]{images/30_training-MSE-and-NNSE.pdf}
-        {\bf (C)} MSE and NNSE - 30 epochs training.
-     \end{minipage}
-     \ \
-     \begin{minipage}[b]{0.45\textwidth}
-        \includegraphics[width=1.0\linewidth]{images/30_validation-MSE-and-NNSE.pdf}
-        {\bf (D)} MSE and NNSE - 30 epochs validation.
-     \end{minipage}
-
-     \begin{minipage}[b]{0.45\textwidth}
-        \includegraphics[width=1.0\linewidth]{images/70_training-MSE-and-NNSE.pdf}
-        {\bf (E)} MSE and NNSE - 70 epochs training.
-     \end{minipage}
-     \ \
-     \begin{minipage}[b]{0.45\textwidth}
-        \includegraphics[width=1.0\linewidth]{images/70_validation-MSE-and-NNSE.pdf}
-        {\bf (F)}  MSE and NNSE - 70 epochs validation.
-     \end{minipage}
+    {\footnotesize  
+\begin{tabular}{|l||r|r|l|r|r|l|}
+  \hline
+ &   \multicolumn{3}{c|}{\bf \textcolor{red}{Training}}  & \multicolumn{3}{c|}{\bf \textcolor{blue}{Validation}}  \\
+{\bf Rank} &  {\bf NNSE} &  {\bf Epoch} & {\bf Hyper-parameter} & {\bf NNSE} &  {\bf Epoch} & {\bf Hyper-parameter}\\
+\hline
+\textcolor{red}{1}  &  \textcolor{red}{0.6930} &     \textcolor{red}{70} &  \textcolor{red}{Now 2wk+26AVG} &  \textcolor{blue}{0.5582} &     \textcolor{blue}{70} &  \textcolor{blue}{Now 2wk+26AVG} \\
+2  &  0.6681 &     70 &  Now 2wk+26AVG &  0.5487 &     70 &  Now 2wk+26AVG \\
+3  &  0.6549 &     70 &  Now 2wk+13AVG &  0.5377 &      2 &    2 weeks Now \\
+4  &  0.6419 &     30 &  Now 2wk+26AVG &  0.5292 &      2 &  Now 2wk+26AVG \\
+5  &  0.6371 &     30 &  Now 2wk+26AVG &  0.5246 &     30 &  Now 2wk+26AVG \\
+6  &  0.6295 &     70 &  Now 2wk+13AVG &  0.5156 &     70 &  Now 2wk+13AVG \\
+7  &  0.6274 &     70 &   Now 2wk+7AVG &  0.5150 &     30 &  Now 2wk+26AVG \\
+8  &  0.6178 &     30 &  Now 2wk+26AVG &  0.5133 &     30 &  Now 2wk+26AVG \\
+9  &  0.6101 &     30 &  Now 2wk+26AVG &  0.5050 &     70 &  Now 2wk+13AVG \\
+10 &  0.6063 &     30 &  Now 2wk+13AVG &  0.5034 &     30 &  Now 2wk+26AVG \\
+11 &  0.6009 &     70 &   Now 2wk+7AVG &  0.4975 &     30 &  Now 2wk+26AVG \\
+12 &  0.5978 &     30 &  Now 2wk+13AVG &  0.4897 &     70 &   Now 2wk+7AVG \\
+13 &  0.5948 &     70 &    2 weeks Now &  0.4860 &     30 &  Now 2wk+13AVG \\
+14 &  0.5900 &     30 &  Now 2wk+26AVG &  0.4766 &     70 &   Now 2wk+7AVG \\
+15 &  0.5880 &     30 &   Now 2wk+7AVG &  0.4766 &     30 &  Now 2wk+13AVG \\
+16 &  0.5864 &     30 &  Now 2wk+13AVG &  0.4734 &      2 &  Now 2wk+13AVG \\
+17 &  0.5818 &      2 &    2 weeks Now &  0.4675 &     70 &  Now 2wk+26AVG \\
+18 &  0.5790 &     30 &   Now 2wk+7AVG &  0.4631 &     30 &   Now 2wk+7AVG \\
+19 &  0.5786 &     30 &    2 weeks Now &  0.4618 &     30 &    2 weeks Now \\
+20 &  0.5696 &     70 &    2 weeks Now &  0.4594 &      2 &  Now 2wk+26AVG \\
+\hline
+\end{tabular}
+}
 \end{center}
+\end{table}
 
-     \caption{NNSE and MSE values for training and validation for epochs 2 (A, B), 30 (C, D), 70 (E, F).}
-     \label{fig:six-graphs}
-\end{figure}
 
 %we have finalized the EQ code but want to make absolutely sure that we
 %look at the correct values for the scientific comparison.
@@ -1687,137 +1689,6 @@ The second parameter has two values the first defines a time period ??? which is
 %The Magnification based on a years worth of back data, while looking two
 %weeks ahead + 26 what?
 
-\begin{table}[p]
-
-  \caption{Training and validation with time-based hyperparameters
-    sorted by NNSE accuracy. The table includes the best two
-    values highlighted in the training and validation results to
-    showcase the accuracy of the validation. In the validation,
-    we see that the best value for training is in rank four for the
-    validation. The number of Epochs for this experiment is 2.
-    26 is half of 52 and so 26 2-week intervals is a year.}
-  \label{tab:training-2}
-
-  \renewcommand{\arraystretch}{1.2}
-  \begin{center}
-    {\footnotesize
-\begin{tabular}{|r|rl||rl|}
-  \hline
-{\bf Rank} & \multicolumn{2}{c||}{\bfseries Training} & \multicolumn{2}{c|}{\bfseries Validation}  \\
-     &   {\bf NNSE} & {\bf Hyperparameters} & {\bf NNSE} & {\bf Hyperparameters} \\
-\hline
-1 & \color{red}  0.521800 & \color{red} Now 2wk+26AVG & \color{red} 0.502300 & \color{red} Now 2wk+26AVG \\
-2 & \color{blue} 0.506800 & \color{blue} 2 weeks Now & \color{blue} 0.470100 & \color{blue} 2 weeks Now \\
-3 & \color{teal} 0.429900 & \color{teal} Now 2wk+13AVG & \color{teal} 0.412700 & \color{teal} Now 2wk+13AVG \\
-4 & 0.405600 & Now 2wk+7AVG & 0.379700 & Now 2wk+7AVG \\
-5 & 0.302500 & 3M 2wk+26AVG & 0.295800 & 3M 2wk+26AVG \\
-6 & 0.278800 & 3M 2wk+13AVG & 0.270300 & 1Y 2wk+26AVG \\
-7 & 0.251700 & 6M 2wk+26AVG & 0.266200 & 3M 2wk+13AVG \\
-8 & 0.251600 & 1Y 2wk+26AVG & 0.264400 & 6M 2wk+26AVG \\
-9 & 0.243000 & 3M 2wk+7AVG & 0.249500 & 1Y 2wk+7AVG \\
-10 & 0.235800 & 1Y 2wk+7AVG & 0.238200 & 1Y 2wk+13AVG \\
-11 & 0.233000 & 3 Months Back & 0.228900 & 3M 2wk+7AVG \\
-12 & 0.232600 & 1Y 2wk+13AVG & 0.219700 & 3 Months Back \\
-13 & 0.201600 &  6 Months Back & 0.204500 & Year Back \\
-14 & 0.197000 & 6M 2wk+13AVG & 0.201600 & 6M 2wk+13AVG \\
-15 & 0.192700 &  6M 2wk+7AVG &  0.201000 & 6 Months Back \\
-16 &  0.191300 & Year Back & 0.195200 & 6M 2wk+7AVG \\
-\hline
-\end{tabular}
-}
-\end{center}
-
-%\end{table}
-
-%\begin{table}[htb]
-
-  \caption{Training and validation with time-based hyperparameters
-    sorted by NNSE accuracy. The table includes the best two
-    values highlighted in the training and validation results to
-    showcase the accuracy of the validation. In the validation,
-    we see that the best value for training is in rank four for the
-    validation. The number of Epochs for this experiment is 30.
-  }
-  \label{tab:training-30}
-
-  \renewcommand{\arraystretch}{1.2}
-  \begin{center}
-        {\footnotesize
-\begin{tabular}{|r|rl||rl|}
-\hline
-{\bf Rank} &
-\multicolumn{2}{c||}{\bfseries Training} &
-\multicolumn{2}{c|}{\bfseries Validation} \\
-     {\bf NNSE} &
-     {\bf Hyperparameters} &
-     {\bf NNSE} &
-     {\bf Hyperparameters} \\
-\hline
-1 & \color{red} 0.586000 & \color{red} Now 2wk+26AVG & \color{red} 0.484100 & \color{red} Now 2wk+26AVG \\
-2 & \color{blue} 0.559200 & \color{blue} Now 2wk+13AVG & \color{blue} 0.453000 & \color{blue} Now 2wk+13AVG \\
-3 & \color{teal} 0.517900 & \color{teal} Now 2wk+7AVG & \color{teal}0.409300 & \color{teal} Now 2wk+7AVG \\
-4 & 0.488800 & 2 weeks Now & 0.398900 & 3M 2wk+26AVG \\
-5 & 0.450800 & 3M 2wk+26AVG & 0.384100 & 2 weeks Now \\
-6 & 0.418900 & 6M 2wk+26AVG & 0.374500 & 6M 2wk+26AVG \\
-7 & 0.394600 & 3M 2wk+13AVG & 0.343400 & 3M 2wk+13AVG \\
-8 & 0.341800 & 6M 2wk+13AVG & 0.302800 & 6M 2wk+13AVG \\
-9 & 0.330300 & 3M 2wk+7AVG & 0.291900 & 3M 2wk+7AVG \\
-10 & 0.319600 & 1Y 2wk+26AVG & 0.290100 & 1Y 2wk+26AVG \\
-11 & 0.208100 & 6M 2wk+7AVG & 0.186200 & 6M 2wk+7AVG \\
-12 & 0.171600 & 1Y 2wk+13AVG & 0.153600 & 1Y 2wk+13AVG \\
-13 & 0.089700 & 3 Months Back & 0.090400 & 3 Months Back \\
-14 & 0.082900 & 1Y 2wk+7AVG & 0.076500 & 1Y 2wk+7AVG \\
-15 & 0.069500 &  6 Months Back & 0.070300 & 6 Months Back \\
-16 &  0.047600 & Year Back & 0.050500 & Year Back \\
-\hline
-\end{tabular}
-}
-
-\end{center}
-\end{table}
-
-
-\begin{table}[htb]
-
-  \caption{Training and validation with time-based hyperparameters
-    sorted by NNSE accuracy. The table includes the best two
-    values highlighted in the training and validation results to
-    showcase the accuracy of the validation. In the validation,
-    we see that the best value for training is in rank four for the
-    validation. The number of Epochs for this experiment is 70.}
-  \label{tab:training-70}
-
-  \renewcommand{\arraystretch}{1.2}
-  \begin{center}
-        {\footnotesize
-\begin{tabular}{|r|rl||rl|}
-  \hline
-{\bf Rank} & \multicolumn{2}{c||}{\bfseries Training} & \multicolumn{2}{c|}{\bfseries Validation} \\
-     &   {\bf NNSE} & {\bf Hyperparameters} & {\bf NNSE} & {\bf Hyperparameters} \\
-              \hline
- 01 & \color{red} 0.490400 & \color{red} Now 2wk+26AVG & \color{red} 0.412500 & \color{red} Now 2wk+26AVG \\
- 02 & \color{blue} 0.465800 & \color{blue}  Now 2wk+13AVG & \color{blue} 0.385800 & \color{blue} Now 2wk+13AVG \\
- 03 & \color{teal} 0.441300 &  \color{teal} Now 2wk+7AVG & 0.370700 & 3M 2wk+26AVG \\
- 04 & 0.425700 & 2 weeks Now & \color{teal} 0.359400 & \color{teal} Now 2wk+7AVG \\
- 05 & 0.421000 & 3M 2wk+26AVG & 0.344500 & 2 weeks Now \\
- 06 & 0.385200 & 3M 2wk+13AVG & 0.333000 & 3M 2wk+13AVG \\
- 07 & 0.335400 & 3M 2wk+7AVG & 0.293500 & 1Y 2wk+26AVG \\
- 08 & 0.318800 & 1Y 2wk+26AVG & 0.291100 & 3M 2wk+7AVG \\
- 09 & 0.295900 & 6M 2wk+26AVG & 0.269700 & 6M 2wk+26AVG \\
- 10 & 0.252100 & 6M 2wk+13AVG & 0.235400 & 6M 2wk+13AVG \\
- 11 & 0.153500 & 1Y 2wk+13AVG & 0.142800 & 1Y 2wk+13AVG \\
- 12 & 0.138400 & 6M 2wk+7AVG & 0.133700 & 6M 2wk+7AVG \\
- 13 & 0.105300 & 6 Months Back & 0.102200 & 6 Months Back \\
- 14 & 0.083100 & 1Y 2wk+7AVG & 0.084300 & 1Y 2wk+7AVG \\
- 15 & 0.073500 & Year Back & 0.071200 & Year Back \\
- 16 & 0.067400 & 3 Months Back & 0.069800 & 3 Months Back \\
-\hline
-\end{tabular}
-}
-  \end{center}
-
-
-\end{table}
 
 
 code management is important, github is essential
@@ -1844,128 +1715,51 @@ to provide evidence that we use the A100 processor. The energy monitor
 we developed and intermittent event notifications throughout the
 program provided evidence that we used the machine properly. The
 energy traces are generated periodically every second. The traces for
-2, 30, and 70 epochs are depicted in Figure \ref{fig:energy}.
+2, 30, and 70 epochs are depicted in Figure \ref{fig:energy-graphs}.
 
 
 \citep{green500}
 
 
-
-\begin{figure}[p]
-
-  \begin{center}
-     \begin{minipage}[t]{0.30\textwidth}
-        \includegraphics[width=1.0\linewidth]{images/a100-shaded-energy-2-epochs.pdf}
-        {\bf (A)} Energy consumption for 2 epochs training and validation.
-     \end{minipage}
-     \ \
-     \begin{minipage}[t]{0.30\textwidth}
-        \includegraphics[width=1.0\linewidth]{images/a100-shaded-energy-30-epochs.pdf}
-        {\bf (B)} Energy consumption for 30 epochs training and validation.
-     \end{minipage}
-     \ \
-     \begin{minipage}[t]{0.30\textwidth}
-        \includegraphics[width=1.0\linewidth]{images/a100-shaded-energy-70-epochs.pdf}
-        {\bf (C)} Energy consumption for 70 epochs training and validation.
-     \end{minipage}
-  \end{center}
-
-  \caption {Energy monitoring for 2, 30, and 70 epochs for training and validation for the A100.}
-  \label{fig:energy}
-
-\end{figure}
-
-
-
-\begin{comment}
-\begin{figure}[p]
+\begin{figure}[htb]
 
   \begin{center}
-     \begin{minipage}[t]{0.30\textwidth}
-        \includegraphics[width=1.0\linewidth]{images/card-name-v100-gpu-count-1-cpu-num-6-mem-32gb-repeat-1-tfttransformerepochs-2.png}
-        {\bf (A)} Energy consumption for 2 epochs training and validation.
-     \end{minipage}
+
+     \begin{minipage}[b]{0.40\textwidth}
+       \includegraphics[width=1.0\linewidth]{images/a100-shaded-energy-2-epochs.pdf}
+        {\bf (A)} A100 Energy trace for 2 epochs training and validation.
+    \end{minipage}
      \ \
-     \begin{minipage}[t]{0.30\textwidth}
-        \includegraphics[width=1.0\linewidth]{images/card-name-v100-gpu-count-1-cpu-num-6-mem-32gb-repeat-1-tfttransformerepochs-30.png}
-        {\bf (B)} Energy consumption for 30 epochs training and validation.
-     \end{minipage}
-     \ \
-     \begin{minipage}[t]{0.30\textwidth}
-        \includegraphics[width=1.0\linewidth]{images/card-name-v100-gpu-count-1-cpu-num-6-mem-32gb-repeat-1-tfttransformerepochs-70.png}
-        {\bf (C)} Energy consumption for 70 epochs training and validation.
-     \end{minipage}
-  \end{center}
-
-  \caption {Energy monitoring for 2, 30, and 70 epochs for training and validation for the A100.}
-  \label{fig:energy}
-
-\end{figure}
-\end{comment}
-
-
-
-
-\begin{comment}
-
-  %images/v100-shaded-energy-25-epochs.pdf
-  %images/v100-shaded-energy-29-epochs.pdf
-  %images/v100-shaded-energy-33-epochs.pdf
-  %images/v100-shaded-energy-35-epochs.pdf
-
-
-
-  \begin{figure}[p]
-
-  \begin{center}
-     \begin{minipage}[t]{0.30\textwidth}
+     \begin{minipage}[b]{0.40\textwidth}
         \includegraphics[width=1.0\linewidth]{images/v100-shaded-energy-2-epochs.pdf}
-        {\bf (A)} Energy consumption for 2 epochs training and validation.
+        {\bf (B)}  V100 Energy trace for 2 epochs training and validation.
+     \end{minipage}
+
+     \begin{minipage}[b]{0.40\textwidth}
+        \includegraphics[width=1.0\linewidth]{images/a100-shaded-energy-30-epochs.pdf}
+        {\bf (C)} A100 Energy trace for 30 epochs training and validation.
      \end{minipage}
      \ \
-     \begin{minipage}[t]{0.30\textwidth}
+     \begin{minipage}[b]{0.40\textwidth}
         \includegraphics[width=1.0\linewidth]{images/v100-shaded-energy-30-epochs.pdf}
-        {\bf (B)} Energy consumption for 30 epochs training and validation.
+        {\bf (D)} V100 Energy trace for 30 epochs training and validation.
+     \end{minipage}
+
+     \begin{minipage}[b]{0.40\textwidth}
+       \includegraphics[width=1.0\linewidth]{images/a100-shaded-energy-70-epochs.pdf}
+        {\bf (E)} A100 Energy trace for 70 epochs training and validation.
      \end{minipage}
      \ \
-     \begin{minipage}[t]{0.30\textwidth}
-       \includegraphics[width=1.0\linewidth]{images/v100-shaded-energy-70-epochs.pdf}
-        {\bf (C)} Energy consumption for 70 epochs training and validation.
+     \begin{minipage}[b]{0.40\textwidth}
+        \includegraphics[width=1.0\linewidth]{images/v100-shaded-energy-70-epochs.pdf}
+        {\bf (F)}  V100 Energy trace for 70 epochs training and validation.
      \end{minipage}
-  \end{center}
+\end{center}
 
-  \caption {Energy monitoring for 2, 30, and 70 epochs for training and validation for the A100.}
-  \label{fig:energy}
-
-  \end{figure}
-\end{comment}
-
-%%%%%%%
-
-\begin{comment}
-
-\begin{figure}[p]
-
-  \begin{center}
-     \begin{minipage}[t]{0.65\textwidth}
-        \includegraphics[width=1.0\linewidth]{images/NNSE-all-epochs-training}
-        {\bf (A)} NNSE for training.
-     \end{minipage}
-  \end{center}
-  \ \
-  \begin{center}
-     \begin{minipage}[t]{0.65\textwidth}
-        \includegraphics[width=1.0\linewidth]{images/NNSE-all-epochs-validation}
-        {\bf (B)} NNSE for validation.
-     \end{minipage}
-  \end{center}
-
-  \caption {NNSE comparison}
-  \label{fig:NNSE-comparison-v100}
-
+     \caption{Energy traces for training and validation for epochs 2 (A, B), 30 (C, D), 70 (E, F).}
+     \label{fig:energy-graphs}
 \end{figure}
 
-\end{comment}
 
 
 
