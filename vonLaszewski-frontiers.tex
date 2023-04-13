@@ -1454,11 +1454,6 @@ month, while each job took many hours to complete.
 \section{Earthquake Forecast Performance Measurements}
 \label{sec:perf-main}
 
-
-\subsection{Measuring Runtime}
-\label{sec:perf-runtime}
-
-
 The code was significantly modified by removing other code that was
 not related to the earthquake prediction application. This included
 removing code for hydrology, and COVID prediction that used the same
@@ -1469,30 +1464,46 @@ stop, status, and event actions. In addition, we augmented the
 execution of the batch scripts with code that reports energy and
 temperature.
 
-\subsection{Perfomance projection}
+\subsection{Measuring Runtime}
+\label{sec:perf-runtime}
 
+After the gode augmentations augmentation it was possible to identify
+a projected runtime on various systems while running at predifined
+times. As our ML code performs about linearly with incresing epochs it
+was first important to predict the performance as to create accurate
+reservation requests on the HPC system.
 
-Through this augmentation it was possible to identify a projected
-runtime on various systems while running at predifined
-times. Figure~\ref{fig:performance-projection} shows such a predition
-for a machine that has RTX3090 GPU. This machine performs quite fast
-as it not only has large fast memory (128MB), but also stores all the
-data on a fast NVMe. In fact, this machine was faster that the
-available systems at University of Virginia due to its superior file
-system performance. As the earthquake application uses lots of data
-IO, this makes a big difference and has buided us through the approach
-we needed to tak on the HPC machine including suggestions for
-improving data access speeds to the system staff.
+Figure~\ref{fig:performance-projection} A shows the time measured for
+a 2 epoch case while the botom portion of the graph indicates the time
+spend in the GPU and the top for preparation and data postprocessing.
+We repeated such experiments for small er numbers of epochs in order
+to project the time needed. This allowed us to estimate the
+anticipated runtime for the experiments when varying the number of
+epchs between 2 and 70. The total runtime for the initial
+configurations using the HPC recommended file system. Is showcased in
+Figure~\ref{fig:performance-projection} B. In addtion we adde the
+times opbtained on a desktop using an AMD 5950X with an RTX30990 and
+128 GB of memory while all data was located on an NVMe. The data on
+the HPC system was located as recommended by the cebter on an NSF
+storage system.  As we see the desktop with the RTX3090 GPU performed
+significantly faster then the HPC compute node equipped with any other
+GPU including an A100.  To showcase the different runtimes we showcase
+the results for a 2 epoch case in Table \ref{tab:2-epoch-case}. To our
+initial surprise we found that the RTX3090 machine was originally
+almost 2.67 times better than the HPC machine with an A100.
 
-To showcase the different runtimes we showcase the results for a 2
-epoch case in Table \ref{tab:2-epoch-case}. To our initial surprise we
-found that the RTX3090 machine was originally almost 2.67 times better
-than the HPC machine with an A100. Fatser processor, better memory,
-and espacially the fast NVMe instead of a slow NSF mounted filesystem
-are the reason for this performance. Initially everyone was surprised
-about these numbers, but it lead to suggestions on how to imporve
-performance by for example adding an NVMe storage and access to a
-filesystem locally available to the compute node.
+This desktop also significantly outperformed the application when it
+was executed on google collab. In face the time on Google collab
+althoough good for small epochs quickly deterioted with increasing
+number of epoch due to the older GPUs available at that time on Google
+Collab.
+
+The reason why the desktop performed to well is that it had up to date
+fast memory and that the data was hosted on fast NVMe storge. As the
+earthquake application uses many data requests fast IO makes a big
+difference. This performance analysis has guided us to improve the HPC
+machine. Future expansions of the HPC machine include 28TB of of fast
+to the GPUs accessible NVMe storage.
 
 
 \begin{figure}[p]
