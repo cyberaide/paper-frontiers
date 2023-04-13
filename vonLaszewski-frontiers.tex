@@ -134,18 +134,12 @@ here comes abstarct text
 
 \section{Introduction}
 
-\REPLACE{
 In this paper, we summarize some of the insights that we obtained for
 a High-Performance Computing Big Data Systems applied to the
 MLCommons Earthquake Benchmarks Efforts. This includes
 insights into the usability of the HPC Big Data Systems, the usage of
 the MLCommons benchmarking system, and the insights from the applicability in
 educational efforts.
-}{
-  new
-}
-
-
 
 Benchmarking is an important effort in using HPC Big Data systems.
 While using benchmarks, we can compare the performance of various
@@ -881,33 +875,6 @@ results are shown in Table~\ref{tab:file-performance} which include
 various file systems at the University of Virginias Rivanna HPC but also a
 comparison with a personal computer from a student.
 
-Based on this observation it was infeasible to consider running the
-earthquake benchmark on the regularl configured HPC nodes as they ran
-on some resources for almost 24 hours. This is also the limit the
-Rivana system allows for one job. Hence we were allowed to use a
-special compute node that has additional NVMe storage available and
-accessible to us. On those nodes (in the Table listed as
-\verb|/localsratch|) we were able to obtain a very suitable performance
-for this application while having a 10 times fold increase in access in
-contrast to the scratch file system and almost double the performance
-given to us on the project file system. The /tmp system although being
-fast was for our application not sufficiently large and also performs
-slower than the \verb|/localscratch| set up for us. In addition, we
-also made an experiment using a shared memory-based hosted filesystem
-in the nodes RAM.
-
-
-What we learn from this experience is that an HPC system must provide
-a fast file system locally available on the nodes to serve the GPUs
-adequately. The computer should be designed form that start to not
-only have the fastest possible GPUs for large data processing, but
-also a very fast filesystem that can keep up with the data input
-requirements presented by the GPU. Furthermore, in case updated GPUs
-are purchased it is not sufficient to just take the previous
-generation motherboard and CPU processor and memory, but to update the
-hardware components and include a state-of-the-art compute note. This
-often prevents the repurposing of the node while adding just GPUs.
-
 \begin{table}[htb]
   \caption{Filetransfer performance of various file systems on Rivanna}
   \label{tab:file-performance}
@@ -933,6 +900,32 @@ often prevents the repurposing of the node while adding just GPUs.
   \end{center}
   }
 
+
+Based on this observation it was infeasible to consider running the
+earthquake benchmark on the regularl configured HPC nodes as they ran
+on some resources for almost 24 hours. This is also the limit the
+Rivana system allows for one job. Hence we were allowed to use a
+special compute node that has additional NVMe storage available and
+accessible to us. On those nodes (in the Table listed as
+\verb|/localsratch|) we were able to obtain a very suitable performance
+for this application while having a 10 times fold increase in access in
+contrast to the scratch file system and almost double the performance
+given to us on the project file system. The /tmp system although being
+fast was for our application not sufficiently large and also performs
+slower than the \verb|/localscratch| set up for us. In addition, we
+also made an experiment using a shared memory-based hosted filesystem
+in the nodes RAM.
+
+What we learn from this experience is that an HPC system must provide
+a fast file system locally available on the nodes to serve the GPUs
+adequately. The computer should be designed form that start to not
+only have the fastest possible GPUs for large data processing, but
+also a very fast filesystem that can keep up with the data input
+requirements presented by the GPU. Furthermore, in case updated GPUs
+are purchased it is not sufficient to just take the previous
+generation motherboard and CPU processor and memory, but to update the
+hardware components and include a state-of-the-art compute note. This
+often prevents the repurposing of the node while adding just GPUs.
 
   
 
@@ -1009,6 +1002,7 @@ specialized anlaytics programs also. A simple use case is depicted
 next (we have ommitted other advanced features such as function
 decorators for the StopWatch to keep the example simple):
 
+\begin{figure}[htb]
 {\footnotesize
 \begin{Verbatim}[commandchars=\\\{\}]
     from cloudmesh.common import StopWatch 
@@ -1023,6 +1017,11 @@ decorators for the StopWatch to keep the example simple):
     Stopwatch.benchmark()                       \textcolor{blue}{\it # prints the current results}
 \end{Verbatim}
 }
+
+    \caption{Cloudmesh monitoring components.}
+    \label{fig:cc-2}
+\end{figure}
+
 
 To have also direct access to MLCommons events, we have recently added
 the ability to call events.
@@ -1082,21 +1081,22 @@ the higl level use of it is very important as part of the educational
 activities which also has an implication in general on the use within
 any resarch activity.
 
-We identified for analytics service pipelines three concepts (see
-Figure \ref{fig:service-interaction}).
+We identified for analytics service pipelines
+three concepts (see Figure \ref{fig:service-interaction}).
+\TODO{WHYIS FIGURE NOT numbered}
 
-\begin{description}
-\item [Selection] -- instead of performing all possible benchmarks a
+\begin{itemize}
+\item {\bf Selection} -- instead of performing all possible benchmarks a
   specific parameter set is selected and only that is run.  may be for
   example the best of n benchmark runs
-\item [Competition] -- from a number of runs a result is selected. This
+\item {\bf Competition} -- from a number of runs a result is selected. This
   may be for example the best of n benchmark runs.
-\item [Cooperation] -- A number of analytics components is run
+\item {\bf Cooperation} -- A number of analytics components is run
   (possibly in parallel) and the final result is a combination of the
   benchmark experiments run in cooperation. This for example could be
   that the job is split across multiple jobs due to resource
   limitations.
-\end{description}
+\end{itemize}
 
 In the earthquake code we have observed all three patterns and used
 them in the the benchmark process.
@@ -1449,7 +1449,7 @@ constiently also run higher numbers of epochs just to be sure.
     \includegraphics[width=0.70\columnwidth]{images/loss.png}
     \caption{Loss}
     \label{fig:loss}
-  \end{figure}
+\end{figure}
 
 Figures~\ref{fig:six-graphs} shows accuracy values of NNSE with
 various epoch values for training and validation. We chose here 2, 30,
@@ -1465,13 +1465,10 @@ the 2 and 30 epoch case the same order for these three values, we see
 a different order for the 70 epoch case. This can be explained through
 overfitting. Overall we find that the best accuracy can be found for
 
-An epoch value of 30  and the hyperparameter {\em Now 2wk+26AV}.
+An epoch value of 30  and the hyperparameter {\em Now 2wk+26AV} which has an NNSE value for training of 
+0.5218 and a validation value of 0.502300 
 
 \TODO{what is Now 2wk+26AV}
-
-
-
-1 & \color{red}  0.521800 & \color{red}  & \color{red} 0.502300 & \color{red} Now 2wk+26AVG \\
 
 
 \begin{figure}[htb]
@@ -1677,20 +1674,22 @@ Need to look into the implementation of bestfit
 Need to look into memory dependency of epochs
 Should we stop at 34 epochs or run 66?
 
-\TODO{add k80 elsewher}
-
-{\footnotesize
-\begin{verbatim}
-Cloudmesh Data Submodule - https://github.com/cloudmesh/cloudmesh-data
-Cloudmesh GPU Submodule - https://github.com/cloudmesh/cloudmesh-gpu
-Cloudmesh sbatch Submodule - https://github.com/cloudmesh/cloudmesh-sbatch 
-\end{verbatim}
-}
+\TODO{add k80 elsewhere}
 
 
 
 \subsection{Energy}
 \label{sec:perf-energy}
+
+
+While observing initially the fat runtim of the RTX3090 on a custom
+desktop in contrast to the A100 performance on the HPC we were asked
+to provide evidence that we use the A100 processor. The energy monitor
+we developed and intermittend event notifications through out the
+program provided evidence that we used the machine properly. The
+energy traces are generated periodically evey seconds. The traces for
+2, 30, and 70 epochs are depicted in Figure
+
 
 \begin{figure}[htb]
 
@@ -1711,10 +1710,14 @@ Cloudmesh sbatch Submodule - https://github.com/cloudmesh/cloudmesh-sbatch
      \end{minipage}
   \end{center}
 
-  \caption {Energy monitoring for 2, 30, and 70 epochs for training and validation.}
+  \caption {Energy monitoring for 2, 30, and 70 epochs for training and validation for the A100.}
   \label{fig:energy}
 
 \end{figure}
+
+%%%%%%%
+
+
 
 \begin{figure}[p]
 
@@ -1738,7 +1741,23 @@ Cloudmesh sbatch Submodule - https://github.com/cloudmesh/cloudmesh-sbatch
 \end{figure}
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{comment}
+\TODO{TODO}
+
+{\footnotesize
+\begin{verbatim}
+Cloudmesh Data Submodule - https://github.com/cloudmesh/cloudmesh-data
+Cloudmesh GPU Submodule - https://github.com/cloudmesh/cloudmesh-gpu
+Cloudmesh sbatch Submodule - https://github.com/cloudmesh/cloudmesh-sbatch 
+\end{verbatim}
+}
+\end{comment}
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 \section{Nomenclature}
 
@@ -1782,6 +1801,8 @@ initial runs of the code, and experimenting with modifications to the
 code including logging. Please note that since this team finished
 their work, significant improvements have been made by the authors of
 this paper.
+
+
 
 \section*{Data Availability Statement}
 
