@@ -1572,44 +1572,28 @@ and hope to conduct them in future.
     \label{fig:loss}
 \end{figure}
 
-\begin{comment}
-Figures~\ref{fig:six-graphs} show accuracy values of NNSE with
-various epoch values for training and validation. We chose here 2, 30,
-and 70 epochs.  We have then created tables for the NNSE values for
-each of the epochs and sorted them by value. The higher the NNSE
-accuracy value is the better. We have created tables for the 2, 30,
-and 70 epoch hyper-parameters. In addition, we highlighted in the table
-the best training value with red, the second best with blue, and the
-third best with three. We also highlighted the corresponding value in
-the inference column that corresponds to the hyperparameter for the
-time period used in the input and output parameters. While we see for
-the 2 and 30 epoch cases the same order for these three values, we see
-a different order for the 70 epoch case. This can be explained through
-overfitting. Overall we find that the best accuracy can be found for
 
-\end{comment}
+\subsection{Hyperparameters for Input and Prediction Data}
 
-\subsection{Input and Output Hyperparameters}
+\TODO{Verify if the ranges seek backwards or forwards when sampling
 
-For the rest of the experiments we have chosen different numbers of
-input and output variables for our deep learning algorithm.
+  Where does this go to:
+  
+  An epoch value of 30 and the hyperparameter {\em Now 2wk+26AV} which
+  has an NNSE value for the training of 0.5218 and a validation value of
+  0.502300
 
+}
 
-An epoch value of 30 and the hyperparameter {\em Now 2wk+26AV} which
-has an NNSE value for the training of 0.5218 and a validation value of
-0.502300
-
-
-\TODO{Verify if the ranges seek backwards or forwards when sampling}
-
-  In the subsequent benchmark results, groupings of data were used as
-  hyperparameters and leveraged as training data to optimize their
-  associated accuracy values.
-
-  The data was categorized using the following rules
+For the rest of the experiments we have chosen different for input and
+output vectors that are used to generate the accuracy using our deep
+learning algorithm. Thus, in the subsequent benchmark results,
+groupings of data are used as hyperparameters and leveraged as
+training data to optimize their associated accuracy values. The data
+is categorized using the following rules
 
   \begin{itemize}
-    \item All data were grouped into 2-week periods
+    \item All data are grouped into 2-week periods
     \item The term {\em Now} means the most recent date from the dataset,
           the Term {\em #M} or {\em #Y} corresponds to the number of Months or Years
           prior to {\em Now} to use when sampling the data. 
@@ -1619,13 +1603,15 @@ has an NNSE value for the training of 0.5218 and a validation value of
           When not specified, only one observation is collected.
   \end{itemize}
 
-  Thus, applying these rules, a range of values is established by first specifying
-  a time and then the number of observations to include.  For example, a value of
-  {\em 1Y 2wk+26AVG} is the resulting dataset containing a grouped set of values
-  representing 2-week periods, seeking 1 year back from the most recent observation
-  and walking backward until 26 groups have been included.  As another
-  example, the value of {\em 1 Year Back} is a single 2 week occurrence one 
-  year ago from the rolling training date.
+Thus, applying these rules, a range of values is established by first
+specifying a time and then the number of observations to include.  For
+example, a value of {\em 1Y 2wk+26AVG} is the resulting dataset
+containing a grouped set of values representing 2-week periods,
+seeking 1 year back from the most recent observation and walking
+backward until 26 groups have been included.  As another example, the
+value of {\em 1 Year Back} is a single 2 week occurrence one year ago
+from the rolling training date.
+
 
 
 \begin{table}[htb]
