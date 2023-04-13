@@ -217,8 +217,8 @@ application, present data for the runtime
 
 MLCommons is a non-profit organization with the goal to
 accelerate machine learning innovation to benefit everyone with the
-help of more than 70 members from industry, academia, and government
-\citep{www-mlcommons}. Its main focus is to develop standardized
+help of more than 70 members from industry, academia, and
+government~\citep{www-mlcommons}. Its main focus is to develop standardized
 benchmarks for measuring performance systems using machine
 learning while applying them to various applications. This includes,
 but is not limited to, application areas from healthcare, automotive,
@@ -243,6 +243,8 @@ A list of selected benchmarks for the working groups focusing on
 inference, training, and science are shown in Table~\ref{tab:mlcommons-benchmarks}.
 
 
+\REPLACE{}{DimeNet++ for Training: HPC is omitted, all of Inference: Mobile and Inference: Tiny are omitted, not sure if it should be included.}
+
 \begin{table}[htb]
   \caption{MLCommons Benchmarks}
   \label{tab:mlcommons-benchmarks}
@@ -253,16 +255,16 @@ inference, training, and science are shown in Table~\ref{tab:mlcommons-benchmark
   \begin{tabular}{lllllp{6cm}}
     Name & Training & Inference & HPC & Science & Area \\
     \hline
-    MiniGo          & \YES & & & &  Neural-network based Go AI, using TensorFlow\\
-    Mask R-CNN      & \YES & & & & Instance segmentation, developed on top of Faster R-CNN \\
-    DLRM & \YES     & \YES & & &   Deep Learning Recommendation Model \\
-    BERT & \YES     & \YES &  & &  Natural Language Processing \\
+    Mini Go         & \YES & & & &  Neural-network based Go AI, using TensorFlow\\
+    Mask R-CNN & \YES & & & & Instance segmentation, developed on top of Faster R-CNN \\
+    DLRM  & \YES     & \YES & & &   Deep Learning Recommendation Model \\
+    BERT-large & \YES     & \YES &  & &  Natural Language Processing \\
     ResNet-50 v1.5  & \YES & \YES & & &  Image Classification \\
     RetinaNet & \YES & \YES & & &  Object Detection \\
-    RNN-T           & \YES & \YES & & &  Speech Recognition \\
-    3D U-Net & \YES & \YES & & &  Medical Imaging \\
+    RNN-T  & \YES & \YES & & &  Speech Recognition \\
+    3D U-Net  & \YES & \YES & & &  Medical Imaging \\
     OpenCatalyst & & & \YES & &   Chemical reactions analysis \\
-    DeepCam & & & \YES & &  Deep Learning Climate Segmentation Benchmark \\
+    DeepCAM & & & \YES & &  Deep Learning Climate Segmentation Benchmark \\
     CosmoFlow \citep{cosmoflow} & & & \YES & & Cosmology and Nongalactic Astrophysics \\
     Earthquake & & & & \YES &  Earthquake forecasting \\
     Uno & & & & \YES & Predicting tumor response to drugs \\
