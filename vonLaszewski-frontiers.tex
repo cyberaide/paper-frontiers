@@ -145,9 +145,9 @@ was conducted as part of several educational efforts and has
 identified lessons learned have such complex benchmarks can be
 integrated into courses and research activities at universities. As
 such we have outlined the many lessons that we learned throughout these
-efforts culminating in the need for benchmark carpentry for scientists
+efforts culmulating in the need for benchmark carpentry for scientists
 using advanced computational resources. The paper also presents
-several benchmarks while focusing on the accuracy of the
+several benchmarks while focussing on the accuracy of the
 result. Energy traces were produced throughout these benchmarks
 showcasing that in addition to the usual time related benchmarks
 energy-related benchmarks can be useful. The activity was only
@@ -388,21 +388,21 @@ student.
 
 Another important aspect is the use of a capable editor in support of
 Python syntax with code highlighting and code inspection. The use of
-tools such as Notepad++, IDLE, or other simplistic editors is
+tools such as notepad++, IDLE, or other simplistic editors is
 insufficient. Instead, students ought to use tools such as {\em
-  PyCharm} and, as an alternative choice, {\em Visual Studio Code} (vscode).
-These editors provide sophisticated features to improve code quality
-and also integrate with git. One of the strengths of PyCharm is that
-it has a sophisticated code inspector and auto-completion, making writing
+  pycharm} and as alternative choice {\em vscode}. These editors
+provide sophisticated features to improve code quality and also
+integrate with git. One of the strengths of pyCharm is that it has a
+sophisticated code inspector and auto-completion, making writing
 reliable code faster. Vscode may be known to some students, but its
-default features seem not to match that of PyCharm. In addition, a
+default features seem not to match that of pyCharm. In addition, a
 command line editor may be needed to simplify direct editing on remote
 HPC machines using a command terminal. Although students can choose
-editors such as vi, Vim, Pico, or nano, we found that a better editor
-for students to learn is Emacs. We found that it is possible to teach
+editors such as vi, vim, nano, or pico, we found that a better editor
+for students to learn is emacs. We found that it is possible to teach
 emacs in 5 minutes to students while focusing on the 10 most important
-commands. If more sophisticated commands are needed, the Emacs
-reference card is a valuable helper. It also has the advantage that in
+commands. If more sophisticated commands are needed, the emacs
+reference card is a valuable helper. It has also the advantage that in
 bash and other shells running in a terminal, the same commands can be
 used, and thus complexity is reduced by only learning a small number
 of edit commands.
@@ -435,13 +435,13 @@ Software carpentry \citep{software-carpentry} is a well-known concept
 and has been adapted to the community to teach basic lab skills for
 research computing.  The experiences from this effort have recently
 been reported to the MLCommons Science Working group. Throughout
-the discussion, we identified the need to present or develop an effort
-focusing on {\em Benchmark Carpentry} that goes beyond the aspects
-typically thought in software carpentry while focusing on aspects
+the discussion we identified the need is present o develop an effort
+focussing on {\em Benchmark Carpentry} that goes beyond the aspects
+typically thought in software carpentry while focussing on aspects
 about benchmarks that are not covered. This includes a review of other
-benchmark efforts such as TOP500 and Green500, the technical
+benchmark efforts such as Top500 and Geen 500, the technical
 discussion around system benchmarks including SPEC benchmarks, as
-well as tools and practices to better benchmark a system. Special
+well as tools and practices to better benchmark a system. Especial
 effort need not only to be placed on benchmarking the CPU and GPU
 capabilities, but also what effect the impact of the file system or
 the memory hierarchy has. Reproducibility while leveraging the FAIR
@@ -458,9 +458,9 @@ benchmark carpentry.
 An additional aspect ML students are exposed to is the need for access
 to computational resources due to the computational needs posed by the
 ML implementations for applications. One common way of dealing with
-this is to use Google Colab, which is easy to get access to and use
+this is to use Google Collab which is easy to get access to, and use,
 in a limited fashion for free (larger computational needs will need a
-paid subscription). However, as Colab is based on JupyterLab, we
+paid subscription).  However, as Collab is based on Jupyter we
 experience the same disadvantages as discussed in
 Section~\ref{sec:tools}.
 
@@ -470,7 +470,7 @@ Salesforce, and others.  In addition to the computational needs for
 executing neural networks and deep learning algorithms, we find also
 services that can be accessed mainly through REST APIs to be
 integrated into the application research. Most popular for such tools
-are focusing on natural language processing such as translation and
+are focussing on natural language processing such as translation and
 more recently of text analysis and responses through ChatGPT and Bart.
 
 However, many academic institutions have access to campus-level and
@@ -687,7 +687,7 @@ following lessons provided significant add-on learning experiences:
 \subsection{MLCommons Deep-Learning based Course Curriculumn}
 
 We can utilize the MLCommons effort to center a course curriculum
-around it. For this to work the course will be focusing on deep
+around it. For this to work the course will be focussing on deep
 learning while using examples from MLCommons benchmarks as well as
 additional enhancements into other topics that may not be covered.
 
@@ -723,7 +723,7 @@ combination thereof.
   and code packaging with pip. The use of GitHub is introduced.
   
 \item{\bf Convolutional Neural Networks:} A deeper understanding is taught
-  by focusing on convolutional neural networks (CNNs). The example of
+  by focussing on convolutional neural networks (CNNs). The example of
   Mask R-CNN is explained.
 
 \item{\bf Recurrent Neural Networks:} RNNs are taught and applications of
@@ -948,7 +948,7 @@ is how the data is represented. For example, for the earthquake
 benchmark, we found that the original dataset was 11GB big. However,
 we found that the data can be easily compressed by a factor of
 100. This is significant, as in this case the entire dataset can be
-stored in GitHub. The compressed xz archive file is only 21 MB and
+stored in Github. The compressed xz archive file is only 21 MB and
 downloading only the archive file using wget takes 0.253s. In case the
 dataset and its repository are downloaded with Git we note that the
 entire Git repository is
@@ -971,8 +971,8 @@ is not useful due to the vast number of data points. Therefore the
 best way to store this data even in an object store is as a single
 entry of compressed overall data.  Other MLCommons Science working
 group benchmarks have datasets in the order of 500GB to
-12TB. Obviously the need special considerations when placed on a
-compute system where the students storage capacities may be limited by
+12TB. Obviously the need special considerations whne placed on a
+compute system where the students storage capacaties may be limited by
 policy.
 
 
@@ -988,7 +988,7 @@ RTX3090 in contrast to using the HPC center recommended filesystems
 when using an A100. For this reason, we have made a simple test and
 measure the performance to read access the various file systems. The
 results are shown in Table~\ref{tab:file-performance} which include
-various file systems at the University of Virginia's Rivanna HPC but also a
+various file systems at the University of Virginias Rivanna HPC but also a
 comparison with a personal computer from a student.
 
 \begin{table}[htb]
@@ -1082,7 +1082,7 @@ of the HPC centers policies and split the benchmarking tasks across a
 number of jobs, based on the parameter permutations. This allows also
 easier parallelization.
 
-For this reason, von Laszewski, Knuuti et.al. have implemented {\it
+For this reason von Laszewski, Knuuti at.al. have implemented {\it
   cloudmesh-sbatch} that provides a batch job generator creating
 parallel jobs based on a permutation of experiment parameters that are
 defined in a configuration file. The tool will create for each job its
@@ -1096,7 +1096,7 @@ users. This system was developed by von Laszewski and contains two
 components (a) a general stopwatch (b) a mechanism to monitor the GPU
 as discussed in \ref{sec:monitoring}.
 
-We describe these systems briefly while focusing on the applicability
+We describe these systems briefly while focussing on the applicability
 for benchmarks.
 
 \subsection{Cloudmesh Monitoring}
@@ -1127,13 +1127,13 @@ function decorators for the StopWatch to keep the example simple).
     from cloudmesh.common import StopWatch 
     ...
     StopWatch.event("start")                    \textcolor{blue}{\it # this where the timer starts}
-    StopWatch.start("earthquake")               \textcolor{blue}{\it # this is when the main benchmark starts}
+    Stopwatch.start("earthquake")               \textcolor{blue}{\it # this is when the main benchmark starts}
     {\it ... run the earthquake code}
     {\it ... additional timers could be used here}
     with StopWatchBlock("name")                 \textcolor{blue}{\it # this demonstrates how to use a block timer}
        run_long_calculation()
-    StopWatch.stop("earthquake")                \textcolor{blue}{\it # this is where the main benchmark ends}
-    StopWatch.benchmark()                       \textcolor{blue}{\it # prints the current results}
+    Stopwatch.stop("earthquake")                \textcolor{blue}{\it # this is where the main benchmark ends}
+    Stopwatch.benchmark()                       \textcolor{blue}{\it # prints the current results}
 \end{Verbatim}
 }
 
@@ -1144,8 +1144,8 @@ the ability to call events.
 In addition to the StopWatch we have developed a simple commandline
 tool that can be used for example in batch scripts to monitor the GPU
 performance characteristics such as energy, temperature and other
-parameters \citep{cloudmesh-gpu}. The tool can be started in a batch
-script as follows and is currently supporting NVIDIA GPUs:
+arameters \citep{cloudmesh-gpu}. The tool can be started in a batch
+script as follwos and is currently supporting NVIDIA GPUs:
 
 {\footnotesize
 \begin{Verbatim}[commandchars=\\\{\}]
@@ -1192,7 +1192,7 @@ abstractions.
     \label{fig:cc-2}
 \end{figure}
 
-Instead of focusing on the details of this architecture, we found that
+Instead of focussing on the details of this architecture, we found that
 the high-level use of it is very important as part of the educational
 activities which also have an implication in general on the use within
 any research activity.
@@ -1252,23 +1252,23 @@ the same time leveraging capabilities provided by the local compute
 environments to direct interface with graphical visualizations better
 suited for the desktop. The goal is to provide numerous workflows that
 in cooperation enhance the experience of the analytics tasks. This
-includes a REST service (see Figure {fig:fastapi-cc}) and command line
+includes a REST service (see Figure \ref{fig:cc-3} A) and command line
 tools to interact with it.
 
 
 \begin{figure}[htb]
-\centering\includegraphics[width=0.7\columnwidth]{images/fastapi-service.png}
-\caption{Fast API Workflow Service.}
-% better resolution
-\label{fig:fastapi-cc}
-\end{figure}
+  \centering\includegraphics[width=0.7\columnwidth]{images/fastapi-service-highres.png}
+  
+  {\bf (A) Fast API workflow service.}
+
+  \bigskip
 
 
+    \centering\includegraphics[width=0.70\columnwidth]{images/cc-1.png}
 
-\begin{figure}[htb]
-    \centering
-    \includegraphics[width=0.70\columnwidth]{images/cc-1.png}
-    \caption{Workflow user interface.}
+    {\bf (B) Workflow user interface.}
+
+    \caption{Workflow interfaces.}
     \label{fig:cc-3}
 \end{figure}
 
@@ -1279,8 +1279,8 @@ memory), Auto-Encoder, Convolutional, and Recurrent Neural Networks,
 Distributed Training, and PyTorch training.  A much lager application
 using earthquake prediction has also been used.
 
-Figure \ref{fig:fastapi-cc} shows the REST specification and
-\ref{fig:cc-2} shows the architecture.
+Figure \ref{fig:cc-3} A shows the REST specification and
+\ref{fig:cc-3} B shows graphical user interface.
 
 \subsection{Parameterized Workflow Job Generator}
 \label{sec:workflow-sbatch}
@@ -1454,11 +1454,6 @@ month, while each job took many hours to complete.
 \section{Earthquake Forecast Performance Measurements}
 \label{sec:perf-main}
 
-
-\subsection{Measuring Runtime}
-\label{sec:perf-runtime}
-
-
 The code was significantly modified by removing other code that was
 not related to the earthquake prediction application. This included
 removing code for hydrology, and COVID prediction that used the same
@@ -1469,40 +1464,65 @@ stop, status, and event actions. In addition, we augmented the
 execution of the batch scripts with code that reports energy and
 temperature.
 
-\subsection{Perfomance projection}
+\subsection{Measuring Runtime}
+\label{sec:perf-runtime}
+
+After the gode augmentations augmentation it was possible to identify
+a projected runtime on various systems while running at predifined
+times. As our ML code performs about linearly with incresing epochs it
+was first important to predict the performance as to create accurate
+reservation requests on the HPC system.
+
+Figure~\ref{fig:performance-projection} A shows the time measured for
+a 2 epoch case while the botom portion of the graph indicates the time
+spend in the GPU and the top for preparation and data postprocessing.
+We repeated such experiments for small er numbers of epochs in order
+to project the time needed. This allowed us to estimate the
+anticipated runtime for the experiments when varying the number of
+epchs between 2 and 70. The total runtime for the initial
+configurations using the HPC recommended file system. Is showcased in
+Figure~\ref{fig:performance-projection} B. In addtion we adde the
+times opbtained on a desktop using an AMD 5950X with an RTX30990 and
+128 GB of memory while all data was located on an NVMe. The data on
+the HPC system was located as recommended by the cebter on an NSF
+storage system.  As we see the desktop with the RTX3090 GPU performed
+significantly faster then the HPC compute node equipped with any other
+GPU including an A100.  To showcase the different runtimes we showcase
+the results for a 2 epoch case in Table \ref{tab:2-epoch-case}. To our
+initial surprise we found that the RTX3090 machine was originally
+almost 2.67 times better than the HPC machine with an A100.
+
+This desktop also significantly outperformed the application when it
+was executed on google collab. In face the time on Google collab
+althoough good for small epochs quickly deterioted with increasing
+number of epoch due to the older GPUs available at that time on Google
+Collab.
+
+The reason why the desktop performed to well is that it had up to date
+fast memory and that the data was hosted on fast NVMe storge. As the
+earthquake application uses many data requests fast IO makes a big
+difference. This performance analysis has guided us to improve the HPC
+machine. Future expansions of the HPC machine include 28TB of of fast
+to the GPUs accessible NVMe storage.
 
 
-Through this augmentation it was possible to identify a projected
-runtime on various systems while running at predifined
-times. Figure~\ref{fig:performance-projection} shows such a predition
-for a machine that has RTX3090 GPU. This machine performs quite fast
-as it not only has large fast memory (128MB), but also stores all the
-data on a fast NVMe. In fact, this machine was faster that the
-available systems at University of Virginia due to its superior file
-system performance. As the earthquake application uses lots of data
-IO, this makes a big difference and has guided us through the approach
-we needed to take on the HPC machine including suggestions for
-improving data access speeds to the system staff.
+\begin{figure}[p]
 
-To showcase the different runtimes we showcase the results for a 2
-epoch case in Table \ref{tab:2-epoch-case}. To our initial surprise we
-found that the RTX3090 machine was originally almost 2.67 times better
-than the HPC machine with an A100. Faster processor, better memory,
-and especially the fast NVMe instead of a slow NSF mounted filesystem
-are the reason for this performance. Initially everyone was surprised
-about these numbers, but it lead to suggestions on how to improve
-performance by for example adding an NVMe storage and access to a
-filesystem locally available to the compute node.
+  \centering\includegraphics[width=0.75\columnwidth]{images/Graphics_Cards_BestFit_bar.pdf}
 
+  {\bf (A)} Performance time measurements while using only 2 epochs on
+  various systems with different GPUs.}
 
-\begin{figure}[htb]
-    \centering
-    \includegraphics[width=0.70\columnwidth]{images/performance-projection.png}
-    \caption{Performance projection. }
-    \label{fig:performance-projection}
+  \centering\includegraphics[width=0.75\columnwidth]{images/Benchmark_comp_resource.pdf}
+
+  {\bf (B)} Performance time benchmark for various GPU cards on
+  different systems and variation of epochs.}
+    
+  \caption{Performance time measurements.}
+  \label{fig:performance-projection}
 \end{figure}
 
-
+    
 \begin{table}[htb]
     \caption{Runtime of the 2 epoch case in seconds}
     \label{tab:2-epoch-case}
@@ -1566,54 +1586,36 @@ An epoch value of 30  and the hyperparameter {\em Now 2wk+26AV} which has an NNS
 0.5218 and a validation value of 0.502300 
 
 
-\TODO{To be simplified by Thomas}
+\TODO{Verify if the ranges seek backwards or forwards when sampling}
 
-In the following benchmarks a number of hyper parameters were used to
-determine the training data that derive accuracy values with the
-earthquake benchmark code.
+  In the subsequent benchmark results, groupings of data were used as
+  hyperparameters and leveraged as training data to optimize their
+  associated accuracy values.
 
-All time data is grouped into 2 week time periods.
+  The data was categorized using the following rules
 
-We distinguish the following abbreviations. The first term defines the
-start point for the first training time period before the current date
-the model is on. In the case of Now the start point is the current
-date.
+  \begin{itemize}
+    \item All data were grouped into 2-week periods
+    \item The term {\em Now} means the most recent date from the dataset,
+          the Term {\em #M} or {\em #Y} corresponds to the number of Months or Years
+          prior to {\em Now} to use when sampling the data. 
+    \item An optional moving window is applied based on a range of 2-week groupings
+          from the specified time frame.  For example, 2wk+26AVG is
+          code for performing the calculation over 26 groupings.
+          When not specified, only one observation is collected.
+  \end{itemize}
 
-The second parameter has two values 2wk+xAVG where x is a number. The
-first defines a 2 week time period denoted by 2wk. The second defines
-how many total time groups are put in the training data.
-
-In addition we also have the values which only have one time period, 3
-Months Back, 6 Months Back, Year Back and 2 weeks Now.
-
-Some examples are:
-\begin{itemize}
-\item {\bf Now 2wk+26AVG} -- 2 week training time periods at the
-  current date and ending after 26 total time periods are reached.
-\item {\bf 3M 2wk+13AVG} -- 2 week training time periods starting at 3
-  months before the current date and ending after 13 total time
-  periods are reached.
-\item {\bf 1Y 2wk+7AVG} -- 2 week training time periods starting at 1
-  year before the current date and ending after 7 total time periods
-  are reached.
-\item {\bf 6 Months Back} -- 2 week training time periods starting at
-  6 months before the current date and ending after 1 time period is
-  reached.
-\item {\bf Year Back} -- 2 week training time periods starting at 1
-  year before the current date and ending after 1 time period is
-  reached.
-\item {\bf 3 Months Back} -- 2 week training time periods starting at
-  3 months before the current date and ending after 1 time period is
-  reached.
-\item {\bf 2 weeks Now} -- 2 week training time periods starting at
-  the current date and ending after 1 time period is reached.
-\end{itemize}
-
+  Thus, applying these rules, a range of values is established by first specifying
+  a time and then the number of observations to include.  For example, a value of
+  {\em 1Y 2wk+26AVG} is the resulting dataset containing a grouped set of values
+  representing 2-week periods, seeking 1 year back from the most recent observation
+  and walking backward until 26 groups have been included.  As another
+  example, the value of {\em 1 Year Back} is a single 2 week occurrence one 
+  year ago from the rolling training date.
 
 
 \begin{table}[htb]
-  \caption{The top 20 accuracy values based on hyperparameters with 2,
-    30, and 70 epochs}
+  \caption{The top 20 accuracy values based on hyperparameters with 2, 30, and 70 epochs}
   \label{tab:ranking-accuracy}
   \renewcommand{\arraystretch}{1.2}
   \begin{center}
@@ -1648,6 +1650,26 @@ Some examples are:
 }
 \end{center}
 \end{table}
+
+
+
+training
+
+rank, nnse, epoch, name
+17, 0.5818, 2, 2 weeks Now
+40, 0.4473, 2, 2 weeks Now
+56, 0.4098, 2, 2 weeks Now
+65, 0.3800, 2, 2 weeks Now
+109, 0.2969,2, 2 weeks Now
+
+[5:30 PM]J.P.: VALIDATION
+rank, nnse, epoch, name
+3, 0.5377, 2, 2 weeks Now
+33, 0.4221, 2, 2 weeks Now
+55, 0.3646, 2, 2 weeks Now
+61, 0.3518, 2, 2 weeks Now
+116, 0.2647, 2, 2 weeks Now
+
 
 
 %we have finalized the EQ code but want to make absolutely sure that we
