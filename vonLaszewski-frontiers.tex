@@ -462,7 +462,7 @@ this is to use Google Collab which is easy to get access to, and use,
 in a limited fashion for free (larger computational needs will need a
 paid subscription).  However, as Collab is based on Jupyter we
 experience the same disadvantages as discussed in
-Section~/ref{sec:tools}.
+Section~\ref{sec:tools}.
 
 Other resources for machine learning can be found in the cloud. This
 may include IaaS and PaaS offerings from Amazon, Azure, Google Cloud,
@@ -852,7 +852,7 @@ NSE and generates visualizations illustrating the TFT for
 interpretable multi-horizon time series
 forecasting~\citep{TFT-21}. Details of the current reference models
 can be found in~\citep{fox2022-jm}.  In this paper, we only focus on
-the LSTM implementation.
+the TFT implementation.
 
 \subsection{Insights into Development from the Earthquake Code}
 
@@ -860,15 +860,16 @@ The original code was developed with the goal to create a DL method
 called {\em tevelop} to apply special time-series evolution for
 multiple applications including earthquake, hydrology, and COVID
 prediction. The code was presented in a large Python Jupyter notebook
-on Google Collab.  Due to the integration of multiple applications (hydrology and covid), the
-code was difficult to understand and maintain. For this reason, the
-total number of lines of 13500 was reduced by more than 2400 lines
-when the hydrology and the COVID code were removed.  However, at the
-same time, we restructured the code and reached a final length of about
-11100 lines of code.  The original code contained all hyperparameters
-and needed to be changed every time a hyperparameter was modified.
-The code included all definitions of variables and hyperparameters in
-the code itself. The code could be further made shorter by separating the model code into a library.
+on Google Collab.  Due to the integration of multiple applications
+(hydrology and covid), the code was difficult to understand and
+maintain. For this reason, the total number of lines of 13500 was
+reduced by more than 2400 lines when the hydrology and the COVID code
+were removed.  However, at the same time, we restructured the code and
+reached a final length of about 11100 lines of code.  The original
+code contained all hyperparameters and needed to be changed every time
+a hyperparameter was modified.  The code included all definitions of
+variables and hyperparameters in the code itself. The code could be
+further made shorter by separating the model code into a library.
 
 As we can see from this code has some major issues that future
 versions ought to address. First, the code includes every aspect that
@@ -1068,7 +1069,7 @@ the services provided are controlled by the application user and not
 necessarily by the cloud or HPC provider. Thus we distinguish the need
 for a workflow service that can utilize heterogeneous HPC systems
 while leveraging the same parameter set to conduct a benchmark for
-comparison. Such a framework was presented by von Laszewski, Fleisher,
+comparison. Such a framework was presented by von Laszewski, Fleischer,
 et.al. in \citep{las-22-arxiv-workflow-cc} and is based on our earlier
 work on workflows in clouds and Grids.
 
@@ -1257,7 +1258,7 @@ tools to interact with it.
 
 
 \begin{figure}[htb]
-  \centering\includegraphics[width=0.7\columnwidth]{images/fastapi-service.png}
+  \centering\includegraphics[width=0.7\columnwidth]{images/fastapi-service-highres.png}
   
   {\bf (A) Fast API workflow service.}
 
@@ -1558,8 +1559,11 @@ of the accuracy of an application, we focus our next discussion on
 reporting the accuracy of the earthquake application.
 
 We observe that the loss of the application intersects validation and
-training at about the epoch value of 30-33 (see Figure~\ref{fig:loss}).  However, we have
-constantly also run higher numbers of epochs just to be sure.
+training at about the epoch value of 30-33 (see
+Figure~\ref{fig:loss}).  However, we have constantly also run higher
+numbers of epochs just to be sure and found our best accuracy values
+when using 70 epochs. We heve not undertaken studies with more epochs
+and hope to conduct them in future.
 
 \begin{figure}[htb]
     \centering
@@ -1568,34 +1572,28 @@ constantly also run higher numbers of epochs just to be sure.
     \label{fig:loss}
 \end{figure}
 
-Figures~\ref{fig:six-graphs} show accuracy values of NNSE with
-various epoch values for training and validation. We chose here 2, 30,
-and 70 epochs.  We have then created tables for the NNSE values for
-each of the epochs and sorted them by value. The higher the NNSE
-accuracy value is the better. We have created tables for the 2, 30,
-and 70 epoch hyper-parameters. In addition, we highlighted in the table
-the best training value with red, the second best with blue, and the
-third best with three. We also highlighted the corresponding value in
-the inference column that corresponds to the hyperparameter for the
-time period used in the input and output parameters. While we see for
-the 2 and 30 epoch cases the same order for these three values, we see
-a different order for the 70 epoch case. This can be explained through
-overfitting. Overall we find that the best accuracy can be found for
 
-An epoch value of 30  and the hyperparameter {\em Now 2wk+26AV} which has an NNSE value for the training of 
-0.5218 and a validation value of 0.502300 
+\subsection{Hyperparameters for Input and Prediction Data}
 
+\TODO{Verify if the ranges seek backwards or forwards when sampling
 
-\TODO{Verify if the ranges seek backwards or forwards when sampling}
+  Where does this go to:
+  
+  An epoch value of 30 and the hyperparameter {\em Now 2wk+26AV} which
+  has an NNSE value for the training of 0.5218 and a validation value of
+  0.502300
 
-  In the subsequent benchmark results, groupings of data were used as
-  hyperparameters and leveraged as training data to optimize their
-  associated accuracy values.
+}
 
-  The data was categorized using the following rules
+For the rest of the experiments we have chosen different for input and
+output vectors that are used to generate the accuracy using our deep
+learning algorithm. Thus, in the subsequent benchmark results,
+groupings of data are used as hyperparameters and leveraged as
+training data to optimize their associated accuracy values. The data
+is categorized using the following rules
 
   \begin{itemize}
-    \item All data were grouped into 2-week periods
+    \item All data are grouped into 2-week periods
     \item The term {\em Now} means the most recent date from the dataset,
           the Term {\em \#M} or {\em \#Y} corresponds to the number of Months or Years
           prior to {\em Now} to use when sampling the data. 
@@ -1605,13 +1603,15 @@ An epoch value of 30  and the hyperparameter {\em Now 2wk+26AV} which has an NNS
           When not specified, only one observation is collected.
   \end{itemize}
 
-  Thus, applying these rules, a range of values is established by first specifying
-  a time and then the number of observations to include.  For example, a value of
-  {\em 1Y 2wk+26AVG} is the resulting dataset containing a grouped set of values
-  representing 2-week periods, seeking 1 year back from the most recent observation
-  and walking backward until 26 groups have been included.  As another
-  example, the value of {\em 1 Year Back} is a single 2 week occurrence one 
-  year ago from the rolling training date.
+Thus, applying these rules, a range of values is established by first
+specifying a time and then the number of observations to include.  For
+example, a value of {\em 1Y 2wk+26AVG} is the resulting dataset
+containing a grouped set of values representing 2-week periods,
+seeking 1 year back from the most recent observation and walking
+backward until 26 groups have been included.  As another example, the
+value of {\em 1 Year Back} is a single 2 week occurrence one year ago
+from the rolling training date.
+
 
 
 \begin{table}[htb]
