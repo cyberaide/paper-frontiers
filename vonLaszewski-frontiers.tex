@@ -852,7 +852,7 @@ NSE and generates visualizations illustrating the TFT for
 interpretable multi-horizon time series
 forecasting~\citep{TFT-21}. Details of the current reference models
 can be found in~\citep{fox2022-jm}.  In this paper, we only focus on
-the LSTM implementation.
+the TFT implementation.
 
 \subsection{Insights into Development from the Earthquake Code}
 
@@ -860,15 +860,16 @@ The original code was developed with the goal to create a DL method
 called {\em tevelop} to apply special time-series evolution for
 multiple applications including earthquake, hydrology, and COVID
 prediction. The code was presented in a large Python Jupyter notebook
-on Google Collab.  Due to the integration of multiple applications (hydrology and covid), the
-code was difficult to understand and maintain. For this reason, the
-total number of lines of 13500 was reduced by more than 2400 lines
-when the hydrology and the COVID code were removed.  However, at the
-same time, we restructured the code and reached a final length of about
-11100 lines of code.  The original code contained all hyperparameters
-and needed to be changed every time a hyperparameter was modified.
-The code included all definitions of variables and hyperparameters in
-the code itself. The code could be further made shorter by separating the model code into a library.
+on Google Collab.  Due to the integration of multiple applications
+(hydrology and covid), the code was difficult to understand and
+maintain. For this reason, the total number of lines of 13500 was
+reduced by more than 2400 lines when the hydrology and the COVID code
+were removed.  However, at the same time, we restructured the code and
+reached a final length of about 11100 lines of code.  The original
+code contained all hyperparameters and needed to be changed every time
+a hyperparameter was modified.  The code included all definitions of
+variables and hyperparameters in the code itself. The code could be
+further made shorter by separating the model code into a library.
 
 As we can see from this code has some major issues that future
 versions ought to address. First, the code includes every aspect that
@@ -1558,8 +1559,11 @@ of the accuracy of an application, we focus our next discussion on
 reporting the accuracy of the earthquake application.
 
 We observe that the loss of the application intersects validation and
-training at about the epoch value of 30-33 (see Figure~\ref{fig:loss}).  However, we have
-constantly also run higher numbers of epochs just to be sure.
+training at about the epoch value of 30-33 (see
+Figure~\ref{fig:loss}).  However, we have constantly also run higher
+numbers of epochs just to be sure and found our best accuracy values
+when using 70 epochs. We heve not undertaken studies with more epochs
+and hope to conduct them in future.
 
 \begin{figure}[htb]
     \centering
@@ -1568,6 +1572,7 @@ constantly also run higher numbers of epochs just to be sure.
     \label{fig:loss}
 \end{figure}
 
+\begin{comment}
 Figures~\ref{fig:six-graphs} show accuracy values of NNSE with
 various epoch values for training and validation. We chose here 2, 30,
 and 70 epochs.  We have then created tables for the NNSE values for
@@ -1582,8 +1587,17 @@ the 2 and 30 epoch cases the same order for these three values, we see
 a different order for the 70 epoch case. This can be explained through
 overfitting. Overall we find that the best accuracy can be found for
 
-An epoch value of 30  and the hyperparameter {\em Now 2wk+26AV} which has an NNSE value for the training of 
-0.5218 and a validation value of 0.502300 
+\end{comment}
+
+\subsection{Input and Output Hyperparameters}
+
+For the rest of the experiments we have chosen different numbers of
+input and output variables for our deep learning algorithm.
+
+
+An epoch value of 30 and the hyperparameter {\em Now 2wk+26AV} which
+has an NNSE value for the training of 0.5218 and a validation value of
+0.502300
 
 
 \TODO{Verify if the ranges seek backwards or forwards when sampling}
