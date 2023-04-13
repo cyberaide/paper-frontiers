@@ -285,19 +285,19 @@ insights that we discuss in this paper.
 \section{Insights of Machine Learning in Education}
 \label{sec:edu-ml}
 
-Before we start with the insights from MLCommons, we like to first
-review some of our experience regarding topics taught in educational
-activities in machine learning in general. We distinguish machine
-learning {\em methods}, {\em applications} that use or can use machine
-learning, the {\em libraries} that are used to apply these methods for
-applications, software development {\em tools}, and the {\em
-  infrastructure} that is needed to execute them.
+Before we start with the insights from MLCommons benchmarking, we like
+to first review some of our experience regarding topics taught in
+educational settings in machine learning in general. We distinguish
+machine learning {\em methods}, {\em applications} that use or can use
+machine learning, the {\em libraries} that are used to apply these
+methods for applications, software development {\em tools}, and the
+{\em infrastructure} that is needed to execute them.
 
 \subsection{Methods}
 
-We list a number of keywords that relate to typical methods in machine
+We list a number of topics that relate to typical methods in machine
 learning (ML) and artificial intelligence (AI) that may be taught in
-classes. This includes Clustering (exemplified via k-means), image
+classes. This includes clustering (exemplified via k-means), image
 classification, sentiment analysis, time series prediction, surrogates
 (a new topic that is often not yet taught), and neural networks (with
 its modifications such as CNN, KNN, ANN, SVM).  In addition, general
@@ -305,46 +305,40 @@ topics of interest are supervised learning and unsupervised learning.
 More traditional methods include random forests, decision trees, and
 genetic algorithms.
 
-From this small list, we can already see that this can not be taught
-in a one-semester course in sufficient depth, but needs to span the
-duration of a student's curriculum.
+From this small list, we can already see that a comprehensive cours
+curriculumn need to be developed as the topics can not be taught in a
+one-semester course in sufficient depth, but needs to span the
+duration of a student's curriculum in AI.
 
 \subsection{Libraries}
 
-Many libraries and tools exist that support AI.  We list here a subset
-of frequently used software libraries and tools that enable the
-machine learning engineer and student to write ML applications.
-
-First, we note that at the university level, the predominant language
-in machine learning and data science has become Python. This is
-explainable due to the availability of sophisticated libraries thus as
-scikitlearn, PyTorch, and TensorFlow.
-
-Most recently we see a trend that PyTorch has become more popular at
-the university level than TensorFlow.  Although the learning curve of
-these tools is significant, they provide invaluable opportunities
-while applying them to many different applications.
-
-In contrast, other specialized classes that focus on the development
-of faster, GPU-based methods use typically C++ code leveraging the
-vendor's specialized libraries to interface with the GPUs such as
-NVIDIA CUDA.
-
-\subsection{Tools}\label{sec:tools}
-
 In order to efficiently use the methods and libraries, and also the
-infrastructure which we discuss later students need a basic
-understanding of software engineering tools. This includes an editor
-and code management system.
+infrastructure which we discuss later, students need a basic
+understanding of software engineering tools. A subset of this is often
+referred to as software carpentry. Topics of immediate importance
+include the ability to master an editor and be familiar with a code
+management system.
 
-The common choice for managing codes is git, while GitHub is
-used. Alternatively one finds also the use of GitLab.  These code
-management systems are key to implementing teams that share the
-developed code and allow collaborative code management.  However, they
-require a significant learning curve.
+The common choice for managing codes is git, while GitHub is used.
+Alternatively one finds also the use of GitLab.  These code management
+systems are key to implementing teams that share the developed code
+and allow collaborative code management.  However, they require a
+significant learning curve. An important aspect of this is that the
+code management systems are typically hosted in the open and that the
+code is available for improvement at any time. We found that students
+that adopt the open-source philosophy perform considerably better than
+students that insist on having their codes in a private
+repository. The openness allows two foster two aspects. First, the
+code quality seems better as the students are putting more effort into
+the work due to its openness to the community. Second, collaboration
+can include research experts from the original authors and researchers
+that would otherwise not be available at the university. Hence the
+overall quality of the research experience for the student increases
+as the overall potential for success is implicitly accessible to the
+student.
 
 Another important aspect is the use of a capable editor in support of
-python syntax with code highlighting and code inspection. The use of
+Python syntax with code highlighting and code inspection. The use of
 tools such as notepad++, IDLE, or other simplistic editors is
 insufficient. Instead, students ought to use tools such as {\em
   pycharm} and as alternative choice {\em vscode}. These editors
@@ -352,25 +346,40 @@ provide sophisticated features to improve code quality and also
 integrate with git. One of the strengths of pyCharm is that it has a
 sophisticated code inspector and auto-completion, making writing
 reliable code faster. Vscode may be known to some students, but its
-default features seem not to match that of pyCharm.
+default features seem not to match that of pyCharm. In addition, a
+command line editor may be needed to simplify direct editing on remote
+HPC machines using a command terminal. Although students can choose
+editors such as vi, vim, nano, or pico, we found that a better editor
+for students to learn is emacs. We found that it is possible to teach
+emacs in 5 minutes to students while focusing on the 10 most important
+commands. If more sophisticated commands are needed, the emacs
+reference card is a valuable helper. It has also the advantage that in
+bash and other shells running in a terminal, the same commands can be
+used, and thus complexity is reduced by only learning a small number
+of edit commands.q
 
-An additional tool is jupyter, with its successor jupyter-lab. It
-provides a web browser interface to interactive python notebooks
-(ipynb). The strength here is a rich external ecosystem that allows to
-run [rograms in interactive fashion while integrating graphics
-components and data frames to conduct data analysis.  The biggest
-disadvantage we saw in using notebooks is that the code developed by
-the students is not following proper software engineering practices
-such as defining and using functions, classes, and self-defined
-installable python libraries that make code management sustainable and
-easier. Often we found that code developed as jupyter notebook is also
-poorly documented although the integration of markdown as a document
-feature is built in. This relates to a general problem at the
-university level. While the material taught in ML fills more of a
-semester, students often come ill-prepared for ML classes as typical
-classes to teach python do only deal with language aspects but not
-with a sustainable {\em practical} software engineering approach for
-example in python.
+An additional tool is Jupyter, with its successor Jupyter-Lab. It
+provides a web browser interface to interactive Python notebooks
+(ipynb). The strength here is a rich external ecosystem that allows us
+to interactively run programs while integrating graphics components
+and data frames to conduct data analysis.  The biggest disadvantage we
+saw in using notebooks is that the code developed by the students are
+not following proper software engineering practices such as defining
+and using functions, classes, and self-defined installable Python
+libraries that make code management sustainable and easier. Often we
+found that code developed as Jupyter notebook is also poorly
+documented although the integration of markdown as a document feature
+is built in. This relates to a general problem at the university
+level. While the material taught in ML requires an entire semester,
+students often come ill-prepared for ML classes as typical language
+classes do not focus on software carpentry, but instead on teaching
+Python while focusing only on the language aspects but not with a
+sustainable {\em practical} software engineering
+approach. Furthermore, we noticed that while teachers are increasingly
+using Python notebooks the ability to properly structure a Python code
+has been lost and the quality of writing a larger program is no longer
+prevalent with all students.
+
 
 \subsection{Infrastructure}
 
