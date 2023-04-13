@@ -1566,8 +1566,9 @@ An epoch value of 30  and the hyperparameter {\em Now 2wk+26AV} which has an NNS
 0.5218 and a validation value of 0.502300 
 
 
-\TODO{To be simplified by Thomas}
+\TODO{Verify if the ranges seek backwards or forwards when sampling}
 
+\REPLACE{
 In the following benchmarks a number of hyper parameters were used to
 determine the training data that derive accuracy values with the
 earthquake benchmark code.
@@ -1579,16 +1580,12 @@ start point and we used the values
 
 {\em Now} means the first training time period starts at the current
 date,
-
 2 weeks means the first training time period starts at 2 weeks before
 the current date,
-
 3M means the first training time period starts at 3 months before the
 current date,
-
 6M means the first training time period starts at 6 months before the
 current date,
-
 1Y means the first training time period starts at 1 year before the
 current date.
 
@@ -1599,9 +1596,7 @@ how many total time groups are put in the training data.
 In addition we also have the values
 
 3 Months Back means the first and only training time period starts at 3 months before the current date.
-
 Year Back means the first and only training time period starts at 1 year before the current date.
-
 2 weeks Now means the first and only training time period starts at the current date.
 
 \begin{description}
@@ -1654,6 +1649,32 @@ Year Back means the first and only training time period starts at 1 year before 
   reached.
 \end{description}
 
+}{
+  In the subsequent benchmark results, groupings of data were used as
+  hyperparameters and leveraged as training data to optimize their
+  associated accuracy values.
+
+  The data was categorized using the following rules
+
+  \begin{itemize}
+    \item All data were grouped into 2-week periods
+    \item The term {\em Now} means the most recent date from the dataset,
+          the Term {\em #M} or {\em #Y} corresponds to the number of Months or Years
+          prior to {\em Now} to use when sampling the data. 
+    \item An optional moving window is applied based on a range of 2-week groupings
+          from the specified time frame.  For example, 2wk+26AVG is
+          code for performing the calculation over 26 groupings.
+          When not specified, only one observation is collected.
+  \end{itemize}
+
+  Thus, applying these rules, a range of values is established by first specifying
+  a time and then the number of observations to include.  For example, a value of
+  {\em 1Y 2wk+26AVG} is the resulting dataset containing a grouped set of values
+  representing 2-week periods, seeking 1 year back from the most recent observation
+  and walking backward until 26 groups have been included.  As another
+  example, the value of {\em 1 Year Back} is a single 2-week occurrence one 
+  year ago from the rolling training date.
+}
 
 
 
