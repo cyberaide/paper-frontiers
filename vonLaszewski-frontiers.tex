@@ -1252,23 +1252,23 @@ the same time leveraging capabilities provided by the local compute
 environments to direct interface with graphical visualizations better
 suited for the desktop. The goal is to provide numerous workflows that
 in cooperation enhance the experience of the analytics tasks. This
-includes a REST service (see Figure {fig:fastapi-cc}) and command line
+includes a REST service (see Figure \ref{fig:cc-3} A) and command line
 tools to interact with it.
 
 
 \begin{figure}[htb]
-\centering\includegraphics[width=0.7\columnwidth]{images/fastapi-service.png}
-\caption{Fast API Workflow Service.}
-% better resolution
-\label{fig:fastapi-cc}
-\end{figure}
+  \centering\includegraphics[width=0.7\columnwidth]{images/fastapi-service.png}
+  
+  {\bf (A) Fast API workflow service.}
+
+  \bigskip
 
 
+    \centering\includegraphics[width=0.70\columnwidth]{images/cc-1.png}
 
-\begin{figure}[htb]
-    \centering
-    \includegraphics[width=0.70\columnwidth]{images/cc-1.png}
-    \caption{Workflow user interface.}
+    {\bf (B) Workflow user interface.}
+
+    \caption{Workflow interfaces.}
     \label{fig:cc-3}
 \end{figure}
 
@@ -1279,8 +1279,8 @@ memory), Auto-Encoder, Convolutional, and Recurrent Neural Networks,
 Distributed Training, and PyTorch training.  A much lager application
 using earthquake prediction has also been used.
 
-Figure \ref{fig:fastapi-cc} shows the REST specification and
-\ref{fig:cc-2} shows the architecture.
+Figure \ref{fig:cc-3} A shows the REST specification and
+\ref{fig:cc-3} B shows graphical user interface.
 
 \subsection{Parameterized Workflow Job Generator}
 \label{sec:workflow-sbatch}
@@ -1494,31 +1494,24 @@ about these numbers, but it lead to suggestions on how to improve
 performance by for example adding an NVMe storage and access to a
 filesystem locally available to the compute node.
 
-  \begin{comment}
-  \centering
-    \includegraphics[width=0.70\columnwidth]{images/performance-projection.png}
-    \caption{Performance projection. }
-    \label{fig:performance-projection}
-  \end{comment}
-    
 UUUUUUU
   
 
-\begin{figure}[htb]
-    \centering
-    \includegraphics[width=0.70\columnwidth]{images/Benchmark_comp_resource.png}
-    \caption{Performance projection.}
-    \label{fig:performance-projection-b}
+\begin{figure}[p]
+
+  \centering\includegraphics[width=0.75\columnwidth]{images/Graphics_Cards_BestFit_bar.png}
+
+  {\bf (a)} Performance time measurements while using only 2 epochs on various systems with different GPUs.}
+
+  \centering\includegraphics[width=0.75\columnwidth]{images/Benchmark_comp_resource.png}
+
+  {\bf (a)} Performance time benchmark for various GPU cards on different systems and variation of epochs.}
+
+    
+  \caption{Performance projection.}
+  \label{fig:performance-projection}
 \end{figure}
 
-\begin{comment}
-\begin{figure}[htb]    
-    \centering
-    \includegraphics[width=0.70\columnwidth]{images/Graphics_Cards_BestFit_bar.png}
-    \caption{Performance projection.}
-    \label{fig:performance-projection-c}
-\end{figure}
-\end{comment}
     
 
 \begin{table}[htb]
