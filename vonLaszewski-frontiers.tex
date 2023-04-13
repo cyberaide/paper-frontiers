@@ -1128,13 +1128,13 @@ function decorators for the StopWatch to keep the example simple).
     from cloudmesh.common import StopWatch 
     ...
     StopWatch.event("start")                    \textcolor{blue}{\it # this where the timer starts}
-    Stopwatch.start("earthquake")               \textcolor{blue}{\it # this is when the main benchmark starts}
+    StopWatch.start("earthquake")               \textcolor{blue}{\it # this is when the main benchmark starts}
     {\it ... run the earthquake code}
     {\it ... additional timers could be used here}
     with StopWatchBlock("name")                 \textcolor{blue}{\it # this demonstrates how to use a block timer}
        run_long_calculation()
-    Stopwatch.stop("earthquake")                \textcolor{blue}{\it # this is where the main benchmark ends}
-    Stopwatch.benchmark()                       \textcolor{blue}{\it # prints the current results}
+    StopWatch.stop("earthquake")                \textcolor{blue}{\it # this is where the main benchmark ends}
+    StopWatch.benchmark()                       \textcolor{blue}{\it # prints the current results}
 \end{Verbatim}
 }
 
