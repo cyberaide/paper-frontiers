@@ -788,19 +788,19 @@ forecasting in a region of Southern California.}\\
 
 \subsection{Implementation}
 
-The reference implementation of the benchmark includes three
-distinct deep learning-based reference implementations. These are Long
-short-term memory (LSTM)-based model, Google Temporal Fusion
-Transformer (TFT)~\citep{TFT-21}-based model and a custom hybrid
+The reference implementation of the benchmark includes three distinct
+deep learning-based reference implementations. These are a Long
+short-term memory (LSTM)-based model, a Google Temporal Fusion
+Transformer (TFT)~\citep{TFT-21}-based model, and a custom hybrid
 transformer model. The TFT-based model uses two distinct LSTMs,
 covering an encoder and a decoder with a temporal attention-based
 transformer. The custom model includes a space-time transformer for
 the Decoder and a two-layer LSTM for the encoder. Each model predicts
 NSE and generates visualizations illustrating the TFT for
 interpretable multi-horizon time series
-forecasting~\citep{TFT-21}. Details of the current reference models can
-be found in~\citep{fox2022-jm}.  In this paper, we only focus on the
-LSTM implementation.
+forecasting~\citep{TFT-21}. Details of the current reference models
+can be found in~\citep{fox2022-jm}.  In this paper, we only focus on
+the LSTM implementation.
 
 \subsection{Insights into Development from the Earthquake Code}
 
