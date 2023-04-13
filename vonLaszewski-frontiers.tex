@@ -930,7 +930,7 @@ is how the data is represented. For example, for the earthquake
 benchmark, we found that the original dataset was 11GB big. However,
 we found that the data can be easily compressed by a factor of
 100. This is significant, as in this case the entire dataset can be
-stored in Github. The compressed xz archive file is only 21 MB and
+stored in GitHub. The compressed xz archive file is only 21 MB and
 downloading only the archive file using wget takes 0.253s. In case the
 dataset and its repository are downloaded with Git we note that the
 entire Git repository is
@@ -953,8 +953,8 @@ is not useful due to the vast number of data points. Therefore the
 best way to store this data even in an object store is as a single
 entry of compressed overall data.  Other MLCommons Science working
 group benchmarks have datasets in the order of 500GB to
-12TB. Obviously the need special considerations whne placed on a
-compute system where the students storage capacaties may be limited by
+12TB. Obviously the need special considerations when placed on a
+compute system where the students storage capacities may be limited by
 policy.
 
 
@@ -970,7 +970,7 @@ RTX3090 in contrast to using the HPC center recommended filesystems
 when using an A100. For this reason, we have made a simple test and
 measure the performance to read access the various file systems. The
 results are shown in Table~\ref{tab:file-performance} which include
-various file systems at the University of Virginias Rivanna HPC but also a
+various file systems at the University of Virginia's Rivanna HPC but also a
 comparison with a personal computer from a student.
 
 \begin{table}[htb]
@@ -1064,7 +1064,7 @@ of the HPC centers policies and split the benchmarking tasks across a
 number of jobs, based on the parameter permutations. This allows also
 easier parallelization.
 
-For this reason von Laszewski, Knuuti at.al. have implemented {\it
+For this reason, von Laszewski, Knuuti et.al. have implemented {\it
   cloudmesh-sbatch} that provides a batch job generator creating
 parallel jobs based on a permutation of experiment parameters that are
 defined in a configuration file. The tool will create for each job its
@@ -1109,13 +1109,13 @@ function decorators for the StopWatch to keep the example simple).
     from cloudmesh.common import StopWatch 
     ...
     StopWatch.event("start")                    \textcolor{blue}{\it # this where the timer starts}
-    Stopwatch.start("earthquake")               \textcolor{blue}{\it # this is when the main benchmark starts}
+    StopWatch.start("earthquake")               \textcolor{blue}{\it # this is when the main benchmark starts}
     {\it ... run the earthquake code}
     {\it ... additional timers could be used here}
     with StopWatchBlock("name")                 \textcolor{blue}{\it # this demonstrates how to use a block timer}
        run_long_calculation()
-    Stopwatch.stop("earthquake")                \textcolor{blue}{\it # this is where the main benchmark ends}
-    Stopwatch.benchmark()                       \textcolor{blue}{\it # prints the current results}
+    StopWatch.stop("earthquake")                \textcolor{blue}{\it # this is where the main benchmark ends}
+    StopWatch.benchmark()                       \textcolor{blue}{\it # prints the current results}
 \end{Verbatim}
 }
 
@@ -1126,8 +1126,8 @@ the ability to call events.
 In addition to the StopWatch we have developed a simple commandline
 tool that can be used for example in batch scripts to monitor the GPU
 performance characteristics such as energy, temperature and other
-arameters \citep{cloudmesh-gpu}. The tool can be started in a batch
-script as follwos and is currently supporting NVIDIA GPUs:
+parameters \citep{cloudmesh-gpu}. The tool can be started in a batch
+script as follows and is currently supporting NVIDIA GPUs:
 
 {\footnotesize
 \begin{Verbatim}[commandchars=\\\{\}]
@@ -1483,17 +1483,17 @@ as it not only has large fast memory (128MB), but also stores all the
 data on a fast NVMe. In fact, this machine was faster that the
 available systems at University of Virginia due to its superior file
 system performance. As the earthquake application uses lots of data
-IO, this makes a big difference and has buided us through the approach
-we needed to tak on the HPC machine including suggestions for
+IO, this makes a big difference and has guided us through the approach
+we needed to take on the HPC machine including suggestions for
 improving data access speeds to the system staff.
 
 To showcase the different runtimes we showcase the results for a 2
 epoch case in Table \ref{tab:2-epoch-case}. To our initial surprise we
 found that the RTX3090 machine was originally almost 2.67 times better
-than the HPC machine with an A100. Fatser processor, better memory,
-and espacially the fast NVMe instead of a slow NSF mounted filesystem
+than the HPC machine with an A100. Faster processor, better memory,
+and especially the fast NVMe instead of a slow NSF mounted filesystem
 are the reason for this performance. Initially everyone was surprised
-about these numbers, but it lead to suggestions on how to imporve
+about these numbers, but it lead to suggestions on how to improve
 performance by for example adding an NVMe storage and access to a
 filesystem locally available to the compute node.
 
