@@ -26,7 +26,7 @@
 \usepackage{xcolor}
 
 \newcommand{\TODO}[1]{\todo[inline]{#1}}
-\newcommand{\REPLACE}[2]{\textcolor{red}{\it #1} \begin{quote}\textcolor{blue}{#2}\end{quote}}
+\newcommand{\REPLACE}[2]{{\color{red}\it #1} \begin{quote}{\color{blue}#2}\end{quote}}
 %\newcommand{\REPLACE}[2]{\begin{quote}\textcolor{red}{#1}\end{quote}\\{\textcolor{blue}{#2}}
 
 \newcommand{\YES}{yes}
@@ -339,15 +339,6 @@ insights that we discuss in this paper.
 \section{Insights of Machine Learning in Education}
 \label{sec:edu-ml}
 
-\REPLACE{
-Before we start with the insights from MLCommons benchmarking, we like
-to first review some of our experience regarding topics taught in
-educational settings in machine learning in general. We distinguish
-machine learning {\em methods}, {\em applications} that use or can use
-machine learning, the {\em libraries} that are used to apply these
-methods for applications, software development {\em tools}, and the
-{\em infrastructure} that is needed to execute them.
-}{
 Before we start with the insights from MLCommons, we will first
 consider some of our experience regarding topics taught in educational
 activities for machine learning in general. We will distinguish machine
@@ -355,48 +346,31 @@ learning {\em methods}, {\em applications} that use or can use machine
 learning, the {\em libraries} used to apply these methods for
 applications, software development {\em tools}, and finally the
 {\em infrastructure} that is needed to execute them.
-}
+
+
 \subsection{Methods}
 
-\REPLACE{
-We list a number of topics that relate to typical methods in machine
-learning (ML) and artificial intelligence (AI) that may be taught in
-classes. This includes clustering (exemplified via k-means), image
-classification, sentiment analysis, time series prediction, surrogates
-(a new topic that is often not yet taught), and neural networks (with
-its modifications such as CNN, KNN, ANN, SVM).  In addition, general
-topics of interest are supervised learning and unsupervised learning.
-More traditional methods include random forests, decision trees, and
-genetic algorithms.
-}{
-We list some keywords associated with traditional methods in machine
-learning (ML) and artificial intelligence (AI) that may be taught in
+We list some topics associated with traditional methods in machine
+learning (ML) and artificial intelligence (AI) that are frequently  taught in
 classes. This includes clustering (exemplified via k-means), image
 classification, sentiment analysis, time series prediction, surrogates
 (a new topic, often not taught), and neural networks (with
-various standard architectures such as Convolutional Neural Networks [CNN],
-Recurrent Neural Networks [RNN], Artificial Neural Networks (ANN)).
+various standard architectures such as Convolutional Neural Networks (CNN),
+Recurrent Neural Networks (RNN), and Artificial Neural Networks (ANN).
 More traditional methods also include modeling techniques such as random
 forests, decision trees, K-Nearest Neighbor (KNN), Support Vector Machines
 (SVM) and genetic algorithms.  These methods are frequently collected into
 three distinct algorithmic groups: supervised learning, unsupervised
 learning, and reinforcement learning.
-}
 
 From this small list, we can already see that a comprehensive course curriculum needs to be developed as the topics can not be taught in a one-semester course in sufficient depth, but needs to span the duration of a student's curriculum in AI.
 
 \subsection{Libraries}
 
-\REPLACE{
-Many libraries and tools exist that support AI.  We list here a subset
-of frequently used software libraries and tools that enable the
-machine learning engineer and student to write ML applications.
-}{
 There are several diverse libraries and tools that exist to support the
 development of AI and ML products.  As an example, we list a subset
 of frequently used software libraries and tools that enable the
 machine learning engineer and student to write ML applications.
-}
 
 First, we note that at the university level, the predominant programming language
 used for machine learning and data science is Python. This is
@@ -415,14 +389,12 @@ NVIDIA CUDA.
 
 \subsection{Tools and Software Carpentry}\label{sec:tools}
 
-\REPLACE{In order to efficiently use the methods and libraries, and also the
-infrastructure which we discuss later, students need a basic
-understanding of software engineering tools.}
-{To efficiently use the libraries and methods, and also the
+
+To efficiently use the libraries and methods, and also the
 infrastructure used to execute software, students need a basic understanding of software engineering
-tools such as a text editor and code management system.}
+tools such as a text editor and code management system.
 A subset of this is often
-referred to as software carpentry. Topics of immediate importance
+referred to as software carpentry \cite{software-carpentry}. Topics of immediate importance
 include the ability to master an editor and be familiar with a code
 management system.
 
@@ -447,13 +419,13 @@ Another important aspect is the use of a capable text editor with advanced featu
 syntax highlighting and code inspection. The use of
 tools such as notepad++, IDLE, or other simplistic editors is
 insufficient. Instead, students ought to use tools such as {\em
-  pycharm} and alternatively {\em Visual Studio Code} (vscode) as they provide
+  PyCharm} and alternatively {\em Visual Studio Code} (vscode) as they provide
 sophisticated features to improve code quality and also provide strong
 integration with git. One of the strengths of pyCharm is that it has a
 sophisticated code inspector and auto-completion, making writing
 reliable code faster. Vscode may be known to some students, but its
-default features seem not to match that of pycharm, and configuring its
-plugin engine to add similar features to Pycharm requires additional work.
+default features seem not to match that of PyCharm, and configuring its
+plugin engine to add similar features to PyCharm requires additional work.
 
 In addition, a
 command line editor may be needed to simplify direct editing on remote
@@ -1784,32 +1756,32 @@ and V100.
 
   \begin{center}
 
-     \begin{minipage}[b]{0.45\textwidth}
+     \begin{minipage}[b]{0.44\textwidth}
        \includegraphics[width=1.0\linewidth]{images/a100-shaded-energy-2-epochs.pdf}
         {\bf (A)} A100 Energy trace for 2 epochs training and validation.
     \end{minipage}
      \ \
-     \begin{minipage}[b]{0.45\textwidth}
+     \begin{minipage}[b]{0.44\textwidth}
         \includegraphics[width=1.0\linewidth]{images/v100-shaded-energy-2-epochs.pdf}
         {\bf (B)}  V100 Energy trace for 2 epochs training and validation.
      \end{minipage}
 
-     \begin{minipage}[b]{0.45\textwidth}
+     \begin{minipage}[b]{0.44\textwidth}
         \includegraphics[width=1.0\linewidth]{images/a100-shaded-energy-30-epochs.pdf}
         {\bf (C)} A100 Energy trace for 30 epochs training and validation.
      \end{minipage}
      \ \
-     \begin{minipage}[b]{0.45\textwidth}
+     \begin{minipage}[b]{0.44\textwidth}
         \includegraphics[width=1.0\linewidth]{images/v100-shaded-energy-30-epochs.pdf}
         {\bf (D)} V100 Energy trace for 30 epochs training and validation.
      \end{minipage}
 
-     \begin{minipage}[b]{0.45\textwidth}
+     \begin{minipage}[b]{0.44\textwidth}
        \includegraphics[width=1.0\linewidth]{images/a100-shaded-energy-70-epochs.pdf}
         {\bf (E)} A100 Energy trace for 70 epochs training and validation.
      \end{minipage}
      \ \
-     \begin{minipage}[b]{0.45\textwidth}
+     \begin{minipage}[b]{0.44\textwidth}
         \includegraphics[width=1.0\linewidth]{images/v100-shaded-energy-70-epochs.pdf}
         {\bf (F)}  V100 Energy trace for 70 epochs training and validation.
      \end{minipage}
@@ -1825,15 +1797,15 @@ and V100.
 
   \begin{center}
 
-       \includegraphics[height=0.3\textheight]{images/energy_all_model_fit_kWh_per_epoch.pdf}
+       \includegraphics[height=0.29\textheight]{images/energy_all_model_fit_kWh_per_epoch.pdf}
 
        {\bf (A)} energy of various epochs reporting kWh per epoch.
           
-        \includegraphics[height=0.3\textheight]{images/total_epoch_vs_watts.pdf}
+        \includegraphics[height=0.29\textheight]{images/total_epoch_vs_watts.pdf}
 
         {\bf (B)} total epoch vs watts.
 
-         \includegraphics[height=0.3\textheight]{images/total_kWh_per_epoch.pdf}
+         \includegraphics[height=0.29\textheight]{images/total_kWh_per_epoch.pdf}
 
          {\bf (C)}  total kWh per epoch.
 
