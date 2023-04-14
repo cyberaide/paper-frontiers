@@ -239,55 +239,40 @@ application, present data for the runtime
 \section{MLCommons}
 \label{sec:mlcommons}
 
-\REPLACE{
-MLCommons is a non-profit organization with the goal to accelerate
-machine learning innovation to benefit everyone with the help of more
-than 70 members from industry, academia, and government
-\citep{www-mlcommons}. Its main focus is to develop standardized
-benchmarks for measuring performance systems using machine learning
-while applying them to various applications. This includes but is not
-limited to, application areas from healthcare, automotive, image
-analysis, and natural language processing. MLCommons is concerned with
-benchmarking training~\citep{mlperf-training} and validation
-algorithms to measure progress over time. Through this goal, MLCommons
-investigates machine learning efforts in the areas of benchmarking,
-datasets in support of benchmarking, and best practices that leverage
-machine learning.
-
-MLCommons is organized into several working groups that address topics
-such as benchmarking related to training, training on HPC resources,
-and inference conducted on data centers, edge devices, mobile devices,
-and embedded systems. Best practices are explored in the areas of
-infrastructure and power. In addition, MLCommons also operates working
-groups in the areas of Algorithms, DataPerf Dynabench, Medical,
-Science, and Storage. The science working group is concerned with
-improving the science beyond just a static
-benchmark~\citep{las-22-mlcommons-science}.
-}{
-MLCommons is a non-profit organization with the goal to
-accelerate machine learning innovation to benefit everyone with the
-help of more than 70 members from industry, academia, and
-government~\citep{www-mlcommons}. Its main focus is to develop standardized
+MLCommons is a non-profit organization with the goal to accelerate 
+machine learning innovation to benefit everyone with the help of more 
+than 70 members from industry, academia, and government~\citep{www-mlcommons}.
+Its main focus is to develop standardized
 benchmarks for measuring performance systems using machine
-learning while applying them to various applications. This includes,
-but is not limited to, application areas from healthcare, automotive,
-image analysis, and natural language processing. MLCommons is
-concerned with benchmarking training~\citep{mlperf-training} and
-validation algorithms to measure progress over time. Through this goal,
+learning while applying them to various applications. 
+
+This includes but is not
+limited to, application areas from healthcare, automotive, image
+analysis, and natural language processing. MLCommons is 
+concerned with benchmarking training~\citep{mlperf-training} and validation
+algorithms to measure progress over time. Through this goal, 
+MLCommons investigates machine learning efforts in the areas of 
+benchmarking, datasets in support of benchmarking, and best practices 
+that leverage machine learning. This includes, but is not limited to, application areas from healthcare, automotive, image analysis, and natural language processing. MLCommons is
+concerned with benchmarking training~\citep{mlperf-training} and validation 
+algorithms to measure progress over time. Through this goal,
 MLCommons investigates machine learning efforts in the areas of
 benchmarking, datasets in support of benchmarking, and best practices
-that leverage machine learning.
-
-MLCommons is organized into several working groups that address topics
+that leverage machine learning. MLCommons is organized into several working groups that address topics
 such as benchmarking related to training, training on HPC resources,
 and inference conducted on data centers, edge devices, mobile devices, and
 embedded systems. Best practices are explored in the areas of
-infrastructure and power. In addition, MLCommons also operates
-working groups in the areas of Algorithms, DataPerf Dynabench,
-Medical, Science, and Storage. The science working group is concerned
+infrastructure and power. In addition, MLCommons also operates working 
+groups in the areas of Algorithms, DataPerf Dynabench, Medical, 
+Science, and Storage. 
+
+The science working group is concerned
 with improving the science beyond just a static
 benchmark~\citep{las-22-mlcommons-science}.
-}
+
+The science working group is concerned with
+improving the science beyond just a static
+benchmark~\citep{las-22-mlcommons-science}.
 
 A list of selected benchmarks for the working groups focusing on
 inference, training, and science are shown in
@@ -375,9 +360,7 @@ machine learning engineer and student to write ML applications.
 First, we note that at the university level, the predominant programming language
 used for machine learning and data science is Python. This is
 evident from the success and popularity of sophisticated libraries such as
-scikit-learn, PyTorch, and TensorFlow.
-
-In recent years, we've seen a trend that PyTorch has become more popular at
+scikit-learn, PyTorch, and TensorFlow. In recent years, we have seen a trend that PyTorch has become more popular at
 the university level than TensorFlow.  Although the learning curve of
 these tools is significant, they provide invaluable opportunities
 while applying them to several different applications.
@@ -418,20 +401,20 @@ student.
 Another important aspect is the use of a capable text editor with advanced features  such as 
 syntax highlighting and code inspection. The use of
 tools such as notepad++, IDLE, or other simplistic editors is
-insufficient. Instead, students ought to use tools such as {\em
+insufficient. Instead, students benefit from editors such as {\em
   PyCharm} and alternatively {\em Visual Studio Code} (vscode) as they provide
 sophisticated features to improve code quality and also provide strong
-integration with git. One of the strengths of pyCharm is that it has a
+integration with git. One of the strengths of PyCharm is that it has a
 sophisticated code inspector and auto-completion, making writing
 reliable code faster. Vscode may be known to some students, but its
 default features seem not to match that of PyCharm, and configuring its
-plugin engine to add similar features to PyCharm requires additional work.
+plugin engine to add similar features to PyCharm requires additional work. Such editors also provide the ability to easily write markdown text and render the output while writing. This is very useful for writing documentation.
 
-In addition, a
-command line editor may be needed to simplify direct editing on remote
+In addition, elementary use of a
+command line editor is needed to simplify direct editing on remote
 HPC machines using a command terminal. Although students can choose
-editors such as vi, vim, nano, or pico, we found that a better editor
-for students to learn is emacs. We found that it is possible to teach
+editors such as {\em vi}, {\em vim}, {\em nano|, or {\em pico}, we found that a better editor
+for students to learn is {\em emacs}. We found that it is possible to teach
 emacs in 5 minutes to students while focusing on the 10 most important
 commands. If more sophisticated commands are needed, the emacs
 reference card is a valuable helper. It has also the advantage that in
@@ -439,7 +422,7 @@ bash and other shells running in a terminal, the same commands can be
 used, and thus complexity is reduced by only learning a small number
 of edit commands.
 
-An additional tool is Jupyter Notebooks, with its successor JupyterLab. It
+An additional tool is Jupyter notebooks, with its successor JupyterLab. It
 provides a web browser interface to interactive Python notebooks
 (ipynb). The strength here is a rich external ecosystem that allows us
 to interactively run programs while integrating graphics components
@@ -490,10 +473,10 @@ benchmark carpentry.
 An additional aspect ML students are exposed to is the need for access
 to computational resources due to distinct hardware needs resulting from
 the use of an ML framework. One common way of dealing with
-this is to use Google Colab which is easy to obtain access and use
-with limted capability for free (with the option of obtaining a larger
+this is to use Google Colab which is easy to obtain access to and use
+with limited capability for free (with the option of obtaining a larger
 computational capability with a paid subscription).  However, as Colab is
-based on jupyter notebooks and we experience the same disadvantages as discussed in
+based on Jupyter notebooks and we experience the same disadvantages as discussed in
 Section~\ref{sec:tools}
 
 Other resources for machine learning can be found in the cloud. This
@@ -502,7 +485,7 @@ Salesforce, and others.  In addition to the computational needs for
 executing neural networks and deep learning algorithms, we also find
 services that can be accessed mainly through REST APIs to be
 integrated into the application research. Most popular for such tools
-are focusing on natural language processing such as translation and
+focus on natural language processing such as translation and
 more recently of text analysis and responses through ChatGPT and Bart.
 
 However, many academic institutions have access to campus-level and
@@ -523,27 +506,26 @@ slow Network File System (NFS) instead of directly in memory (often the data
 does not fit in memory) or in NVMe storage if it exists on the
 computing nodes.  It is also important to understand
 that such nodes may also be shared with other users and it is
-important to provide the infrastructure requirements upfront in regards to computation time, memory footprint, and
+important to provide the infrastructure requirements upfront in regard to computation time, memory footprint, and
 file storage requirements accurately so that scheduling can be
 performed most expediently.  Furthermore, the
 software on these systems is maintained by the computing staff and is
-typically tailored for the HPC environment.  It is best to develop with the
-version provided, which may target outdated versions of software.  Container technologies reduce the impact of this issue, by
+typically tailored for the HPC environment.  It is best to develop with the version provided, which may target outdated versions of software.  Container technologies reduce the impact of this issue, by
 enabling users of the HPC center to provide their own custom software dependencies as an image
  
 \begin{comment}
   
   However, we experienced centers that although container images were
   allowed by users to run on the system, the software to create the
-  images with the native tools was not allowed by the users and thus
+  images with the native tools were not allowed by the users and thus
   making the offering of container technology mute.
 
 \end{comment}
 
 One of the popular container frameworks for campus HPC centers is
-singularity, but some centers offer also docker. As images must bring all the software needed to run a task, they quickly become
+Singularity, but some centers offer also docker. As images must bring all the software needed to run a task, they quickly become
 large in size, and it is not sufficient to just copy the image from your local
-computer, but to work with the center to create the image
+computer but to work with the center to create the image
 within the HPC infrastructure. This is especially true when
 the university requires all resources to be accessed through a
 VPN. Here one can often see a factor of 10 or more slowdown in
@@ -555,7 +537,7 @@ with specialized educational efforts often provided by the HPC
 center. However, sometimes these general courses are not targeted
 specifically to running a particular version of PyTorch or TensorFlow
 with cuDNN, but just the general aspect of accessing the
-queues. Hence, although these efforts are often fall under the offereings of software carpeting the teaching objective may fall short as focus is placed on a limited number of software supported by the
+queues. Hence, although these efforts often fall under the offerings of software carpeting the teaching objective may fall short as the focus is placed on a limited number of software supported by the
 center instead of teaching how to install the latest version of for example TensorFlow. Furthermore, the offered software may be limited
 in case the underlying GPU card drivers are outdated and the software
 to be benchmarked not only needs the newest software libraries but
@@ -572,7 +554,7 @@ research projects that require following a detailed application
 process. This process is done by the faculty supervisor and not the
 student. Background checks and review of the project may delay the
 application. Additional security requirements such as the use of Duo
-Mobile, SSH keys, and other multifactor authentication tools must be
+Mobile, SSH keys, and other multi-factor authentication tools must be
 carefully taught.
 
 In case the benchmark includes environmental monitoring such as
@@ -590,7 +572,7 @@ The MLCommons benchmarks provide a valuable starting point for
 educational material addressing various aspects of the machine and
 deep learning ecosystem. This includes benchmarks targeted to a
 variety of system resources from tiny devices to the largest Research
-High Performance Computing and Data Systems in the world, while being
+High-Performance Computing and Data Systems in the world, while being
 able to adapt and test them on platforms in-between these two
 extremes. Thus they become ideal targets for adaptation in AI classes
 that want to go beyond typical starting applications such as MNIST
@@ -600,11 +582,10 @@ We have gained practical experience while adapting benchmarks from the
 MLCommons Science Working group while collaborating with various
 universities and student groups from the University of Virginia, New
 York University, and Indiana University. Furthermore, it was used in
-Florida A\&M University (FAMU) as an REU and is now executed at the
+Florida A\&M University (FAMU) as an Research Experience for Undergraduates (REU) and is now executed at the
 University of Virginia as research activity by a past student from the
 REU \cite{las-2022-mdpi-crypto}. We found that the examples provide
-value for classes, capstones, Research Experiences for Undergraduates
-(REU), team project-oriented software engineering and computer science
+value for classes, capstones, REUs, team project-oriented software engineering and computer science
 classes, and internships.
 
 We observed that while traditional classes limit their resource needs
@@ -626,7 +607,7 @@ following lessons provided significant add-on learning experiences:
 
 \item {\bf Teamwork.} Students benefit from focusing on the success
   and collaboration of the entire team rather than mere individualism,
-  as after graduation students may work in large teams. This includes
+  as after graduation, students may work in large teams. This includes
   the opportunity for pair programming, but also the fact that careful
   time planning in the team is needed to succeed. This also includes
   how to collaborate with peers using professional, industry-standard
@@ -655,7 +636,7 @@ following lessons provided significant add-on learning experiences:
     management for the class easier, but does not expose the students
     to various ways of setting up and utilizing the large variety of
     software related to big data systems. This includes setting up
-    Python beyond the use of conda and Colab notebooks, the use of
+    Python beyond the use of Conda and Colab notebooks, the use of
     queueing systems, containers, and cloud computing software for
     AI, DL, and HPC experiments as well as other advanced aspects of
     software engineering.
@@ -666,7 +647,7 @@ following lessons provided significant add-on learning experiences:
     and run meaningful calculations that enhance the accuracy of the
     results. Careful planning with workflows and the potential use
     of hybrid heterogeneous systems significantly improves the
-    awareness to deal with not only the laptop, but also the large
+    awareness to deal with not only the laptop but also the large
     available resources students may get access to while leveraging
     leadership-class computing resources, or their own local HPC
     system when available. This includes dealing with system policies,
@@ -682,8 +663,8 @@ following lessons provided significant add-on learning experiences:
     GPU bases big data systems.
 
   \item {\bf IO Data management.} One other important lesson is the
-    efficient and effective use of data stores to execute for example
-    DL algorithms that require a large number of fast IO interactions.
+    efficient and effective use of data stores to execute, for example,
+    DL algorithms require a large number of fast IO interactions.
 
   \item {\bf Data Analysis.} The examples provide valuable input to
     further enhance abilities to conduct non-trivial data analysis
