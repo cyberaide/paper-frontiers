@@ -1792,28 +1792,44 @@ and V100.
 
 
 
-\begin{figure}[p]
+\begin{figure}[htb]
 
   \begin{center}
-     \begin{minipage}[t]{0.65\textwidth}
-        \includegraphics[width=1.0\linewidth]{images/energy_all_model_fit_kWh_per_epoch.pdf}
-        {\bf (A)} NNSE for training.
-     \end{minipage}
-  \end{center}
-  \ \
-  \begin{center}
-     \begin{minipage}[t]{0.65\textwidth}
-        \includegraphics[width=1.0\linewidth]{images/frequency_nnse_histogram_70_validation.pdf}
-        {\bf (B)} NNSE for validation.
-     \end{minipage}
-  \end{center}
 
-  \caption {NNSE comparison}
-  \label{fig:NNSE-comparison-a100}
+     \begin{minipage}[b]{0.40\textwidth}
+       \includegraphics[width=1.0\linewidth]{images/energy_all_model_fit_kWh_per_epoch.pdf}
+        {\bf (A)} A100 Energy trace for 2 epochs training and validation.
+    \end{minipage}
+     \ \
+     \begin{minipage}[b]{0.40\textwidth}
+       \includegraphics[width=1.0\linewidth]{images/average_kWh_per_epoch.pdf}
+        {\bf (B)}  V100 Energy trace for 2 epochs training and validation.
+     \end{minipage}
 
+     \begin{minipage}[b]{0.40\textwidth}
+       \includegraphics[width=1.0\linewidth]{images/model_fit_epoch_vs_watts.pdf}
+        {\bf (C)} A100 Energy trace for 30 epochs training and validation.
+     \end{minipage}
+     \ \
+     \begin{minipage}[b]{0.40\textwidth}
+       \includegraphics[width=1.0\linewidth]{images/model_fit_kWh_per_epoch.pdf}
+        {\bf (D)} model fit kWh per epoch
+     \end{minipage}
+
+     \begin{minipage}[b]{0.40\textwidth}
+       \includegraphics[width=1.0\linewidth]{images/total_epoch_vs_watts.pdf}
+        {\bf (E)} total epoch vs watts
+     \end{minipage}
+     \ \
+     \begin{minipage}[b]{0.40\textwidth}
+       \includegraphics[width=1.0\linewidth]{images/total_kWh_per_epoch.pdf}
+        {\bf (F)}  total kWh per epoch
+     \end{minipage}
+\end{center}
+
+     \caption{Energy traces for training and validation for epochs 2 (A, B), 30 (C, D), 70 (E, F).}
+     \label{fig:energy-graphs}
 \end{figure}
-
-
 
 
 
