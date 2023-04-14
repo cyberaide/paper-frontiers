@@ -147,7 +147,7 @@ integrated into courses and research activities at universities. As
 such we have outlined the many lessons that we learned throughout these
 efforts culmulating in the need for benchmark carpentry for scientists
 using advanced computational resources. The paper also presents
-several benchmarks while focussing on the accuracy of the
+several benchmarks while focusing on the accuracy of the
 result. Energy traces were produced throughout these benchmarks
 showcasing that in addition to the usual time related benchmarks
 energy-related benchmarks can be useful. The activity was only
@@ -436,8 +436,8 @@ and has been adapted to the community to teach basic lab skills for
 research computing.  The experiences from this effort have recently
 been reported to the MLCommons Science Working group. Throughout
 the discussion we identified the need is present o develop an effort
-focussing on {\em Benchmark Carpentry} that goes beyond the aspects
-typically thought in software carpentry while focussing on aspects
+focusing on {\em Benchmark Carpentry} that goes beyond the aspects
+typically thought in software carpentry while focusing on aspects
 about benchmarks that are not covered. This includes a review of other
 benchmark efforts such as Top500 and Geen 500, the technical
 discussion around system benchmarks including SPEC benchmarks, as
@@ -458,19 +458,19 @@ benchmark carpentry.
 An additional aspect ML students are exposed to is the need for access
 to computational resources due to the computational needs posed by the
 ML implementations for applications. One common way of dealing with
-this is to use Google Collab which is easy to get access to, and use,
+this is to use Google Colab which is easy to get access to, and use,
 in a limited fashion for free (larger computational needs will need a
-paid subscription).  However, as Collab is based on Jupyter we
+paid subscription).  However, as Colab is based on JupyterLab, we
 experience the same disadvantages as discussed in
 Section~\ref{sec:tools}.
 
 Other resources for machine learning can be found in the cloud. This
 may include IaaS and PaaS offerings from Amazon, Azure, Google Cloud,
 Salesforce, and others.  In addition to the computational needs for
-executing neural networks and deep learning algorithms, we find also
+executing neural networks and deep learning algorithms, we also find
 services that can be accessed mainly through REST APIs to be
 integrated into the application research. Most popular for such tools
-are focussing on natural language processing such as translation and
+are focusing on natural language processing such as translation and
 more recently of text analysis and responses through ChatGPT and Bart.
 
 However, many academic institutions have access to campus-level and
@@ -479,7 +479,7 @@ resources from NSF and DOE. Such computing resources are accessed
 mostly through traditional batch queues (such as SLURM
 \citep{www-slurm}).  To allow sharing of the limited resources with
 the large user community. For this reason, centers often implement a
-scheduling policy putting significant restrictions on the
+scheduling policy that puts significant restrictions on the
 computational resources that can be used at the same time, and/or for
 a particular period. The number of files and the access to a local
 disk on compute nodes constituting the HPC resources may also be
@@ -510,12 +510,12 @@ access them and to develop their own software stack in containers.
 \end{comment}
 
 One of the popular container frameworks for campus HPC centers is
-singularity, but some centers offer also docker.  As images developed
-can be rather large it is not sufficient to just copy the image from
-your local computer, but the center must allow the ability to create
+singularity, but some centers offer also docker. As developed images
+can be rather large, it is not sufficient to merely copy the image from
+one's local computer, but the center must allow the ability to create
 the image within the HPC infrastructure. This is especially true when
 the university requires all resources to be accessed through a
-VPN. Here you can often see a factor of 10 or more slowdown in
+VPN. Here one can often see a factor of 10 or more slowdown in
 transfer and access speeds.
 
 All this has to be learned by the student and will take up a
@@ -529,7 +529,7 @@ offereings of software carpeting the teaching objective may fall short
 as focus is placed on a limited number of software supported by the
 center instead of teaching how to install the latest version of for
 example tensorflow. Furthermore, the offered software may be limited
-in case the underlaying GPU card drivers are outdated and the software
+in case the underlying GPU card drivers are outdated and the software
 to be benchmarked not only needs the newest software libraries but
 also the newest device drivers which can only be installed by the HPC
 support team.
@@ -600,17 +600,17 @@ following lessons provided significant add-on learning experiences:
   and collaboration of the entire team rather than mere individualism,
   as after graduation students may work in large teams. This includes
   the opportunity for pair programming, but also the fact that careful
-  time planning in the team is needed to succeed.  This also includes
+  time planning in the team is needed to succeed. This also includes
   how to collaborate with peers using professional, industry-standard
   coding software and management of code in a team through the Git
   version control system. While classes still may focus on the
-  individual's progress an MLCommons Benchmark benefits from focusing
+  individual's progress, an MLCommons Benchmark benefits from focusing
   on grading the team and taking the entire project and team progress
-  int a holistic grade evaluation.
+  into a holistic grade evaluation.
 
   \item {\bf Interdisciplinary Research.} Many of the applications in
     MLCommons are requiring interdisciplinary research between the domain
-    scientists, ML experts, and IT engineers. As part of the teamwork
+    scientists, ML experts, and IT engineers. As part of the teamwork,
     students have the opportunity to participate not only in their
     discipline, but learn about how to operate in an interdisciplinary
     team.
@@ -630,7 +630,7 @@ following lessons provided significant add-on learning experiences:
     Python beyond the use of conda and Colab notebooks, the use of
     queueing systems, containers, and cloud computing software for
     AI, DL, and HPC experiments as well as other advanced aspects of
-    software engeneering.
+    software engineering.
 
   \item {\bf Execution ecosystem.} While in-class problems typically
     do not require as many computing resources, some of the examples in
@@ -638,13 +638,13 @@ following lessons provided significant add-on learning experiences:
     and run meaningful calculations that enhance the accuracy of the
     results. Careful planning with workflows and the potential use
     of hybrid heterogeneous systems significantly improves the
-    awareness to deal with not only the laptop but also the large
+    awareness to deal with not only the laptop, but also the large
     available resources students may get access to while leveraging
     leadership-class computing resources, or their own local HPC
     system when available. This includes dealing with system policies,
     remote system access, and frugal planning of experiments through
     prediction of runtimes and planning of hyperparameter searches. This
-    also can include dealing with energy consumption and other
+    can also include dealing with energy consumption and other
     environmental parameters.
 
   \item {\bf Parallelization.} The examples provide a basis for
@@ -658,12 +658,12 @@ following lessons provided significant add-on learning experiences:
     DL algorithms that require a large number of fast IO interactions.
 
   \item {\bf Data Analysis.} The examples provide valuable input to
-    further, enhance abilities to conduct non-trivial data analysis
+    further enhance abilities to conduct non-trivial data analysis
     through advanced Python scripts while integrating them in
     coordinated runs to analyze log files that are created to
     validate the numerical stability of the benchmarks. This obviously
     includes the utilization of popular data analysis libraries (such
-    as Pandas) as well as vizualization. It also allows students to
+    as Pandas) as well as visualization. It also allows students to
     focus on identifying a result that can be communicated in a
     professional manner as the next point illustrates.
 
@@ -687,7 +687,7 @@ following lessons provided significant add-on learning experiences:
 \subsection{MLCommons Deep-Learning based Course Curriculumn}
 
 We can utilize the MLCommons effort to center a course curriculum
-around it. For this to work the course will be focussing on deep
+around it. For this to work, the course will be focusing on deep
 learning while using examples from MLCommons benchmarks as well as
 additional enhancements into other topics that may not be covered.
 
@@ -695,7 +695,7 @@ In contrast to other courses that may only focus on DL technologies
 this course will have the requirement to utilize a significant
 computational resources that are for example available on many
 campuses as part of an HPC or a national scale facility such as
-Access. Alternatively, Google Collab can be used however it will have
+Access. Alternatively, Google Colab can be used; however, it will have
 the disadvantage of not using HPC resources form local or national HPC
 centers.
 
@@ -712,18 +712,18 @@ combination thereof.
   optimization technologies and neural networks is given. The
   connection between MLCommons Applications is presented.
 
-\item{\bf Infrastructure and Benchmarking :} An overview of
+\item{\bf Infrastructure and Benchmarking:} An overview of
   MLCommons-based deep learning applications and benchmarks are
   discussed. This will include a wide variety reaching from tiny
-  devices to supercomputers and hyperscale clouds. Google Collab will
+  devices to supercomputers and hyperscale clouds. Google Colab will
   be introduced. Practical topics such as using ssh and batch queues
   are discussed. An explicit effort is placed on using a code editor
-  such as PyCharm or VScode. Elementary software infrastructure is
+  such as PyCharm or VSCode. Elementary software infrastructure is
   discussed while reviewing Python concepts for functions, classes,
   and code packaging with pip. The use of GitHub is introduced.
   
 \item{\bf Convolutional Neural Networks:} A deeper understanding is taught
-  by focussing on convolutional neural networks (CNNs). The example of
+  by focusing on convolutional neural networks (CNNs). The example of
   Mask R-CNN is explained.
 
 \item{\bf Recurrent Neural Networks:} RNNs are taught and applications of
@@ -735,7 +735,7 @@ combination thereof.
   in that area are presented. This includes large language models,
   analyzing text, applications of NLP, language translation, and
   sentiment analysis.  Practical examples are introduced while looking
-  at ChatGPT. From MLcommons the applications DLRM, BERT, RNN-T are
+  at ChatGPT. From MLCommons, the applications DLRM, BERT, RNN-T are
   discussed.
 
 \item{\bf Project Presentations:} The last part of the class is
@@ -768,15 +768,15 @@ forecast.  As a metric, we use the Nash-Sutcliffe Efficiency (NSE)
 ~\citep{fox2022-jm}.
 
 One of the common tasks when dealing with time series is the ability
-to predict or forecast them in advance.  Time series capture the
+to predict or forecast them in advance. Time series capture the
 variation of values against time and can have multiple dimensions. For
-example, in earthequake forecasting, we use geospatial datasets that have
+example, in earthquake forecasting, we use geospatial datasets that have
 two dimensions based both on time and spatial position. The prediction
 is considerably easier when we can identify an evolution structure
 across dimensions. For example, in earthquakes, we find a strong
 correlation between nearby spatial points. Hence close by spacial
 points influence each other and simplify the time series prediction
-for an area.  However, as earthquake faults and other geometric features
+for an area. However, as earthquake faults and other geometric features
 are not uniformly distributed, such correlations are often not clearly
 defined in spatial regions. Thus it is important not just to look at
 the region, but also at the evolution in time series. This benchmark
@@ -842,7 +842,7 @@ forecasting in a region of Southern California.}\\
 
 The reference implementation of the benchmark includes three distinct
 deep learning-based reference implementations. These are a Long
-short-term memory (LSTM)-based model, a Google Temporal Fusion
+Short-Term Memory (LSTM)-based model, a Google Temporal Fusion
 Transformer (TFT)~\citep{TFT-21}-based model, and a custom hybrid
 transformer model. The TFT-based model uses two distinct LSTMs,
 covering an encoder and a decoder with a temporal attention-based
@@ -860,14 +860,14 @@ The original code was developed with the goal to create a DL method
 called {\em tevelop} to apply special time-series evolution for
 multiple applications including earthquake, hydrology, and COVID
 prediction. The code was presented in a large Python Jupyter notebook
-on Google Collab.  Due to the integration of multiple applications
+on Google Colab.  Due to the integration of multiple applications
 (hydrology and covid), the code was difficult to understand and
 maintain. For this reason, the total number of lines of 13500 was
 reduced by more than 2400 lines when the hydrology and the COVID code
-were removed.  However, at the same time, we restructured the code and
-reached a final length of about 11100 lines of code.  The original
+were removed. However, at the same time, we restructured the code and
+reached a final length of about 11100 lines of code. The original
 code contained all hyperparameters and needed to be changed every time
-a hyperparameter was modified.  The code included all definitions of
+a hyperparameter was modified. The code included all definitions of
 variables and hyperparameters in the code itself. The code could be
 further made shorter by separating the model code into a library.
 
@@ -1097,7 +1097,7 @@ users. This system was developed by von Laszewski and contains two
 components (a) a general stopwatch (b) a mechanism to monitor the GPU
 as discussed in \ref{sec:monitoring}.
 
-We describe these systems briefly while focussing on the applicability
+We describe these systems briefly while focusing on the applicability
 for benchmarks.
 
 \subsection{Cloudmesh Monitoring}
@@ -1193,7 +1193,7 @@ abstractions.
     \label{fig:cc-2}
 \end{figure}
 
-Instead of focussing on the details of this architecture, we found that
+Instead of focusing on the details of this architecture, we found that
 the high-level use of it is very important as part of the educational
 activities which also have an implication in general on the use within
 any research activity.
@@ -1494,16 +1494,16 @@ initial surprise we found that the RTX3090 machine was originally
 almost 2.67 times better than the HPC machine with an A100.
 
 This desktop also significantly outperformed the application when it
-was executed on google collab. In face the time on Google collab
-althoough good for small epochs quickly deterioted with increasing
-number of epoch due to the older GPUs available at that time on Google
-Collab.
+was executed on Google Colab. In face the time on Google Colab,
+although good for small epochs, quickly deteriorated with increasing
+number of epochs due to the older GPUs available at that time on Google
+Colab.
 
 The reason why the desktop performed to well is that it had up to date
 fast memory and that the data was hosted on fast NVMe storge. As the
-earthquake application uses many data requests fast IO makes a big
+earthquake application uses many data requests, fast IO makes a big
 difference. This performance analysis has guided us to improve the HPC
-machine. Future expansions of the HPC machine include 28TB of of fast
+machine. Future expansions of the HPC machine include 28TB of fast
 to the GPUs accessible NVMe storage.
 
 
@@ -1851,12 +1851,12 @@ The code is all in the public domain and available on GitHub at the following lo
   accessing cloud and HPC
   resources. \url{https://github.com/orgs/cloudmesh/repositories}
 
-\item {\bf MLcommons earthquake production code} -- The MLCommons Science
+\item {\bf MLCommons earthquake production code} -- The MLCommons Science
   Working group is described at
   \url{https://mlcommons.org/en/groups/research-science/}. This page
   contains the links to the production-level earthquake code.
 
-\item {\bf MLcommons earthquake development code} -- The development version of
+\item {\bf MLCommons earthquake development code} -- The development version of
   the code is available in this repository. It also contains many of
   the analysis scripts that are not part of the production code
   hosted by MLCommons \url{https://github.com/laszewsk/mlcommons}.
