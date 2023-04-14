@@ -18,6 +18,9 @@ watch: $(FILENAME).pdf
 
 .PHONY: clean
 
+edit:
+	emacs $(FILENAME).tex
+
 clean:
 	latexmk -C -bibtex
 	rm -rf $(FILENAME).spl
