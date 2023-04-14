@@ -1704,32 +1704,24 @@ Figure \ref{fig:NNSE-history-a100}).
 
 
 Energy consumption has become an important factor in evaluation of
-compute centers due to the high cost associated with it. This not only
-includees common measurements such as PUE but also the measurement of
-application oriented energy consumption to build for example a ranking
-as projected in the Green500 list \citep{green500}.
+compute centers due to the high costs. This not only includes common 
+measurements such as PUE but also the measurement of application 
+oriented energy consumption to build. For example, ranking the most 
+energy efficient Supercomputers as detailed in the Green500 list \citep{green500}.
 
-Obviously it is of interrest to also be able to project energy
-consumption of algorithmes so energy resource restrictions and cost
-can be analyzed. We have however also identified an important aspect
-of providing energy traces that we discuss next.
+Through predicting algorithm energy consumption, used energy and cost
+can be known. We have developed an energy trace program to monitor 
+and predict our energy uses.
 
-While observing initially the fast runtime of the RTX3090 on a custom
-desktop in contrast to the A100 performance on the HPC we were asked
-to provide evidence that we use the A100 processor. The energy monitor
-we developed and intermittent event notifications throughout the
-program provided evidence that we used the machine properly. The
-energy traces are generated periodically every second. The traces for
+The energy traces are generated periodically every second. The traces for
 2, 30, and 70 epochs are depicted in Figure \ref{fig:energy-graphs}.
-Here we augmented the traces also with different phases. WHiel the
-green area indicates the use of the GPU shows that the energy values
-recorded are increased over that period. Other phases dealing with
-data reparation only show a modest use of the GPU. Furthermore we have
-meausred the energy consumption between different GPUS and in Figure
-\ref{fig:energy-graphs} we showcase the differentiation between A100
+Here we augmented the traces also with different phases. The
+green area indicates the use of the GPU. This shows that the energy values
+recorded are increased during that time. The other phases dealing with
+data reparation only show a modest use of the GPU. We have
+measured the energy consumption between different GPUS. Figure
+\ref{fig:energy-graphs} showcases the differentiation between the A100
 and V100.
-
-
 
 
 \begin{figure}[htb]
