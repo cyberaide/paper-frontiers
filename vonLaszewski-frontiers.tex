@@ -4,14 +4,6 @@
 %%%  NB logo1.jpg is required in the path in order to correctly compile front page header %%%
 
 %\documentclass[utf8]{FrontiersinHarvard}
-
-
- %tables/2-training-NNSE.tex    
- %tables/2-validation-NNSE.tex  
- %tables/30-training-NNSE.tex   
- %tables/30-validation-NNSE.tex -
- %tables/70-training-NNSE.tex   
- %tables/70-validation-NNSE.tex
  
 \documentclass[utf8]{FrontiersinVancouver} % for articles in journals
 
@@ -38,7 +30,9 @@
 %\newcommand{\REPLACE}[2]{\begin{quote}\textcolor{red}{#1}\end{quote}\\{\textcolor{blue}{#2}}
 
 \newcommand{\YES}{yes}
-% \makeatletter\newcommand{\tableofcontents}{\@starttoc{toc}}\makeaother
+
+\makeatletter\newcommand{\tableofcontents}{\@starttoc{toc}}\makeaother
+
 
 \linenumbers
 
@@ -104,15 +98,15 @@ Town Center Four,
 
 \onecolumn
 
-%{\bf \TITLE}
+{\bf \TITLE}
 
-%{\Authors}
+{\Authors}
 
-%{\Address}
+{\Address}
 
-%\bigskip
+\bigskip
 
-% \tableofcontents
+\tableofcontents
 
 \title{\TITLE}
 
@@ -243,8 +237,9 @@ application, present data for the runtime
 (Section~\ref{sec:perf-runtime}) and for the energy
 (Section~\ref{sec:perf-energy}).
 
+\TODO{look at structure of paper and update if needed}
 
-\section{MLCommons}
+\subsection{MLCommons}
 \label{sec:mlcommons}
 
 MLCommons is a non-profit organization with the goal to accelerate
@@ -328,7 +323,12 @@ educational activities. Hence, since its inception, we leveraged the
 MLCommons activities and obtained a number of important educational
 insights that we discuss in this paper.
 
-\section{Insights of Machine Learning in Education}
+
+\section{Materials and Methods}
+
+\TODO{look how content can fit into materials and methods}
+
+\subsection{Insights of Machine Learning in Education}
 \label{sec:edu-ml}
 
 Before we start with the insights from MLCommons, we will first
@@ -340,7 +340,7 @@ applications, software development {\em tools}, and finally the {\em
   infrastructure} that is needed to execute them.
 
 
-\subsection{Methods}
+\subsubsection{ML Methods}
 
 We list some topics associated with traditional methods in machine
 learning (ML) and artificial intelligence (AI) that are frequently
@@ -361,7 +361,7 @@ curriculum needs to be developed as the topics can not be taught in a
 one-semester course in sufficient depth, but needs to span the
 duration of a student's curriculum in AI.
 
-\subsection{Libraries}
+\subsubsection{Libraries}
 
 There are several diverse libraries and tools that exist to support
 the development of AI and ML products.  As an example, we list a
@@ -383,7 +383,7 @@ of faster, GPU-based methods typically use C++ code leveraging the
 vendor's specialized libraries to interface with the GPUs such as
 NVIDIA CUDA.
 
-\subsection{Tools and Software Carpentry}\label{sec:tools}
+\subsubsection{Tools and Software Carpentry}\label{sec:tools}
 
 
 To efficiently use the libraries and methods, and also the
@@ -430,7 +430,7 @@ is very useful for writing documentation.
 In addition, elementary use of a command line editor is needed to
 simplify direct editing on remote HPC machines using a command
 terminal. Although students can choose editors such as {\em vi}, {\em
-  vim}, {\em nano|, or {\em pico}, we found that a better editor for
+  vim}, {\em nano}, or {\em pico}, we found that a better editor for
   students to learn is {\em emacs}. We found that it is possible to
   teach emacs in 5 minutes to students while focusing on the 10 most
   important commands. If more sophisticated commands are needed, the
@@ -462,7 +462,7 @@ terminal. Although students can choose editors such as {\em vi}, {\em
   structure a Python code has been lost and the quality of writing a
   larger program is no longer prevalent with all students.
 
-\subsection{Benchmark Carpentry}
+\subsubsection{Benchmark Carpentry}
 
 Software carpentry \citep{software-carpentry} is a well-known concept
 and has been adapted to the community to teach basic lab skills for
@@ -486,7 +486,7 @@ classes and the results of developing material for and by the
 participants can significantly lead to improving the concept of
 benchmark carpentry.
 
-\subsection{Infrastructure}
+\subsubsection{Infrastructure}
 
 An additional aspect ML students are exposed to is the need for access
 to computational resources due to distinct hardware needs resulting
@@ -592,7 +592,7 @@ may not allow access to the overall power consumption of entire
 compute racks as it is often very tightly controlled and only
 accessible for the HPC operational support staff.
 
-\section{Insights of MLCommons in Education}
+\subsection{Insights of MLCommons in Education}
 \label{sec:edu-mlcommons-insights}
 
 The MLCommons benchmarks provide a valuable starting point for
@@ -721,7 +721,7 @@ following lessons provided significant add-on learning experiences:
 \end{itemize}
 
 
-\subsection{MLCommons Deep-Learning based Course Curriculumn}
+\subsubsection{MLCommons Deep-Learning based Course Curriculumn}
 
 We can utilize the MLCommons effort to center a course curriculum
 around it. For this to work, the course will be focusing on deep
@@ -790,7 +790,8 @@ combination thereof.
  by bi-weekly practical mini-assignments showcasing selected results
  and implementations of a particular topic.
 
-\section{Earthquake Forecasting}
+
+\subsection{Earthquake Forecasting}
 \label{sec:eq}
 
 The scientific objective of the earthquake benchmark is to extract the
@@ -822,7 +823,7 @@ series. This benchmark extracts the evolution of time series applied
 to earthquake forecasting.
 
 
-\subsection{Earthquake Data}
+\subsubsection{Earthquake Data}
 
 The data for this earthquake is described in
 \citep{las-22-mlcommons-science}.  It uses a subset of the earthquake
@@ -877,7 +878,7 @@ forecasting in a region of Southern California.}\\
 \end{table}
 
 
-\subsection{Implementation}
+\subsubsection{Implementation}
 
 The reference implementation of the benchmark includes three distinct
 deep learning-based reference implementations. These are a Long
@@ -893,7 +894,7 @@ forecasting~\citep{TFT-21}. Details of the current reference models
 can be found in~\citep{fox2022-jm}.  In this paper, we only focus on
 the TFT implementation.
 
-\subsection{Insights into Development of the Code}
+\subsubsection{Insights into Development of the Code}
 
 The original code was developed with the goal to create a DL method
 called {\em tevelop} to apply special time-series evolution for
@@ -954,7 +955,7 @@ but simple batch job generator which we discuss in Section
 %* comparison of accuracy across different hyperparameter searches.
 
 
-\section{Insights into Data Management from the Earthquake Forecasting Application}
+\subsection{Insights into Data Management from the Earthquake Forecasting Application}
 \label{sec:eq-data}
 
 In data management, we are currently concerned with various aspects of
@@ -962,7 +963,7 @@ the data set, the data compression and storage, as well as the data
 access speed. We discuss insights into each of them in the next
 Sections.
 
-\subsection{Data Sets}
+\subsubsection{Data Sets}
 
 
 When dealing with datasets we typically encounter several issues.
@@ -982,7 +983,7 @@ accuracy. This could include even injecting new data and different
 preprocessing methods.
 
 
-\subsection{Data compression}
+\subsubsection{Data compression}
 
 An issue that is of utmost importance especially for large data sets
 is how the data is represented. For example, for the earthquake
@@ -1017,7 +1018,7 @@ compute system where the students storage capacaties may be limited by
 policy.
 
 
-\subsection{Data Access}
+\subsubsection{Data Access}
 
 Besides having proper data and being able to download it efficiently
 from the location of storage, it is imperative to be able to access it
@@ -1090,7 +1091,7 @@ comparison with a personal computer from a student.
   
 
 
-\section{Insights into DL Benchmark Workflows}
+\subsection{Insights into DL Benchmark Workflows}
 \label{sec:workflow-main}
 
 As we are trying to benchmark various aspects of the applications and
@@ -1140,7 +1141,7 @@ as discussed in \ref{sec:monitoring}.
 We describe these systems briefly while focusing on the applicability
 for benchmarks.
 
-\subsection{Cloudmesh Monitoring}
+\subsubsection{Cloudmesh Monitoring}
 \label{sec:monitoring}
 
 To conduct monitoring of time we have provided for years a convenient
@@ -1204,7 +1205,7 @@ To have also direct access to MLCommons events, we have recently added
 the ability to call time events.
 
 
-\subsubsection{Analytics Service Pipelines}
+\subsubsubsection{Analytics Service Pipelines}
 
 In many cases, a big data analysis is split up into multiple
 subtasks. These subtasks may be reusable in other analytics
@@ -1219,7 +1220,7 @@ functionality, data dependency, and performance. Analytics services
 may have authentication, autorotation, and access controls built-in
 that enable access by users controlled by the service providers.
 
-The overall architecture is depicted in Figure \ref{fig:cc-2}. It
+The overall architecture is depicted in Figure \ref{fig:cc-2} A. It
 showcases a layered architecture with components dealing with batch
 job generation, storage management, compute coordination, and
 monitoring. These components sit on top of other specialized systems
@@ -1227,10 +1228,20 @@ that can easily be ported to other systems while using common system
 abstractions.
 
 \begin{figure}[htb]
-    \centering
-    \includegraphics[width=0.70\columnwidth]{images/cloudmesh-cc-new.pdf}
-    \caption{Architecture Workflow Service.}
+    \centering\includegraphics[width=0.70\columnwidth]{images/cloudmesh-cc-new.pdf}
+    
+    {\bf (A)} Architecture of the overall workflow framework.
+
+\bigskip\bigskip
+    
+    \centering\includegraphics[width=1.0\columnwidth]{images/cloudmesh-sbatch-new.pdf}
+    
+    
+    {\bf (B)} Architecture of Workflow Script Batch Generator cloudmesh-sbatch.
+
+    \caption{Architecture of the Cloudmesh Workflow Service Framework.}
     \label{fig:cc-2}
+
 \end{figure}
 
 Instead of focusing on the details of this architecture, we found that
@@ -1266,7 +1277,7 @@ in the benchmark process.
 
 
 
-\subsubsection{Workflow Compute Coordinator}
+\subsubsubsection{Workflow Compute Coordinator}
 \label{sec:workflow-cc}
 
 % possibly some repitition here
@@ -1324,7 +1335,7 @@ using earthquake prediction has also been used.
 Figure \ref{fig:cc-3} A shows the REST specification and
 \ref{fig:cc-3} B shows graphical user interface.
 
-\subsection{Parameterized Workflow Job Generator}
+\subsubsection{Parameterized Workflow Job Generator}
 \label{sec:workflow-sbatch}
 
 In traditional machine learning workflows, hyper-parameter tuning and
@@ -1349,15 +1360,7 @@ generality of the system while using arbitrary queuing systems and
 submission commands.
 
 The architecture of the cloudmesh-sbatch framework is depicted in
-Figure \ref{fig:cm-sbatch}.
-
-\begin{figure}[htb]
-    \centering
-    \includegraphics[width=1.0\columnwidth]{images/cloudmesh-sbatch-new.pdf}
-    \caption{Workflow Script Batch Generator.}
-    \label{fig:cm-sbatch}
-\end{figure}
-
+Figure \ref{fig:cc2} B.
 
 Where cloudmesh-sbatch differentiates itself from other template
 engines is its ability to generate a cartesian product (permutation)
@@ -1491,11 +1494,57 @@ and the jobs could be created easily while fostering
 reproducibility. The resulting jobs were run over a time period of a
 month, while each job took many hours to complete.
 
+\subsection{Hardware used for this Research}
+
+
+\begin{itemize}
+\item {\bf Rivanna}~\citep{www-rivanna} -- The Rivanna HPC cluster is a system hosted at the University of Virginia
+with 15 different hardware configurations spanning 575 nodes. 
+Of these nodes there are 5 different classes of GPUs.
+\item {\bf Google Colab}~\cite{google-colab} is a free to use interactive computing service offered by Google that provides on demand access to GPUs and TPUs. Google Colab is designed to be used with machine learning and data analysis. \cite{google-colab}
+When running with Google Colab, multiple hardware configurations may be provided depending upon the instance type.
+For a GPU configuraiton in the Pro+ plan allocates an NVidia V100 with 53GBs of RAM.
+
+\end{itemize}
+
+
+\begin{table}[htb]
+    \caption{Overview of compute resources.}
+    \label{tab:hwoverview}
+    \begin{center}
+    {\footnotesize
+    \begin{tabular}{|l|r|l|l|l|r|l|}
+        \hline
+            Machine  & Processors & Memory & GPU   &   GPU & \# Nodes  & Commissioned \\ 
+        \hline
+        \hline
+         Rivanna (UV) &  1 & 2048GB    & A100 80GB    &  8  &  1 & Feb 2022 \\
+                      &  1 & 1024GB    & A100 40GB    &  8  &  2 & June 2022     \\
+                      & 28 & 255GB     & K80  11GB    &  8  &  9 & 2021          \\
+                      & 28 & 255GB     & P100 12GB    &  4  &  4 & 2021          \\
+                      & 28 & 188GB     & V100 16GB    &  4  &  1 & 2021          \\
+                      & 40 & 384GB     &  V100 32GB   &  4  & 12 & 2021          \\
+                      & 36 & 384GB     & V100 32GB    &  4  &  3 & 2021          \\
+                      & 40 & 384GB     & RTX2080TI    & 10  &  2 & 2021          \\
+         \hline
+         Google Colab Pro+ & Unpublished & 53GB & V100 & 1 & Unpublished & March 2022 \\
+         \hline
+         Desktop 5950X    &           1 & 128GB & RTX3090  &   1 & 1 & Feb 2022   \\
+         \hline
+         Laptop 5900HX    &           1 &    16GB & RTX3080  & 1 & 1 & Nov. 2021 \\
+         \hline
+    \end{tabular}
+    }
+    \end{center}
+\end{table}
+
+
+\section{Benchmark Results}
+\label{sec:results}
 
 
 
-
-\section{Earthquake Forecast Performance Measurements}
+\subsection{Earthquake Forecast Performance Measurements}
 \label{sec:perf-main}
 
 The code was significantly modified by removing other code that was
@@ -1507,7 +1556,7 @@ runtime, start, stop, status, and event actions. In addition, we
 augmented the execution of the batch scripts with code that reports
 energy and temperature.
 
-\subsection{Measuring Runtime}
+\subsubsection{Measuring Runtime}
 \label{sec:perf-runtime}
 
 After the code augmentations we could get a projected runtime on
@@ -1569,7 +1618,7 @@ the GPUs accessible NVMe storage.
     {\footnotesize              
 
           \begin{tabular}{lrrrrr}
-            Timer             & RTX3090 & RTX3080 & A100    & V100    & K80     \\
+            Timer             & RTX3090 & RTX3080 & A100 80GB & V100    & K80     \\
             \hline
             Machine           & Desktop & Laptop  & Rivanna & Rivanna & Rivanna \\
             Total             & 6589.4  & 8348.5  & 17574.8 & 20295.0 & 28343.3 \\
@@ -1585,7 +1634,7 @@ the GPUs accessible NVMe storage.
 \end{table}
 
 
-\subsection{Accuracy Performance Benchmark}
+\subsubsection{Accuracy Performance Benchmark}
 \label{sec:perf-accuracy}
 
 %%% max 15 figures abd table, subfig is one figure
@@ -1611,7 +1660,7 @@ epoch runs up to 70 epochs. Our best accuracy values are found at our
 \end{figure}
 
 
-\subsection{Hyperparameters for Input and Prediction Data}
+\subsubsection{Hyperparameters for Input and Prediction Data}
 
 For the rest of the experiments, we have chosen different input and
 output vectors that are used as parameters to generate the accuracy
@@ -1639,7 +1688,7 @@ another example, the value of {\em 1 Year Back} is a single 2-week
 occurrence one year ago from the rolling training date.
 
 
-\subsection{Competitive Accuracy Benchmarks}
+\subsubsection{Competitive Accuracy Benchmarks}
 
 In this section, we summarize the competitive accuracy benchmark where
 we use the nomenclature for the input and output hyperparameters
@@ -1699,9 +1748,6 @@ Figure \ref{fig:NNSE-history-a100}).
 \end{center}
 \end{table}
 
-
-
-
 \begin{figure}[p]
 
   \begin{center}
@@ -1745,7 +1791,7 @@ Figure \ref{fig:NNSE-history-a100}).
 \end{figure}
 
 
-\subsection{Energy}
+\subsubsection{Energy}
 \label{sec:perf-energy}
 
 
@@ -1838,7 +1884,7 @@ differentiation between the A100 and V100.
 
 
 
-\section{Conclusion}
+\section{Discussion}
 
 This paper summarizes an enormous body of work that addresses multiple
 aspects of machine learning benchmarking. We identified that
@@ -1907,7 +1953,7 @@ contributed to various aspects of the workflow component of the paper
 and to a number of executions and evaluations of experiment runs. {\em
   RK} was a student and has helped together with {\em GVL} in the
 implementation of cloudmesh-sbatch and the porting of the effort to
-the UVA machine.  {\em GCF} is the author of the earthquake code and
+the UV machine.  {\em GCF} is the author of the earthquake code and
 facilitates the interactions with the MLCommons Science Working group
 as a group leader of that effort. {\em TB} and {\em JK} participated
 in an erlier project that ported and improved the code while adding
@@ -1931,7 +1977,7 @@ We like to thank Thomas Butler and Jake Kolessar for their
 contributions during the capstone project while focusing on executing
 initial runs of the code, and experimenting with modifications to the
 code including logging. Please note that since this team finished
-their work, significant improvements have been made by the authors of
+their work, significant improvements have been made by the first authors of
 this paper.
 
 
