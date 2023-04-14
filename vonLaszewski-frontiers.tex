@@ -1584,8 +1584,9 @@ epoch runs up to 70 epochs. Our best accuracy values are found at our
 
 }
 
-For the rest of the experiments we have chosen different for input and
-output vectors that are used to generate the accuracy using our deep
+
+For the rest of the experiments, we have chosen different input and
+output vectors that are used as parameters to generate the accuracy using our deep
 learning algorithm. Thus, in the subsequent benchmark results,
 groupings of data are used as hyperparameters and leveraged as
 training data to optimize their associated accuracy values. The data
@@ -1606,24 +1607,24 @@ Thus, applying these rules, a range of values is established by first
 specifying a time and then the number of observations to include.  For
 example, a value of {\em 1Y 2wk+26AVG} is the resulting dataset
 starting 1 year, and including 26 observations from this point.  As
-another example, the value of {\em 1 Year Back} is a single 2 week
+another example, the value of {\em 1 Year Back} is a single 2-week
 occurrence one year ago from the rolling training date.
 
 
 \section{Competitive Accuracy Benchmarks}
 
-In this section we summarize the competitive accuracy nemchmark where
-we use the nomencalture for the input and output hyperparameters
+In this section, we summarize the competitive accuracy benchmark where
+we use the nomenclature for the input and output hyperparameters
 defining the time period used for the training and validation.  To
-simplify our presentation we have chosen for this papers experiments
-using 2, 30, and 70 epochs. We took all results and sorted them for
-training and validation seperatly by the accuracy values. This leads
+simplify our presentation we have chosen for this paper's experiments
+to use the epoch values to be 2, 30, and 70. We took all results and sorted them for
+training and validation separately by the accuracy values. This leads
 to a ranking of the experiments by accuracy. In Table
-\ref{tab:ranking-accuracy} we present the top 20 acuracy values, while
+\ref{tab:ranking-accuracy} we present the top 20 accuracy values, while
 in Figure ??? we created a histogram showcasing how many accuracy
 values fall into a certain bucket over all experiments.
 
-From the table and the histogram we see that we achieve the best
+From the table and the histogram, we see that we achieve the best
 results using the parameters (epoch=2, Now 2wk+26AVG).
 
 
@@ -1665,13 +1666,13 @@ results using the parameters (epoch=2, Now 2wk+26AVG).
 \end{table}
 
 
+
+
 Although we are mostly interested in identifying the best accuracy
-value it is also of advantage to unalyze which parameter sets lead in
-general to the best results. For this we are depicting in Figure
+value it is also advantageous to analyze which parameter sets lead in
+general to the best results. For this, we are depicting in Figure
 \ref{fig:NNSE-comparison-a100}. Here we compare the histogram of all
-NNSE values for training and validation
-
-
+NNSE values for training and validation.
 
 
 \begin{figure}[p]
