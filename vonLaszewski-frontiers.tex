@@ -1755,32 +1755,32 @@ and V100.
 
   \begin{center}
 
-     \begin{minipage}[b]{0.40\textwidth}
+     \begin{minipage}[b]{0.45\textwidth}
        \includegraphics[width=1.0\linewidth]{images/a100-shaded-energy-2-epochs.pdf}
         {\bf (A)} A100 Energy trace for 2 epochs training and validation.
     \end{minipage}
      \ \
-     \begin{minipage}[b]{0.40\textwidth}
+     \begin{minipage}[b]{0.45\textwidth}
         \includegraphics[width=1.0\linewidth]{images/v100-shaded-energy-2-epochs.pdf}
         {\bf (B)}  V100 Energy trace for 2 epochs training and validation.
      \end{minipage}
 
-     \begin{minipage}[b]{0.40\textwidth}
+     \begin{minipage}[b]{0.45\textwidth}
         \includegraphics[width=1.0\linewidth]{images/a100-shaded-energy-30-epochs.pdf}
         {\bf (C)} A100 Energy trace for 30 epochs training and validation.
      \end{minipage}
      \ \
-     \begin{minipage}[b]{0.40\textwidth}
+     \begin{minipage}[b]{0.45\textwidth}
         \includegraphics[width=1.0\linewidth]{images/v100-shaded-energy-30-epochs.pdf}
         {\bf (D)} V100 Energy trace for 30 epochs training and validation.
      \end{minipage}
 
-     \begin{minipage}[b]{0.40\textwidth}
+     \begin{minipage}[b]{0.45\textwidth}
        \includegraphics[width=1.0\linewidth]{images/a100-shaded-energy-70-epochs.pdf}
         {\bf (E)} A100 Energy trace for 70 epochs training and validation.
      \end{minipage}
      \ \
-     \begin{minipage}[b]{0.40\textwidth}
+     \begin{minipage}[b]{0.45\textwidth}
         \includegraphics[width=1.0\linewidth]{images/v100-shaded-energy-70-epochs.pdf}
         {\bf (F)}  V100 Energy trace for 70 epochs training and validation.
      \end{minipage}
@@ -1796,39 +1796,41 @@ and V100.
 
   \begin{center}
 
-     \begin{minipage}[b]{0.40\textwidth}
-       \includegraphics[width=1.0\linewidth]{images/energy_all_model_fit_kWh_per_epoch.pdf}
-        {\bf (A)} A100 Energy trace for 2 epochs training and validation.
-    \end{minipage}
-     \ \
-     \begin{minipage}[b]{0.40\textwidth}
-       \includegraphics[width=1.0\linewidth]{images/average_kWh_per_epoch.pdf}
-        {\bf (B)}  V100 Energy trace for 2 epochs training and validation.
-     \end{minipage}
+       \includegraphics[height=0.3\textheight]{images/energy_all_model_fit_kWh_per_epoch.pdf}
 
-     \begin{minipage}[b]{0.40\textwidth}
-       \includegraphics[width=1.0\linewidth]{images/model_fit_epoch_vs_watts.pdf}
-        {\bf (C)} A100 Energy trace for 30 epochs training and validation.
-     \end{minipage}
-     \ \
-     \begin{minipage}[b]{0.40\textwidth}
-       \includegraphics[width=1.0\linewidth]{images/model_fit_kWh_per_epoch.pdf}
-        {\bf (D)} model fit kWh per epoch
-     \end{minipage}
+       {\bf (A)} energy of various epochs reporting kWh per epoch}
 
-     \begin{minipage}[b]{0.40\textwidth}
-       \includegraphics[width=1.0\linewidth]{images/total_epoch_vs_watts.pdf}
-        {\bf (E)} total epoch vs watts
-     \end{minipage}
-     \ \
-     \begin{minipage}[b]{0.40\textwidth}
-       \includegraphics[width=1.0\linewidth]{images/total_kWh_per_epoch.pdf}
-        {\bf (F)}  total kWh per epoch
-     \end{minipage}
-\end{center}
+          
+     %\ \
+     %\begin{minipage}[b]{0.49\textwidth}
+     %  \includegraphics[width=1.0\linewidth]{images/average_kWh_per_epoch.pdf}
+     %   {\bf (B)} average kWh per epoch
+     %\end{minipage}
 
-     \caption{Energy traces for training and validation for epochs 2 (A, B), 30 (C, D), 70 (E, F).}
-     \label{fig:energy-graphs}
+     %\begin{minipage}[b]{0.49\textwidth}
+     %  \includegraphics[width=1.0\linewidth]{images/model_fit_epoch_vs_watts.pdf}
+     %   {\bf (C)} model fit epoch vs watts
+     %\end{minipage}
+     %\ \
+     %\begin{minipage}[b]{0.49\textwidth}
+     %  \includegraphics[width=1.0\linewidth]{images/model_fit_kWh_per_epoch.pdf}
+     %   {\bf (D)} model fit kWh per epoch
+     %\end{minipage}
+
+        \includegraphics[height=0.3\textheight]{images/total_epoch_vs_watts.pdf}
+
+        {\bf (B)} total epoch vs watts
+
+         \includegraphics[height=0.3\textheight]{images/total_kWh_per_epoch.pdf}
+
+         {\bf (C)}  total kWh per epoch
+
+  \end{center}
+
+  \caption{Energy consumption of various GPUs. While (A) and the V100
+    in (B) and (C) are produced with an NSF mounted filesystem, the
+    data for A100 in (B) and (C) is using localsctrtch} 
+  \label{fig:energy-graphs}
 \end{figure}
 
 
