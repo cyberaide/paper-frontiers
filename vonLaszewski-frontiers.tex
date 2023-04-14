@@ -854,7 +854,7 @@ forecasting~\citep{TFT-21}. Details of the current reference models
 can be found in~\citep{fox2022-jm}.  In this paper, we only focus on
 the TFT implementation.
 
-\subsection{Insights into Development from the Earthquake Code}
+\subsection{Insights into Development of the Code}
 
 The original code was developed with the goal to create a DL method
 called {\em tevelop} to apply special time-series evolution for
@@ -1188,7 +1188,7 @@ abstractions.
 
 \begin{figure}[htb]
     \centering
-    \includegraphics[width=0.50\columnwidth]{images/cloudmesh-cc-new.pdf}
+    \includegraphics[width=0.70\columnwidth]{images/cloudmesh-cc-new.pdf}
     \caption{Architecture Workflow Service.}
     \label{fig:cc-2}
 \end{figure}
@@ -1258,14 +1258,14 @@ tools to interact with it.
 
 
 \begin{figure}[htb]
-  \centering\includegraphics[width=0.7\columnwidth]{images/fastapi-service-highres.png}
+  \centering\includegraphics[width=0.8\columnwidth]{images/fastapi-service-highres.png}
   
   {\bf (A) Fast API workflow service.}
 
   \bigskip
 
 
-    \centering\includegraphics[width=0.70\columnwidth]{images/cc-1.png}
+    \centering\includegraphics[width=0.8\columnwidth]{images/cc-1.png}
 
     {\bf (B) Workflow user interface.}
 
@@ -1312,7 +1312,7 @@ Figure \ref{fig:cm-sbatch}.
 
 \begin{figure}[htb]
     \centering
-    \includegraphics[width=0.70\columnwidth]{images/cloudmesh-sbatch-new.pdf}
+    \includegraphics[width=1.0\columnwidth]{images/cloudmesh-sbatch-new.pdf}
     \caption{Workflow Script Batch Generator.}
     \label{fig:cm-sbatch}
 \end{figure}
@@ -1512,12 +1512,12 @@ to the GPUs accessible NVMe storage.
   \centering\includegraphics[width=0.75\columnwidth]{images/Graphics_Cards_BestFit_bar.pdf}
 
   {\bf (A)} Performance time measurements while using only 2 epochs on
-  various systems with different GPUs.}
+  various systems with different GPUs.
 
   \centering\includegraphics[width=0.75\columnwidth]{images/Benchmark_comp_resource.pdf}
 
   {\bf (B)} Performance time benchmark for various GPU cards on
-  different systems and variation of epochs.}
+  different systems and variation of epochs.
     
   \caption{Performance time measurements.}
   \label{fig:performance-projection}
@@ -1574,17 +1574,6 @@ epoch runs up to 70 epochs. Our best accuracy values are found at our
 
 \subsection{Hyperparameters for Input and Prediction Data}
 
-\TODO{Verify if the ranges seek backwards or forwards when sampling
-
-  Where does this go to:
-  
-  An epoch value of 30 and the hyperparameter {\em Now 2wk+26AV} which
-  has an NNSE value for the training of 0.5218 and a validation value of
-  0.502300
-
-}
-
-
 For the rest of the experiments, we have chosen different input and
 output vectors that are used as parameters to generate the accuracy using our deep
 learning algorithm. Thus, in the subsequent benchmark results,
@@ -1617,15 +1606,21 @@ In this section, we summarize the competitive accuracy benchmark where
 we use the nomenclature for the input and output hyperparameters
 defining the time period used for the training and validation.  To
 simplify our presentation we have chosen for this paper's experiments
-to use the epoch values to be 2, 30, and 70. We took all results and sorted them for
-training and validation separately by the accuracy values. This leads
-to a ranking of the experiments by accuracy. In Table
-\ref{tab:ranking-accuracy} we present the top 20 accuracy values, while
-in Figure ??? we created a histogram showcasing how many accuracy
-values fall into a certain bucket over all experiments.
+to use the epoch values to be 2, 30, and 70. We took all results and
+sorted them for training and validation separately by the accuracy
+values. This leads to a ranking of the experiments by accuracy. In
+Table \ref{tab:ranking-accuracy} we present the top 20 accuracy
+values, while in Figure \ref{fig:NNSE-history-a100} we created a
+histogram showcasing how many accuracy values fall into a certain
+bucket over all experiments.
 
 From the table and the histogram, we see that we achieve the best
 results using the parameters (epoch=2, Now 2wk+26AVG).
+
+Although we are mostly interested in identifying the best accuracy
+value it is also advantageous reflect on that the history showcases
+that the 70 epoch case leads in general to better results.  (see
+Figure \ref{fig:NNSE-history-a100}).
 
 
 \begin{table}[htb]
@@ -1668,13 +1663,6 @@ results using the parameters (epoch=2, Now 2wk+26AVG).
 
 
 
-Although we are mostly interested in identifying the best accuracy
-value it is also advantageous to analyze which parameter sets lead in
-general to the best results. For this, we are depicting in Figure
-\ref{fig:NNSE-comparison-a100}. Here we compare the histogram of all
-NNSE values for training and validation.
-
-
 \begin{figure}[p]
 
   \begin{center}
@@ -1696,6 +1684,26 @@ NNSE values for training and validation.
 
 \end{figure}
 
+\begin{figure}[p]
+
+  \begin{center}
+     \begin{minipage}[t]{0.65\textwidth}
+        \includegraphics[width=1.0\linewidth]{images/frequency_nnse_histogram_70_training.pdf}
+        {\bf (A)} NNSE for training.
+     \end{minipage}
+  \end{center}
+  \ \
+  \begin{center}
+     \begin{minipage}[t]{0.65\textwidth}
+        \includegraphics[width=1.0\linewidth]{images/frequency_nnse_histogram_70_validation.pdf}
+        {\bf (B)} NNSE for validation.
+     \end{minipage}
+  \end{center}
+
+  \caption {NNSE comparison}
+  \label{fig:NNSE-history-a100}
+
+\end{figure}
 
 
 \subsection{Energy}
@@ -1728,26 +1736,6 @@ meausred the energy consumption between different GPUS and in Figure
 \ref{fig:energy-graphs} we showcase the differentiation between A100
 and V100.
 
-\begin{figure}[p]
-
-  \begin{center}
-     \begin{minipage}[t]{0.65\textwidth}
-        \includegraphics[width=1.0\linewidth]{images/frequency_nnse_histogram_70_training.pdf}
-        {\bf (A)} NNSE for training.
-     \end{minipage}
-  \end{center}
-  \ \
-  \begin{center}
-     \begin{minipage}[t]{0.65\textwidth}
-        \includegraphics[width=1.0\linewidth]{images/frequency_nnse_histogram_70_validation.pdf}
-        {\bf (B)} NNSE for validation.
-     \end{minipage}
-  \end{center}
-
-  \caption {NNSE comparison}
-  \label{fig:NNSE-comparison-a100}
-
-\end{figure}
 
 
 
@@ -1798,39 +1786,22 @@ and V100.
 
        \includegraphics[height=0.3\textheight]{images/energy_all_model_fit_kWh_per_epoch.pdf}
 
-       {\bf (A)} energy of various epochs reporting kWh per epoch}
-
+       {\bf (A)} energy of various epochs reporting kWh per epoch.
           
-     %\ \
-     %\begin{minipage}[b]{0.49\textwidth}
-     %  \includegraphics[width=1.0\linewidth]{images/average_kWh_per_epoch.pdf}
-     %   {\bf (B)} average kWh per epoch
-     %\end{minipage}
-
-     %\begin{minipage}[b]{0.49\textwidth}
-     %  \includegraphics[width=1.0\linewidth]{images/model_fit_epoch_vs_watts.pdf}
-     %   {\bf (C)} model fit epoch vs watts
-     %\end{minipage}
-     %\ \
-     %\begin{minipage}[b]{0.49\textwidth}
-     %  \includegraphics[width=1.0\linewidth]{images/model_fit_kWh_per_epoch.pdf}
-     %   {\bf (D)} model fit kWh per epoch
-     %\end{minipage}
-
         \includegraphics[height=0.3\textheight]{images/total_epoch_vs_watts.pdf}
 
-        {\bf (B)} total epoch vs watts
+        {\bf (B)} total epoch vs watts.
 
          \includegraphics[height=0.3\textheight]{images/total_kWh_per_epoch.pdf}
 
-         {\bf (C)}  total kWh per epoch
+         {\bf (C)}  total kWh per epoch.
 
   \end{center}
 
   \caption{Energy consumption of various GPUs. While (A) and the V100
     in (B) and (C) are produced with an NSF mounted filesystem, the
     data for A100 in (B) and (C) is using localsctrtch} 
-  \label{fig:energy-graphs}
+  \label{fig:energy-graphs-compare}
 \end{figure}
 
 
