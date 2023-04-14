@@ -1459,45 +1459,39 @@ The code was significantly modified by removing other code that was
 not related to the earthquake prediction application. This included
 removing code for hydrology, and COVID prediction that used the same
 DL prediction algorithm but with different data and optimization
-parameters. To be able to obtain the runtime the code was augmented
-with the cloudmesh StopWatch methods to report on relevant start,
-stop, status, and event actions. In addition, we augmented the
-execution of the batch scripts with code that reports energy and
-temperature.
+parameters. Cloudmesh StopWatch methods was added to obtain code 
+runtime, start, stop, status, and event actions. In addition, we 
+augmented the execution of the batch scripts with code that reports 
+energy and temperature.
 
 \subsection{Measuring Runtime}
 \label{sec:perf-runtime}
 
-After the gode augmentations augmentation it was possible to identify
-a projected runtime on various systems while running at predifined
-times. As our ML code performs about linearly with incresing epochs it
-was first important to predict the performance as to create accurate
+After the code augmentations we could get a projected runtime on 
+various systems while running at predefined times. As our ML code 
+performs approximately linearly with increasing epochs it was 
+important to predict the performance so we could create accurate
 reservation requests on the HPC system.
 
-Figure~\ref{fig:performance-projection} A shows the time measured for
-a 2 epoch case while the botom portion of the graph indicates the time
-spend in the GPU and the top for preparation and data postprocessing.
-We repeated such experiments for small er numbers of epochs in order
-to project the time needed. This allowed us to estimate the
-anticipated runtime for the experiments when varying the number of
-epchs between 2 and 70. The total runtime for the initial
-configurations using the HPC recommended file system. Is showcased in
-Figure~\ref{fig:performance-projection} B. In addtion we adde the
-times opbtained on a desktop using an AMD 5950X with an RTX30990 and
-128 GB of memory while all data was located on an NVMe. The data on
-the HPC system was located as recommended by the cebter on an NSF
-storage system.  As we see the desktop with the RTX3090 GPU performed
-significantly faster then the HPC compute node equipped with any other
-GPU including an A100.  To showcase the different runtimes we showcase
-the results for a 2 epoch case in Table \ref{tab:2-epoch-case}. To our
-initial surprise we found that the RTX3090 machine was originally
-almost 2.67 times better than the HPC machine with an A100.
+Figure~\ref{fig:performance-projection}A shows the time measured for
+a 2 epoch case for data preparation and postprocessing. 
+Figure~\ref{fig:performance-projection}B indicates the time spend in the GPU.
+We then ran this experiment with 2-70 epoch runs to estimate runtime.
+The total runtime for the initial configurations using the HPC recommended
+file system is showcased in Figure~\ref{fig:performance-projection} B. 
+This experiment was also run on a desktop using an AMD 5950X with an 
+RTX30990 and 128 GB of memory while data was located on an NVMe. 
+The data on the HPC system was located on an NSF storage system.  As 
+we see the desktop with the RTX3090 GPU performed significantly faster 
+then the HPC compute node equipped with any other GPU including an 
+A100.  We showcase the results for a 2 epoch case in Table \ref{tab:2-epoch-case}. 
+To our surprise we found that the RTX3090 machine was almost 2.67 times 
+better than the HPC machine with an A100.
 
-This desktop also significantly outperformed the application when it
-was executed on Google Colab. In face the time on Google Colab,
-although good for small epochs, quickly deteriorated with increasing
-number of epochs due to the older GPUs available at that time on Google
-Colab.
+This desktop also significantly outperformed the application as compared 
+to Google Colab. We discovered that Google Colab, although good for small 
+epochs runs, quickly deteriorated with increasing number of epochs due to 
+the older GPUs available at that time on Google Colab.
 
 The reason why the desktop performed to well is that it had up to date
 fast memory and that the data was hosted on fast NVMe storge. As the
@@ -1505,7 +1499,6 @@ earthquake application uses many data requests, fast IO makes a big
 difference. This performance analysis has guided us to improve the HPC
 machine. Future expansions of the HPC machine include 28TB of fast
 to the GPUs accessible NVMe storage.
-
 
 \begin{figure}[p]
 
