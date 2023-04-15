@@ -1,4 +1,5 @@
 @article{www-papermill,
+  journal = {Zenodo},
   author       = {Barrick, Tim and Da Costa, Nathan and Doshi, Ramesh and Howes, Jesse and Sánchez, Francisco},
   title        = {Papermill: Parameterize, Execute, and Analyze {Jupyter} Notebooks},
   year         = 2020,
@@ -9,10 +10,10 @@
 }
 
 @article{google-colab,
-  author =	 {Google Colaboratory},
-  howpublished = {Web Page},
+  author =	 {{Google Colaboratory}},
+  journal = {Web Page},
   title =	 {{Google Colab FAQ}},
-  year =	 202r,
+  year =	 2023,
   month = apr,
   journal =	 {Google Colaboratory},
   publisher =	 {Google},
@@ -22,13 +23,13 @@
 
 @article{www-rivanna,
   title =	 {{Rivanna}},
-  author =   {Univerity of Virginia Research Computing},
+  author =   {{Univerity of Virginia Research Computing}},
   year =	 2023,
   month =	 apr,
   url =      {https://www.rc.virginia.edu/userinfo/rivanna/overview},
 
-  note=       {Webpage \url{https://www.rc.virginia.edu/userinfo/rivanna/overview} [Accessed April 13, 2023]},
-    howpublished = {Web Page}
+  note=       {\url{https://www.rc.virginia.edu/userinfo/rivanna/overview} [Accessed April 13, 2023]},
+    journal = {Web Page}
 }
 
 @inproceedings{green500,
@@ -59,7 +60,7 @@
 
 %  ARTICLE-NUMBER = 230,
 
-@misc{www-top500,
+@article{www-top500,
   title =	 {Homepage},
   key =		 {Top500},
   note =	 {Webpage, \url{https://www.top500.org/} [Accessed April 13, 2023]},
@@ -549,15 +550,12 @@
                   {http://adf5c324e923ecfe4e0a-6a79b2e2bae065313f2de67bbbf078a3.r67.cf1.rackcdn.com/GHRSST%20XIX/P32-Kilpatrick%20et%20al.Minnett_GHRSST%20XIX_reduced.pdf}
 }
 
-# thisneeds to be converted to techreport
-
-@misc{cloudmesh-gpu,
+@article{cloudmesh-gpu,
   author =	 {von Laszewski, Gregor},
   title =	 {{Cloudmesh GPU Monitor}},
-  howpublished = {GitHub},
+  journal = {GitHub},
   url =		 {https://github.com/cloudmesh/cloudmesh-gpu},
-  note =	 {GitHub,
-                  \url{https://github.com/cloudmesh/cloudmesh-gpu} [Accessed April 13, 2023]},
+  note =	 {\url{https://github.com/cloudmesh/cloudmesh-gpu} [Accessed April 13, 2023]},
   month =	 {May},
   year =	 2022
 }
@@ -570,16 +568,16 @@
   url =		 {https://github.com/cloudmesh/cloudmesh-sbatch}
 }
 
-@misc{cloudmesh-stopwatch,
+@article{cloudmesh-stopwatch,
   author =	 {von Laszewski, Gregor},
   title =	 {{Cloudmesh Common StopWatch}},
   url =
                   {https://github.com/cloudmesh/cloudmesh-common/blob/main/cloudmesh/common/StopWatch.py},
   month =	 May,
   year =	 2022,
+    journal = {GitHub},
   urldate =	 {05/22/2022},
-  note =	 {Github,
-                  \url{https://github.com/cloudmesh/cloudmesh-common/blob/main/cloudmesh/common/StopWatch.py} [Accessed April 13, 2023]}
+  note =	 {\url{https://github.com/cloudmesh/cloudmesh-common/blob/main/cloudmesh/common/StopWatch.py} [Accessed April 13, 2023]}
 }
 
 @article{cosmoflow,
@@ -621,15 +619,16 @@
   url =		 {https://earthquake.usgs.gov/earthquakes/search}
 }
 
-@misc{eq-code,
+@article{eq-code,
   author =	 {Fox, Geoffrey C and von Laszewski, Gregor and Robert
                   Knuuti and Thomas Butler and Jake Kolesar},
   title =	 "{MLCommons Science Benchmark Earthquake Code}",
+    journal = {GitHub},
   url =		 {https://github.com/laszewsk/mlcommons/tree/main/benchmarks/earthquake},
   urldate =	 {05/22/2022},
   year =	 2023,
   month =	 apr,
-  note = {GitHub, \url{https://github.com/laszewsk/mlcommons/tree/main/benchmarks/earthquake} [Accessed April 13, 2023]}
+  note = {\url{https://github.com/laszewsk/mlcommons/tree/main/benchmarks/earthquake} [Accessed April 13, 2023]}
 }
 
 @misc{eq-presentation,
@@ -680,6 +679,7 @@
   title =	 "{MLPerf HPC: A Holistic Benchmark Suite for
                   Scientific Machine Learning on HPC Systems}",
   publisher =	 {arXiv},
+    journal = {arXiv},
   year =	 2021,
 }
 
@@ -900,26 +900,13 @@
 
 @misc{eq-data,
   key =		 {von Laszewski, Gregor},
-  title =	 {{Earthquake Data}},
+  title =	 {{MLCommons Earthquake Data}},
   url =
                   {https://github.com/laszewsk/mlcommons-data-earthquake},
-  note =	 {GitHub,
-                  \url{https://github.com/laszewsk/mlcommons-data-earthquake} [Accessed April 13, 2023]},
-  year =	 2022,
-  month =	 jun
-}
-
-@Misc{mlcommons-earthquake-data,
-  author =	 {von Laszewski, Gregor},
-  title =	 {MLCommons Earthquake Data},
-  howpublished = {GitHub},
-  year =	 2022,
-  month =	 {mar},
-  note =	 {[Accessed Aril 13,  2023],
-                  \url{https://github.com/laszewsk/mlcommons-data-earthquake}}
-},
-  url =
-                  {https://github.com/laszewsk/mlcommons-data-earthquake},
+  journal={GitHub},
+  note =	 {\url{https://github.com/laszewsk/mlcommons-data-earthquake} [Accessed April 13, 2023]},
+  year =	 2023,
+  month =	 apr
 }
 
 @MISC{mlcommons-github,
@@ -930,24 +917,24 @@
   year = 2023,  
 }
 
-@MISC{mlcommons-history,
+@article{mlcommons-history,
   key =		 {mlcommons},
   title =	 "History of {MLCommons}",
-  howpublished = {Web Page},
+  journal = {Web Page},
   url =		 {https://mlcommons.org/en/history/},
   note =	 "[Last Accessed: 30th June, 2022]",
   year = 2023,
 }
 
-@MISC{www-mlcommons,
+@article{www-mlcommons,
   key = {MLCommons}, 
   title =	 {{Machine learning innovation to
                   benefit everyone}},
-  howpublished = {Web Page},
+    journal={Web page},
   url =		 {https://mlcommons.org/},
-  note =	 {Webpage, \url{https://mlcommons.org/} [Accessed April 13, 2023]},
+  note =	 {\url{https://mlcommons.org/} [Accessed April 13, 2023]},
   year = 2023,
-  month apr,
+  month=apr,
 }
 
 @MISC{mlcommons-research-groups,
@@ -958,13 +945,13 @@
   note =	 "[Last Accessed: 30th June, 2022]"
 }
 
-@MISC{mlcommons-science,
+@article{mlcommons-science,
   title =	 "Science Data working Group of {MLCommons} Research",
   author =	 {Fox, Geoffrey and Hey, Tony and Thiyagalingam,
                   Jeyan},
-  howpublished = {Web Page},
+    journal={GitHub},
   url =		 {https://mlcommons.org/en/groups/research-science/},
-  note =	 "[Last Accessed: 30th June, 2022]"
+  note =	 "\url{{https://mlcommons.org/en/groups/research-science/}} [Accessed: Apr 13, 2023]"
 }
 
 @MISC{mlcommons-training-page,
