@@ -1754,16 +1754,21 @@ associated accuracy values. We have introduced a convenient nomenclature for the
         When not specified, only one observation is collected.
 \end{itemize}
 
-Thus, applying these rules, a range of values is notated by first
-specifying a time and then the number of observations to include.  For
-example, a value of {\em 1Y 2wk+26AVG} is one year from the most recent 
-date run on the dataset and including 26 observations prior this point.
-Another example, the value of {\em 1 Year Back} is a single 2-week
-occurrence one year ago from the rolling training date.
+So the data is grouped into 2 week periods. The model steps through
+each of these 2 week groupings and uses training data up to 1 year
+into the past from the current 2 week grouping and uses validation data up to 
+4 years into the future from the current 2 week grouping. Applying these
+rules, a range of values are notated by first specifying a 2 week grouping
+and then the number of observations to include.  For example, a value of {\em 1Y 2wk+26AVG} 
+is one year from the 2 week grouping the model is currently on, is run on the dataset and 
+including 26 observations prior this point. Another example, the value of {\em 1 Year Back} 
+is a single 2-week occurrence one year ago from the rolling training date.
 
 \TODO{ALL}{I still do not get from this the notation ... looks like I am too tired Gregor
 
-It's difficult to write out.  Essentially, there's two variables when collecting the data.  The "start" which is a time marker and "count" which is a count of 2 week collection of records.  The way how the code works is it adds both the start and seek together to identify where to begin collecting the data.  After this point is set, the program steps forward in 2 week groupings to collect the number of "count" records to include.  So the 2wk+30AVG results in 30 data points.  The starting date is what makes this difficult as theres common language mixed in (1 year back; 3M; ...).  I agree this is complicated, but I'm not sure there's an easier way to represent this without going too deep and distracting the reader. --Rob}
+It's difficult to write out.  Essentially, there's two variables when collecting the data.  The "start" which is a time marker and "count" which is a count of 2 week collection of records.  The way how the code works is it adds both the start and seek together to identify where to begin collecting the data.  After this point is set, the program steps forward in 2 week groupings to collect the number of "count" records to include.  So the 2wk+30AVG results in 30 data points.  The starting date is what makes this difficult as theres common language mixed in (1 year back; 3M; ...).  I agree this is complicated, but I'm not sure there's an easier way to represent this without going too deep and distracting the reader. --Rob
+
+I tried to explain a in a bit more detail. Hopefully this helps. Basically the whole data is split into 2 week groupings. The model steps through all of these groupings in sequence to determine predictions. It uses up to 1 year, <=26 data points, before the current 2 week grouping run on the model as training data and up to 4 years, <=104 data points, after the current 2 week grouping. So say the model is taking the first 2 weeks of January 2000, it would take <=26 2 week groupings before that point , so all of 2019 data would be 26 data points,}
 
 \subsubsection{Competitive Accuracy Benchmarks}
 
