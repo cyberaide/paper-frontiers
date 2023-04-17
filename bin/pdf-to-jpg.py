@@ -16,6 +16,7 @@ for pdf in content:
     if not os.path.exists(jpg):
         print (pdf, "->", jpg)
         command = f"convert -density 300 -trim {pdf} -quality 100 {jpg}"
-        # os.system(command)
-	    
+        os.system(command)
+
+
 	       #
