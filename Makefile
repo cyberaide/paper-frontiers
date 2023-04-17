@@ -51,7 +51,7 @@ log:
 	emacs -fh 80 $(FILENAME).log
 
 bib:
-	bibexport -o $(FILENAME)-citations.bib $(FILEANME).aux
+	bibexport -o $(FILENAME)-citations.bib $(FILENAME).aux
 
 biber:
 	@echo
