@@ -18,6 +18,10 @@ watch: $(FILENAME).pdf
 
 .PHONY: clean
 
+txt:
+	#detex $(FILENAME).tex | cat -s > $(FILENAME).txt
+	pdftotext -layout $(FILENAME).pdf $(FILENAME).txt
+
 edit:
 	emacs $(FILENAME).tex
 
