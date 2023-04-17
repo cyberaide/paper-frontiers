@@ -3,12 +3,14 @@ DIR=paper-frontier
 
 # .PHONY: $(FILENAME).pdf
 
+.PHONY: images
+
 all: $(FILENAME).pdf
 
 # MAIN LATEXMK RULE
 
 $(FILENAME).pdf: $(FILENAME).tex
-	latexmk -quiet -bibtex $(PREVIEW_CONTINUOUSLY) -f -pdf -pdflatex="pdflatex -synctex=1 -interaction=nonstopmode" -use-make $(FILENAME).tex
+	latexmk -quiet -deps -bibtex $(PREVIEW_CONTINUOUSLY) -f -pdf -pdflatex="pdflatex -synctex=1 -interaction=nonstopmode" -use-make $(FILENAME).tex
 
 .PRECIOUS: %.pdf
 .PHONY: watch
@@ -17,6 +19,12 @@ watch: PREVIEW_CONTINUOUSLY=-pvc
 watch: $(FILENAME).pdf
 
 .PHONY: clean
+
+images:
+	grep "./images" $(FILENAME).fls | sort -u | sed "s/INPUT //g" | grep -v "jpg" > pdf_files.tmp
+
+# | xargs convert -density 300 -trim test.pdf -quality 100
+
 
 txt:
 	#detex $(FILENAME).tex | cat -s > $(FILENAME).txt
