@@ -7,7 +7,9 @@
  
 \documentclass[utf8]{FrontiersinVancouver} % for articles in journals
 
-\DeclareGraphicsExtensions{.jpg,.pdf}
+% \DeclareGraphicsExtensions{.jpg,.pdf}
+
+\DeclareGraphicsExtensions{.pdf}
 
 %\documentclass[utf8]{frontiersinFPHY_FAMS} % Vancouver Reference
 %Style (Numbered) for articles in the journals "Frontiers in Physics"
@@ -919,7 +921,7 @@ forecasting~\citep{TFT-21}. In this paper, we only focus on
 the TFT implementation. The TFT Inputs and Outputs are described next \cite{fox2022-jm}.  
 
 \begin{figure}[htb]
-    \centering\includegraphics[width=0.5\columnwidth]{images/TFT.pdf}
+    \centering\includegraphics[width=0.5\columnwidth]{images/TFT}
     \caption{TFT Model Architecture \citep{fox2022-jm}.}
     \label{fig:TFT_Model_Arch}
 \end{figure}
@@ -1272,13 +1274,13 @@ that can easily be ported to other systems while using common system
 abstractions.
 
 \begin{figure}[htb]
-    \centering\includegraphics[width=0.70\columnwidth]{images/cloudmesh-cc-new.pdf}
+    \centering\includegraphics[width=0.70\columnwidth]{images/cloudmesh-cc-new}
     
     {\bf (A)} Architecture of the overall workflow framework.
 
 \bigskip\bigskip
     
-    \centering\includegraphics[width=1.0\columnwidth]{images/cloudmesh-sbatch-new.pdf}
+    \centering\includegraphics[width=1.0\columnwidth]{images/cloudmesh-sbatch-new}
     
     
     {\bf (B)} Architecture of Workflow Script Batch Generator cloudmesh-sbatch.
@@ -1313,7 +1315,7 @@ In the earthquake code, we have observed all three patterns are used
 in the benchmark process.
 
 \begin{figure}[htb]
-\centering\includegraphics[width=0.75\columnwidth]{images/processes-nist.pdf}
+\centering\includegraphics[width=0.75\columnwidth]{images/processes-nist}
 \caption{Service Interaction.}
 \label{fig:service-interaction}
 \end{figure}
@@ -1653,14 +1655,14 @@ However, for our experiments, we were only running the desktop up to 33 epochs a
 
 \begin{figure}[p]
 
-  \centering\includegraphics[width=0.75\columnwidth]{images/Graphics_Cards_BestFit_bar.pdf}
+  \centering\includegraphics[width=0.75\columnwidth]{images/Graphics_Cards_BestFit_bar}
 
   {\bf (A)} Time performance measurements while using 2 epochs on
   various systems with different GPUs.
 
   \bigskip
 
-  \centering\includegraphics[width=0.9\columnwidth]{images/Benchmark_comp_resource_new.pdf}
+  \centering\includegraphics[width=0.9\columnwidth]{images/Benchmark_comp_resource_new}
 
   {\bf (B)} Time performance benchmark for various GPU cards on
   different systems and variations of epochs.
@@ -1841,22 +1843,22 @@ Hence, although this work is a good starting point we believe there is significa
 
   \begin{center}
        \begin{minipage}[t]{0.49\textwidth}
-        \includegraphics[width=1.0\linewidth]{images/frequency_nnse_histogram_stacked_training.pdf}
+        \includegraphics[width=1.0\linewidth]{images/frequency_nnse_histogram_stacked_training}
         {\bf (A)} Histogram of the accuracy values for every epoch over all experiments for training.
      \end{minipage}
   \ \
      \begin{minipage}[t]{0.49\textwidth}
-        \includegraphics[width=1.0\linewidth]{images/frequency_nnse_histogram_stacked_validation.pdf}
+        \includegraphics[width=1.0\linewidth]{images/frequency_nnse_histogram_stacked_validation}
         {\bf (B)} Histogram of the accuracy values for every epoch over all experiments for validation.
      \end{minipage}
   \ \
      \begin{minipage}[t]{0.49\textwidth}
-        \includegraphics[width=1.0\linewidth]{images/A100-NNSE-all-epochs-training-min-max.pdf}
+        \includegraphics[width=1.0\linewidth]{images/A100-NNSE-all-epochs-training-min-max}
         {\bf (C)} Accuracy values over all experiments for training sorted by best validation values.
      \end{minipage}
   \ \
      \begin{minipage}[t]{0.49\textwidth}
-        \includegraphics[width=1.0\linewidth]{images/A100-NNSE-all-epochs-validation-min-max.pdf}
+        \includegraphics[width=1.0\linewidth]{images/A100-NNSE-all-epochs-validation-min-max}
         {\bf (D)} Accuracy values over all experiments for validation sorted by best validation values.
      \end{minipage}
 
@@ -1943,32 +1945,32 @@ This graph is important, as it shows the impacts of the energy usage of the GPU 
   \begin{center}
 
      \begin{minipage}[b]{0.43\textwidth}
-       \includegraphics[width=1.0\linewidth]{images/a100-shaded-energy-2-epochs.pdf}
+       \includegraphics[width=1.0\linewidth]{images/a100-shaded-energy-2-epochs}
         {\bf (A)} A100 energy trace $E^T_{\Delta t=1s}(GPU)$ for 2 epochs training and validation.
     \end{minipage}
      \ \
      \begin{minipage}[b]{0.43\textwidth}
-        \includegraphics[width=1.0\linewidth]{images/v100-shaded-energy-2-epochs.pdf}
+        \includegraphics[width=1.0\linewidth]{images/v100-shaded-energy-2-epochs}
         {\bf (B)}  V100 energy trace $E^T_{\Delta t=1s}(GPU)$ for 2 epochs training and validation.
      \end{minipage}
 
      \begin{minipage}[b]{0.43\textwidth}
-        \includegraphics[width=1.0\linewidth]{images/a100-shaded-energy-30-epochs.pdf}
+        \includegraphics[width=1.0\linewidth]{images/a100-shaded-energy-30-epochs}
         {\bf (C)} A100 energy trace $E^T_{\Delta t=1s}(GPU)$ for 30 epochs training and validation.
      \end{minipage}
      \ \
      \begin{minipage}[b]{0.43\textwidth}
-        \includegraphics[width=1.0\linewidth]{images/v100-shaded-energy-30-epochs.pdf}
+        \includegraphics[width=1.0\linewidth]{images/v100-shaded-energy-30-epochs}
         {\bf (D)} V100 energy trace $E^T_{\Delta t=1s}(GPU)$ for 30 epochs training and validation.
      \end{minipage}
 
      \begin{minipage}[b]{0.43\textwidth}
-       \includegraphics[width=1.0\linewidth]{images/a100-shaded-energy-70-epochs.pdf}
+       \includegraphics[width=1.0\linewidth]{images/a100-shaded-energy-70-epochs}
         {\bf (E)} A100 energy trace $E^T_{\Delta t=1s}(GPU)$ for 70 epochs training and validation.
      \end{minipage}
      \ \
      \begin{minipage}[b]{0.43\textwidth}
-        \includegraphics[width=1.0\linewidth]{images/v100-shaded-energy-70-epochs.pdf}
+        \includegraphics[width=1.0\linewidth]{images/v100-shaded-energy-70-epochs}
         {\bf (F)}  V100 energy trace $E^T_{\Delta t=1s}(GPU)$ for 70 epochs training and validation.
      \end{minipage}
 \end{center}
@@ -1983,15 +1985,15 @@ This graph is important, as it shows the impacts of the energy usage of the GPU 
 
   \begin{center}
 
-       \includegraphics[height=0.28\textheight]{images/energy_all_model_fit_kWh_per_epoch.pdf}
+       \includegraphics[height=0.28\textheight]{images/energy_all_model_fit_kWh_per_epoch}
 
        {\bf (A)} Average energy usage per epoch, including only to the Training event energy traces
 
-        \includegraphics[height=0.29\textheight]{images/total_kWh_per_epoch_new.pdf}
+        \includegraphics[height=0.29\textheight]{images/total_kWh_per_epoch_new}
 
          {\bf (B)} Average energy usage per epoch, for all energy traces for all timer events.
 
-        \includegraphics[height=0.28\textheight]{images/total_epoch_vs_watts_new.pdf}
+        \includegraphics[height=0.28\textheight]{images/total_epoch_vs_watts_new}
 
         {\bf (C)} Average energy usage for all energy traces for all timer events.
 
