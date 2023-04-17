@@ -283,7 +283,7 @@ Algorithms, DataPerf Dynabench, Medical, Science, and Storage.
 
 The science working group is concerned with improving the science
 beyond just a static benchmark~\citep{las-22-mlcommons-science}.
-The work reported here has been conducted as part of the MLCommons Science Group goals.
+The work reported here has been conducted as part of the MLCommons Science workingroup goals.
 
 A list of selected benchmarks for the working groups focusing on
 inference, training, and science are shown in
@@ -431,7 +431,7 @@ insufficient. Instead, students benefit from editors such as {\em
 provide sophisticated features to improve code quality and also
 provide strong integration with git. One of the strengths of PyCharm
 is that it has a sophisticated code inspector and auto-completion,
-making writing reliable and syntactically correct code faster. Vscode may be known to some
+making writing reliable, and syntactically correct code faster. Vscode may be known to some
 students, but its default features seem not to match that of PyCharm,
 and configuring its plugin engine to add similar features to PyCharm
 requires additional work. Such editors also provide the ability to
@@ -460,9 +460,9 @@ learning a small number of edit commands.
   that the code developed by the students are frequently not following proper
   software engineering practices such as defining and using functions,
   classes, and self-defined installable Python libraries that 
-  leads to more sustainable and easier to engage code. Often we found that code
-  developed as Jupyter notebook frequently resulted in missing
-  documentation although notebooks have an integrated markdown engine that can provide sophisticated documentation built in. This relates to a general problem at the
+  leads to more sustainable and easier to manage code. Often we found that code
+  developed as Jupyter notebook resulted in missing
+  documentation although notebooks have an integrated markdown engine that can provide sophisticated documentation built in. Together these issues relate to a general problem at the
   university level. While the material taught in ML requires an entire
   semester, students often come ill-prepared for ML classes as typical
   language classes do not focus on software carpentry, but instead on
@@ -506,7 +506,7 @@ is to use preestablished ML environments like Google Colab which is easy to obta
 limited capability for free (with the option of obtaining a larger
 computational capability with a paid subscription).  However, as Colab
 is based on Jupyter notebooks, we experience the same disadvantages
-as discussed in Section~\ref{sec:tools}
+as discussed in Section~\ref{sec:tools}.
 
 Another path to obtain resources for machine learning can be found in the cloud. This
 may include Infrastructure as a Service (IaaS) and Platform as a
@@ -549,8 +549,8 @@ their own custom software dependencies as an image.
  
 \begin{comment}
   
-  However, we experienced that centers that supports container images to be run
-  by its users did not supply the the software necessary to create the
+  However, we experienced that centers that support container images to be run
+  by its users did not supply the software necessary to create the
   images, making the viability of using container technology limited.
 
 \end{comment}
@@ -579,7 +579,7 @@ may fall short as the focus is placed on a limited number of software
 supported by the center instead of teaching how to install and use the latest
 version of TensorFlow. Furthermore, the offered software
 may be limited in case the underlying GPU card drivers are outdated.
-Software benchmarks not only needs the newest software
+Software benchmarks not only need the newest software
 libraries but also the newest device drivers which can only be
 installed by the HPC support team.
 
@@ -607,7 +607,7 @@ accessible for the HPC operational support staff.
 \subsection{Insights of MLCommons in Education}
 \label{sec:edu-mlcommons-insights}
 
-The MLCommons benchmarks provides a valuable starting point for
+The MLCommons benchmarks provide a valuable starting point for
 educational material addressing various aspects of the machine and
 deep learning ecosystem. This includes benchmarks targeted to a
 variety of system resources from tiny devices to the largest Research
@@ -937,7 +937,7 @@ the TFT implementation. The TFT Inputs and Outputs are described next \cite{fox2
 
 This data can be input based on the time series. Backward data can be taken up to 1 year before the current date and forward data can be taken up to 4 years into the future. The data is then enriched with the LSTM models on time and other factors like spacial location, fault grouping and energy produced at location. Feature selection is done. The data is then fed into an attention learning module which learns trends and more complex relationships based on the data across all time steps and can apply this knowledge to any number of time steps. More feature selection is done. Then finally the data is run through quantile regression. The loss is calculated by Mean Absolute Error (MAE). This repeats until all Epoch runs are done and the iteration that had the lowest loss is used to create predictions. Normalized Nash–Sutcliffe Efficiency (NNSE) and Mean Squared Error (MSE) are used as a goodness of fit metric.
 
-For more detail on the current TFT model, review~\citep{fox2022-jm}. For more general details on TFT models, review~\citep{TFT-21}.
+More details of the  TFT model applied to the earthquake application are presented in ~\citep{fox2022-jm}. More general details about TFT models can be found in ~\citep{TFT-21}.
 
 \TODO{Done - Butler}{The TFT model is not sufficiently explained. Butler- done.}
 
@@ -1120,7 +1120,7 @@ comparison with a personal computer.
   performance for this application while having a 10 times fold
   increase in access in contrast to the scratch file system and almost
   double the performance given to us on the project file system. The
-  \verb|/tmp| system—although fast—was not sufficiently large for our application and also performs slower than the \verb|/localscratch| set up
+  \verb|/tmp| system -- although fast -- was not sufficiently large for our application and also performs slower than the \verb|/localscratch| set up
   for us. In addition, we also made an experiment using a shared
   memory-based hosted filesystem in the nodes RAM.
 
