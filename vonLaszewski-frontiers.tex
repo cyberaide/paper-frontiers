@@ -249,7 +249,7 @@ system (Section~\ref{sec:workflow-cc}).  To showcase the performance
 (Section~\ref{sec:perf-main}) of the earthquake forecasting
 application, present data for the runtime
 (Section~\ref{sec:perf-runtime}) and for the energy
-(Section~\ref{sec:perf-energy}). We complete the paper with a brief discussion of our results.
+(Section~\ref{sec:perf-energy}). We complete the paper with a brief discussion of our results
 (Section~\ref{sec:conclusion}).
 
 
@@ -917,25 +917,27 @@ forecasting~\citep{TFT-21}. In this paper, we only focus on
 the TFT implementation. The TFT Inputs and Outputs are described next \cite{fox2022-jm}.  
 
 \begin{figure}[htb]
-    \centering\includegraphics[width=0.6\columnwidth]{images/TFT.pdf}
-    \caption{TFT Model Architecture \citep{fox2022-jm}}
+    \centering\includegraphics[width=0.5\columnwidth]{images/TFT.pdf}
+    \caption{TFT Model Architecture \citep{fox2022-jm}.}
     \label{fig:TFT_Model_Arch}
 \end{figure}
 
 
 
 \begin{itemize}
-  \item {\bf Static Known Inputs (5):} 4 space-filling curve labels of fault grouping, linear label of pixel
+  \item {\bf Static Known Inputs (5, number of inputs):} 4 space-filling curve labels of fault grouping, linear label of pixel
   \item {\bf Targets (4):} $m_{bin} (F:\Delta t,t)$ for $\Delta t = 2, 14, 26, 52$ weeks. Calculated for $t-52$ to $t$ for encoder and $t$ to $t+52$ weeks for decoder in $2$ week intervals. 104 predictions per sequence.
   \item {\bf Dynamic Known Inputs (13):} $P_l(\cos_{Full})$ for $l=0$ to $4$ $\cos_{period}(t), \sin_{period}(t)$  for $period = 8, 16, 32, 64$
   \item {\bf Dynamic Unknown Inputs (9):} Energy-averaged Depth, Multiplicity, Multiplicity  $m>3.29$ events $m_{bin}$ $(B:\Delta t,t)$ for $\Delta$ $t = 2, 4, 8, 14, 26, 52$ weeks
 \end{itemize}
 
-For further information on the current TFT model, review~\citep{fox2022-jm}.
+\TODO{Butler}{what is number in brackets?  Butler-done.}
 
-\TODO{Gregor}{We are over figure limit by +1. Let me know if I should remove my TFT Model Architecture figure. -Thomas}
+This data can be input based on the time series. Backward data can be taken up to 1 year before the current date and forward data can be taken up to 4 years into the future. The data is then enriched with the LSTM models on time and other factors like spacial location, fault grouping and energy produced at location. Feature selection is done. The data is then fed into an attention learning module which learns trends and more complex relationships based on the data across all time steps and can apply this knowledge to any number of time steps. More feature selection is done. Then finally the data is run through quantile regression. The loss is calculated by Mean Absolute Error (MAE). This repeats until all Epoch runs are done and the iteration that had the lowest loss is used to create predictions. Normalized Nash–Sutcliffe Efficiency (NNSE) and Mean Squared Error (MSE) are used as a goodness of fit metric.
 
-\TODO{Butler}{The TFT model is not sufficiently explained}
+For more detail on the current TFT model, review~\citep{fox2022-jm}. For more general details on TFT models, review~\citep{TFT-21}.
+
+\TODO{Butler}{The TFT model is not sufficiently explained. Butler- done.}
 
 
 \subsubsection{Insights into Development of the Code}
@@ -1260,7 +1262,7 @@ functionality, data dependency, and performance. Analytics services
 may have authentication, authorization, and access controls built-in
 that enable access by users controlled by the service providers.
 
-The overall architecture is depicted in Figure \ref{fig:cc-2} A. It
+The overall architecture is depicted in Figure \ref{fig:cc-2}A. It
 showcases a layered architecture with components dealing with batch
 job generation, storage management, compute coordination, and
 monitoring. These components sit on top of other specialized systems
@@ -1293,11 +1295,11 @@ We identified three beneficial concepts as part of the analytics
 service pipelines (see Figure \ref{fig:service-interaction}).
 
 \begin{itemize}
-\item {\bf Selection} -- instead of performing all possible benchmarks
+\item {\bf Selection} -- Instead of performing all possible benchmarks,
   a specific parameter set is selected and only that is run.
-\item {\bf Competition} -- from a number of runs a result is
+\item {\bf Competition} -- From a number of runs, a result is
   identified that is better than others. This may be, for example, the
-  best of n benchmark runs.
+  best of {\em n} benchmark runs.
 \item {\bf Cooperation} -- A number of analytics components are run
   (possibly in parallel) and the final result is a combination of the
   benchmark experiments run in cooperation. This for example could be
@@ -1544,7 +1546,7 @@ In this section we will present some of our concrete benchmark results while mos
 
 \subsection{Hardware used for this Research}
 
-The benchmarks we present in the next sections have been run on a number of compute resources. THis includes a HPC at UV but also a desktop and a laptop to represent different classes of compute resoources that students have access to but are not part of an HPC center. We used the following resources:
+The benchmarks we present in the next sections have been run on a number of compute resources. This includes not only an HPC at UVA but also a desktop and a laptop to represent different classes of compute resources that students have access to but are not part of an HPC center. We used the following resources:
 
 \begin{itemize}
 \item {\bf Rivanna}~\citep{www-rivanna} -- The Rivanna HPC cluster is a system hosted at the University of Virginia
@@ -1552,12 +1554,12 @@ with 15 different hardware configurations spanning 575 nodes.
 There exist 5 different classes of GPUs on these nodes. The Rivanna HPC follows the condominium model and continues to receive additions of nodes at various times.
 \item {\bf Google Colab}~\cite{google-colab} is a free-to-use interactive computing service offered by Google that provides on-demand access to GPUs and TPUs. Google Colab is designed to be used with machine learning and data analysis. \cite{google-colab}
 When running with Google Colab, multiple hardware configurations may be provided depending on the instance type. The Pro+ plan allocates an NVIDIA V100 with 53GBs of RAM for a GPU configuration.
-\item {\bf Desktop} -- A custom build desktop with an AMD 5950X processor, 128GB memory, and fast NVMe storage.
-\item {\bf Laptop} -- A store-bought laptop  desktop with an AMD 5900HX processor, 16GB memory, and NVMe storage.
+\item {\bf Desktop} -- A custom-built desktop with an AMD 5950X processor, 128GB memory, and fast NVMe storage.
+\item {\bf Laptop} -- A store-bought laptop with an AMD 5900HX processor, 16GB memory, and NVMe storage.
 
 \end{itemize}
 
-The details of the machines are showcased in Table~\ref{tab:hwoverview}
+The details of the machines are showcased in Table~\ref{tab:hwoverview}.
 
 \begin{table}[htb]
     \caption{Overview of compute resources.}
@@ -1616,22 +1618,21 @@ performs approximately linearly with increasing epochs, it was
 important to predict the performance so we could create accurately
 reservation requests on the HPC system.
 
-Figure~\ref{fig:performance-projection}A shows the time measured for a
-2 epoch case for data preparation and postprocessing.
-Figure~\ref{fig:performance-projection}B indicates the time spent on
-the GPU.  We then ran this experiment with 2-70 epoch runs to obtain the
-runtime.  The total runtime for the initial configurations using the
-HPC recommended file system is showcased in
+Figure~\ref{fig:performance-projection} A shows the time measured for a
+2 epoch case for modelling prediction and the rest of the application . The bars in the histogram are devided while the top part indicates the model prediction and the bottom part is the rest of the runtime of the application. show the preparation as bottom part of the bar and the prediction as the top part of the bar
+
+Figure~\ref{fig:performance-projection} B indicates the time spent in the application.  To produce this graph, we ran the application  while varying the epochs between 2 and 70 to obtain the
+runtime.  The total runtime for the initial configurations using various configurations with different GPUs and filesytsems where available on the HPC is shown in
 Figure~\ref{fig:performance-projection} B.  This experiment was also
-run the desktop using an AMD 5950X with an RTX30990 and 128 GB of
+run on the desktop using an AMD 5950X with an RTX3090 and 128 GB of
 memory while data was located on an NVMe.  The data on the HPC system
-was located on an NSF storage system.  As we see the desktop with an RTX3090 is significantly faster than the HPC compute node
-equipped with any other GPU including an A100, which was a surprise not only to the students but also to the research staff. We showcase the
+was initially located on an NSF storage system.  As we see the desktop with an RTX3090 is significantly faster than the HPC compute node
+equipped with any other GPU including an A100, which was a surprise not only to the students but also to the research staff.  We showcase the
 results for a 2 epoch case in Table \ref{tab:2-epoch-case}.  To our
 surprise, we found that the RTX3090 machine was almost 2.67 times
 better than the HPC machine with an A100.
 
-This desktop also significantly outperformed benchamrks conducted on Google Colab. We discovered that Google Colab, although
+This desktop also significantly outperformed benchmarks conducted on Google Colab. We discovered that Google Colab, although
 good for small epochs runs, quickly deteriorated with increasing
 number of epochs due to the older GPUs available at that time on
 Google Colab.
@@ -1643,23 +1644,30 @@ difference. This performance analysis has guided us to improve the HPC
 machine. Future expansions of the HPC machine include 28TB of fast to
 the GPUs accessible NVMe storage. Our benchmark is a good use case for motivating this update.
 
+Base on these finding we motivated a change in the architecture of the HPC server nodes to add a file system with NVMe storage on it. However as our measurements show the desktop significantly outperformed the HPC system even after this upgrade.
+
+However, we were only running the desktop up to 33 epochs and the dotted line includes our prediction of the runtime based on our previous values. The reason for this is that during our experiments we ran out of memory on the desktop to produce the visualization which are part of the overall program. Furthermore the desktop was also used in multi-user mode as it presented the main work computer of the researcher and other activities needed to be done on this machine in parallel. Nevertheless, it is quite impressive, what a difference a particular processor, memory and file system hardware has on the overall performance. 
+ One must assure that the the data feed to the GPU can keep up with the GPUs performance.
+
 \begin{figure}[p]
 
   \centering\includegraphics[width=0.75\columnwidth]{images/Graphics_Cards_BestFit_bar.pdf}
 
-  {\bf (A)} Performance time measurements while using only 2 epochs on
+  {\bf (A)} Time performance measurements while using 2 epochs on
   various systems with different GPUs.
 
-  \centering\includegraphics[width=0.75\columnwidth]{images/Benchmark_comp_resource.pdf}
+  \bigskip
 
-  {\bf (B)} Performance time benchmark for various GPU cards on
+  \centering\includegraphics[width=0.9\columnwidth]{images/Benchmark_comp_resource_new.pdf}
+
+  {\bf (B)} Time performance benchmark for various GPU cards on
   different systems and variations of epochs.
     
   \caption{Performance time measurements.}
   \label{fig:performance-projection}
 \end{figure}
 
-\TODO{All}{figure 4 seems now relay wrong change values back, but green value is slower then red value, should that be the other way around. BUt even then its to slow to be localscratch, so what is measured here ?????. I think originally the green line was V100. Can we get new timer values for A100 and V100?}
+\TODO{All}{figure \ref{fig:performance-projection} B is now correct and needs to be described}
 
 \TODO{GVL}{add timer portions and what they are}
 
@@ -1672,13 +1680,13 @@ the GPUs accessible NVMe storage. Our benchmark is a good use case for motivatin
           \begin{tabular}{|lrrrrr|}
             \hline
             {\bf Timer}             & {\bf RTX3090} & {\bf RTX3080} & {\bf A100 80GB} & {\bf V100}    & {\bf K80}     \\
+                                    & Desktop & Laptop  & Rivanna & Rivanna & Rivanna \\
             \hline
             \hline
-            Machine           & Desktop & Laptop  & Rivanna & Rivanna & Rivanna \\
             Total             & 6589.4  & 8348.5  & 17574.8 & 20295.0 & 28343.3 \\
+            Initialization    &    0.8  &    3.6  &    8.1  &     5.6 &     5.3 \\
             Sampling location &  457.9  &  532.5  &  1227.0 &  1546.4 &  1779.6 \\
-            Init              &    0.8  &    3.6  &    8.1  &     5.6 &     5.3 \\
-            Train             & 1103.2  & 2068.9  &  1373.0 &  1671.4 &  6967.3 \\
+            Training          & 1103.2  & 2068.9  &  1373.0 &  1671.4 &  6967.3 \\
             Bestfit           & 4420.3  & 4997.1  & 13022.1 & 14795.1 & 17037.6 \\
             \hline
           \end{tabular}
@@ -1686,6 +1694,22 @@ the GPUs accessible NVMe storage. Our benchmark is a good use case for motivatin
     }
     \end{center}
 \end{table}
+
+\TODO{Butler}{What are the different portions, describe, I think we need to move thie somewhere earlier and refer to it ....}
+
+\begin{itemize}
+    \item {\bf Total} -- This shows the total time the model took to run.
+    \item {\bf Initialize - Table \ref{tab:2-epoch-case}} -- Time taken to initialize all static values and flags.
+    \item {\bf Initialize - Figure \ref{fig:energy-graphs}} -- Time taken to initialize all data.
+    \item {\bf Sampling locations} -- Time taken to sample time series data into 2 week batches.
+    \item {\bf Training / Model Fit} -- Time taken to train model and determine and save best fit from all epochs.
+    \item {\bf Bestfit or Bestfit Prediction} -- Time taken to take best fit model an calculates predictions. Then calculates Mean Squared Error (MSE) and NNSE on predictions.
+    \item {\bf Visualize} -- Time taken to gather data collected during model runtime and move to a permanent directory and process plots and graphs from data.
+    \item {\bf Final Plots} -- Time taken to clean up data and close all unneeded processes.
+\end{itemize}
+
+\TODO{ALL}{In energy we have different/additional values, somehow we need to describe them but have only one list. This needs to be done carefully as we do not want to falsify results or introduce confusion.}
+
 
 
 \subsubsection{Accuracy Performance Benchmark}
@@ -1747,15 +1771,14 @@ simplify our presentation, we have decided to use epoch values 2, 30, and 70 for
 sorted them for training and validation separately by the accuracy
 values. This leads to a ranking of the experiments by accuracy. In
 Table \ref{tab:ranking-accuracy} we present the top 20 accuracy
-values, while in Figure \ref{fig:NNSE-history-a100} we created a
+values, while in Figure \ref{fig:NNSE-comparison-a100} we created a
 histogram showcasing how many accuracy values fall into a certain
 bucket over all experiments.
 
 From the table and the histogram, we see that we achieve the best
 results using the parameters (epoch=2, Now 2wk+26AVG).
 
-Although we are mostly interested in identifying the best accuracy value, it is also advantageous to reflect that data places the 70 epoch case above the other values, generally leading to better results (see
-Figure \ref{fig:NNSE-history-a100}).
+Although we are mostly interested in identifying the best accuracy value, it is also advantageous to reflect that data places the 70 epoch case above the other values, generally leading to better results (see Figure \ref{fig:NNSE-comparison-a100}).
 
 
 \begin{table}[htb]
@@ -1796,9 +1819,9 @@ Figure \ref{fig:NNSE-history-a100}).
 \end{center}
 \end{table}
 
-\TODO{JP}{could we sort the fig 6 values on x axis by best occurance of the  value for that hyper parameter.
+\TODO{DONE, GVL}{Integrate in text could we sort Figure \ref{fig:performance-projection} values on x axis by best occurrence of the  value for that hyper parameter.
 \\~\\
-e.g. this requires to find the bets value for the time, for 2, 30, 70 epochs, and than order that and then use that order in the display. This way the best value is an increasing function over all time periods. One could also do this by hand and just reorganize the order on the x axis -- the easisest way to do this is to just look at the overall to table and go through the list and see in which order the time comes write it down and than just use that order. -- or loop and identify all values for a time parameter and than us max. We want order based on validation
+e.g. this requires to find the bets value for the time, for 2, 30, 70 epochs, and than order that and then use that order in the display. This way the best value is an increasing function over all time periods. One could also do this by hand and just reorganize the order on the x axis -- the easiest way to do this is to just look at the overall to table and go through the list and see in which order the time comes write it down and than just use that order. -- or loop and identify all values for a time parameter and than us max. We want order based on validation
 \\~\\
 fields = set ( get column with prediction parameters )
 \\~\\
@@ -1811,46 +1834,35 @@ use sorted fields for order in prediction parameters}
 \begin{figure}[p]
 
   \begin{center}
-     \begin{minipage}[t]{0.65\textwidth}
-        \includegraphics[width=1.0\linewidth]{images/A100-NNSE-all-epochs-training.pdf}
-        {\bf (A)} Histogram the accuracy values over all experiments for training.
+       \begin{minipage}[t]{0.49\textwidth}
+        \includegraphics[width=1.0\linewidth]{images/frequency_nnse_histogram_stacked_training.pdf}
+        {\bf (A)} Histogram of the accuracy values for every epoch over all experiments for training.
      \end{minipage}
-  \end{center}
   \ \
-  \begin{center}
-     \begin{minipage}[t]{0.65\textwidth}
-        \includegraphics[width=1.0\linewidth]{images/A100-NNSE-all-epochs-validation.pdf}
-        {\bf (B)} Histogram the accuracy values over all experiments for validation.
+     \begin{minipage}[t]{0.49\textwidth}
+        \includegraphics[width=1.0\linewidth]{images/frequency_nnse_histogram_stacked_validation.pdf}
+        {\bf (B)} Histogram of the accuracy values for every epoch over all experiments for validation.
      \end{minipage}
+  \ \
+     \begin{minipage}[t]{0.49\textwidth}
+        \includegraphics[width=1.0\linewidth]{images/A100-NNSE-all-epochs-training-min-max.pdf}
+        {\bf (C)} Accuracy values over all experiments for training sorted by best validation values.
+     \end{minipage}
+  \ \
+     \begin{minipage}[t]{0.49\textwidth}
+        \includegraphics[width=1.0\linewidth]{images/A100-NNSE-all-epochs-validation-min-max.pdf}
+        {\bf (D)} Accuracy values over all experiments for validation sorted by best validation values.
+     \end{minipage}
+
   \end{center}
 
-  \caption {NNSE Histogram with focus on 70 epochs vs. 2 and 30 epochs}
+  \caption {Evaluation of the NNSE accuracy for epochs 2, 30, and 70.}
   \label{fig:NNSE-comparison-a100}
 
 \end{figure}
 
+The best value for the prediction parameter, {\em Now 2wk+26AVG}, is 0.6930 for training and 0.5582 for validation (see Table~\ref{tab:ranking-accuracy}).
 
-
-\begin{figure}[p]
-
-  \begin{center}
-     \begin{minipage}[t]{0.65\textwidth}
-        \includegraphics[width=1.0\linewidth]{images/frequency_nnse_histogram_70_training.pdf}
-        {\bf (A)} NNSE for training.
-     \end{minipage}
-  \end{center}
-  \ \
-  \begin{center}
-     \begin{minipage}[t]{0.65\textwidth}
-        \includegraphics[width=1.0\linewidth]{images/frequency_nnse_histogram_70_validation.pdf}
-        {\bf (B)} NNSE for validation.
-     \end{minipage}
-  \end{center}
-
-  \caption {NNSE comparison}
-  \label{fig:NNSE-history-a100}
-
-\end{figure}
 
 
 \subsubsection{Energy}
@@ -1859,26 +1871,69 @@ use sorted fields for order in prediction parameters}
 
 Energy consumption has become an important factor in the evaluation of
 compute centers due to the high costs. This not only includes common
-measurements such as power usage effectiveness (PUE) but also the measurement of application-oriented energy consumption to build. For example, an ideal comparison is the ranking of the most
+compute center-based metrics such as {\em Power Usage Effectiveness} (PUE) 
+but also the measurement of application-oriented energy consumption. 
+Such application-oriented comparisons have lead to ranking of the most
 energy-efficient supercomputers as detailed in the Green500 list
-\citep{green500}.
+\citep{green500}. In such comparisons the metric Energy Efficiency is used derived by the GFlops/watts value. Just as the Top500 this benchmark is based on Linpack performance measurements \cite{www-top500}.
+However, it is importnatto also consider other applications when measuring energy consumption. Such applications may consist of many different phases and may not perform at the maximum potential performance of the available hardware, or the available hardware may project a bottleneck for the performance. 
 
-Through predicting algorithm energy consumption, used energy and cost
-can be identified also as part of benchmarks. For this, we have developed a simple-to-use energy trace program to monitor and
-predict our energy uses.
+To measure the  algorithm energy consumption we need to augment the application in such a way that we can monitor energy use over the lifetime of the application.  
 
-The energy traces are generated periodically (in our case every second). The traces
-for 2, 30, and 70 epochs are depicted in Figure
-\ref{fig:energy-graphs}.  Here we augmented the traces also with
-different phases. The green area indicates the use of the GPU. This
-shows that the recorded energy values increased during that
-time. The other phases dealing with data reparation only show a modest
+For this, we have developed a simple-to-use energy trace program to monitor and
+predict our energy uses called cloudmesh-gpu as introduced in Section \ref{sec:monitoring}.
+We used for our initial experiments data hosted on an NFS filesystem in the data center as local scratch was not available at the time.
+
+
+With this program we can create energy traces of the GPU. An energy trace is a sample of energy measurements periodically taken over time of the GPU. The period of the measurements can be decreased to increase accuracy of the energy measurements over time. Our presentation here only includes measurements of the GPU and does not include the measurement of the servers, file system, or network energy consumption as our focus for this study is the impact on GPUs and to see if they are efficiently used.
+
+In our case we chose to use measure the GPU energy every second leading to an energy trace that we term $E^T_{\Delta t=1s}(GPU)$. Such traces can be applied to the application running with different hyperparameters. To showcase the 
+drastically different enery traces we have limited our discussion to running applications on different GPUs (A100, V100) and different epochs (2, 30, 70). These traces are depicted in in Figure
+\ref{fig:energy-graphs} A-F.  To better showcase the impact of the different phases of the application we have augmented the traces with different colors for the different phases of the application.
+We distinguish the phases called {\em Initialize},  {\em Training}, {\em Best Fit Prediction}, {\em Visualize}, and {\em Final plots}. The meaning of these phases have been explained in Section \ref{sec:perf-runtime}. And used different colors in the Figure \ref{fig:energy-graphs} to distinguish them better.
+
+Important to note is that for the training  phase (colored in green) the energy values of the GPU are significantly higher then in the rest of the application indicating a much higher utilization of the GPU during that phase. 
+
+The other phases dealing with data reparation only show a modest
 use of the GPU. We have measured the energy consumption between
-different GPUS. Figure \ref{fig:energy-graphs} showcases the
-differentiation between the A100 and V100.
+different GPUS. 
+When looking at the energy traces Figure \ref{fig:energy-graphs} showing the differences between A100 and the V100 GPUs we note that the time on the 
+abscissa is significantly larger for the V100. Hence overall Energy consumption per second will be significantly larger. The fluctuations of the energy in the training phase can be explained through the various repeated processes that exists within training DL application.
+
+\TODO{All}{Figure 9 A, B, C needs in the graphs to have labels A100, V100 P100, K80, e.g. capitol letter}
+
+To compare the energy values between different GPUs such as A100, V100, P100 we can calculate the {\em Energy Trace Consumption} defined as the sum of all Energy values in an energy trace 
+$E^T_C \sum E^T_{\Delta t=1s}(GPU)$ 
+applied to a hyperparameter such as the epoch.  We can then calculate the energy trace consumption per epoch which we plotted
+in
+Figure~\ref{fig:energy-graphs-compare} A.
+As the time with higher epoch numbers is dominated by the training time as seen in Figure \ref{fig:energy-graphs}.
+Hence the energy per epoch for lower numbers of epochs will be small, while for larger numbers the energy per epoch will be higher. However, the will not change much with higher numbers of epochs as demonstrated in Figure~\ref{fig:energy-graphs-compare} A.
+We also see that the K80 uses a significant higher energy then the other GPUs, with the A100 performing best. For K80 and 70 epochs we could not obtain a value as it was outside the allowed time to run applications on the supercomputer defined by the centers policy.
+We also see that the standard deviation for the kWh/Epoch value becomes smaller with increasing number of epochs. 
+
+This means that the power
+usage of GPUs is generally constant when training our benchmark model and could be used for energy prediction. 
 
 
-\TODO{Jake}{explain Figure \ref{fig:energy-graphs-compare}}
+
+In Figure~\ref{fig:energy-graphs-compare} B, we also depicted the Energy trace per epoch. However in contarst to Figure~\ref{fig:energy-graphs-compare} A that were created using the data on an NFS storage devce, we included here the values obtained for data hosted on a localscratch device using NVMe storage. 
+Here we see a similar average energy use per epoch. 
+
+\TODO{JP and Knuuti}{Figure~\ref{fig:energy-graphs-compare} B should add four bars, a100 NFS and localscrath, v100 NFS and localscratch}
+
+This comparision of using localscarcth vs. NFS mounted data shows that 
+
+\TODO{JP and KNuuti}{TBD}
+
+
+Hence it offers a clear insight how a filesystem can negatively impact the energy as the runtime is enhenced and the GPU time to cool down or adjust for reducing the energy is to small to have an impact.
+
+
+Additionally in Figure~\ref{fig:energy-graphs-compare} C, we see the
+total GPU energy consumption from the complete execution of the benchmark notebook depicting measures from the phases {\em Initialize}, {\em Training}, {\em Bestfit Prediction}, {\em Visualize}, and {\em Final Plots}.
+This graph is important, as it shows the impacts of the energy usage of the GPU throughout the runtime and when compared to the plots in Figure~\ref{fig:energy-graphs-compare} A and B,  outlier events, such as a potential interaction from other users sharing the benchmark infrastructure can be identified.
+}
 
 \begin{figure}[htb]
 
@@ -1886,32 +1941,32 @@ differentiation between the A100 and V100.
 
      \begin{minipage}[b]{0.43\textwidth}
        \includegraphics[width=1.0\linewidth]{images/a100-shaded-energy-2-epochs.pdf}
-        {\bf (A)} A100 energy trace for 2 epochs training and validation.
+        {\bf (A)} A100 energy trace $E^T_{\Delta t=1s}(GPU)$ for 2 epochs training and validation.
     \end{minipage}
      \ \
      \begin{minipage}[b]{0.43\textwidth}
         \includegraphics[width=1.0\linewidth]{images/v100-shaded-energy-2-epochs.pdf}
-        {\bf (B)}  V100 energy trace for 2 epochs training and validation.
+        {\bf (B)}  V100 energy trace $E^T_{\Delta t=1s}(GPU)$ for 2 epochs training and validation.
      \end{minipage}
 
      \begin{minipage}[b]{0.43\textwidth}
         \includegraphics[width=1.0\linewidth]{images/a100-shaded-energy-30-epochs.pdf}
-        {\bf (C)} A100 energy trace for 30 epochs training and validation.
+        {\bf (C)} A100 energy trace $E^T_{\Delta t=1s}(GPU)$ for 30 epochs training and validation.
      \end{minipage}
      \ \
      \begin{minipage}[b]{0.43\textwidth}
         \includegraphics[width=1.0\linewidth]{images/v100-shaded-energy-30-epochs.pdf}
-        {\bf (D)} V100 energy trace for 30 epochs training and validation.
+        {\bf (D)} V100 energy trace $E^T_{\Delta t=1s}(GPU)$ for 30 epochs training and validation.
      \end{minipage}
 
      \begin{minipage}[b]{0.43\textwidth}
        \includegraphics[width=1.0\linewidth]{images/a100-shaded-energy-70-epochs.pdf}
-        {\bf (E)} A100 energy trace for 70 epochs training and validation.
+        {\bf (E)} A100 energy trace $E^T_{\Delta t=1s}(GPU)$ for 70 epochs training and validation.
      \end{minipage}
      \ \
      \begin{minipage}[b]{0.43\textwidth}
         \includegraphics[width=1.0\linewidth]{images/v100-shaded-energy-70-epochs.pdf}
-        {\bf (F)}  V100 energy trace for 70 epochs training and validation.
+        {\bf (F)}  V100 energy trace $E^T_{\Delta t=1s}(GPU)$ for 70 epochs training and validation.
      \end{minipage}
 \end{center}
 
@@ -1927,21 +1982,20 @@ differentiation between the A100 and V100.
 
        \includegraphics[height=0.28\textheight]{images/energy_all_model_fit_kWh_per_epoch.pdf}
 
-       {\bf (A)} energy of various epochs reporting kWh per epoch.
-          
-        \includegraphics[height=0.28\textheight]{images/total_epoch_vs_watts.pdf}
+       {\bf (A)} Average energy usage per epoch, including only to the Training event energy traces
 
-        {\bf (B)} total epoch vs watts.
+        \includegraphics[height=0.29\textheight]{images/total_kWh_per_epoch_new.pdf}
 
-         \includegraphics[height=0.29\textheight]{images/total_kWh_per_epoch.pdf}
+         {\bf (B)} Average energy usage per epoch, for all energy traces for all timer events.
 
-         {\bf (C)}  total kWh per epoch.
+        \includegraphics[height=0.28\textheight]{images/total_epoch_vs_watts_new.pdf}
+
+        {\bf (C)} Average energy usage for all energy traces for all timer events.
+
 
   \end{center}
 
-  \caption{Energy consumption of various GPUs. While (A) and the V100
-    in (B) and (C) are produced with an NSF mounted filesystem, the
-    data for A100 in (B) and (C) is using localscratch with 1 second sampling rate.} 
+  \caption{Averaged energy consumption of various GPUs targeting a 1 second data sampling rate. The recorded values in (A) and all V100 reported are produced with an NFS mounted filesystem.  The data for A100 in (B) and (C) is using localscratch's NVMe storage.} 
   \label{fig:energy-graphs-compare}
 \end{figure}
 
@@ -1978,7 +2032,9 @@ excite us to conduct more such studies. We intend to submit our
 results to the MLCommons Science Working groups as earthquake
 forecasting is one of their benchmark codes and efforts.
 
+\section{Contribution to the Community}
 
+\TODO{All}{TBD}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
