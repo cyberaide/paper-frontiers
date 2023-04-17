@@ -21,7 +21,7 @@ watch: $(FILENAME).pdf
 .PHONY: clean
 
 images:
-	grep "./images" $(FILENAME).fls | sort -u | sed "s/INPUT //g" | grep -v "jpg" > pdf_files.tmp
+	python bin/pdf-to-jpg.py
 
 # | xargs convert -density 300 -trim test.pdf -quality 100
 
