@@ -47,6 +47,12 @@ regular:
 	pdflatex $(FILENAME)
 	pdflatex $(FILENAME)
 
+log:
+	emacs -fh 80 $(FILENAME).log
+
+bib:
+	bibexport -o $(FILENAME)-citations.bib $(FILEANME).aux
+
 biber:
 	@echo
 	biber -V --tool cloud-scheduling.bib | fgrep -v INFO
