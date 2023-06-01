@@ -29,7 +29,7 @@
 \usepackage[color=pink]{todonotes}
 \usepackage{fancyvrb}
 \usepackage{xcolor}
-
+\usepackage[T1]{fontenc}
 
 \newcommand{\TODO}[2]{\todo[inline]{{\bf \color{red} #1} #2}}
 \newcommand{\REPLACE}[2]{{\color{red}\it #1} \begin{quote}{\color{blue}#2}\end{quote}}
@@ -105,9 +105,9 @@ Town Center Four,
 \onecolumn
 
 
-\clearpage
+%\clearpage
 
-\listoftodos
+%\listoftodos
 
 
 %{\bf \TITLE}
@@ -183,8 +183,6 @@ developed components, cloudmesh-sbatch and cloudmesh-cc.
 
 \end{abstract}
 
-\TODO{Robert}{Help Thomas and Jake, spellcheck paper. provide TODOs if you see something major.}
-
 \section{Introduction}
 
 
@@ -193,7 +191,7 @@ In this paper, we summarize some of the insights that we obtained while improvin
 a High-Performance Computing Big Data Systems.
  This includes insights into the usability and capability of HPC Big Data
 systems, the usage of the MLCommons benchmarking science
-applications\citep{las-22-mlcommons-science}, and insights from improving the
+applications \citep{las-22-mlcommons-science}, and insights from improving the
 applicability in educational efforts.
 
 Benchmarking is an important effort in exploring and using HPC Big Data systems.
@@ -338,7 +336,7 @@ MLCommons activities and obtained a number of important educational
 insights that we discuss in this paper.
 
 
-\section{Materials and Methods}
+\section{Insights for Educational Activities}
 
 Next, we discuss our insights while focusing on educational activities. This includes general observations about Machine Learning methods, libraries, tools and software carpentry, benchmark carpentry, and infrastructure. We then discuss in specific terms how MLCommons-related topics shape our insights. This includes insights of MLCommons while using it in educational settings leading to the potential to create a course curriculum. We then focus on the earthquake application while presenting lessons learned while improving such a large application as part of the code development, the data management, and the workflow to conduct extensive hyperparameter-based experiments. This leads us to develop tools that simplify monitoring (time and energy), as well as tools to manage jobs and computations while taking into account policy limitations at the HPC center.
 
@@ -426,55 +424,55 @@ overall quality of the research experience for the student increases
 as the overall potential for success is implicitly accessible to the
 student.
 
-Another important aspect is the use of a capable text editor with
-advanced features such as syntax highlighting and code inspection. The
+Another important aspect is the use of a capable code development environment  with
+advanced features such as syntax highlighting, code inspection, and refactoring. 
+
+
+The
 use of tools such as Notepad++, IDLE, or other simplistic editors is
-insufficient. Instead, students benefit from editors such as {\em
-  PyCharm} and alternatively {\em Visual Studio Code} (vscode) as they
+insufficient as it does not support the software engineering best practices that can be achieved with an advanced programming framework development environment. Instead, students benefit from advanced tools such as {\em
+  PyCharm} or alternatively {\em Visual Studio Code} (vscode) as they
 provide sophisticated features to improve code quality and also
 provide strong integration with git. One of the strengths of PyCharm
 is that it has a sophisticated code inspector and auto-completion,
-making writing reliable, and syntactically correct code faster. Vscode may be known to some
+making writing reliable, and syntactically correct code faster. On the other hand, vscode may be known to some
 students, but its default features seem not to match that of PyCharm,
-and configuring its plugin engine to add similar features to PyCharm
-requires additional work. Such editors also provide the ability to
+and configuring its plugin engine to add similar features as provided by PyCharm
+requires additional work. Such tools also provide the ability to
 easily write markdown text and render the output while writing. This
-is very useful for writing documentation. Most recently these tools also allow writing code in an online group session. Hence peer programming has become a reality, even if the students work remotely with each other.
+is very useful for writing documentation. Most recently these tools also allow writing code remotely, as well as in online group sessions fostering collaboration. Hence peer programming has become a reality, even if the students work remotely with each other.
 
-In addition, the elementary use of a command line editor is needed to
+In addition, the elementary use of a command line editor is sometimes needed to
 simplify direct editing on remote HPC machines using a command
-terminal. Although students can choose editors such as {\em vi}, {\em
-vim}, {\em nano}, or {\em pico}, we found that a better editor for
-students to learn is {\em Emacs}. We found that it is possible to
-teach Emacs in 5 minutes to students while focusing on the 10 most
+terminal. Students can choose editors such as {\em vi}, {\em
+vim}, {\em nano}, or {\em pico}, and  {\em emacs}. The later has been used predominantly by us as we are able to teach it in 5 minutes while focusing on on the  10 most
 important commands. If more sophisticated commands are needed, the
-Emacs reference card is a valuable helper. It has also the advantage
-that in bash and other shells running in a terminal, the same
-commands can be used, and thus complexity is reduced by only
-learning a small number of edit commands.
+emacs reference card is a valuable helper. As the same shortcuts are used in a terminal we reduced the complexity to teach students using a commandline editor as well as editing in the terminal.
 
-  An additional tool is Jupyter Notebooks, with its successor
-  JupyterLab. It provides a web browser interface for interactive
-  Python notebooks (ipynb). The strength here is a rich external
-  ecosystem that allows us to interactively run programs while
-  integrating graphics components and data frames to conduct data
-  analysis.  This is for example possible by using Web interfaces to either the HPC-hosted Jupyter notebook editor or Google Colab.
-  The biggest disadvantage we saw in using notebooks is
-  that the code developed by the students are frequently not following proper
-  software engineering practices such as defining and using functions,
-  classes, and self-defined installable Python libraries that 
-  leads to more sustainable and easier to manage code. Often we found that code
-  developed as Jupyter notebook resulted in missing
-  documentation although notebooks have an integrated markdown engine that can provide sophisticated documentation built in. Together these issues relate to a general problem at the
-  university level. While the material taught in ML requires an entire
-  semester, students often come ill-prepared for ML classes as typical
-  language classes do not focus on software carpentry, but instead on
-  teaching Python while only emphasizing the language aspects but not
-  with a sustainable {\em practical} software engineering
-  approach. Furthermore, we noticed that while teachers are
-  increasingly using Python notebooks the ability to properly
-  structure a Python code has been lost and the quality of writing a
-  larger program is no longer prevalent with all students.
+However, we noticed over the last month an uptake in using more advanced editors such as PyCharm and vscode due to their remote editing capabilities and their superiority while developing code and a command editor on the HPC terminal was entirely avoided. This comes with an increased load on the login nodes that however are outweighed by the convenience and the code quality produced while using such advanced editors. HPC centers are advised to increase their capabilities to support such tools while increasing their resources for using them by their customers.
+
+An additional tool is Jupyter Notebooks, with its successor
+JupyterLab. It provides a web browser interface for interactive
+Python notebooks (ipynb). The strength here is a rich external
+ecosystem that allows us to interactively run programs while
+integrating graphics components and data frames to conduct data
+analysis.  This is for example possible by using Web interfaces to either the HPC-hosted Jupyter notebook editor or Google Colab.
+The biggest disadvantage we saw in using notebooks is
+that the code developed by the students are frequently not following proper
+software engineering practices such as defining and using functions,
+classes, and self-defined installable Python libraries that 
+leads to more sustainable and easier-to-manage code. Often we found that code
+developed as Jupyter notebook resulted in missing
+documentation although notebooks have an integrated markdown engine that can provide sophisticated documentation built in. Together these issues relate to a general problem at the
+university level. While the material taught in ML requires an entire
+semester, students often come ill-prepared for ML classes as typical
+language classes do not focus on software carpentry, but instead on
+teaching Python while only emphasizing the language aspects but not
+with a sustainable {\em practical} software engineering
+approach. Furthermore, we noticed that while teachers are
+increasingly using Python notebooks the ability to properly
+structure a Python code has been lost and the quality of writing a
+larger program is no longer prevalent with all students. In fact in a recent research experience for undergraduates, we had to teach students how to use python in larger programs as this was not yet taught in their current curriculum.
 
 \subsubsection{Benchmark Carpentry}
 
@@ -522,7 +520,7 @@ language processing such as translation and more recently of text
 analysis and responses through OpenAI's ChatGPT and Google's Bard.
 
 However, many academic institutions have access to campus-level and
-national-level computing resources in HPC centers.  This includes
+national-level computing resources in their HPC centers.  This includes
 resources from the Department of Energy (DOE) and the National Science
 Foundation (NSF). Such computing resources are accessed mostly through
 traditional batch scheduling solutions (such as SLURM
@@ -530,7 +528,7 @@ traditional batch scheduling solutions (such as SLURM
 with a large user community. For this reason, centers often implement
 a scheduling policy that puts significant restrictions on the
 computational resources that can be used at the same time and for
-a particular period. The number of files and the access to a local
+a limited period. The number of files and the access to a local
 disk on compute nodes constituting the HPC resources may also be
 limited.  This provides a potential very high entry barrier as these
 policy restrictions may not be integrated into the application design
@@ -557,8 +555,6 @@ their own custom software dependencies as an image.
   images, making the viability of using container technology limited.
 
 \end{comment}
-
-\todo{GVL}{The prior phrase said "campus HPC Centers".  Is campus significant, or can we simplify to HPC Centers in a more general sense?}
 
 One of the popular container frameworks for HPC centers is
 Singularity, and some centers offer docker as an alternative. As images must bring
@@ -742,7 +738,7 @@ following lessons provided significant add-on learning experiences:
 \end{itemize}
 
 
-\subsubsection{MLCommons Deep-Learning based Course Curriculum}
+\subsubsection{MLCommons Deep-Learning based Proposed Course Curriculum}
 
 We can utilize the MLCommons effort to center a course curriculum
 around it. For this to work, the course can focus on deep
@@ -847,8 +843,6 @@ to earthquake forecasting.
 
 \subsubsection{Earthquake Data}
 
-\TODO{GVL}{The below has a quote, but lacks an attached citation.  Should the citation to las-22-mlcommons-science move up before the table, or did this come from somewhere else?}
-
 The data for this earthquake is described in
 \citep{las-22-mlcommons-science}.  It uses a subset of the earthquake
 data from the United States Geological Survey (USGS) focused on
@@ -866,7 +860,7 @@ faults and a list of the largest earthquakes in that region from
 1950. We have chosen various samplings of the dataset to provide both
 input and predicted values. These include time ranges from a fortnight
 up to four years. Furthermore, we calculate summed magnitudes and
-depths and counts of significant quakes (magnitude $< 3.29$).''
+depths and counts of significant quakes (magnitude < 3.29).''
 Table~\ref{tab:eq-summary} depicts the key features of the benchmark
 \citep{las-22-mlcommons-science}.
 
@@ -918,8 +912,7 @@ the Decoder and a two-layer LSTM for the encoder. Figure \ref{fig:TFT_Model_Arch
 shows the TFT model architecture. Each model predicts
 NSE and generates visualizations illustrating the TFT for
 interpretable multi-horizon time series
-forecasting~\citep{TFT-21}. In this paper, we only focus on
-the TFT implementation. The TFT Inputs and Outputs are described next \cite{fox2022-jm}.  
+forecasting~\citep{TFT-21}. 
 
 \begin{figure}[htb]
     \centering\includegraphics[width=0.5\columnwidth]{images/TFT}
@@ -928,6 +921,24 @@ the TFT implementation. The TFT Inputs and Outputs are described next \cite{fox2
 \end{figure}
 
 
+For this paper we adopted the same calculations as defined in \cite{fox2022-jm}: ``We have chosen various samplings of the dataset to provide both input and predicted values. These include time ranges from a fortnight up to 4 years. Further, we calculate summed (according to Equation (1)) magnitudes and averaged depths (according to Equation (2)) and counts of significant earthquakes (magnitude > 3.29, Equation (3)).  We use the concept of {\em energy averaging} when there are multiple events in a single space–time bin. Therefore, the magnitude assigned to each bin is defined in Equation (1) as “log(Energy)” where we sum over events of individual magnitudes $m_{event}$  We also use energy averaging defined in Equation (2) for quantities $Q_{bin}$ such as the depth of an earthquake that needs to be weighted by their importance when averaging over a bin.''
+
+\begin{equation}
+m_{bin} = \log(Energy) = \frac{1}{1.5}\log_{10}\sum_{in~bin}^{Events}10^{1.5m_{event}}
+\end{equation}
+
+\begin{equation}
+Energy~weighted~Quantity~Q_{bin} = \frac{\displaystyle
+   \sum^{Events}_{in~bin} 10^{1.5m_{event}} Q_{event}}{\displaystyle \sum^{Events}_{in~bin}1.5m_{event}}
+\end{equation}
+
+\begin{equation}
+Multiplicity_{bin} = \sum^{Events}_{in~bin}Multiplicity_{event} ~ subject~to~a~constraint
+\end{equation}
+
+
+In this paper, we only focus on
+the TFT implementation. The TFT Inputs and Outputs are described next \cite{fox2022-jm}.  
 
 \begin{itemize}
   \item {\bf Static Known Inputs (5 Inputs):} 4 space-filling curve labels of fault grouping, linear label of pixel
@@ -936,18 +947,13 @@ the TFT implementation. The TFT Inputs and Outputs are described next \cite{fox2
   \item {\bf Dynamic Unknown Inputs (9 Inputs):} Energy-averaged Depth, Multiplicity, Multiplicity  $m>3.29$ events $m_{bin}$ $(B:\Delta t,t)$ for $\Delta$ $t = 2, 4, 8, 14, 26, 52$ weeks
 \end{itemize}
 
-\TODO{Done - Butler}{what is number in brackets?  Butler-done.}
 
 This data can be input based on the time series. Backward data can be taken up to 1 year before the current date and forward data can be taken up to 4 years into the future. The data is then enriched with the LSTM models on time and other factors like spacial location, fault grouping and energy produced at location. Feature selection is done. The data is then fed into an attention learning module which learns trends and more complex relationships based on the data across all time steps and can apply this knowledge to any number of time steps. More feature selection is done. Then finally the data is run through quantile regression. The loss is calculated by Mean Absolute Error (MAE). This repeats until all Epoch runs are done and the iteration that had the lowest loss is used to create predictions. Normalized Nash–Sutcliffe Efficiency (NNSE) and Mean Squared Error (MSE) are used as a goodness of fit metric.
 
-More details of the  TFT model applied to the earthquake application are presented in ~\citep{fox2022-jm}. More general details about TFT models can be found in ~\citep{TFT-21}.
-
-\TODO{Done - Butler}{The TFT model is not sufficiently explained. Butler- done.}
+More details of the  TFT model applied to the earthquake application are presented in ~\citep{fox2022-jm}. More general details about TFT models can be found in~\citep{TFT-21}.
 
 
 \subsubsection{Insights into Development of the Code}
-
-\TODO{GVL}{Confirm that the DL method is called tevelop; if so, is there a citation for this method?}
 
 The original code was developed with the goal to create a DL method
 called {\em tevelop} to apply special time-series evolution for
@@ -1343,7 +1349,7 @@ developed a hybrid multi-cloud analytics service framework that was
 created to manage heterogeneous and remote workflows, queues, and
 jobs.  It can be used through a Python API, the command line, and a
 REST service. It is supported on multiple operating systems like
-Mac OS, Linux, and Windows 10 and 11.  The workflow is specified via an
+macOS, Linux, and Windows 10 and 11.  The workflow is specified via an
 easy-to-define YAML file.  Specifically, we have developed a library
 called Cloudmesh Compute Coordinator (cloudmesh-cc)
 \citep{las-22-arxiv-workflow-cc} that adds workflow features to
@@ -1357,14 +1363,14 @@ tools to interact with it.
 
 
 \begin{figure}[htb]
-  \centering\includegraphics[width=0.8\columnwidth]{images/fastapi-service-highres.png}
+  \centering\includegraphics[width=0.8\columnwidth]{images/fastapi-service-highres.jpg}
   
   {\bf (A) Fast API workflow service.}
 
   \bigskip
 
 
-    \centering\includegraphics[width=0.8\columnwidth]{images/cc-1.png}
+    \centering\includegraphics[width=0.8\columnwidth]{images/cc-1.jpg}
 
     {\bf (B) Workflow user interface.}
 
@@ -1551,7 +1557,7 @@ In this section we will present some of our concrete benchmark results for the e
 
 \subsection{Hardware used for this Research}
 
-The benchmarks we present in the next sections have been run on a number of compute resources. This includes not only an HPC at University of Virginia (UVA) but also a desktop, a laptop, and Google Colab to represent different classes of compute resources that students have access to. We used the following resources:
+The benchmarks we present in the next sections have been run on a number of compute resources. This includes not only an HPC at University of Virginia (UV) but also a desktop, a laptop, and Google Colab to represent different classes of compute resources that students have access to. We used the following resources:
 
 \begin{itemize}
 \item {\bf Rivanna}~\citep{www-rivanna} -- The Rivanna HPC cluster is a system hosted at the University of Virginia
@@ -1577,15 +1583,15 @@ The details of the machines are showcased in Table~\ref{tab:hwoverview}.
                      &  {\bf /Node} & {\bf /Node}  &  {\bf Memory} & {\bf /GPU}     &   {\bf /Node}        & & \\
         \hline
         \hline
-         Rivanna (UV)      & 128 & 2000GB    & A100      & 80GB    &  8  & 11 & Feb 2022 \\
-                           & 128 & 1000GB    & A100      & 40GB    &  8  &  2 & June 2022     \\
-                           &  28 & 255GB     & K80       & 11GB    &  8  &  8 & 2021          \\
-                           &  28 & 255GB     & P100      & 12GB    &  4  &  4 & 2021          \\
-                           &  28 & 188GB     & V100      & 16GB    &  4  &  1 & 2021          \\
-                           &  40 & 384GB     & V100      & 32GB    &  4  & 12 & 2021          \\
-                           &  36 & 384GB     & V100      & 32GB    &  4  &  2 & 2021          \\
-                           &  64 & 128       & RTX3090   & 24GB    & 4   &  5 & 2021          \\
-                           &  40 & 384GB     & RTX2080Ti & 11GB    & 10  &  2 & 2021          \\
+        Rivanna (UV)    & 128 & 2000GB   & A100 & 80GB &  8  & 10 & Feb 2022 \\
+                        & 128 & 1000GB   & A100 & 40GB &  8  &  2 & Jun 2022  \\   
+                        & 28  & 255GB    & K80  & 11GB &  8  &  8 & Jun 2018         \\
+                        & 28  & 255GB    & P100 & 12GB &  4  &  4 & Jan 2018         \\
+                        & 28  & 188GB    & V100 & 16GB &  4  &  1 & Feb 2019          \\
+                        & 40  & 384GB    & V100 & 32GB &  4  & 12 & Feb 2021          \\
+                        & 36  & 384GB    & V100 & 32GB &  4  &  2 & Apr 2022          \\
+                        &  64 & 128     & RTX3090   & 24GB    & 4   &  5 & Feb 2023         \\
+                        & 40  & 384GB    & RTX2080TI & 11GB & 10  &  2 & May 2021 \\                        
          \hline
          Google Colab      & -   & 32GB      & P100      & 16GB    & 1 & - & March 2022 \\
          Google Colab Pro+ & -   & 53GB      & V100      & 32GB    & 1 & - & March 2022 \\
@@ -1613,6 +1619,11 @@ parameters. Cloudmesh StopWatch methods were added to obtain code
 runtime, start, stop, status, and event actions of the different phases of the program. In addition, we
 augmented the execution of the batch scripts with code that reports
 energy and temperature using cloudmesh-gpu.
+
+
+\subsubsection{Reproducible Experiments}
+
+One of the important lessons learned from working within an educational environment is to assure that experiments can be reproduced. This not only includes saving the original data in an immutable storage facility, but also to assure that the code and parameters to the code are preserved for each experiment. Code used during a development phase should not be used especially if they are developed with python notebooks that could contain a {\em implicit hidden} state causing side effects. Hence, the benchmark if valid must be saved in a clean fashion so that no other result impacting effects occur. 
 
 \subsubsection{Measuring Runtime}
 \label{sec:perf-runtime}
@@ -1672,10 +1683,6 @@ However, for our experiments, we were only running the desktop up to 33 epochs a
   \label{fig:performance-projection}
 \end{figure}
 
-\TODO{All}{figure \ref{fig:performance-projection} B is now correct and needs to be described}
-
-\TODO{GVL}{add timer portions and what they are}
-
 \begin{table}[htb]
     \caption{Runtime of the 2 epoch case in seconds}
     \label{tab:2-epoch-case}
@@ -1722,19 +1729,16 @@ the earthquake application.
 We observe that
 application loss for validation and training intersects at the 30-33
 epoch value (see Figure~\ref{fig:loss}). We have also tested larger
-epoch runs up to 70 epochs. Our best accuracy values are found at our
-70 epoch runs. In the future, we intend to test epoch runs greater than
-70 in order to identify overfitting boundaries.
-
+epoch runs up to 90 epochs. Our best accuracy values are found at our
+90 epoch runs. 
 
 \begin{figure}[htb]
     \centering
-    \includegraphics[width=0.70\columnwidth]{images/loss.pdf}
+    \includegraphics[width=0.70\columnwidth]{images/loss90.png}
     \caption{Loss}
     \label{fig:loss}
 \end{figure}
 
-\TODO{ALL}{Figure 6 Loss, this image seems wrong. It is weird for train to have a higher loss than validation for most of the graph. Are the values inverted?}
 
 \subsubsection{Prediction Parameters for Input and Prediction Data}
 
@@ -1755,7 +1759,7 @@ associated accuracy values. We have introduced a convenient nomenclature for the
         When not specified, only one observation is collected.
 \end{itemize}
 
-So the data is grouped into 2 week periods. The model steps through
+The data is grouped into 2 week periods. The model steps through
 each of these 2 week groupings and uses training data up to 1 year
 into the past from the current 2 week grouping. The model uses up 
 to 1 year, $<=26$ data points, before the current 2 week grouping 
@@ -1776,11 +1780,6 @@ is run on the dataset, taking 26 2 week groupings from that date. Another exampl
 of {\em 1 Year Back} is a single 2-week occurrence one year ago from the rolling training group.
 Another example is {\em Now 2wk+7AVG} is 7 2 week groups from the rolling training group.
 
-\TODO{ALL}{I still do not get from this the notation ... looks like I am too tired Gregor
-
-It's difficult to write out.  Essentially, there's two variables when collecting the data.  The "start" which is a time marker and "count" which is a count of 2 week collection of records.  The way how the code works is it adds both the start and seek together to identify where to begin collecting the data.  After this point is set, the program steps forward in 2 week groupings to collect the number of "count" records to include.  So the 2wk+30AVG results in 30 data points.  The starting date is what makes this difficult as theres common language mixed in (1 year back; 3M; ...).  I agree this is complicated, but I'm not sure there's an easier way to represent this without going too deep and distracting the reader. --Rob
-
-I tried to explain a in a bit more detail. Hopefully this helps. Basically the whole data is split into 2 week groupings. The model steps through all of these groupings in sequence to determine predictions. It uses up to 1 year, $<=26$ data points, before the current 2 week grouping run on the model as training data and up to 4 years, $<=104$ data points, after the current 2 week grouping. So say the model is taking the first 2 weeks of January 2000, it would take $<=26$ 2 week groupings before that point as training data, so all of 1999 data would be 26 data points, and $<=104$ data points after that point as validation data,, so all of 2000-2003 data and first 2 weeks of January 2004 minus the first 2 weeks in January 2000. Then it repeats this whole sequence again for 2 week grouping (week 3 and 4 of January 2000) until all data points are run this way. The notation says how much training data is used but not how much validation data is used. --Tom}
 
 \subsubsection{Competitive Accuracy Benchmarks}
 
@@ -1793,101 +1792,174 @@ values. This leads to a ranking of the experiments by accuracy. In
 Table \ref{tab:ranking-accuracy} we present the top 20 accuracy
 values, while in Figure \ref{fig:NNSE-comparison-a100}A and \ref{fig:NNSE-comparison-a100}B we created a
 histogram showcasing how many accuracy values fall into a certain
-bucket over all experiments fro training and validation.
+bucket over all experiments for training and validation.
 
 From the table, we see that we achieve the best
-results using the parameters (epoch=2, Now 2wk+26AVG). From the histogram we see that the best results stem mostly from the epoch 70.
+results using the parameters (epoch=90, Next Year Back). From the histogram, we see that the best results stem mostly from 90 epochs.
 
-Hence, although we are mostly interested in identifying the best accuracy value, it is also advantageous to reflect that data places the 70 epoch case above the other values, generally leading to better results (see Figure \ref{fig:NNSE-comparison-a100} A) for training.
+Hence, although we are mostly interested in identifying the best accuracy value, it is also advantageous to reflect that data places the 90 epoch case above the other values, generally leading to better results (see Figure \ref{fig:NNSE-comparison-a100}A) for training.
 
-\TODO{GVL}{make more observations}
 
-\begin{table}[htb]
-  \caption{The top 20 accuracy values based on hyperparameters with 2, 30, and 70 epochs}
-  \label{tab:ranking-accuracy}
-  \renewcommand{\arraystretch}{1.2}
-  \begin{center}
-    {\footnotesize  
-\begin{tabular}{|l||r|r|l|r|r|l|}
-  \hline
- &   \multicolumn{3}{c|}{\bf \textcolor{red}{Training}}  & \multicolumn{3}{c|}{\bf \textcolor{blue}{Validation}}  \\
-{\bf Rank} &  {\bf NNSE} &  {\bf Epoch} & {\bf Prediction Parameter} & {\bf NNSE} &  {\bf Epoch} & {\bf Prediction Parameter}\\
-\hline
-\hline
-\textcolor{red}{1}  &  \textcolor{red}{0.6930} &     \textcolor{red}{70} &  \textcolor{red}{Now 2wk+26AVG} &  \textcolor{blue}{0.5582} &     \textcolor{blue}{70} &  \textcolor{blue}{Now 2wk+26AVG} \\
-2  &  0.6681 &     70 &  Now 2wk+26AVG &  0.5487 &     70 &  Now 2wk+26AVG \\
-3  &  0.6549 &     70 &  Now 2wk+13AVG &  0.5377 &      2 &    2 weeks Now \\
-4  &  0.6419 &     30 &  Now 2wk+26AVG &  0.5292 &      2 &  Now 2wk+26AVG \\
-5  &  0.6371 &     30 &  Now 2wk+26AVG &  0.5246 &     30 &  Now 2wk+26AVG \\
-6  &  0.6295 &     70 &  Now 2wk+13AVG &  0.5156 &     70 &  Now 2wk+13AVG \\
-7  &  0.6274 &     70 &   Now 2wk+7AVG &  0.5150 &     30 &  Now 2wk+26AVG \\
-8  &  0.6178 &     30 &  Now 2wk+26AVG &  0.5133 &     30 &  Now 2wk+26AVG \\
-9  &  0.6101 &     30 &  Now 2wk+26AVG &  0.5050 &     70 &  Now 2wk+13AVG \\
-10 &  0.6063 &     30 &  Now 2wk+13AVG &  0.5034 &     30 &  Now 2wk+26AVG \\
-11 &  0.6009 &     70 &   Now 2wk+7AVG &  0.4975 &     30 &  Now 2wk+26AVG \\
-12 &  0.5978 &     30 &  Now 2wk+13AVG &  0.4897 &     70 &   Now 2wk+7AVG \\
-13 &  0.5948 &     70 &    2 weeks Now &  0.4860 &     30 &  Now 2wk+13AVG \\
-14 &  0.5900 &     30 &  Now 2wk+26AVG &  0.4766 &     70 &   Now 2wk+7AVG \\
-15 &  0.5880 &     30 &   Now 2wk+7AVG &  0.4766 &     30 &  Now 2wk+13AVG \\
-16 &  0.5864 &     30 &  Now 2wk+13AVG &  0.4734 &      2 &  Now 2wk+13AVG \\
-17 &  0.5818 &      2 &    2 weeks Now &  0.4675 &     70 &  Now 2wk+26AVG \\
-18 &  0.5790 &     30 &   Now 2wk+7AVG &  0.4631 &     30 &   Now 2wk+7AVG \\
-19 &  0.5786 &     30 &    2 weeks Now &  0.4618 &     30 &    2 weeks Now \\
-20 &  0.5696 &     70 &    2 weeks Now &  0.4594 &      2 &  Now 2wk+26AVG \\
-\hline
-\end{tabular}
-}
-\end{center}
-\end{table}
+    \begin{table}[htb]
+      \caption{Ranking of the top 20 accuracy values.}\
+      \label{tab:ranking-accuracy}
+    
+        {\bf (A)} The top 20 {\em average} accuracy values based on hyperparameters with 2, 30, 70 and 90 epochs.\
+
+      \renewcommand{\arraystretch}{1.2}
+      \begin{center}
+        {\footnotesize
+    \begin{tabular}{|l||r|r|l|r|r|l|}
+      \hline
+     &   \multicolumn{3}{c|}{\bf \textcolor{red}{Training}}  & \multicolumn{3}{c|}{\bf \textcolor{blue}{Validation}}  \\
+    {\bf Rank} &  {\bf NNSE} &  {\bf Epoch} & {\bf Prediction Parameter} & {\bf NNSE} &  {\bf Epoch} & {\bf Prediction Parameter}\\
+    \hline
+    \hline
+        \textcolor{red}{1}  &  \textcolor{red}{0.937} &     \textcolor{red}{90} &  \textcolor{red}{Next Year Back} &  \textcolor{blue}{0.937} &     \textcolor{blue}{90} &  \textcolor{blue}{Next Year Back} \\
+    2  &  0.933 &     90 &      Next Year Back &  0.931 &     90 &      Next Year Back \\
+3  &  0.919 &     30 &      Next Year Back &  0.917 &     30 &      Next Year Back \\
+4  &  0.911 &     90 &  Next 6 Months Back &  0.913 &     90 &  Next 6 Months Back \\
+5  &  0.906 &     30 &      Next Year Back &  0.904 &     30 &      Next Year Back \\
+6  &  0.902 &     90 &  Next 6 Months Back &  0.904 &     90 &  Next 6 Months Back \\
+7  &  0.882 &     30 &  Next 6 Months Back &  0.901 &     90 &  Next 6 Months Back \\
+8  &  0.875 &     30 &  Next 6 Months Back &  0.884 &     30 &  Next 6 Months Back \\
+9  &  0.872 &     70 &  Next 3 Months Back &  0.882 &     30 &  Next 6 Months Back \\
+10  &  0.857 &     90 &  Next 3 Months Back &  0.877 &     30 &  Next 6 Months Back \\
+11  &  0.853 &     90 &  Next 3 Months Back &  0.874 &     70 &  Next 3 Months Back \\
+12  &  0.852 &     90 &  Next 3 Months Back &  0.861 &     90 &  Next 3 Months Back \\
+13  &  0.843 &     70 &  Next 3 Months Back &  0.856 &     90 &  Next 3 Months Back \\
+14  &  0.838 &     30 &  Next 3 Months Back &  0.856 &     90 &  Next 3 Months Back \\
+15  &  0.838 &     30 &  Next 3 Months Back &  0.847 &     70 &  Next 3 Months Back \\
+16  &  0.834 &     30 &  Next 3 Months Back &  0.842 &     30 &  Next 3 Months Back \\
+17  &  0.82 &     30 &  Next 3 Months Back &  0.842 &     30 &  Next 3 Months Back \\
+18  &  0.794 &     90 &     Year Back 2wk+7 &  0.838 &     30 &  Next 3 Months Back \\
+19  &  0.794 &     90 &     Year Back 2wk+7 &  0.831 &     30 &  Next 3 Months Back \\
+20  &  0.786 &     30 &     Year Back 2wk+7 &  0.822 &     30 &  Next 3 Months Back \\
+
+        \hline
+        \end{tabular}
+        }
+        \end{center}
+        
+        {\bf (A)} The top 20 {\em summed} accuracy values based on hyperparameters with 2, 30, 70 and 90 epochs.\
+
+      \renewcommand{\arraystretch}{1.2}
+      \begin{center}
+        {\footnotesize
+    \begin{tabular}{|l||r|r|l|r|r|l|}
+      \hline
+     &   \multicolumn{3}{c|}{\bf \textcolor{red}{Training}}  & \multicolumn{3}{c|}{\bf \textcolor{blue}{Validation}}  \\
+    {\bf Rank} &  {\bf NNSE} &  {\bf Epoch} & {\bf Prediction Parameter} & {\bf NNSE} &  {\bf Epoch} & {\bf Prediction Parameter}\\
+    \hline
+    \hline
+        \textcolor{red}{1}  &  \textcolor{red}{0.99} &     \textcolor{red}{90} &  \textcolor{red}{Next 6 Months Back} &  \textcolor{blue}{0.983} &     \textcolor{blue}{90} &  \textcolor{blue}{Next 6 Months Back} \\
+    2  &  0.988 &     90 &  Next 6 Months Back &  0.980 &     90 &  Next 6 Months Back \\
+3  &  0.985 &     30 &  Next 6 Months Back &  0.976 &     90 &      Next Year Back \\
+4  &  0.984 &     30 &      Next Year Back &  0.975 &     30 &      Next Year Back \\
+5  &  0.983 &     70 &  Next 3 Months Back &  0.974 &     30 &  Next 6 Months Back \\
+6  &  0.982 &     90 &      Next Year Back &  0.974 &     70 &  Next 3 Months Back \\
+7  &  0.981 &     30 &  Next 6 Months Back &  0.973 &     30 &  Next 6 Months Back \\
+8  &  0.979 &     30 &  Next 3 Months Back &  0.971 &     30 &  Next 3 Months Back \\
+9  &  0.979 &     30 &  Next 3 Months Back &  0.970 &     30 &      Next Year Back \\
+10  &  0.977 &     30 &      Next Year Back &  0.970 &     30 &  Next 3 Months Back \\
+11  &  0.976 &     30 &  Next 3 Months Back &  0.968 &     30 &  Next 3 Months Back \\
+12  &  0.973 &     30 &  Next 3 Months Back &  0.966 &     90 &  Next 3 Months Back \\
+13  &  0.971 &     90 &  Next 3 Months Back &  0.965 &     90 &  Next 3 Months Back \\
+14  &  0.971 &     70 &  Next 3 Months Back &  0.965 &     70 &  Next 3 Months Back \\
+15  &  0.970 &     90 &  Next 3 Months Back &  0.964 &     30 &  Next 3 Months Back \\
+16  &  0.967 &     90 &  Next 3 Months Back &  0.962 &     90 &  Next 3 Months Back \\
+17  &  0.958 &     90 &      Next Year Back &  0.954 &     90 &      Next Year Back \\
+18  &  0.956 &     90 &     Year Back 2wk+7 &  0.942 &     30 &  Next 6 Months Back \\
+19  &  0.955 &     90 &     Year Back 2wk+7 &  0.942 &     90 &  Next 6 Months Back \\
+20  &  0.955 &     30 &     Year Back 2wk+7 &  0.939 &     30 &  Next 3 Months Back \\
+
+        \hline
+        \end{tabular}
+        }
+        \end{center}
+        
+        \end{table}
+
 
 To identify more details about the most accurate results and the prediction/hyperparameters used to create them we have plotted the accuracy values in Figure~\ref{fig:performance-projection}C and \ref{fig:performance-projection}D. 
 
 Here we have sorted the hyperparameters by the accuracy values for the validation where the best accuracy for each hyperparameter is identified and sorted in increasing fashion. We have then taken the same order of the hyperparameters and applied to the training.
-The diagrams include the minimum and maximum accuracy values for a hyperparameter found using 2, 30, and 70 as epochs, while the experiment has been repeated 5 times. The average for each accuracy for a given epoch is shown. Additionally, the confidence interval for each epoch is added as a highlighted area.
+The diagrams include the minimum and maximum accuracy values for a hyperparameter found using 2, 30, 70, and 90 as epochs, while the experiment has been repeated 5 times. The average for each accuracy for a given epoch is shown. Additionally, the confidence interval for each epoch is added as a highlighted area.
 
 The best value for the hyperparameter {\em Now 2wk+26AVG} is 0.6930 for training and 0.5582 for validation (see Table~\ref{tab:ranking-accuracy}).
 
 Not only did we find that for the best accuracy we identified the epoch to be 70, but the hyperparameter is {\em Now 2 wk + 26AVG}, meaning according to our nomenclature the previous 26 observations of 2-week readings from the current rolling training group is used as training data support our model.
 
-\TODO{Done - Butler}{add here the explicit wording just for this experiment parameters}
-
-Although we see on average better accuracy results with 30 epochs, the best accuracy values we still have seen with 70 epochs. This indicates that we have a higher variation of the results in the 70 epoch case. However as we are competing for the best value and not the average value this variation has an advantage and we do not as easily get stuck in a local minima. 
+Although we see on average better accuracy results with 30 epochs, the best accuracy values we still have seen with 90 epochs. This indicates that we have a higher variation of the results in the 90 epoch case. However as we are competing for the best value and not the average value this variation has an advantage and we do not as easily get stuck in a local minima. 
 
 One other observation we can make is that the training NNSE value is higher then that of validation. This leads us to believe that the input data may be be incomplete to train the model more accurately, or the the input data needs to be differently structures to have a higher validation accuracy value. 
 Hence, although this work is a good starting point we believe there is significant room of improvement.
+
+We can make similar observations when looking at the summed accuracy values. However here we see that more of the best accuracy values are retrieved when using 90 epochs.  We see in the average and summed accuracy that the best 20 values have been created with the prediction parameters of {\em Next Year Back}, {\em Next 6 Month Back}, and {\em Next 3 Month Back}. The average shows a more uniform distribution of these parameters in the top 20 then the summed NNSE values.
+
+As we see further educational opportunities can be derived from analysing different prediction parameters, and different input data distributions.
 
 \begin{figure}[p]
 
   \begin{center}
        \begin{minipage}[t]{0.49\textwidth}
-        \includegraphics[width=1.0\linewidth]{images/frequency_nnse_histogram_stacked_training}
-        {\bf (A)} Histogram of the accuracy values for every epoch over all experiments for training.
+        \includegraphics[width=1.0\linewidth]{images/frequency_nnse_histogram_stacked_df_training}
+        {\bf (A)} Histogram of the average accuracy values for every epoch over all experiments for training.
      \end{minipage}
   \ \
      \begin{minipage}[t]{0.49\textwidth}
-        \includegraphics[width=1.0\linewidth]{images/frequency_nnse_histogram_stacked_validation}
-        {\bf (B)} Histogram of the accuracy values for every epoch over all experiments for validation.
+        \includegraphics[width=1.0\linewidth]{images/frequency_nnse_histogram_stacked_df_validation}
+        {\bf (B)} Histogram of the average accuracy values for every epoch over all experiments for validation.
      \end{minipage}
   \ \
      \begin{minipage}[t]{0.49\textwidth}
-        \includegraphics[width=1.0\linewidth]{images/A100-NNSE-all-epochs-training-min-max}
-        {\bf (C)} Accuracy values over all experiments for training sorted by best validation values.
+        \includegraphics[width=1.0\linewidth]{images/NNSE-all-epochs-training}
+        {\bf (C)} Average accuracy values over all experiments for training sorted by best training values.
      \end{minipage}
   \ \
      \begin{minipage}[t]{0.49\textwidth}
-        \includegraphics[width=1.0\linewidth]{images/A100-NNSE-all-epochs-validation-min-max}
-        {\bf (D)} Accuracy values over all experiments for validation sorted by best validation values.
+        \includegraphics[width=1.0\linewidth]{images/NNSE-all-epochs-validation}
+        {\bf (D)} Average accuracy values over all experiments for validation sorted by best validation values.
      \end{minipage}
 
   \end{center}
 
-  \caption {Evaluation of the NNSE accuracy for epochs 2, 30, and 70.}
+  \caption {Evaluation of the NNSE accuracy for epochs 2, 30, 70, and 90.}
   \label{fig:NNSE-comparison-a100}
 
 \end{figure}
 
 
 
+\begin{figure}[p]
+
+  \begin{center}
+       \begin{minipage}[t]{0.49\textwidth}
+        \includegraphics[width=1.0\linewidth]{images/frequency_nnse_histogram_stacked_df_training_summed}
+        {\bf (A)} Histogram of the summed accuracy values for every epoch over all experiments for training.
+     \end{minipage}
+  \ \
+     \begin{minipage}[t]{0.49\textwidth}
+        \includegraphics[width=1.0\linewidth]{images/frequency_nnse_histogram_stacked_df_validation_summed}
+        {\bf (B)} Histogram of the summed accuracy values for every epoch over all experiments for validation.
+     \end{minipage}
+  \ \
+     \begin{minipage}[t]{0.49\textwidth}
+        \includegraphics[width=1.0\linewidth]{images/NNSE-all-epochs-training-summed}
+        {\bf (C)} Summed accuracy values over all experiments for training sorted by best training values.
+     \end{minipage}
+  \ \
+     \begin{minipage}[t]{0.49\textwidth}
+        \includegraphics[width=1.0\linewidth]{images/NNSE-all-epochs-validation-summed}
+        {\bf (D)} Summed accuracy values over all experiments for validation sorted by best validation values.
+     \end{minipage}
+
+  \end{center}
+
+  \caption {Evaluation of the NNSE accuracy for epochs 2, 30, 70, and 90.}
+  \label{fig:NNSE-comparison-a100}
+
+\end{figure}
 
 \subsubsection{Energy}
 \label{sec:perf-energy}
@@ -1902,54 +1974,45 @@ energy-efficient supercomputers as detailed in the Green500 list
 \citep{green500}. In such comparisons the metric Energy Efficiency is used derived by the GFlops/watts value. Just as the Top500 this benchmark is based on Linpack performance measurements \cite{www-top500}.
 However, it is important to also consider other applications when measuring energy consumption. Such applications may consist of many different phases and may not perform at the maximum potential performance of the available hardware, or the available hardware may project a bottleneck for the performance. 
 
-To measure the  algorithm energy consumption we need to augment the application in such a way that we can monitor energy use over the lifetime of the application.  
-For this, we have developed a simple-to-use energy trace program to monitor and
-predict our energy uses called cloudmesh-gpu as introduced in Section \ref{sec:monitoring}.
+To measure the  algorithm's energy consumption we need to augment the application in such a way that we can monitor energy use over the lifetime of the application. For this, we have developed a simple-to-use energy trace program to monitor and
+predict our energy uses called \verb|cloudmesh-gpu| as introduced in Section \ref{sec:monitoring}.
 We used for our initial experiments data hosted on an NFS filesystem in the data center as local scratch was not available at the time.
 
 
-With this program we can create energy traces of the GPU. An energy trace is a sample of energy measurements periodically taken over time of the GPU. The period of the measurements can be decreased to increase accuracy of the energy measurements over time. Our presentation here only includes measurements of the GPU and does not include the measurement of the servers, file system, or network energy consumption as our focus for this study is the impact on GPUs and to see if they are efficiently used.
+With this program, we can create energy traces of the GPU. An energy trace is a sample of energy measurements periodically taken over time of the GPU. The period of the measurements can be decreased to increase the accuracy of the energy measurements over time. Our presentation here only includes measurements of the GPU and does not include the measurement of the servers, file system, or network energy consumption as our focus for this study is the impact on GPUs and to see if they are efficiently used.
 
-In our case we chose to use measure the GPU energy every second leading to an energy trace that we term $E^T_{\Delta t=1s}(GPU)$. Such traces can be applied to the application running with different hyperparameters. To showcase the 
-drastically different energy traces we have limited our discussion to running applications on different GPUs (A100, V100) and different epochs (2, 30, 70). These traces are depicted in in Figure~\ref{fig:energy-graphs}A-F.  To better showcase the impact of the different phases of the application we have augmented the traces with different colors for the different phases of the application.
-We distinguish the phases called {\em Initialize},  {\em Training}, {\em Best Fit Prediction}, {\em Visualize}, and {\em Final plots}. The meaning of these phases have been explained in Section~\ref{sec:perf-runtime}. And used different colors in the Figure~\ref{fig:energy-graphs} to distinguish them better.
+In our case, we chose to use measure the GPU energy every second leading to an energy trace that we term $E^T_{\Delta t=1s}(GPU)$. Such traces can be applied to the application running with different hyperparameters. To showcase the 
+drastically different energy traces we have limited our discussion to running applications on different GPUs (A100, V100) and different epochs (2, 30, 70). These traces are depicted in Figure~\ref{fig:energy-graphs}A-F.  To better showcase the impact of the different phases of the application we have augmented the traces with different colors for the different phases of the application.
+We distinguish the phases called {\em Initialize},  {\em Training}, {\em Best Fit Prediction}, {\em Visualize}, and {\em Final plots}. The meaning of these phases has been explained in Section~\ref{sec:perf-runtime}. And used different colors for the pahses in the Figure~\ref{fig:energy-graphs} to distinguish them better.
 
-An important observation is for the training phase (colored in green) the energy values of the GPU are significantly higher then in the rest of the application indicating a much higher utilization of the GPU during that phase. 
+An important observation is for the training phase (colored in green) the energy values of the GPU are significantly higher than in the rest of the application indicating a much higher utilization of the GPU during that phase. 
 
 The other phases dealing with data reparation only show a modest
 use of the GPU. We have measured the energy consumption between
 different GPUS. 
 When looking at the energy traces Figure~\ref{fig:energy-graphs} showing the differences between A100 and the V100 GPUs we note that the time on the 
-abscissa is significantly larger for the V100. Hence overall energy consumption per second will be significantly larger. The fluctuations of the energy in the training phase can be explained through the various repeated processes that exists within training DL application.
+abscissa is significantly larger for the V100. Hence overall energy consumption per second will be significantly larger. The fluctuations of the energy in the training phase can be explained through the various repeated processes that exist within the training of DL application.
 
-\TODO{All}{Figure 9 A, B, C needs in the graphs to have labels A100, V100 P100, K80, e.g. capitol letter}
+%\TODO{All}{Figure 9 A, B, C needs in the graphs to have labels A100, V100 P100, K80, e.g. capital letter}
 
-To compare the energy values between different GPUs such as A100, V100, P100 we can calculate the {\em Energy Trace Consumption} defined as the sum of all Energy values in an energy trace 
+To compare the energy values between different GPUs such as A100, V100, and P100 we can calculate the {\em Energy Trace Consumption} defined as the sum of all Energy values in an energy trace 
 $E^T_C \sum E^T_{\Delta t=1s}(GPU)$ 
 applied to a hyperparameter such as the epoch.  We can then calculate the energy trace consumption per epoch which we plotted
 in
 Figure~\ref{fig:energy-graphs-compare}A.
 As the time with higher epoch numbers is dominated by the training time as seen in Figure~\ref{fig:energy-graphs}.
-Hence the energy per epoch for lower numbers of epochs will be small, while for larger numbers the energy per epoch will be higher. However, the will not change much with higher numbers of epochs as demonstrated in Figure~\ref{fig:energy-graphs-compare}A.
-We also see that the K80 uses a significant higher energy then the other GPUs, with the A100 performing best. For K80 and 70 epochs we could not obtain a value as it was outside the allowed time to run applications on the supercomputer defined by the centers policy.
-We also see that the standard deviation for the kWh/Epoch value becomes smaller with increasing number of epochs. 
+Hence the energy per epoch for lower numbers of epochs will be small, while for larger numbers the energy per epoch will be higher. However, they will not change much with higher numbers of epochs as demonstrated in Figure~\ref{fig:energy-graphs-compare}A.
+We also see that the K80 uses significantly higher energy than the other GPUs, with the A100 performing best. For K80 and 70 epochs, we could not obtain a value as it was outside the allowed time to run applications on the supercomputer defined by the center's policy.
+We also see that the standard deviation for the kWh/Epoch value becomes smaller with an increasing number of epochs. 
 
 This means that the power
 usage of GPUs is generally constant when training our benchmark model and could be used for energy prediction. 
 
 
 
-In Figure~\ref{fig:energy-graphs-compare}B, we also depicted the Energy trace per epoch. However in contrast to Figure~\ref{fig:energy-graphs-compare} A that were created using the data on an NFS storage device, we included here the values obtained for data hosted on a localscratch device using NVMe storage. 
-Here we see a similar average energy use per epoch. 
+In Figure~\ref{fig:energy-graphs-compare}B, we also depicted the Energy trace per epoch. However, in contrast to Figure~\ref{fig:energy-graphs-compare} A that were created using the data on an NFS storage device, we included here the values obtained for data hosted on a localscratch filesystem and the project filesystem. While the localscratch uses NVMe storage the project filesystem is hosted on a shared GPFS storage server. Accessing the data from there takes more time and hence more energy is used during the benchmark per epoch.
 
-\TODO{JP and Knuuti}{Figure~\ref{fig:energy-graphs-compare} B should add four bars, a100 NFS and localscratch, v100 NFS and localscratch}
-
-This comparison of using localscratch vs. NFS mounted data shows that 
-
-\TODO{JP and KNuuti}{TBD}
-
-
-Hence it offers a clear insight how a filesystem can negatively impact the energy as the runtime is enhanced and the GPU time to cool down or adjust for reducing the energy is to small to have an impact.
+Hence it offers a clear insight into how a filesystem can negatively impact the energy as the runtime is enhanced and the GPU time to cool down or adjust for reducing the energy is too small to have an impact.
 
 
 Additionally in Figure~\ref{fig:energy-graphs-compare}C, we see the
@@ -2026,7 +2089,7 @@ This graph is important, as it shows the impacts of the energy usage of the GPU 
 \section{Discussion}
 \label{sec:conclusion}
 
-\TODO{GVL}{enhance the discussion section}
+% \TODO{GVL}{enhance the discussion section}
 
 This paper summarizes an enormous body of work that addresses multiple
 aspects of machine learning benchmarking. We identified that
@@ -2039,14 +2102,14 @@ benchmarks while dealing with complex system-related infrastructure
 and working with policies set by HPC compute centers that deal with
 fair resource management. To deal with this we have also developed a
 compute coordination and workflow management system in two components
-called cloudmesh-sbatch and cloudmesh-cc that allow benchmark jobs to
+called \verb|cloudmesh-sbatch| and \verb|cloudmesh-cc| that allow benchmark jobs to
 be automatically generated from hyperparameter permutations. It also
 allows us to coordinate such benchmarks on different machines. We have
 identified the patterns of selection, cooperation, and competition
 which are part of a benchmark workflow. Furthermore, we have improved
 the original benchmark code in many aspects. To simplify benchmarking
-we also developed an easy-to-use StopWatch that in contrast to the
-mllog library used by MLCommons application is simpler and is humanly
+we also developed an easy-to-use \verb|StopWatch| that in contrast to the
+\verb|mllog| library used by MLCommons is simpler and is immediately humanly
 readable. Lastly, our benchmarks had a significant impact on the
 operation and accessibility of software in the educational cluster we
 used. Plans for new filesystem management and updated compute nodes
@@ -2054,9 +2117,6 @@ excite us to conduct more such studies. We intend to submit our
 results to the MLCommons Science Working groups as earthquake
 forecasting is one of their benchmark codes and efforts.
 
-\section{Contribution to the Community}
-
-\TODO{All}{TBD}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -2097,7 +2157,7 @@ contributed to various aspects of the workflow component of the paper
 and to a number of executions and evaluations of experiment runs. {\em
   RK} was a student and has helped together with {\em GVL} in the
 implementation of cloudmesh-sbatch and the porting of the effort to
-the UVA machine.  {\em GCF} is the author of the earthquake code and
+the UV machine.  {\em GCF} is the author of the earthquake code and
 facilitates the interactions with the MLCommons Science Working group
 as a group leader of that effort. {\em TB} and {\em JK} participated
 in an earlier project that ported and improved the code while adding
@@ -2165,7 +2225,7 @@ The code is all in the public domain and available on GitHub at the following lo
 % for the journal you are submitting to:
 % https://zendesk.frontiersin.org/hc/en-us/articles/360017860337-Frontiers-Reference-Styles-by-Journal
 
-\bibliography{vonLaszewski-references}
+\bibliography{vonLaszewski-frontiers-citations}
 
 
 
