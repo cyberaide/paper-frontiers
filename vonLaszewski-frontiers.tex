@@ -155,7 +155,7 @@ Town Center Four,
 In this paper, we focus on identifying insights obtained for a
 High-Performance Computing Big Data Systems while developing and
 conducting science benchmarks for earthquake prediction. This activity
-was conducted across several educational efforts and has identified
+was conducted across multiple educational efforts and has identified
 several lessons. This includes that sophisticated benchmarks can be
 integrated into courses and research activities at universities
 exposing the students and researchers to topics that are otherwise
@@ -167,10 +167,10 @@ analysis of an earthquake prediction code benchmark while focusing on
 the accuracy of the results and not only on the runtime. Energy traces
 were produced throughout these benchmarks, showcasing that
 energy-related benchmarks can be useful in addition to the usual
-time-related benchmarks. The activity was only possible by addressing
-a simplification of the benchmark pipeline while developing and using
+time-related benchmarks. The activity was only possible by utilizing
+a benchmark runtime pipeline while developing and using
 software to automatically generate jobs from the permutation of
-hyperparameters while using a template job management framework
+hyperparameters. This was made possible by using a templated job management framework
 developed in a collection of software called cloudmesh with its newly
 developed components, cloudmesh-sbatch and cloudmesh-cc.
 
@@ -188,7 +188,7 @@ developed components, cloudmesh-sbatch and cloudmesh-cc.
 
 In this paper, we summarize some of the insights that we obtained while improving and conducting 
  earthquake benchmarks within the MLCommons\textsuperscript{\texttrademark} Science Working Group,  porting it to 
-a High-Performance Computing Big Data Systems.
+a High-Performance Computing Big Data systems.
  This includes insights into the usability and capability of HPC Big Data
 systems, the usage of the MLCommons benchmarking science
 applications \citep{las-22-mlcommons-science}, and insights from improving the
@@ -237,7 +237,6 @@ using MLCommons in educational efforts
 the Earthquake Forecasting application, describe it
 (Section~\ref{sec:eq}) and specifically identify our insights in the
 data management for this application (Section~\ref{sec:eq-data}).
-
 As the application used is time-consuming and is impacted by policy
 limitations of the educational HPC data system, a special workflow
 framework has been designed to coordinate the many tasks needed to
@@ -445,34 +444,34 @@ is very useful for writing documentation. Most recently these tools also allow w
 In addition, the elementary use of a command line editor is sometimes needed to
 simplify direct editing on remote HPC machines using a command
 terminal. Students can choose editors such as {\em vi}, {\em
-vim}, {\em nano}, or {\em pico}, and  {\em emacs}. The later has been used predominantly by us as we are able to teach it in 5 minutes while focusing on on the  10 most
+vim}, {\em nano}, {\em pico}, or  {\em emacs}. The later has been used predominantly by us as we are able to teach it in 5 minutes while focusing on the  10 most
 important commands. If more sophisticated commands are needed, the
-emacs reference card is a valuable helper. As the same shortcuts are used in a terminal we reduced the complexity to teach students using a commandline editor as well as editing in the terminal.
+emacs reference card is a valuable helper. As the same shortcuts are used in a terminal, we reduced the complexity of teaching students using a command line editor as well as editing in the terminal with convenient shortcuts.
 
-However, we noticed over the last month an uptake in using more advanced editors such as PyCharm and vscode due to their remote editing capabilities and their superiority while developing code and a command editor on the HPC terminal was entirely avoided. This comes with an increased load on the login nodes that however are outweighed by the convenience and the code quality produced while using such advanced editors. HPC centers are advised to increase their capabilities to support such tools while increasing their resources for using them by their customers.
+However, over the last months, we noticed an uptake in using more advanced editors such as PyCharm and vscode due to their remote editing capabilities and their superiority while developing code, and a command editor on the HPC terminal was entirely avoided. This comes with an increased load on the login nodes that, however, are outweighed by the convenience and the code quality produced by the developers while using such advanced editors. HPC centers are advised to increase their capabilities significantly to support such tools while increasing their resources for using them by their customers.
 
-An additional tool is Jupyter Notebooks, with its successor
+An additional tool is Jupyter, with its successor
 JupyterLab. It provides a web browser interface for interactive
 Python notebooks (ipynb). The strength here is a rich external
 ecosystem that allows us to interactively run programs while
-integrating graphics components and data frames to conduct data
-analysis.  This is for example possible by using Web interfaces to either the HPC-hosted Jupyter notebook editor or Google Colab.
+integrating analysis components to utilize data frames and visualization to conduct data
+exploration.  For example, this is possible by using Web browser interfaces to either the HPC-hosted Jupyter Notebook editor or Google Colab.
 The biggest disadvantage we saw in using notebooks is
 that the code developed by the students are frequently not following proper
 software engineering practices such as defining and using functions,
-classes, and self-defined installable Python libraries that 
-leads to more sustainable and easier-to-manage code. Often we found that code
-developed as Jupyter notebook resulted in missing
-documentation although notebooks have an integrated markdown engine that can provide sophisticated documentation built in. Together these issues relate to a general problem at the
+classes, and self-defined Python libraries that 
+lead to more sustainable and easier-to-manage code. Often we found that code
+developed as Jupyter Notebook resulted in missing
+documentation, although notebooks have an integrated markdown engine that can provide sophisticated documentation built in. Pep8, the {\em Style Guide for Python Code}, was never really  used in notebooks. Together these issues relate to a general problem at the
 university level. While the material taught in ML requires an entire
 semester, students often come ill-prepared for ML classes as typical
 language classes do not focus on software carpentry, but instead on
 teaching Python while only emphasizing the language aspects but not
 with a sustainable {\em practical} software engineering
 approach. Furthermore, we noticed that while teachers are
-increasingly using Python notebooks the ability to properly
+increasingly using Python notebooks, the ability to properly
 structure a Python code has been lost and the quality of writing a
-larger program is no longer prevalent with all students. In fact in a recent research experience for undergraduates, we had to teach students how to use python in larger programs as this was not yet taught in their current curriculum.
+larger program is no longer prevalent with all students. In fact, in a recent research experience for undergraduates, we had to reeducate students on how to use Python in larger programs as this was not yet taught in their current curriculum.
 
 \subsubsection{Benchmark Carpentry}
 
@@ -482,8 +481,8 @@ research computing.  The experiences and insights documented in this paper have 
 been reported to the MLCommons Science Working group. Throughout the
 discussion, we identified the need to develop an effort
 focusing on {\em Benchmark Carpentry} that goes beyond the aspects
-typically thought in software carpentry while focusing on aspects
-about benchmarks that are not covered. This includes a review of other
+typically taught in software carpentry while focusing on aspects
+of benchmarks that are not covered. This includes a review of other
 benchmark efforts such as Top500 and Green500, the technical
 discussion around system benchmarks including SPEC benchmarks, as well
 as tools and practices to better benchmark a system. Special effort
@@ -503,11 +502,11 @@ benchmark carpentry.
 An additional aspect ML students have exposure to is the need for access
 to computational resources due to distinct hardware requirements resulting
 from the use of an advanced ML framework. One common way of dealing with this
-is to use preestablished ML environments like Google Colab which is easy to obtain access to and use with
+is to use pre-established ML environments like Google Colab which is easy to obtain access to and use with
 limited capability for free (with the option of obtaining a larger
 computational capability with a paid subscription).  However, as Colab
 is based on Jupyter notebooks, we experience the same disadvantages
-as discussed in Section~\ref{sec:tools}.
+as discussed in Section~\ref{sec:tools}. Furthermore, dependent on the benchmark infrastructure needs, benchmarking can become quite expensive while using Google colab.
 
 Another path to obtain resources for machine learning can be found in the cloud. This
 may include Infrastructure as a Service (IaaS) and Platform as a
@@ -520,7 +519,7 @@ language processing such as translation and more recently of text
 analysis and responses through OpenAI's ChatGPT and Google's Bard.
 
 However, many academic institutions have access to campus-level and
-national-level computing resources in their HPC centers.  This includes
+national-level computing resources in their HPC centers. In the US,  this includes
 resources from the Department of Energy (DOE) and the National Science
 Foundation (NSF). Such computing resources are accessed mostly through
 traditional batch scheduling solutions (such as SLURM
@@ -535,7 +534,7 @@ policy restrictions may not be integrated into the application design
 from the start.  Moreover, in some cases, these restrictions may
 provide a significant performance penalty when data is placed in a
 slow Network File System (NFS) instead of directly in memory (often
-the data does not fit in memory) or in NVMe storage if it exists on
+the data does not fit in memory) or in NVMe storage if it exists and is not restricted on
 the computing nodes.  It is also important to understand that such
 nodes may also be shared with other users and it is important to
 provide the infrastructure requirements upfront in regard to
@@ -547,17 +546,9 @@ is best to develop with the version provided, which may target
 outdated versions of software.  Container technologies reduce the
 impact of this issue, by enabling users of the HPC center to provide
 their own custom software dependencies as an image.
- 
-\begin{comment}
-  
-  However, we experienced that centers that support container images to be run
-  by its users did not supply the software necessary to create the
-  images, making the viability of using container technology limited.
-
-\end{comment}
 
 One of the popular container frameworks for HPC centers is
-Singularity, and some centers offer docker as an alternative. As images must bring
+Singularity, and some centers offer Docker as an alternative. As images must bring
 all the software needed to run a task, they quickly become large in
 size, and it is not feasible to just copy the image from your local
 computer but to work with the center to create the image within the
@@ -583,7 +574,7 @@ libraries but also the newest device drivers which can only be
 installed by the HPC support team.
 
 Furthermore, specifically customized queues demanding allocations,
-partitions and resource requirements may not be published and a burden
+partitions and resource requirements may not be documented or communicated to its users and a burden
 is placed on the faculty member to integrate this accurately into the
 course curriculum.
 
@@ -612,7 +603,7 @@ deep learning ecosystem. This includes benchmarks targeted to a
 variety of system resources from tiny devices to the largest Research
 High-Performance Computing and Data Systems in the world, while being
 able to adapt and test them on platforms between these two
-extremes. Thus they become ideal targets for adaptation in AI classes
+extremes. Thus they can become ideal targets for adaptation in AI classes
 that want to go beyond typical introductory applications such as MNIST
 that run in a small amount of time.
 
@@ -631,10 +622,10 @@ We observed that while traditional classes limit their resource needs
 and the target application to a very short period so assignments
 can be conducted instantly.  Some MLCommons benchmarks go well beyond
 this while confronting the students not only with the theoretical
-background of the ML algorithm, but also with the Big Data Systems Management 
-which is required execute benchmarks due to their data and
+background of the ML algorithm but also with the Big Data Systems Management 
+which is required to execute benchmarks due to their data and
 time requirements. This is especially the
-case when hyperparameters are to be identified to derive scientificly
+case when hyperparameters are to be identified to derive scientifically
 accurate examples. It is also beneficial in that it allows the students to explore different
 algorithms applied to these problems.
 
@@ -672,7 +663,7 @@ following lessons provided significant add-on learning experiences:
 
   \item {\bf Software Ecosystem.} Students are often using a class provided,
     limited, custom-defined environment prepared explicitly for a course that makes
-    course-management easier, but does not expose the students
+    course management for the teacher easier, but does not expose the students
     to various ways of setting up and utilizing the large variety of
     software related to big data systems. This includes setting up
     Python beyond the use of Conda and Colab notebooks, the use of
@@ -680,7 +671,8 @@ following lessons provided significant add-on learning experiences:
     AI, DL, and HPC experiments as well as other advanced aspects of
     software engineering.  The diverse needs of the MLCommons Benchmarking
     introduces these concepts to Students in a variety of configurations
-    and environments, providing them a more industry-like approach to
+    and environments, providing them with a more research- and 
+    industry-like approach to
     managing software systems.
 
   \item {\bf Execution Ecosystem.} While in-class problems typically
@@ -798,7 +790,7 @@ combination thereof.
   performance results on one or multiple HPC data systems, or include
   an improvement to an existing MLCommons benchmark. It is expected
   that the students write a high-quality project report.
-  Ideally, each team will submit its result to MLCommons. A good start here is the Science Working group as it provides rolling submissions and its focus is accuracy and not speed which is often a topic of interest in academia.
+  Ideally, each team will submit its result to MLCommons. A good start here is the Science Working Group as it provides rolling submissions and its focus is accuracy and not speed which is often a topic of interest in academia.
   
  \end{enumerate}
 
@@ -806,7 +798,7 @@ combination thereof.
  to stay up to date with community AI developments as well as efforts
  newly covered in MLCommons. The semester-long project is accompanied
  by bi-weekly practical mini-assignments showcasing selected results
- and implementations of a particular topic. The final outcome will be a project report. Grading and integration can be done based on the instructors and the universities course requirements that may be governed by university policies. Practically, we believe that grading the project will be sufficient, however, we observed that weekly graded assignments may be needed in order to compete with other more weekly-homework-oriented graded classes.
+ and implementations of a particular topic. The final outcome will be a project report. Grading and integration can be done based on the instructors and the universities course requirements that may be governed by university policies. Practically, we believe that grading the project will be sufficient, however, we observed that weekly graded assignments may be needed in order to compete with other more weekly-homework-oriented graded classes that require immediate attention by the students.
 
 
 \subsection{Earthquake Forecasting}
@@ -830,7 +822,7 @@ variation of values against time and can have multiple dimensions. For
 example, with earthquake forecasting we use geospatial datasets that
 have two dimensions based both on time and spatial position. The
 prediction is considerably easier when we can identify an evolution
-structure across dimensions. For example, with analyzing earthquake data, we find a
+structure across dimensions. For example, by analyzing earthquake data, we find a
 strong correlation between nearby spatial points. Thus nearby
 spacial points influence each other and simplify the time series
 prediction for an area. However, as earthquake faults and other
@@ -1019,7 +1011,7 @@ generator which we discuss in Section~\ref{sec:workflow-sbatch}.
 
 In data management, we are concerned with various aspects of
 the data set, the data compression and storage, as well as the data
-access speed. We discuss insights into each of them in the next.
+access speed. We discuss insights into each of them next.
 
 \subsubsection{Data Sets}
 
@@ -1413,7 +1405,7 @@ generality of the system while using arbitrary queuing systems and
 submission commands.
 
 The architecture of the cloudmesh-sbatch framework is depicted in
-Figure \ref{fig:cc-2} B.
+Figure \ref{fig:cc-2}B.
 
 Cloudmesh-sbatch differentiates itself from other template
 engines through is its ability to generate a cartesian product (permutation)
@@ -1506,14 +1498,13 @@ operating system variable \verb|os.USER| is replaced, but also the
 variable \verb|{application.name}|. Obviously, this is a significant
 functionality enhancement to a typical YAML file.  Multiple values are
 only possible under the experiment tag, where a variable with multiple
-values is assigned a string  of comma separated values.
+values is assigned a string  of comma-separated values.
 
 One can choose a number of important parameters as part of the
 permutation strategy to create different experiments. Common variables
 are names of graphics cards (if available), memory, file systems used,
 versions of Python, versions of TensorFlow, epochs, learning rate, and
-many other important parameters that can influence the benchmark.  The
-reason why we only allow the parameters with variation under
+many other important parameters that can influence the benchmark.  The reason why we only allow the parameters with variation under
 \verb|experiment| is to assure that there is no confusion with other
 parameters that may not be modified and instead only represent a
 single value. However, variables under experiment are also allowed to have
@@ -1535,7 +1526,7 @@ using our earlier introduced collaborative pattern, where multiple
 users submit a portion of the jobs so that policies restricting the
 number of jobs per user can be avoided. Furthermore, if access to
 multiple HPC machines is available the jobs could be split among the
-different machines. However, in that case time measurements may
+different machines. However, in that case, time measurements may
 not be a useful parameter to benchmark. However, as in the science group, we are
 concerned about accuracy the combination of a system comprised of
 multiple resources is meaningful.
@@ -1552,12 +1543,12 @@ month, while each job took many hours to complete.
 \section{Benchmark Results}
 \label{sec:results}
 
-In this section we will present some of our concrete benchmark results for the earthquake application while mostly focusing on obtaining good accuracy and modifying hyperparameters to control the benchmark. In addition to accuracy, we also have provided insights how the runtime can be predicted to allow scheduling hints for the various batch jobs that we ran. We also have included a brief observation about our experiences with energy monitoring and why it is beneficial. We start the section with a description of the hardware used for the benchmarks.
+In this section, we will present some of our concrete benchmark results for the earthquake application while mostly focusing on obtaining good accuracy and modifying hyperparameters to control the benchmark. In addition to accuracy, we also have provided insights into how the runtime can be predicted to allow scheduling hints for the various batch jobs that we ran. We also have included a brief observation about our experiences with energy monitoring and why it is beneficial. We start the section with a description of the hardware used for the benchmarks.
 
 
 \subsection{Hardware used for this Research}
 
-The benchmarks we present in the next sections have been run on a number of compute resources. This includes not only an HPC at University of Virginia (UV) but also a desktop, a laptop, and Google Colab to represent different classes of compute resources that students have access to. We used the following resources:
+The benchmarks we present in the next sections have been run on a number of compute resources. This includes not only an HPC at the University of Virginia (UV) but also a desktop, a laptop, and Google Colab to represent different classes of compute resources that students have access to. We used the following resources:
 
 \begin{itemize}
 \item {\bf Rivanna}~\citep{www-rivanna} -- The Rivanna HPC cluster is a system hosted at the University of Virginia
@@ -1623,29 +1614,29 @@ energy and temperature using cloudmesh-gpu.
 
 \subsubsection{Reproducible Experiments}
 
-One of the important lessons learned from working within an educational environment is to assure that experiments can be reproduced. This not only includes saving the original data in an immutable storage facility, but also to assure that the code and parameters to the code are preserved for each experiment. Code used during a development phase should not be used especially if they are developed with python notebooks that could contain a {\em implicit hidden} state causing side effects. Hence, the benchmark if valid must be saved in a clean fashion so that no other result impacting effects occur. 
+One of the important lessons learned from working within an educational environment is to assure that experiments can be reproduced. This not only includes saving the original data in an immutable storage facility, but also to assure that the code and parameters to the code are preserved for each experiment. Code used during a development phase should not be used especially if they are developed with Python notebooks that could contain a {\em implicit hidden} state causing side effects. Hence, the benchmark if valid must be saved in a clean fashion so that no other result-impacting effects occur. 
 
 \subsubsection{Measuring Runtime}
 \label{sec:perf-runtime}
 
-As the code requires a significant amount of time to execute, we first had to estimate the projected runtime for a number of epochs. Hence, after the code augmentations, we were obtain for a small number of epochs (2, 10) the runtime and  projected the runtime for 
+As the code requires a significant amount of time to execute, we first had to estimate the projected runtime for a number of epochs. Hence, after the code augmentations, we obtained for a small number of epochs (2, 10) the runtime and  projected the runtime for 
 various systems from these values. 
 As our ML code
 performs similarly to linear growth when increasing epochs, it was
 possible to fairly accurately predict the performance while larger numbers of epochs improved the prediction accuracy. As we need to reserve resources on any shared compute resource if it is an HPC, or a desktop such runtime predictions are extremely important to accurately estimate it to reserve the compute resources.
 
-We also want to estimate how much time is spend on the GPU vs the rest of the program. This will then allow us to predict the runtime.
+We also want to estimate how much time is spent on the GPU vs the rest of the program. This will then allow us to predict the runtime.
 Figure~\ref{fig:performance-projection}A shows the time measured for a
 2 epoch case for modelling prediction and the rest of the application. The bars in the histogram are divided while the top part indicates the model prediction and the bottom part is the rest of the runtime of the application. These numbers can then be use to generate predictions while varying the epoch numbers and using the data for the particular GPU used.
 
 Figure~\ref{fig:performance-projection}B indicates the time spent in the application.  To produce this graph, we ran the application  while varying the epochs between 2 and 70 to obtain the
 runtime.  The total runtime for various configurations with different GPUs and filesystems (where choices for the file system existed) is shown in
-Figure~\ref{fig:performance-projection} B. 
+Figure~\ref{fig:performance-projection}B. 
 This experiment was also
 run on the desktop using an AMD 5950X with an RTX3090 and 128 GB of
-memory while data was located on an NVMe.  The data on the HPC system
+memory while data was located on an NVMe. The data on the HPC system
 was initially located on an NSF storage system (indicated by the name project for the /project or scratch for the /scratch filesystem).  As we see the desktop with an RTX3090 is significantly faster than the HPC compute node
-equipped with any other GPU including an A100, which was a surprise not only to the team but also to the research staff.  To quantify this result, we enumerate the
+equipped with any other GPU including an A100, which was a surprise not only to the team but also to the research staff. To quantify this result, we enumerate the
 results for a 2 epoch case in Table \ref{tab:2-epoch-case}.  To our
 surprise, we found that the RTX3090 machine was almost 2.67 times
 better than the HPC machine with an A100.
@@ -1786,7 +1777,7 @@ Another example is {\em Now 2wk+7AVG} is 7 2 week groups from the rolling traini
 Next, we summarize the competitive accuracy benchmark where
 we use the nomenclature for the input and output hyperparameters
 defining the time period used for the training and validation.  To
-simplify our presentation, we have decided to use epoch values 2, 30, and 70 for this paper's experiments. We took all results and
+simplify our presentation, we have decided to use epoch values 2, 30, 70, and 90 for this paper's experiments. We took all results and
 sorted them for training and validation separately by the accuracy
 values. This leads to a ranking of the experiments by accuracy. In
 Table \ref{tab:ranking-accuracy} we present the top 20 accuracy
@@ -1804,9 +1795,9 @@ Hence, although we are mostly interested in identifying the best accuracy value,
       \caption{Ranking of the top 20 accuracy values.}\
       \label{tab:ranking-accuracy}
     
-        {\bf (A)} The top 20 {\em average} accuracy values based on hyperparameters with 2, 30, 70 and 90 epochs.\
+        {\bf (A)} The top 20 {\em average} accuracy values based on hyperparameters with 2, 30, 70, and 90 epochs.\
 
-      \renewcommand{\arraystretch}{1.2}
+\renewcommand{\arraystretch}{1.2}
       \begin{center}
         {\footnotesize
     \begin{tabular}{|l||r|r|l|r|r|l|}
@@ -1817,24 +1808,24 @@ Hence, although we are mostly interested in identifying the best accuracy value,
     \hline
         \textcolor{red}{1}  &  \textcolor{red}{0.937} &     \textcolor{red}{90} &  \textcolor{red}{Next Year Back} &  \textcolor{blue}{0.937} &     \textcolor{blue}{90} &  \textcolor{blue}{Next Year Back} \\
     2  &  0.933 &     90 &      Next Year Back &  0.931 &     90 &      Next Year Back \\
-3  &  0.919 &     30 &      Next Year Back &  0.917 &     30 &      Next Year Back \\
-4  &  0.911 &     90 &  Next 6 Months Back &  0.913 &     90 &  Next 6 Months Back \\
-5  &  0.906 &     30 &      Next Year Back &  0.904 &     30 &      Next Year Back \\
-6  &  0.902 &     90 &  Next 6 Months Back &  0.904 &     90 &  Next 6 Months Back \\
-7  &  0.882 &     30 &  Next 6 Months Back &  0.901 &     90 &  Next 6 Months Back \\
-8  &  0.875 &     30 &  Next 6 Months Back &  0.884 &     30 &  Next 6 Months Back \\
-9  &  0.872 &     70 &  Next 3 Months Back &  0.882 &     30 &  Next 6 Months Back \\
-10  &  0.857 &     90 &  Next 3 Months Back &  0.877 &     30 &  Next 6 Months Back \\
-11  &  0.853 &     90 &  Next 3 Months Back &  0.874 &     70 &  Next 3 Months Back \\
-12  &  0.852 &     90 &  Next 3 Months Back &  0.861 &     90 &  Next 3 Months Back \\
-13  &  0.843 &     70 &  Next 3 Months Back &  0.856 &     90 &  Next 3 Months Back \\
-14  &  0.838 &     30 &  Next 3 Months Back &  0.856 &     90 &  Next 3 Months Back \\
-15  &  0.838 &     30 &  Next 3 Months Back &  0.847 &     70 &  Next 3 Months Back \\
-16  &  0.834 &     30 &  Next 3 Months Back &  0.842 &     30 &  Next 3 Months Back \\
-17  &  0.82 &     30 &  Next 3 Months Back &  0.842 &     30 &  Next 3 Months Back \\
-18  &  0.794 &     90 &     Year Back 2wk+7 &  0.838 &     30 &  Next 3 Months Back \\
-19  &  0.794 &     90 &     Year Back 2wk+7 &  0.831 &     30 &  Next 3 Months Back \\
-20  &  0.786 &     30 &     Year Back 2wk+7 &  0.822 &     30 &  Next 3 Months Back \\
+3  &  0.932 &     70 &      Next Year Back &  0.931 &     70 &      Next Year Back \\
+4  &  0.928 &     90 &      Next Year Back &  0.927 &     90 &      Next Year Back \\
+5  &  0.926 &     90 &      Next Year Back &  0.925 &     90 &      Next Year Back \\
+6  &  0.919 &     30 &      Next Year Back &  0.917 &     30 &      Next Year Back \\
+7  &  0.916 &     70 &      Next Year Back &  0.915 &     70 &      Next Year Back \\
+8  &  0.916 &     70 &      Next Year Back &  0.915 &     70 &      Next Year Back \\
+9  &  0.911 &     90 &  Next 6 Months Back &  0.913 &     90 &  Next 6 Months Back \\
+10  &  0.907 &     30 &      Next Year Back &  0.906 &     30 &      Next Year Back \\
+11  &  0.906 &     30 &      Next Year Back &  0.904 &     90 &  Next 6 Months Back \\
+12  &  0.902 &     90 &  Next 6 Months Back &  0.904 &     30 &      Next Year Back \\
+13  &  0.899 &     70 &  Next 6 Months Back &  0.901 &     90 &  Next 6 Months Back \\
+14  &  0.899 &     30 &      Next Year Back &  0.899 &     70 &  Next 6 Months Back \\
+15  &  0.899 &     90 &  Next 6 Months Back &  0.899 &     70 &  Next 6 Months Back \\
+16  &  0.897 &     70 &  Next 6 Months Back &  0.896 &     30 &      Next Year Back \\
+17  &  0.895 &     30 &      Next Year Back &  0.894 &     30 &      Next Year Back \\
+18  &  0.89 &     70 &  Next 6 Months Back &  0.893 &     70 &  Next 6 Months Back \\
+19  &  0.886 &     90 &  Next 6 Months Back &  0.888 &     90 &  Next 6 Months Back \\
+20  &  0.882 &     30 &  Next 6 Months Back &  0.884 &     30 &  Next 6 Months Back \\
 
         \hline
         \end{tabular}
@@ -1853,25 +1844,108 @@ Hence, although we are mostly interested in identifying the best accuracy value,
     \hline
     \hline
         \textcolor{red}{1}  &  \textcolor{red}{0.99} &     \textcolor{red}{90} &  \textcolor{red}{Next 6 Months Back} &  \textcolor{blue}{0.983} &     \textcolor{blue}{90} &  \textcolor{blue}{Next 6 Months Back} \\
-    2  &  0.988 &     90 &  Next 6 Months Back &  0.980 &     90 &  Next 6 Months Back \\
+    2  &  0.988 &     90 &  Next 6 Months Back &  0.98 &     90 &  Next 6 Months Back \\
 3  &  0.985 &     30 &  Next 6 Months Back &  0.976 &     90 &      Next Year Back \\
 4  &  0.984 &     30 &      Next Year Back &  0.975 &     30 &      Next Year Back \\
 5  &  0.983 &     70 &  Next 3 Months Back &  0.974 &     30 &  Next 6 Months Back \\
 6  &  0.982 &     90 &      Next Year Back &  0.974 &     70 &  Next 3 Months Back \\
 7  &  0.981 &     30 &  Next 6 Months Back &  0.973 &     30 &  Next 6 Months Back \\
 8  &  0.979 &     30 &  Next 3 Months Back &  0.971 &     30 &  Next 3 Months Back \\
-9  &  0.979 &     30 &  Next 3 Months Back &  0.970 &     30 &      Next Year Back \\
-10  &  0.977 &     30 &      Next Year Back &  0.970 &     30 &  Next 3 Months Back \\
+9  &  0.979 &     30 &  Next 3 Months Back &  0.97 &     30 &  Next 3 Months Back \\
+10  &  0.977 &     30 &      Next Year Back &  0.97 &     30 &      Next Year Back \\
 11  &  0.976 &     30 &  Next 3 Months Back &  0.968 &     30 &  Next 3 Months Back \\
 12  &  0.973 &     30 &  Next 3 Months Back &  0.966 &     90 &  Next 3 Months Back \\
-13  &  0.971 &     90 &  Next 3 Months Back &  0.965 &     90 &  Next 3 Months Back \\
-14  &  0.971 &     70 &  Next 3 Months Back &  0.965 &     70 &  Next 3 Months Back \\
-15  &  0.970 &     90 &  Next 3 Months Back &  0.964 &     30 &  Next 3 Months Back \\
+13  &  0.971 &     90 &  Next 3 Months Back &  0.965 &     70 &  Next 3 Months Back \\
+14  &  0.971 &     70 &  Next 3 Months Back &  0.965 &     90 &  Next 3 Months Back \\
+15  &  0.97 &     90 &  Next 3 Months Back &  0.964 &     30 &  Next 3 Months Back \\
 16  &  0.967 &     90 &  Next 3 Months Back &  0.962 &     90 &  Next 3 Months Back \\
 17  &  0.958 &     90 &      Next Year Back &  0.954 &     90 &      Next Year Back \\
 18  &  0.956 &     90 &     Year Back 2wk+7 &  0.942 &     30 &  Next 6 Months Back \\
 19  &  0.955 &     90 &     Year Back 2wk+7 &  0.942 &     90 &  Next 6 Months Back \\
-20  &  0.955 &     30 &     Year Back 2wk+7 &  0.939 &     30 &  Next 3 Months Back \\
+20  &  0.955 &     30 &     Year Back 2wk+7 &  0.939 &     70 &  Next 6 Months Back \\
+
+        \hline
+        \end{tabular}
+        }
+        \end{center}
+        
+        \end{table}
+
+\TODO{GVL}{the second nnse table is a table with order preserved. should we preserve order?}
+
+
+    \begin{table}[htb]
+      \caption{Ranking of the top 20 accuracy values sorted by descending training NNSE datapoints.}\
+      \label{tab:ranking-accuracy}
+    
+        {\bf (A)} The top 20 {\em average} accuracy values based on hyperparameters with 2, 30, 70, and 90 epochs.\
+
+      \renewcommand{\arraystretch}{1.2}
+      \begin{center}
+        {\footnotesize
+    \begin{tabular}{|l||r|r|l|r|r|l|}
+      \hline
+     &   \multicolumn{3}{c|}{\bf \textcolor{red}{Training}}  & \multicolumn{3}{c|}{\bf \textcolor{blue}{Validation}}  \\
+    {\bf Rank} &  {\bf NNSE} &  {\bf Epoch} & {\bf Prediction Parameter} & {\bf NNSE} &  {\bf Epoch} & {\bf Prediction Parameter}\\
+    \hline
+    \hline
+        \textcolor{red}{1}  &  \textcolor{red}{0.937} &     \textcolor{red}{90} &  \textcolor{red}{Next Year Back} &  \textcolor{blue}{0.937} &     \textcolor{blue}{90} &  \textcolor{blue}{Next Year Back} \\
+    2  &  0.933 &     90 &      Next Year Back &  0.931 &     90 &      Next Year Back \\
+3  &  0.932 &     70 &      Next Year Back &  0.931 &     70 &      Next Year Back \\
+4  &  0.928 &     90 &      Next Year Back &  0.927 &     90 &      Next Year Back \\
+5  &  0.926 &     90 &      Next Year Back &  0.925 &     90 &      Next Year Back \\
+6  &  0.919 &     30 &      Next Year Back &  0.917 &     30 &      Next Year Back \\
+7  &  0.916 &     70 &      Next Year Back &  0.915 &     70 &      Next Year Back \\
+8  &  0.916 &     70 &      Next Year Back &  0.915 &     70 &      Next Year Back \\
+9  &  0.911 &     90 &  Next 6 Months Back &  0.913 &     90 &  Next 6 Months Back \\
+10  &  0.907 &     30 &      Next Year Back &  0.906 &     30 &      Next Year Back \\
+11  &  0.906 &     30 &      Next Year Back &  0.904 &     30 &      Next Year Back \\
+12  &  0.902 &     90 &  Next 6 Months Back &  0.904 &     90 &  Next 6 Months Back \\
+13  &  0.899 &     70 &  Next 6 Months Back &  0.899 &     70 &  Next 6 Months Back \\
+14  &  0.899 &     30 &      Next Year Back &  0.896 &     30 &      Next Year Back \\
+15  &  0.899 &     90 &  Next 6 Months Back &  0.901 &     90 &  Next 6 Months Back \\
+16  &  0.897 &     70 &  Next 6 Months Back &  0.899 &     70 &  Next 6 Months Back \\
+17  &  0.895 &     30 &      Next Year Back &  0.894 &     30 &      Next Year Back \\
+18  &  0.89 &     70 &  Next 6 Months Back &  0.893 &     70 &  Next 6 Months Back \\
+19  &  0.886 &     90 &  Next 6 Months Back &  0.888 &     90 &  Next 6 Months Back \\
+20  &  0.882 &     30 &  Next 6 Months Back &  0.884 &     30 &  Next 6 Months Back \\
+
+        \hline
+        \end{tabular}
+        }
+        \end{center}
+        
+        {\bf (A)} The top 20 {\em summed} accuracy values based on hyperparameters with 2, 30, 70, and 90 epochs.\
+
+      \renewcommand{\arraystretch}{1.2}
+      \begin{center}
+        {\footnotesize
+    \begin{tabular}{|l||r|r|l|r|r|l|}
+      \hline
+     &   \multicolumn{3}{c|}{\bf \textcolor{red}{Training}}  & \multicolumn{3}{c|}{\bf \textcolor{blue}{Validation}}  \\
+    {\bf Rank} &  {\bf NNSE} &  {\bf Epoch} & {\bf Prediction Parameter} & {\bf NNSE} &  {\bf Epoch} & {\bf Prediction Parameter}\\
+    \hline
+    \hline
+        \textcolor{red}{1}  &  \textcolor{red}{0.99} &     \textcolor{red}{90} &  \textcolor{red}{Next 6 Months Back} &  \textcolor{blue}{0.983} &     \textcolor{blue}{90} &  \textcolor{blue}{Next 6 Months Back} \\
+    2  &  0.988 &     90 &  Next 6 Months Back &  0.98 &     90 &  Next 6 Months Back \\
+3  &  0.985 &     30 &  Next 6 Months Back &  0.974 &     30 &  Next 6 Months Back \\
+4  &  0.984 &     30 &      Next Year Back &  0.975 &     30 &      Next Year Back \\
+5  &  0.983 &     70 &  Next 3 Months Back &  0.974 &     70 &  Next 3 Months Back \\
+6  &  0.982 &     90 &      Next Year Back &  0.976 &     90 &      Next Year Back \\
+7  &  0.981 &     30 &  Next 6 Months Back &  0.973 &     30 &  Next 6 Months Back \\
+8  &  0.979 &     30 &  Next 3 Months Back &  0.968 &     30 &  Next 3 Months Back \\
+9  &  0.979 &     30 &  Next 3 Months Back &  0.971 &     30 &  Next 3 Months Back \\
+10  &  0.977 &     30 &      Next Year Back &  0.97 &     30 &      Next Year Back \\
+11  &  0.976 &     30 &  Next 3 Months Back &  0.97 &     30 &  Next 3 Months Back \\
+12  &  0.973 &     30 &  Next 3 Months Back &  0.964 &     30 &  Next 3 Months Back \\
+13  &  0.971 &     90 &  Next 3 Months Back &  0.965 &     90 &  Next 3 Months Back \\
+14  &  0.971 &     70 &  Next 3 Months Back &  0.965 &     70 &  Next 3 Months Back \\
+15  &  0.97 &     90 &  Next 3 Months Back &  0.966 &     90 &  Next 3 Months Back \\
+16  &  0.967 &     90 &  Next 3 Months Back &  0.962 &     90 &  Next 3 Months Back \\
+17  &  0.958 &     90 &      Next Year Back &  0.954 &     90 &      Next Year Back \\
+18  &  0.956 &     90 &     Year Back 2wk+7 &  0.937 &     90 &     Year Back 2wk+7 \\
+19  &  0.955 &     90 &     Year Back 2wk+7 &  0.937 &     90 &     Year Back 2wk+7 \\
+20  &  0.955 &     30 &     Year Back 2wk+7 &  0.935 &     30 &     Year Back 2wk+7 \\
 
         \hline
         \end{tabular}
@@ -1881,23 +1955,24 @@ Hence, although we are mostly interested in identifying the best accuracy value,
         \end{table}
 
 
+
 To identify more details about the most accurate results and the prediction/hyperparameters used to create them we have plotted the accuracy values in Figure~\ref{fig:performance-projection}C and \ref{fig:performance-projection}D. 
 
 Here we have sorted the hyperparameters by the accuracy values for the validation where the best accuracy for each hyperparameter is identified and sorted in increasing fashion. We have then taken the same order of the hyperparameters and applied to the training.
 The diagrams include the minimum and maximum accuracy values for a hyperparameter found using 2, 30, 70, and 90 as epochs, while the experiment has been repeated 5 times. The average for each accuracy for a given epoch is shown. Additionally, the confidence interval for each epoch is added as a highlighted area.
 
-The best value for the hyperparameter {\em Now 2wk+26AVG} is 0.6930 for training and 0.5582 for validation (see Table~\ref{tab:ranking-accuracy}).
+The best average value for the hyperparameter {\em Next Year Back} is 0.937 for training and 0.937 for validation (see Table~\ref{tab:ranking-accuracy}).
 
-Not only did we find that for the best accuracy we identified the epoch to be 70, but the hyperparameter is {\em Now 2 wk + 26AVG}, meaning according to our nomenclature the previous 26 observations of 2-week readings from the current rolling training group is used as training data support our model.
+Not only did we find that the best epoch for accuracy is 90, but the best hyperparameters are {\em Next Year Back} for average NNSE and {\em Next 6 Months Back} for summed NNSE, meaning according to our nomenclature the previous year and 6 months of observation readings from the current rolling training group is used as training data support our model.
 
-Although we see on average better accuracy results with 30 epochs, the best accuracy values we still have seen with 90 epochs. This indicates that we have a higher variation of the results in the 90 epoch case. However as we are competing for the best value and not the average value this variation has an advantage and we do not as easily get stuck in a local minima. 
+Although we see on average better accuracy results with 30 epochs, the best accuracy values we still have seen with 90 epochs. This indicates that we have a higher variation of the results in the 90 epoch case. However, as we are competing for the best value and not the average value this variation has an advantage and we do not as easily get stuck in a local minima. 
 
-One other observation we can make is that the training NNSE value is higher then that of validation. This leads us to believe that the input data may be be incomplete to train the model more accurately, or the the input data needs to be differently structures to have a higher validation accuracy value. 
-Hence, although this work is a good starting point we believe there is significant room of improvement.
+One other observation we can make is that the training NNSE value is higher than that of validation. This leads us to believe that the input data may be incomplete to train the model more accurately, or the input data needs to be differently structured to have a higher validation accuracy value. 
+Hence, although this work is a good starting point, we believe there is significant room for improvement.
 
-We can make similar observations when looking at the summed accuracy values. However here we see that more of the best accuracy values are retrieved when using 90 epochs.  We see in the average and summed accuracy that the best 20 values have been created with the prediction parameters of {\em Next Year Back}, {\em Next 6 Month Back}, and {\em Next 3 Month Back}. The average shows a more uniform distribution of these parameters in the top 20 then the summed NNSE values.
+We can make similar observations when looking at the summed accuracy values. However here we see that more of the best accuracy values are retrieved when using 90 epochs.  We see in the average and summed accuracy that the best 20 values have been created with the prediction parameters of {\em Next Year Back}, {\em Next 6 Month Back}, and {\em Next 3 Month Back}. The average shows a more uniform distribution of these parameters in the top 20 than the summed NNSE values (see Figure~\ref{fig:NNSE-comparison-a100-summed}).
 
-As we see further educational opportunities can be derived from analysing different prediction parameters, and different input data distributions.
+As we see further educational opportunities can be derived from analyzing different prediction parameters, and different input data distributions.
 
 \begin{figure}[p]
 
@@ -1924,7 +1999,7 @@ As we see further educational opportunities can be derived from analysing differ
 
   \end{center}
 
-  \caption {Evaluation of the NNSE accuracy for epochs 2, 30, 70, and 90.}
+  \caption {Evaluation of the NNSE average accuracy for epochs 2, 30, 70, and 90.}
   \label{fig:NNSE-comparison-a100}
 
 \end{figure}
@@ -1956,8 +2031,8 @@ As we see further educational opportunities can be derived from analysing differ
 
   \end{center}
 
-  \caption {Evaluation of the NNSE accuracy for epochs 2, 30, 70, and 90.}
-  \label{fig:NNSE-comparison-a100}
+  \caption {Evaluation of the NNSE summed accuracy for epochs 2, 30, 70, and 90.}
+  \label{fig:NNSE-comparison-a100-summed}
 
 \end{figure}
 
@@ -2010,7 +2085,7 @@ usage of GPUs is generally constant when training our benchmark model and could 
 
 
 
-In Figure~\ref{fig:energy-graphs-compare}B, we also depicted the Energy trace per epoch. However, in contrast to Figure~\ref{fig:energy-graphs-compare} A that were created using the data on an NFS storage device, we included here the values obtained for data hosted on a localscratch filesystem and the project filesystem. While the localscratch uses NVMe storage the project filesystem is hosted on a shared GPFS storage server. Accessing the data from there takes more time and hence more energy is used during the benchmark per epoch.
+In Figure~\ref{fig:energy-graphs-compare}B, we also depicted the Energy trace per epoch. However, in contrast to Figure~\ref{fig:energy-graphs-compare}A that were created using the data on an NFS storage device, we included here the values obtained for data hosted on a localscratch filesystem and the project filesystem. While the localscratch uses NVMe storage the project filesystem is hosted on a shared GPFS storage server. Accessing the data from there takes more time and hence more energy is used during the benchmark per epoch.
 
 Hence it offers a clear insight into how a filesystem can negatively impact the energy as the runtime is enhanced and the GPU time to cool down or adjust for reducing the energy is too small to have an impact.
 
