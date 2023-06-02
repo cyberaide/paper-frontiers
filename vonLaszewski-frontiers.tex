@@ -167,12 +167,13 @@ analysis of an earthquake prediction code benchmark while focusing on
 the accuracy of the results and not only on the runtime. Energy traces
 were produced throughout these benchmarks, showcasing that
 energy-related benchmarks can be useful in addition to the usual
-time-related benchmarks. The activity was only possible by utilizing
-a benchmark runtime pipeline while developing and using
-software to automatically generate jobs from the permutation of
-hyperparameters. This was made possible by using a templated job management framework
-developed in a collection of software called cloudmesh with its newly
-developed components, cloudmesh-sbatch and cloudmesh-cc.
+time-related benchmarks. The activity was only possible by utilizing a
+benchmark runtime pipeline while developing and using software to
+automatically generate jobs from the permutation of
+hyperparameters. This was made possible by using a templated job
+management framework developed in a collection of software called
+cloudmesh with its newly developed components, cloudmesh-sbatch and
+cloudmesh-cc.
 
 
 \tiny \keyFont{ \section{Keywords:} deep learning, benchmarking, hyper
@@ -186,23 +187,24 @@ developed components, cloudmesh-sbatch and cloudmesh-cc.
 \section{Introduction}
 
 
-In this paper, we summarize some of the insights that we obtained while improving and conducting 
- earthquake benchmarks within the MLCommons\textsuperscript{\texttrademark} Science Working Group,  porting it to 
-a High-Performance Computing Big Data systems.
- This includes insights into the usability and capability of HPC Big Data
-systems, the usage of the MLCommons benchmarking science
-applications \citep{las-22-mlcommons-science}, and insights from improving the
+In this paper, we summarize some of the insights that we obtained
+while improving and conducting earthquake benchmarks within the
+MLCommons\textsuperscript{\texttrademark} Science Working Group,
+porting it to a High-Performance Computing Big Data systems.  This
+includes insights into the usability and capability of HPC Big Data
+systems, the usage of the MLCommons benchmarking science applications
+\citep{las-22-mlcommons-science}, and insights from improving the
 applicability in educational efforts.
 
-Benchmarking is an important effort in exploring and using HPC Big Data systems.
-While using benchmarks, we can compare the performance of various
-systems. We can also evaluate the system's overall performance
-and identify potential areas for improvements and optimizations either
-on the system side or the algorithmic methods and their impact on the
-performance. Furthermore, benchmarking is ideal for enhancing the
-reproducibility of an experiment, where other researchers can
-replicate the performance and find enhancements to accuracy, modeling
-time, or other measurements.
+Benchmarking is an important effort in exploring and using HPC Big
+Data systems.  While using benchmarks, we can compare the performance
+of various systems. We can also evaluate the system's overall
+performance and identify potential areas for improvements and
+optimizations either on the system side or the algorithmic methods and
+their impact on the performance. Furthermore, benchmarking is ideal
+for enhancing the reproducibility of an experiment, where other
+researchers can replicate the performance and find enhancements to
+accuracy, modeling time, or other measurements.
 
 While for traditional HPC systems often the pure computational power
 is measured such as projected by the TOP500
@@ -218,9 +220,10 @@ Benchmarks also offer a common way to communicate the results to its
 users so that expectations on what is possible are communicated to the
 community. This includes users from the educational
 community. Students often have an easier time reproducing a benchmark
-and assessing the impact of modified parameters as part of the exploration on the behaviors of an algorithm. This is especially the case in
-deep learning, where a variety of hyperparameters are typically
-modified to find the most accurate solution.
+and assessing the impact of modified parameters as part of the
+exploration on the behaviors of an algorithm. This is especially the
+case in deep learning, where a variety of hyperparameters are
+typically modified to find the most accurate solution.
 
 Such parameters should include not only parameters related to the
 algorithm itself, but also to explore different systems parameters
@@ -230,29 +233,30 @@ consumption.
 The paper is structured as follows. First, we provide an introduction
 to MLCommons (Section \ref{sec:mlcommons}).  Next, we provide some
 insights about Machine Learning in educational settings and the
-generalization of Machine Learning to other efforts (Section~\ref{sec:edu-ml}). We
-then specifically analyze which insights we gained from practically
-using MLCommons in educational efforts
-(Section~\ref{sec:edu-mlcommons-insights}). After this, we focus on
-the Earthquake Forecasting application, describe it
+generalization of Machine Learning to other efforts
+(Section~\ref{sec:edu-ml}). We then specifically analyze which
+insights we gained from practically using MLCommons in educational
+efforts (Section~\ref{sec:edu-mlcommons-insights}). After this, we
+focus on the Earthquake Forecasting application, describe it
 (Section~\ref{sec:eq}) and specifically identify our insights in the
-data management for this application (Section~\ref{sec:eq-data}).
-As the application used is time-consuming and is impacted by policy
+data management for this application (Section~\ref{sec:eq-data}).  As
+the application used is time-consuming and is impacted by policy
 limitations of the educational HPC data system, a special workflow
 framework has been designed to coordinate the many tasks needed to
 conduct a comprehensive analysis
 (Section~\ref{sec:workflow-main}). This includes the creation of an
 enhanced templated batch queue mechanism that bypasses the policy
 limitations but makes management of the many jobs simple trough
-convenient parameter management (Section~\ref{sec:workflow-sbatch}). In
-addition, we developed a graphical compute coordinator that enables us to
-visualize the execution of the jobs in a generalized simple workflow
-system (Section~\ref{sec:workflow-cc}).  To showcase the performance
+convenient parameter management
+(Section~\ref{sec:workflow-sbatch}). In addition, we developed a
+graphical compute coordinator that enables us to visualize the
+execution of the jobs in a generalized simple workflow system
+(Section~\ref{sec:workflow-cc}).  To showcase the performance
 (Section~\ref{sec:perf-main}) of the earthquake forecasting
 application, present data for the runtime
 (Section~\ref{sec:perf-runtime}) and for the energy
-(Section~\ref{sec:perf-energy}). We complete the paper with a brief discussion of our results
-(Section~\ref{sec:conclusion}).
+(Section~\ref{sec:perf-energy}). We complete the paper with a brief
+discussion of our results (Section~\ref{sec:conclusion}).
 
 
 \subsection{MLCommons}
@@ -271,19 +275,20 @@ processing. MLCommons is concerned with benchmarking
 training~\citep{mlperf-training} and validation algorithms to measure
 progress over time. Through this goal, MLCommons investigates machine
 learning efforts in the areas of benchmarking, datasets in support of
-benchmarking, and best practices that leverage machine learning. 
+benchmarking, and best practices that leverage machine learning.
 
-MLCommons is organized into several
-working groups that address topics such as benchmarking related to
-training, training on HPC resources, and inference conducted on data
-centers, edge devices, mobile devices, and embedded systems. Best
-practices are explored in the areas of infrastructure and power. In
-addition, MLCommons also operates working groups in the areas of
-Algorithms, DataPerf Dynabench, Medical, Science, and Storage.
+MLCommons is organized into several working groups that address topics
+such as benchmarking related to training, training on HPC resources,
+and inference conducted on data centers, edge devices, mobile devices,
+and embedded systems. Best practices are explored in the areas of
+infrastructure and power. In addition, MLCommons also operates working
+groups in the areas of Algorithms, DataPerf Dynabench, Medical,
+Science, and Storage.
 
 The science working group is concerned with improving the science
-beyond just a static benchmark~\citep{las-22-mlcommons-science}.
-The work reported here has been conducted as part of the MLCommons Science workingroup goals.
+beyond just a static benchmark~\citep{las-22-mlcommons-science}.  The
+work reported here has been conducted as part of the MLCommons Science
+workingroup goals.
 
 A list of selected benchmarks for the working groups focusing on
 inference, training, and science are shown in
@@ -337,7 +342,20 @@ insights that we discuss in this paper.
 
 \section{Insights for Educational Activities}
 
-Next, we discuss our insights while focusing on educational activities. This includes general observations about Machine Learning methods, libraries, tools and software carpentry, benchmark carpentry, and infrastructure. We then discuss in specific terms how MLCommons-related topics shape our insights. This includes insights of MLCommons while using it in educational settings leading to the potential to create a course curriculum. We then focus on the earthquake application while presenting lessons learned while improving such a large application as part of the code development, the data management, and the workflow to conduct extensive hyperparameter-based experiments. This leads us to develop tools that simplify monitoring (time and energy), as well as tools to manage jobs and computations while taking into account policy limitations at the HPC center.
+Next, we discuss our insights while focusing on educational
+activities. This includes general observations about Machine Learning
+methods, libraries, tools and software carpentry, benchmark carpentry,
+and infrastructure. We then discuss in specific terms how
+MLCommons-related topics shape our insights. This includes insights of
+MLCommons while using it in educational settings leading to the
+potential to create a course curriculum. We then focus on the
+earthquake application while presenting lessons learned while
+improving such a large application as part of the code development,
+the data management, and the workflow to conduct extensive
+hyperparameter-based experiments. This leads us to develop tools that
+simplify monitoring (time and energy), as well as tools to manage jobs
+and computations while taking into account policy limitations at the
+HPC center.
 
 \subsection{Insights of Machine Learning in Education}
 \label{sec:edu-ml}
@@ -368,9 +386,10 @@ supervised learning, unsupervised learning, and reinforcement
 learning.
 
 From this small list, we can already see that a comprehensive course
-curriculum needs to be carefully developed, as the depth of topics required would be difficult to perform in a
-a one-semester course in sufficient depth, but needs to span the
-duration of a student's curriculum in AI.
+curriculum needs to be carefully developed, as the depth of topics
+required would be difficult to perform in a a one-semester course in
+sufficient depth, but needs to span the duration of a student's
+curriculum in AI.
 
 \subsubsection{Libraries}
 
@@ -402,8 +421,8 @@ infrastructure used to execute software, students need a basic
 understanding of software engineering tools such as a text editor and
 code management system.  A subset of this is often referred to as
 software carpentry \cite{software-carpentry}. Topics of immediate
-importance include the ability to master a terminal with Linux command, an editor, and be familiar
-with a code management system.
+importance include the ability to master a terminal with Linux
+command, an editor, and be familiar with a code management system.
 
 The common choice for code management is git, with successful social
 coding platforms such as GitHub and GitLab.  These code management
@@ -423,8 +442,9 @@ overall quality of the research experience for the student increases
 as the overall potential for success is implicitly accessible to the
 student.
 
-Another important aspect is the use of a capable code development environment  with
-advanced features such as syntax highlighting, code inspection, and refactoring. 
+Another important aspect is the use of a capable code development
+environment with advanced features such as syntax highlighting, code
+inspection, and refactoring.
 
 
 The
