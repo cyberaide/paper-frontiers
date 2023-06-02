@@ -447,118 +447,146 @@ environment with advanced features such as syntax highlighting, code
 inspection, and refactoring.
 
 
-The
-use of tools such as Notepad++, IDLE, or other simplistic editors is
-insufficient as it does not support the software engineering best practices that can be achieved with an advanced programming framework development environment. Instead, students benefit from advanced tools such as {\em
-  PyCharm} or alternatively {\em Visual Studio Code} (vscode) as they
-provide sophisticated features to improve code quality and also
-provide strong integration with git. One of the strengths of PyCharm
-is that it has a sophisticated code inspector and auto-completion,
-making writing reliable, and syntactically correct code faster. On the other hand, vscode may be known to some
-students, but its default features seem not to match that of PyCharm,
-and configuring its plugin engine to add similar features as provided by PyCharm
-requires additional work. Such tools also provide the ability to
-easily write markdown text and render the output while writing. This
-is very useful for writing documentation. Most recently these tools also allow writing code remotely, as well as in online group sessions fostering collaboration. Hence peer programming has become a reality, even if the students work remotely with each other.
+The use of tools such as Notepad++, IDLE, or other simplistic editors
+is insufficient as it does not support the software engineering best
+practices that can be achieved with an advanced programming framework
+development environment. Instead, students benefit from advanced tools
+such as {\em PyCharm} or alternatively {\em Visual Studio Code}
+(vscode) as they provide sophisticated features to improve code
+quality and also provide strong integration with git. One of the
+strengths of PyCharm is that it has a sophisticated code inspector and
+auto-completion, making writing reliable, and syntactically correct
+code faster. On the other hand, vscode may be known to some students,
+but its default features seem not to match that of PyCharm, and
+configuring its plugin engine to add similar features as provided by
+PyCharm requires additional work. Such tools also provide the ability
+to easily write markdown text and render the output while
+writing. This is very useful for writing documentation. Most recently
+these tools also allow writing code remotely, as well as in online
+group sessions fostering collaboration. Hence peer programming has
+become a reality, even if the students work remotely with each other.
 
-In addition, the elementary use of a command line editor is sometimes needed to
-simplify direct editing on remote HPC machines using a command
-terminal. Students can choose editors such as {\em vi}, {\em
-vim}, {\em nano}, {\em pico}, or  {\em emacs}. The later has been used predominantly by us as we are able to teach it in 5 minutes while focusing on the  10 most
-important commands. If more sophisticated commands are needed, the
-emacs reference card is a valuable helper. As the same shortcuts are used in a terminal, we reduced the complexity of teaching students using a command line editor as well as editing in the terminal with convenient shortcuts.
+In addition, the elementary use of a command line editor is sometimes
+needed to simplify direct editing on remote HPC machines using a
+command terminal. Students can choose editors such as {\em vi}, {\em
+  vim}, {\em nano}, {\em pico}, or {\em emacs}. The later has been
+used predominantly by us as we are able to teach it in 5 minutes while
+focusing on the 10 most important commands. If more sophisticated
+commands are needed, the emacs reference card is a valuable helper. As
+the same shortcuts are used in a terminal, we reduced the complexity
+of teaching students using a command line editor as well as editing in
+the terminal with convenient shortcuts.
 
-However, over the last months, we noticed an uptake in using more advanced editors such as PyCharm and vscode due to their remote editing capabilities and their superiority while developing code, and a command editor on the HPC terminal was entirely avoided. This comes with an increased load on the login nodes that, however, are outweighed by the convenience and the code quality produced by the developers while using such advanced editors. HPC centers are advised to increase their capabilities significantly to support such tools while increasing their resources for using them by their customers.
+However, over the last months, we noticed an uptake in using more
+advanced editors such as PyCharm and vscode due to their remote
+editing capabilities and their superiority while developing code, and
+a command editor on the HPC terminal was entirely avoided. This comes
+with an increased load on the login nodes that, however, are
+outweighed by the convenience and the code quality produced by the
+developers while using such advanced editors. HPC centers are advised
+to increase their capabilities significantly to support such tools
+while increasing their resources for using them by their customers.
 
-An additional tool is Jupyter, with its successor
-JupyterLab. It provides a web browser interface for interactive
-Python notebooks (ipynb). The strength here is a rich external
-ecosystem that allows us to interactively run programs while
-integrating analysis components to utilize data frames and visualization to conduct data
-exploration.  For example, this is possible by using Web browser interfaces to either the HPC-hosted Jupyter Notebook editor or Google Colab.
-The biggest disadvantage we saw in using notebooks is
-that the code developed by the students are frequently not following proper
-software engineering practices such as defining and using functions,
-classes, and self-defined Python libraries that 
-lead to more sustainable and easier-to-manage code. Often we found that code
-developed as Jupyter Notebook resulted in missing
-documentation, although notebooks have an integrated markdown engine that can provide sophisticated documentation built in. Pep8, the {\em Style Guide for Python Code}, was never really  used in notebooks. Together these issues relate to a general problem at the
-university level. While the material taught in ML requires an entire
-semester, students often come ill-prepared for ML classes as typical
-language classes do not focus on software carpentry, but instead on
-teaching Python while only emphasizing the language aspects but not
-with a sustainable {\em practical} software engineering
-approach. Furthermore, we noticed that while teachers are
-increasingly using Python notebooks, the ability to properly
-structure a Python code has been lost and the quality of writing a
-larger program is no longer prevalent with all students. In fact, in a recent research experience for undergraduates, we had to reeducate students on how to use Python in larger programs as this was not yet taught in their current curriculum.
+An additional tool is Jupyter, with its successor JupyterLab. It
+provides a web browser interface for interactive Python notebooks
+(ipynb). The strength here is a rich external ecosystem that allows us
+to interactively run programs while integrating analysis components to
+utilize data frames and visualization to conduct data exploration.
+For example, this is possible by using Web browser interfaces to
+either the HPC-hosted Jupyter Notebook editor or Google Colab.  The
+biggest disadvantage we saw in using notebooks is that the code
+developed by the students are frequently not following proper software
+engineering practices such as defining and using functions, classes,
+and self-defined Python libraries that lead to more sustainable and
+easier-to-manage code. Often we found that code developed as Jupyter
+Notebook resulted in missing documentation, although notebooks have an
+integrated markdown engine that can provide sophisticated
+documentation built in. Pep8, the {\em Style Guide for Python Code},
+was never really used in notebooks. Together these issues relate to a
+general problem at the university level. While the material taught in
+ML requires an entire semester, students often come ill-prepared for
+ML classes as typical language classes do not focus on software
+carpentry, but instead on teaching Python while only emphasizing the
+language aspects but not with a sustainable {\em practical} software
+engineering approach. Furthermore, we noticed that while teachers are
+increasingly using Python notebooks, the ability to properly structure
+a Python code has been lost and the quality of writing a larger
+program is no longer prevalent with all students. In fact, in a recent
+research experience for undergraduates, we had to reeducate students
+on how to use Python in larger programs as this was not yet taught in
+their current curriculum.
 
 \subsubsection{Benchmark Carpentry}
 
 Software carpentry \citep{software-carpentry} is a well-known concept
 and has been adapted to the community to teach basic lab skills for
-research computing.  The experiences and insights documented in this paper have recently
-been reported to the MLCommons Science Working group. Throughout the
-discussion, we identified the need to develop an effort
-focusing on {\em Benchmark Carpentry} that goes beyond the aspects
-typically taught in software carpentry while focusing on aspects
-of benchmarks that are not covered. This includes a review of other
-benchmark efforts such as Top500 and Green500, the technical
+research computing.  The experiences and insights documented in this
+paper have recently been reported to the MLCommons Science Working
+group. Throughout the discussion, we identified the need to develop an
+effort focusing on {\em Benchmark Carpentry} that goes beyond the
+aspects typically taught in software carpentry while focusing on
+aspects of benchmarks that are not covered. This includes a review of
+other benchmark efforts such as Top500 and Green500, the technical
 discussion around system benchmarks including SPEC benchmarks, as well
 as tools and practices to better benchmark a system. Special effort
 need not only to be placed on benchmarking the CPU and GPU
 capabilities, but also what effect the impact of the file system or
-the memory hierarchy has. Reproducibility while leveraging the Findability, Accessibility, Interoperability, and Reusability (FAIR)
-principle, and using software that establishes immutable baseline environments
-such as singularity, and docker, but also the creation of reproducible
-benchmark pipelines and workflows using cloudmesh-sbatch and
-cloudmesh-cc are beneficial which are discussed later in this paper. Such efforts can be included also in
-classes and the results of developing material for and by the
-participants can significantly lead to improving the concept of
-benchmark carpentry.
+the memory hierarchy has. Reproducibility while leveraging the
+Findability, Accessibility, Interoperability, and Reusability (FAIR)
+principle, and using software that establishes immutable baseline
+environments such as singularity, and docker, but also the creation of
+reproducible benchmark pipelines and workflows using cloudmesh-sbatch
+and cloudmesh-cc are beneficial which are discussed later in this
+paper. Such efforts can be included also in classes and the results of
+developing material for and by the participants can significantly lead
+to improving the concept of benchmark carpentry.
 
 \subsubsection{Infrastructure}
 
-An additional aspect ML students have exposure to is the need for access
-to computational resources due to distinct hardware requirements resulting
-from the use of an advanced ML framework. One common way of dealing with this
-is to use pre-established ML environments like Google Colab which is easy to obtain access to and use with
-limited capability for free (with the option of obtaining a larger
-computational capability with a paid subscription).  However, as Colab
-is based on Jupyter notebooks, we experience the same disadvantages
-as discussed in Section~\ref{sec:tools}. Furthermore, dependent on the benchmark infrastructure needs, benchmarking can become quite expensive while using Google colab.
+An additional aspect ML students have exposure to is the need for
+access to computational resources due to distinct hardware
+requirements resulting from the use of an advanced ML framework. One
+common way of dealing with this is to use pre-established ML
+environments like Google Colab which is easy to obtain access to and
+use with limited capability for free (with the option of obtaining a
+larger computational capability with a paid subscription).  However,
+as Colab is based on Jupyter notebooks, we experience the same
+disadvantages as discussed in Section~\ref{sec:tools}. Furthermore,
+dependent on the benchmark infrastructure needs, benchmarking can
+become quite expensive while using Google colab.
 
-Another path to obtain resources for machine learning can be found in the cloud. This
-may include Infrastructure as a Service (IaaS) and Platform as a
-Service (PaaS) cloud service offerings from Amazon, Azure, Google Cloud, Salesforce,
-and others.  In addition to the computational needs for executing
-neural networks and deep learning algorithms, we also find services
-that can be accessed mainly through REST APIs offering methods to easily integrate the technology into
-the application research. Most popular for such tools focus on natural
+Another path to obtain resources for machine learning can be found in
+the cloud. This may include Infrastructure as a Service (IaaS) and
+Platform as a Service (PaaS) cloud service offerings from Amazon,
+Azure, Google Cloud, Salesforce, and others.  In addition to the
+computational needs for executing neural networks and deep learning
+algorithms, we also find services that can be accessed mainly through
+REST APIs offering methods to easily integrate the technology into the
+application research. Most popular for such tools focus on natural
 language processing such as translation and more recently of text
 analysis and responses through OpenAI's ChatGPT and Google's Bard.
 
 However, many academic institutions have access to campus-level and
-national-level computing resources in their HPC centers. In the US,  this includes
-resources from the Department of Energy (DOE) and the National Science
-Foundation (NSF). Such computing resources are accessed mostly through
-traditional batch scheduling solutions (such as SLURM
-\citep{www-slurm}), which allows for the sharing of limited resources
-with a large user community. For this reason, centers often implement
-a scheduling policy that puts significant restrictions on the
-computational resources that can be used at the same time and for
-a limited period. The number of files and the access to a local
-disk on compute nodes constituting the HPC resources may also be
-limited.  This provides a potential very high entry barrier as these
-policy restrictions may not be integrated into the application design
-from the start.  Moreover, in some cases, these restrictions may
-provide a significant performance penalty when data is placed in a
-slow Network File System (NFS) instead of directly in memory (often
-the data does not fit in memory) or in NVMe storage if it exists and is not restricted on
-the computing nodes.  It is also important to understand that such
-nodes may also be shared with other users and it is important to
-provide the infrastructure requirements upfront in regard to
-computation time, memory footprint, and file storage requirements
+national-level computing resources in their HPC centers. In the US,
+this includes resources from the Department of Energy (DOE) and the
+National Science Foundation (NSF). Such computing resources are
+accessed mostly through traditional batch scheduling solutions (such
+as SLURM \citep{www-slurm}), which allows for the sharing of limited
+resources with a large user community. For this reason, centers often
+implement a scheduling policy that puts significant restrictions on
+the computational resources that can be used at the same time and for
+a limited period. The number of files and the access to a local disk
+on compute nodes constituting the HPC resources may also be limited.
+This provides a potential very high entry barrier as these policy
+restrictions may not be integrated into the application design from
+the start.  Moreover, in some cases, these restrictions may provide a
+significant performance penalty when data is placed in a slow Network
+File System (NFS) instead of directly in memory (often the data does
+not fit in memory) or in NVMe storage if it exists and is not
+restricted on the computing nodes.  It is also important to understand
+that such nodes may also be shared with other users and it is
+important to provide the infrastructure requirements upfront in regard
+to computation time, memory footprint, and file storage requirements
 accurately so that scheduling can be performed most expediently.
 Furthermore, the software on these systems is maintained by the
 computing staff and is typically tailored for the HPC environment.  It
@@ -568,35 +596,35 @@ impact of this issue, by enabling users of the HPC center to provide
 their own custom software dependencies as an image.
 
 One of the popular container frameworks for HPC centers is
-Singularity, and some centers offer Docker as an alternative. As images must bring
-all the software needed to run a task, they quickly become large in
-size, and it is not feasible to just copy the image from your local
-computer but to work with the center to create the image within the
-HPC infrastructure. This is especially true when a university
-requires all resources to be accessed through a VPN. Here one can
-often see a factor of 10 or more slowdown in transfer and access
-speeds.
+Singularity, and some centers offer Docker as an alternative. As
+images must bring all the software needed to run a task, they quickly
+become large in size, and it is not feasible to just copy the image
+from your local computer but to work with the center to create the
+image within the HPC infrastructure. This is especially true when a
+university requires all resources to be accessed through a VPN. Here
+one can often see a factor of 10 or more slowdown in transfer and
+access speeds.
 
-All these elements must be learned and establishing an
-understanding of these subjects can take considerable time. Hence,
-using HPC resources has to be introduced with specialized educational
-efforts often provided by the HPC center. However, sometimes these
-general courses are not targeted specifically to running a particular
-version of PyTorch or TensorFlow with cuDNN, but just the general
-aspect of accessing the queues. Although these efforts often
-fall under the offerings of software carpentry, the teaching objective
-may fall short as the focus is placed on a limited number of software
-supported by the center instead of teaching how to install and use the latest
-version of TensorFlow. Furthermore, the offered software
-may be limited in case the underlying GPU card drivers are outdated.
-Software benchmarks not only need the newest software
-libraries but also the newest device drivers which can only be
-installed by the HPC support team.
+All these elements must be learned and establishing an understanding
+of these subjects can take considerable time. Hence, using HPC
+resources has to be introduced with specialized educational efforts
+often provided by the HPC center. However, sometimes these general
+courses are not targeted specifically to running a particular version
+of PyTorch or TensorFlow with cuDNN, but just the general aspect of
+accessing the queues. Although these efforts often fall under the
+offerings of software carpentry, the teaching objective may fall short
+as the focus is placed on a limited number of software supported by
+the center instead of teaching how to install and use the latest
+version of TensorFlow. Furthermore, the offered software may be
+limited in case the underlying GPU card drivers are outdated.
+Software benchmarks not only need the newest software libraries but
+also the newest device drivers which can only be installed by the HPC
+support team.
 
 Furthermore, specifically customized queues demanding allocations,
-partitions and resource requirements may not be documented or communicated to its users and a burden
-is placed on the faculty member to integrate this accurately into the
-course curriculum.
+partitions and resource requirements may not be documented or
+communicated to its users and a burden is placed on the faculty member
+to integrate this accurately into the course curriculum.
 
 Access to national-scale infrastructure is often restricted to
 research projects that require following a detailed application
@@ -623,9 +651,9 @@ deep learning ecosystem. This includes benchmarks targeted to a
 variety of system resources from tiny devices to the largest Research
 High-Performance Computing and Data Systems in the world, while being
 able to adapt and test them on platforms between these two
-extremes. Thus they can become ideal targets for adaptation in AI classes
-that want to go beyond typical introductory applications such as MNIST
-that run in a small amount of time.
+extremes. Thus they can become ideal targets for adaptation in AI
+classes that want to go beyond typical introductory applications such
+as MNIST that run in a small amount of time.
 
 We have gained practical experience while adapting benchmarks from the
 MLCommons Science Working group while collaborating with various
@@ -639,15 +667,15 @@ for classes, capstones, REUs, team project-oriented software
 engineering and computer science classes, and internships.
 
 We observed that while traditional classes limit their resource needs
-and the target application to a very short period so assignments
-can be conducted instantly.  Some MLCommons benchmarks go well beyond
-this while confronting the students not only with the theoretical
-background of the ML algorithm but also with the Big Data Systems Management 
-which is required to execute benchmarks due to their data and
-time requirements. This is especially the
-case when hyperparameters are to be identified to derive scientifically
-accurate examples. It is also beneficial in that it allows the students to explore different
-algorithms applied to these problems.
+and the target application to a very short period so assignments can
+be conducted instantly.  Some MLCommons benchmarks go well beyond this
+while confronting the students not only with the theoretical
+background of the ML algorithm but also with the Big Data Systems
+Management which is required to execute benchmarks due to their data
+and time requirements. This is especially the case when
+hyperparameters are to be identified to derive scientifically accurate
+examples. It is also beneficial in that it allows the students to
+explore different algorithms applied to these problems.
 
 From our experiences with these various efforts, we found that the
 following lessons provided significant add-on learning experiences:
@@ -661,91 +689,90 @@ following lessons provided significant add-on learning experiences:
   the opportunity for pair programming, but also the fact that careful
   time planning in the team is needed to succeed. This also includes
   how to collaborate with peers using professional, industry-standard
-  coding software and management of code in a team through a
-  version control system such as Git. While classes still may focus on the
+  coding software and management of code in a team through a version
+  control system such as Git. While classes still may focus on the
   individual's progress, an MLCommons Benchmark benefits from focusing
   on grading the team and taking the entire project and team progress
   into a holistic grade evaluation.
 
-  \item {\bf Interdisciplinary Research.} Many of the applications in
-    MLCommons are requiring interdisciplinary research between the domain
-    scientists, ML experts, and IT engineers. As part of the teamwork,
-    students have the opportunity to participate not only in their
-    discipline, but learn about how to operate in an interdisciplinary
-    team.
+\item {\bf Interdisciplinary Research.} Many of the applications in
+  MLCommons are requiring interdisciplinary research between the
+  domain scientists, ML experts, and IT engineers. As part of the
+  teamwork, students have the opportunity to participate not only in
+  their discipline, but learn about how to operate in an
+  interdisciplinary team.
 
-  \item {\bf System Benchmarking vs. Science Benchmarking.} Students
-    can learn about two different benchmarking efforts. The first is
-    system-level benchmarking in which a system is compared based
-    on a predefined algorithm and its parameters measuring system performance. The second is the
-    benchmarking of a scientific algorithm in which the quality of the
-    algorithm is compared with each other where system performance parameters are a secondary aspect.
+\item {\bf System Benchmarking vs. Science Benchmarking.} Students can
+  learn about two different benchmarking efforts. The first is
+  system-level benchmarking in which a system is compared based on a
+  predefined algorithm and its parameters measuring system
+  performance. The second is the benchmarking of a scientific
+  algorithm in which the quality of the algorithm is compared with
+  each other where system performance parameters are a secondary
+  aspect.
 
-  \item {\bf Software Ecosystem.} Students are often using a class provided,
-    limited, custom-defined environment prepared explicitly for a course that makes
-    course management for the teacher easier, but does not expose the students
-    to various ways of setting up and utilizing the large variety of
-    software related to big data systems. This includes setting up
-    Python beyond the use of Conda and Colab notebooks, the use of
-    queueing systems, containers, and cloud computing software for
-    AI, DL, and HPC experiments as well as other advanced aspects of
-    software engineering.  The diverse needs of the MLCommons Benchmarking
-    introduces these concepts to Students in a variety of configurations
-    and environments, providing them with a more research- and 
-    industry-like approach to
-    managing software systems.
+\item {\bf Software Ecosystem.} Students are often using a class
+  provided, limited, custom-defined environment prepared explicitly
+  for a course that makes course management for the teacher easier,
+  but does not expose the students to various ways of setting up and
+  utilizing the large variety of software related to big data
+  systems. This includes setting up Python beyond the use of Conda and
+  Colab notebooks, the use of queueing systems, containers, and cloud
+  computing software for AI, DL, and HPC experiments as well as other
+  advanced aspects of software engineering.  The diverse needs of the
+  MLCommons Benchmarking introduces these concepts to Students in a
+  variety of configurations and environments, providing them with a
+  more research- and industry-like approach to managing software
+  systems.
 
-  \item {\bf Execution Ecosystem.} While in-class problems typically
-    do not require as many computing resources, some of the examples in
-    MLCommons require a significant organizational aspect to select
-    and run meaningful calculations that enhance the accuracy of the
-    results. Careful planning with workflows and the potential use
-    of hybrid heterogeneous systems significantly improves the
-    awareness to deal with not only the laptop but also the large
-    available resources students may get access to while leveraging
-    flagship-class computing resources, or their own local HPC
-    system when available. This includes dealing with system policies,
-    remote system access, and frugal planning of experiments through
-    prediction of runtimes and planning of hyperparameter searches. This
-    can also include dealing with energy consumption and other
-    environmental parameters.
+\item {\bf Execution Ecosystem.} While in-class problems typically do
+  not require as many computing resources, some of the examples in
+  MLCommons require a significant organizational aspect to select and
+  run meaningful calculations that enhance the accuracy of the
+  results. Careful planning with workflows and the potential use of
+  hybrid heterogeneous systems significantly improves the awareness to
+  deal with not only the laptop but also the large available resources
+  students may get access to while leveraging flagship-class computing
+  resources, or their own local HPC system when available. This
+  includes dealing with system policies, remote system access, and
+  frugal planning of experiments through prediction of runtimes and
+  planning of hyperparameter searches. This can also include dealing
+  with energy consumption and other environmental parameters.
 
-  \item {\bf Parallelization.} The examples provide a basis for
-    learning about various parallelization aspects. This includes the
-    parallelization on the job level and hyperparameters searches, but
-    also on the use of parallelization methods provided by large-scale
-    GPU bases big data systems.
+\item {\bf Parallelization.} The examples provide a basis for learning
+  about various parallelization aspects. This includes the
+  parallelization on the job level and hyperparameters searches, but
+  also on the use of parallelization methods provided by large-scale
+  GPU bases big data systems.
 
-  \item {\bf IO Data Management.} One other important lesson is the
-    efficient and effective use of data stores to execute.  For example,
-    DL algorithms require a large number of fast IO interactions.
-    Having access to sufficient space to store potentially larger datasets
-    is beneficial. Also, the time needed to send data from the external
-    storage to the GPU should be small to assure that the GPUs have
-    sufficient data to perform well without bottleneck.
+\item {\bf IO Data Management.} One other important lesson is the
+  efficient and effective use of data stores to execute.  For example,
+  DL algorithms require a large number of fast IO interactions.
+  Having access to sufficient space to store potentially larger
+  datasets is beneficial. Also, the time needed to send data from the
+  external storage to the GPU should be small to assure that the GPUs
+  have sufficient data to perform well without bottleneck.
 
-  \item {\bf Data Analysis.} The examples provide valuable input to
-    further enhance abilities to conduct non-trivial data analysis
-    through advanced Python scripts while integrating them in
-    coordinated runs to analyze log files that are created to
-    validate the numerical stability of the benchmarks. This 
-    includes the utilization of popular data analysis libraries (such
-    as Pandas) as well as visualization frameworks (such as Seaborn). It also allows students to
-    focus on identifying a result that can be communicated in a
-    professional manner.
+\item {\bf Data Analysis.} The examples provide valuable input to
+  further enhance abilities to conduct non-trivial data analysis
+  through advanced Python scripts while integrating them in
+  coordinated runs to analyze log files that are created to validate
+  the numerical stability of the benchmarks. This includes the
+  utilization of popular data analysis libraries (such as Pandas) as
+  well as visualization frameworks (such as Seaborn). It also allows
+  students to focus on identifying a result that can be communicated
+  in a professional manner.
 
-  \item {\bf Professional and Academic Communication.} The results
-    achieved need to be communicated to a larger audience and the
-    students can engage in a report, paper, and
-    presentation writing opportunities addressing scientific and
-    professional communities.
+\item {\bf Professional and Academic Communication.} The results
+  achieved need to be communicated to a larger audience and the
+  students can engage in a report, paper, and presentation writing
+  opportunities addressing scientific and professional communities.
 
-  \item {\bf Benefits to Society.} The MLCommons benchmarks are
-    including opportunities to improve the quality of ML algorithms
-    that can be applied to societal tasks. Obviously, improving
-    benchmarks such as earthquake forecasting are beneficial to the
-    society and can motivate students to participate in such
-    educational opportunities.
+\item {\bf Benefits to Society.} The MLCommons benchmarks are
+  including opportunities to improve the quality of ML algorithms that
+  can be applied to societal tasks. Obviously, improving benchmarks
+  such as earthquake forecasting are beneficial to the society and can
+  motivate students to participate in such educational opportunities.
 
 \end{itemize}
 
@@ -753,15 +780,15 @@ following lessons provided significant add-on learning experiences:
 \subsubsection{MLCommons Deep-Learning based Proposed Course Curriculum}
 
 We can utilize the MLCommons effort to center a course curriculum
-around it. For this to work, the course can focus on deep
-learning while using examples from MLCommons benchmarks as well as
-additional enhancements into other topics that may not be covered.
+around it. For this to work, the course can focus on deep learning
+while using examples from MLCommons benchmarks as well as additional
+enhancements into other topics that may not be covered.
 
 In contrast to other courses that may only focus on DL techniques,
 this course will have the requirement to utilize a significant
 computational resources that are for example available on many
-campuses as part of an HPC or a national scale facility such as
-NSF's Access. Alternatively, Google Colab can be used; however, it will have
+campuses as part of an HPC or a national scale facility such as NSF's
+Access. Alternatively, Google Colab can be used; however, it will have
 the disadvantage of not using HPC resources from local or national HPC
 centers.
 
@@ -775,42 +802,44 @@ combination thereof.
   course is provided. Goals and expectations are explained and an
   introduction to deep learning is provided. This includes the history
   and applications of deep learning, a basic introduction to
-  optimization technologies and neural networks, and the
-  connection between MLCommons Applications is presented.
+  optimization technologies and neural networks, and the connection
+  between MLCommons Applications is presented.
 
 \item {\bf Infrastructure and Benchmarking:} An overview of
   MLCommons-based deep learning applications and benchmarks are
-  discussed and will include a wide variety reaching from tiny
-  devices to supercomputers and hyperscale clouds. Google Colab will
-  be introduced.  Practical topics such as using ssh and batch queues
-  are discussed. An explicit effort is placed on using a code editor
-  such as PyCharm or VSCode. Elementary software infrastructure is
+  discussed and will include a wide variety reaching from tiny devices
+  to supercomputers and hyperscale clouds. Google Colab will be
+  introduced.  Practical topics such as using ssh and batch queues are
+  discussed. An explicit effort is placed on using a code editor such
+  as PyCharm or VSCode. Elementary software infrastructure is
   discussed while reviewing Python concepts for functions, classes,
   and code packaging with pip. The use of GitHub is introduced.
   
-\item{\bf Convolutional Neural Networks:} A deeper understanding is taught
-  by focusing on convolutional neural networks (CNNs). The example of
-  Mask R-CNN is explained.
+\item{\bf Convolutional Neural Networks:} A deeper understanding is
+  taught by focusing on convolutional neural networks (CNNs). The
+  example of Mask R-CNN is explained.
 
-\item{\bf Recurrent Neural Networks:} RNNs are taught and applications of
-  RNNs are discussed. The RNN-T application focusing on speech
+\item{\bf Recurrent Neural Networks:} RNNs are taught and applications
+  of RNNs are discussed. The RNN-T application focusing on speech
   recognition is presented and analyzed.
 
-\item{\bf Natural Language Processing:} As NLP
-  has such a big impact on industry and academia additional lectures
-  in that area are presented. This includes large language models,
-  analyzing text, applications of NLP, language translation, and
-  sentiment analysis.  Practical examples are introduced while looking
-  at ChatGPT. From MLCommons, the applications DLRM, BERT, RNN-T are
-  discussed.
+\item{\bf Natural Language Processing:} As NLP has such a big impact
+  on industry and academia additional lectures in that area are
+  presented. This includes large language models, analyzing text,
+  applications of NLP, language translation, and sentiment analysis.
+  Practical examples are introduced while looking at ChatGPT. From
+  MLCommons, the applications DLRM, BERT, RNN-T are discussed.
 
 \item{\bf Project Presentations:} The last part of the class is
   focused on a project presentation that students can conduct in a
   team or individually. It should showcase an application and
   performance results on one or multiple HPC data systems, or include
   an improvement to an existing MLCommons benchmark. It is expected
-  that the students write a high-quality project report.
-  Ideally, each team will submit its result to MLCommons. A good start here is the Science Working Group as it provides rolling submissions and its focus is accuracy and not speed which is often a topic of interest in academia.
+  that the students write a high-quality project report.  Ideally,
+  each team will submit its result to MLCommons. A good start here is
+  the Science Working Group as it provides rolling submissions and its
+  focus is accuracy and not speed which is often a topic of interest
+  in academia.
   
  \end{enumerate}
 
@@ -818,7 +847,14 @@ combination thereof.
  to stay up to date with community AI developments as well as efforts
  newly covered in MLCommons. The semester-long project is accompanied
  by bi-weekly practical mini-assignments showcasing selected results
- and implementations of a particular topic. The final outcome will be a project report. Grading and integration can be done based on the instructors and the universities course requirements that may be governed by university policies. Practically, we believe that grading the project will be sufficient, however, we observed that weekly graded assignments may be needed in order to compete with other more weekly-homework-oriented graded classes that require immediate attention by the students.
+ and implementations of a particular topic. The final outcome will be
+ a project report. Grading and integration can be done based on the
+ instructors and the universities course requirements that may be
+ governed by university policies. Practically, we believe that grading
+ the project will be sufficient, however, we observed that weekly
+ graded assignments may be needed in order to compete with other more
+ weekly-homework-oriented graded classes that require immediate
+ attention by the students.
 
 
 \subsection{Earthquake Forecasting}
@@ -842,10 +878,10 @@ variation of values against time and can have multiple dimensions. For
 example, with earthquake forecasting we use geospatial datasets that
 have two dimensions based both on time and spatial position. The
 prediction is considerably easier when we can identify an evolution
-structure across dimensions. For example, by analyzing earthquake data, we find a
-strong correlation between nearby spatial points. Thus nearby
-spacial points influence each other and simplify the time series
-prediction for an area. However, as earthquake faults and other
+structure across dimensions. For example, by analyzing earthquake
+data, we find a strong correlation between nearby spatial points. Thus
+nearby spacial points influence each other and simplify the time
+series prediction for an area. However, as earthquake faults and other
 geometric features are not uniformly distributed, such correlations
 are often not clearly defined in spatial regions. Thus it is important
 not just to look at the region, but also at the evolution in time
@@ -920,11 +956,10 @@ Transformer (TFT)~\citep{TFT-21}-based model, and a custom hybrid
 transformer model. The TFT-based model uses two distinct LSTMs,
 covering an encoder and a decoder with a temporal attention-based
 transformer. The custom model includes a space-time transformer for
-the Decoder and a two-layer LSTM for the encoder. Figure \ref{fig:TFT_Model_Arch} 
-shows the TFT model architecture. Each model predicts
-NSE and generates visualizations illustrating the TFT for
-interpretable multi-horizon time series
-forecasting~\citep{TFT-21}. 
+the Decoder and a two-layer LSTM for the encoder. Figure
+\ref{fig:TFT_Model_Arch} shows the TFT model architecture. Each model
+predicts NSE and generates visualizations illustrating the TFT for
+interpretable multi-horizon time series forecasting~\citep{TFT-21}.
 
 \begin{figure}[htb]
     \centering\includegraphics[width=0.5\columnwidth]{images/TFT}
@@ -933,7 +968,19 @@ forecasting~\citep{TFT-21}.
 \end{figure}
 
 
-For this paper we adopted the same calculations as defined in \cite{fox2022-jm}: ``We have chosen various samplings of the dataset to provide both input and predicted values. These include time ranges from a fortnight up to 4 years. Further, we calculate summed (according to Equation (1)) magnitudes and averaged depths (according to Equation (2)) and counts of significant earthquakes (magnitude > 3.29, Equation (3)).  We use the concept of {\em energy averaging} when there are multiple events in a single space–time bin. Therefore, the magnitude assigned to each bin is defined in Equation (1) as “log(Energy)” where we sum over events of individual magnitudes $m_{event}$  We also use energy averaging defined in Equation (2) for quantities $Q_{bin}$ such as the depth of an earthquake that needs to be weighted by their importance when averaging over a bin.''
+For this paper we adopted the same calculations as defined in
+\cite{fox2022-jm}: ``We have chosen various samplings of the dataset
+to provide both input and predicted values. These include time ranges
+from a fortnight up to 4 years. Further, we calculate summed
+(according to Equation (1)) magnitudes and averaged depths (according
+to Equation (2)) and counts of significant earthquakes (magnitude >
+3.29, Equation (3)).  We use the concept of {\em energy averaging}
+when there are multiple events in a single space–time bin. Therefore,
+the magnitude assigned to each bin is defined in Equation (1) as
+“log(Energy)” where we sum over events of individual magnitudes
+$m_{event}$ We also use energy averaging defined in Equation (2) for
+quantities $Q_{bin}$ such as the depth of an earthquake that needs to
+be weighted by their importance when averaging over a bin.''
 
 \begin{equation}
 m_{bin} = \log(Energy) = \frac{1}{1.5}\log_{10}\sum_{in~bin}^{Events}10^{1.5m_{event}}
@@ -949,20 +996,36 @@ Multiplicity_{bin} = \sum^{Events}_{in~bin}Multiplicity_{event} ~ subject~to~a~c
 \end{equation}
 
 
-In this paper, we only focus on
-the TFT implementation. The TFT Inputs and Outputs are described next \cite{fox2022-jm}.  
+In this paper, we only focus on the TFT implementation. The TFT Inputs
+and Outputs are described next \cite{fox2022-jm}.
 
 \begin{itemize}
-  \item {\bf Static Known Inputs (5 Inputs):} 4 space-filling curve labels of fault grouping, linear label of pixel
+\item {\bf Static Known Inputs (5 Inputs):} 4 space-filling curve
+  labels of fault grouping, linear label of pixel
   \item {\bf Targets (4 Targets):} $m_{bin} (F:\Delta t,t)$ for $\Delta t = 2, 14, 26, 52$ weeks. Calculated for $t-52$ to $t$ for encoder and $t$ to $t+52$ weeks for decoder in $2$ week intervals. 104 predictions per sequence.
   \item {\bf Dynamic Known Inputs (13 Inputs):} $P_l(\cos_{Full})$ for $l=0$ to $4$ $\cos_{period}(t), \sin_{period}(t)$  for $period = 8, 16, 32, 64$
   \item {\bf Dynamic Unknown Inputs (9 Inputs):} Energy-averaged Depth, Multiplicity, Multiplicity  $m>3.29$ events $m_{bin}$ $(B:\Delta t,t)$ for $\Delta$ $t = 2, 4, 8, 14, 26, 52$ weeks
 \end{itemize}
 
 
-This data can be input based on the time series. Backward data can be taken up to 1 year before the current date and forward data can be taken up to 4 years into the future. The data is then enriched with the LSTM models on time and other factors like spacial location, fault grouping and energy produced at location. Feature selection is done. The data is then fed into an attention learning module which learns trends and more complex relationships based on the data across all time steps and can apply this knowledge to any number of time steps. More feature selection is done. Then finally the data is run through quantile regression. The loss is calculated by Mean Absolute Error (MAE). This repeats until all Epoch runs are done and the iteration that had the lowest loss is used to create predictions. Normalized Nash–Sutcliffe Efficiency (NNSE) and Mean Squared Error (MSE) are used as a goodness of fit metric.
+This data can be input based on the time series. Backward data can be
+taken up to 1 year before the current date and forward data can be
+taken up to 4 years into the future. The data is then enriched with
+the LSTM models on time and other factors like spacial location, fault
+grouping and energy produced at location. Feature selection is
+done. The data is then fed into an attention learning module which
+learns trends and more complex relationships based on the data across
+all time steps and can apply this knowledge to any number of time
+steps. More feature selection is done. Then finally the data is run
+through quantile regression. The loss is calculated by Mean Absolute
+Error (MAE). This repeats until all Epoch runs are done and the
+iteration that had the lowest loss is used to create
+predictions. Normalized Nash–Sutcliffe Efficiency (NNSE) and Mean
+Squared Error (MSE) are used as a goodness of fit metric.
 
-More details of the  TFT model applied to the earthquake application are presented in ~\citep{fox2022-jm}. More general details about TFT models can be found in~\citep{TFT-21}.
+More details of the TFT model applied to the earthquake application
+are presented in ~\citep{fox2022-jm}. More general details about TFT
+models can be found in~\citep{TFT-21}.
 
 
 \subsubsection{Insights into Development of the Code}
@@ -978,8 +1041,7 @@ reduced by more than 2400 lines when the hydrology and the COVID code
 were removed. However, at the same time, we restructured the code and
 reached a final length of about 11100 lines of code. The original code
 contained all hyperparameters and needed to be changed every time a
-hyperparameter was modified.
-The code included all definitions of
+hyperparameter was modified.  The code included all definitions of
 variables and hyperparameters in the code itself. The code could be
 further made shorter by separating the model code into a library.
 
@@ -998,25 +1060,25 @@ well as adding gradually more parameters to configuration files that
 are used by the program.
 
 The advantage of using a notebook is that it can be augmented with
-lots of graphs that give updates on the progress and its
-measurement accuracy. It is infeasible for students to use and
-replicate the run of this notebook on their own computers as the
-runtime can be up to two days. Students use their computers for other 
-purposes and need to be able to use them on the go. Often HPC centers 
-provide interactive jobs in the batch queues, but this is also 
-insufficient. Instead, we opted to use Jupyter notebooks with a special batch script that 
-internally uses Papermill \citep{www-papermill} and leverage
-an HPC queueing system to execute the notebook 
-in the background. Papermill will also include all cells that have to be 
-updated during runtime, including graphics. The script we developed 
-needed to be run multiple times and with different 
-hyperparameters such as the number of epochs.
-As the HPC system is a heterogeneous GPU system having access to A100, 
-V100, P100, and RTX2080 graphics cards, the choice of the GPU system must 
-be able to be configurable. Hence, the batch script includes the ability 
-to also read in the configuration file and adapt itself to the needed 
-parameters. This is controlled by a sophisticated but simple batch job 
-generator which we discuss in Section~\ref{sec:workflow-sbatch}.
+lots of graphs that give updates on the progress and its measurement
+accuracy. It is infeasible for students to use and replicate the run
+of this notebook on their own computers as the runtime can be up to
+two days. Students use their computers for other purposes and need to
+be able to use them on the go. Often HPC centers provide interactive
+jobs in the batch queues, but this is also insufficient. Instead, we
+opted to use Jupyter notebooks with a special batch script that
+internally uses Papermill \citep{www-papermill} and leverage an HPC
+queueing system to execute the notebook in the background. Papermill
+will also include all cells that have to be updated during runtime,
+including graphics. The script we developed needed to be run multiple
+times and with different hyperparameters such as the number of epochs.
+As the HPC system is a heterogeneous GPU system having access to A100,
+V100, P100, and RTX2080 graphics cards, the choice of the GPU system
+must be able to be configurable. Hence, the batch script includes the
+ability to also read in the configuration file and adapt itself to the
+needed parameters. This is controlled by a sophisticated but simple
+batch job generator which we discuss in
+Section~\ref{sec:workflow-sbatch}.
 
 %libraries for mlcommons benchmarking, cloudmesh
 %portable way to define data locations via config
@@ -1029,9 +1091,9 @@ generator which we discuss in Section~\ref{sec:workflow-sbatch}.
 \subsection{Insights into Data Management from the Earthquake Forecasting Application}
 \label{sec:eq-data}
 
-In data management, we are concerned with various aspects of
-the data set, the data compression and storage, as well as the data
-access speed. We discuss insights into each of them next.
+In data management, we are concerned with various aspects of the data
+set, the data compression and storage, as well as the data access
+speed. We discuss insights into each of them next.
 
 \subsubsection{Data Sets}
 
@@ -1045,34 +1107,35 @@ data preprocessing that makes the data suitable for deep learning,
 data labeling in case they are part of a well-defined MLCommons
 benchmark. Other issues include data bias, noisy or missing data, as
 well as overfitting while using training data. Typically the MLCommons
-benchmarks will be designed to limit such issues. However, some benchmarks such as the science group
-benchmarks which are concerned with improving the science have the option to
-potentially address these issues in order to improve the
-accuracy. This could include even injecting new data and different
-preprocessing methods.
+benchmarks will be designed to limit such issues. However, some
+benchmarks such as the science group benchmarks which are concerned
+with improving the science have the option to potentially address
+these issues in order to improve the accuracy. This could include even
+injecting new data and different preprocessing methods.
 
 
 \subsubsection{Data Compression}
 
-An issue of utmost importance, especially for large data sets,
-is how the data is represented. For example, we found that the original dataset was 11GB big for the earthquake benchmark. However,
-we found the underlying data was a sparse matrix, and was easily compressed by a factor of
-100. This is significant, as in this case the entire dataset can be
-stored in GitHub or moved quickly into memory. The compressed xz archive file is only 21 MB and
-downloading only the archive file using wget takes 0.253s on the 
-HPC. In case the
-dataset and its repository are downloaded with Git, we note that the
-entire Git repository is
-108MB~\citep{eq-data}. Downloading this compressed
-dataset only takes 7.723s. Thus, it is preferred to just download the data using wget. In both cases, the data
-is compressed. To uncompress, the data it will take an additional 1
-minute and 2.522 seconds. However, if we were to download the data in
-uncompressed form it would take approximately 3 hours and 51 seconds.
+An issue of utmost importance, especially for large data sets, is how
+the data is represented. For example, we found that the original
+dataset was 11GB big for the earthquake benchmark. However, we found
+the underlying data was a sparse matrix, and was easily compressed by
+a factor of 100. This is significant, as in this case the entire
+dataset can be stored in GitHub or moved quickly into memory. The
+compressed xz archive file is only 21 MB and downloading only the
+archive file using wget takes 0.253s on the HPC. In case the dataset
+and its repository are downloaded with Git, we note that the entire
+Git repository is 108MB~\citep{eq-data}. Downloading this compressed
+dataset only takes 7.723s. Thus, it is preferred to just download the
+data using wget. In both cases, the data is compressed. To uncompress,
+the data it will take an additional 1 minute and 2.522
+seconds. However, if we were to download the data in uncompressed form
+it would take approximately 3 hours and 51 seconds.
 
 From this simple example, it is clear that MLCommons benchmarks can
-provide students insights into how data is managed and delivered to for example
-large-scale compute clusters with many nodes while utilizing
-compression algorithms. We will next discuss insights into
+provide students insights into how data is managed and delivered to
+for example large-scale compute clusters with many nodes while
+utilizing compression algorithms. We will next discuss insights into
 infrastructure management while using filesystems in HPC resources.
 While often object stores are discussed to host such large datasets it
 is imperative to identify the units of storage in such object stores.
@@ -1080,11 +1143,11 @@ In our case, an object store that would host individual data records
 is not useful due to the vast number of data points. Therefore the
 best way to store this data even in an object store is as a single
 entry of compressed overall data.  Other MLCommons Science working
-group benchmarks have datasets in the order of 500GB to
-12TB. Other tools, such as Globus transfer, can be used to download larger datasets.
-Obviously, these sets need special considerations when placed on a
-compute system where the students' storage capacities may be limited by
-policy.
+group benchmarks have datasets in the order of 500GB to 12TB. Other
+tools, such as Globus transfer, can be used to download larger
+datasets.  Obviously, these sets need special considerations when
+placed on a compute system where the students' storage capacities may
+be limited by policy.
 
 
 \subsubsection{Data Access}
@@ -1093,14 +1156,15 @@ Besides having proper data and being able to download it efficiently
 from the location of storage, it is imperative to be able to access it
 in such a way that the GPUs used for deep learning are being fed with
 enough data without being idle. Our performance results were somewhat
-surprising and had a devastating effect on the overall execution time. We found 
-that the performance was more than twice as fast on the personal computer while using an RTX3090
-in contrast to using the HPC center recommended filesystems when using
-an A100. For this reason, we have made a simple test and measured the
-performance to read access the various file systems. The results are
-shown in Table~\ref{tab:file-performance} which include various file
-systems at the University of Virginia's Rivanna HPC but also a
-comparison with a personal computer.
+surprising and had a devastating effect on the overall execution
+time. We found that the performance was more than twice as fast on the
+personal computer while using an RTX3090 in contrast to using the HPC
+center recommended filesystems when using an A100. For this reason, we
+have made a simple test and measured the performance to read access
+the various file systems. The results are shown in
+Table~\ref{tab:file-performance} which include various file systems at
+the University of Virginia's Rivanna HPC but also a comparison with a
+personal computer.
 
 \begin{table}[htb]
   \caption{File transfer performance of various file systems on Rivanna and personal computers.}
@@ -1131,19 +1195,21 @@ comparison with a personal computer.
   
 
 
-  Based on this observation, it was of great disadvantage to consider running the
-  earthquake benchmark on the regularly configured HPC nodes as they
-  ran on some resources for almost 24 hours due to the policy limit
-  the Rivanna system allows for one job. Hence, we were allowed to use a
-  special compute node that has additional NVMe storage available and
-  accessible to us. On those nodes (in the Table listed as
-  \verb|/localscratch|), we were able to obtain a very suitable
-  performance for this application while having a 10 times fold
-  increase in access in contrast to the scratch file system and almost
-  double the performance given to us on the project file system. The
-  \verb|/tmp| system -- although fast -- was not sufficiently large for our application and also performs slower than the \verb|/localscratch| set up
-  for us. In addition, we also made an experiment using a shared
-  memory-based hosted filesystem in the nodes RAM.
+  Based on this observation, it was of great disadvantage to consider
+  running the earthquake benchmark on the regularly configured HPC
+  nodes as they ran on some resources for almost 24 hours due to the
+  policy limit the Rivanna system allows for one job. Hence, we were
+  allowed to use a special compute node that has additional NVMe
+  storage available and accessible to us. On those nodes (in the Table
+  listed as \verb|/localscratch|), we were able to obtain a very
+  suitable performance for this application while having a 10 times
+  fold increase in access in contrast to the scratch file system and
+  almost double the performance given to us on the project file
+  system. The \verb|/tmp| system -- although fast -- was not
+  sufficiently large for our application and also performs slower than
+  the \verb|/localscratch| set up for us. In addition, we also made an
+  experiment using a shared memory-based hosted filesystem in the
+  nodes RAM.
 
   What we learn from this experience is that an HPC system must
   provide a fast file system locally available on the nodes to serve
@@ -1180,9 +1246,9 @@ the services provided are controlled by the application user and not
 necessarily by the cloud or HPC provider. Thus we distinguish the need
 for a workflow service that can utilize heterogeneous HPC systems
 while leveraging the same parameter set to conduct a benchmark for
-comparison. Such a framework was presented by von Laszewski, Fleischer,
-et.al. in \citep{las-22-arxiv-workflow-cc} and is based on our earlier
-work on workflows in clouds and Grids.
+comparison. Such a framework was presented by von Laszewski,
+Fleischer, et.al. in \citep{las-22-arxiv-workflow-cc} and is based on
+our earlier work on workflows in clouds and Grids.
 
 In addition, we need a mechanism to create various runs with different
 parameters. One of the issues we run into is that often our runtime
@@ -1220,18 +1286,20 @@ easy to use and is focused on runtime execution monitoring of
 time-consuming portions in a single-threaded Python
 application. Although MLCommons provides their own time measuring
 component, called mllog, it is clear from the name that the focus is
-to create entries in a log file that is not easily readable by a
-human and may require post-processing to make it usable. In contrast, our
+to create entries in a log file that is not easily readable by a human
+and may require post-processing to make it usable. In contrast, our
 library contains not only simple labeled \verb|start| and \verb|stop|
-methods, it also provides a convenient mechanism to print human-readable customizable performance tables. However, it is possible to
-also generate a result table in other formats such as CSV, JSON, YAML,
-TXT, and others).  Human readability is especially important during a debugging
-phase when benchmarks are developed. Moreover, we also have developed
-a plugin interface to mllog, that allows us to automatically create
-mllog entries into an additional log file, so the data may be used
-within MLCommons through specialized analytics programs. A use
-case is depicted next (we have omitted other advanced features such as
-function decorators for the StopWatch to keep the example simple).
+methods, it also provides a convenient mechanism to print
+human-readable customizable performance tables. However, it is
+possible to also generate a result table in other formats such as CSV,
+JSON, YAML, TXT, and others).  Human readability is especially
+important during a debugging phase when benchmarks are
+developed. Moreover, we also have developed a plugin interface to
+mllog, that allows us to automatically create mllog entries into an
+additional log file, so the data may be used within MLCommons through
+specialized analytics programs. A use case is depicted next (we have
+omitted other advanced features such as function decorators for the
+StopWatch to keep the example simple).
 
 {\footnotesize
 \begin{Verbatim}[commandchars=\\\{\}]
@@ -1252,7 +1320,8 @@ To have also direct access to MLCommons events, we have recently added
 the ability to call a StopWatch.event.
 
 
-In addition to the StopWatch, we have developed a simple command line tool that can be used for example in batch scripts to monitor the GPU
+In addition to the StopWatch, we have developed a simple command line
+tool that can be used for example in batch scripts to monitor the GPU
 performance characteristics such as energy, temperature, and other
 parameters \citep{cloudmesh-gpu}. The tool can be started in a batch
 script as follows and is currently supporting NVIDIA GPUs:
@@ -1367,11 +1436,11 @@ called Cloudmesh Compute Coordinator (cloudmesh-cc)
 \citep{las-22-arxiv-workflow-cc} that adds workflow features to
 control the execution of jobs on remote compute resources, while at
 the same time leveraging capabilities provided by the local compute
-environments to directly interface with graphical visualizations better
-suited for the desktop. The goal is to provide numerous workflows that
-in cooperation enhance the experience of the analytics tasks. This
-includes a REST service (see Figure \ref{fig:cc-3}A) and command line
-tools to interact with it.
+environments to directly interface with graphical visualizations
+better suited for the desktop. The goal is to provide numerous
+workflows that in cooperation enhance the experience of the analytics
+tasks. This includes a REST service (see Figure \ref{fig:cc-3}A) and
+command line tools to interact with it.
 
 
 \begin{figure}[htb]
@@ -1416,22 +1485,21 @@ create batch jobs based on parameterized job specifications and
 configuration files.  Cloudmesh-sbatch is part of the Cloudmesh
 toolkit, a set of tools and libraries for managing cloud and HPC
 resources from the command line, REST interfaces, or GUI's.
-Cloudmesh-sbatch can use a variety of
-queuing systems and submission commands. Currently, we provide
-interfaces to SLURM, LSF, and ssh. As the original system was
-developed first for SLURM sbatch submissions we used the name
-cloudmesh-sbatch. In the future, we may find a better name showcasing the
-generality of the system while using arbitrary queuing systems and
-submission commands.
+Cloudmesh-sbatch can use a variety of queuing systems and submission
+commands. Currently, we provide interfaces to SLURM, LSF, and ssh. As
+the original system was developed first for SLURM sbatch submissions
+we used the name cloudmesh-sbatch. In the future, we may find a better
+name showcasing the generality of the system while using arbitrary
+queuing systems and submission commands.
 
 The architecture of the cloudmesh-sbatch framework is depicted in
 Figure \ref{fig:cc-2}B.
 
-Cloudmesh-sbatch differentiates itself from other template
-engines through is its ability to generate a cartesian product (permutation)
-of hyperparameter to form independent {\it experiment} execution profiles,
-making it trivial to scale an experiment from one execution to
-thousands of configurations based on the ranges and their unique
+Cloudmesh-sbatch differentiates itself from other template engines
+through is its ability to generate a cartesian product (permutation)
+of hyperparameter to form independent {\it experiment} execution
+profiles, making it trivial to scale an experiment from one execution
+to thousands of configurations based on the ranges and their unique
 combinations.  The resulting output provides a generated SLURM or LSF
 script and a YAML configuration file representing the specific
 hyperparameters.  By managing many highly configurable jobs with
@@ -1512,31 +1580,33 @@ The configuration files and cloudmesh-sbatch can be configured with
 parameters so that the files and directories are placed in the right
 location and repeatable experiments are created not only on the
 original machine but the template can also be easily adapted onto
-other machines. An example of a variable replacement specification in the 
-YAML file is given for the \verb|data| value where not only the
+other machines. An example of a variable replacement specification in
+the YAML file is given for the \verb|data| value where not only the
 operating system variable \verb|os.USER| is replaced, but also the
 variable \verb|{application.name}|. Obviously, this is a significant
 functionality enhancement to a typical YAML file.  Multiple values are
 only possible under the experiment tag, where a variable with multiple
-values is assigned a string  of comma-separated values.
+values is assigned a string of comma-separated values.
 
 One can choose a number of important parameters as part of the
 permutation strategy to create different experiments. Common variables
 are names of graphics cards (if available), memory, file systems used,
 versions of Python, versions of TensorFlow, epochs, learning rate, and
-many other important parameters that can influence the benchmark.  The reason why we only allow the parameters with variation under
+many other important parameters that can influence the benchmark.  The
+reason why we only allow the parameters with variation under
 \verb|experiment| is to assure that there is no confusion with other
 parameters that may not be modified and instead only represent a
-single value. However, variables under experiment are also allowed to have
-just a single value.  Another interesting case is the introduction of
-a repeat parameter, allowing the program to be executed multiple times
-in order to for example support patterns of competition or
-collaboration while selecting the best values, or creating averages.
+single value. However, variables under experiment are also allowed to
+have just a single value.  Another interesting case is the
+introduction of a repeat parameter, allowing the program to be
+executed multiple times in order to for example support patterns of
+competition or collaboration while selecting the best values, or
+creating averages.
 
 
 The final output of cloudmesh-sbatch is a shell script that contains
-all jobs that are to be executed with the defined permutations over the
-parameters.
+all jobs that are to be executed with the defined permutations over
+the parameters.
 
 One nice side effect of this is that the jobs in the file can be run
 in parallel and have the queuing system take over the scheduling of
@@ -1546,14 +1616,14 @@ using our earlier introduced collaborative pattern, where multiple
 users submit a portion of the jobs so that policies restricting the
 number of jobs per user can be avoided. Furthermore, if access to
 multiple HPC machines is available the jobs could be split among the
-different machines. However, in that case, time measurements may
-not be a useful parameter to benchmark. However, as in the science group, we are
-concerned about accuracy the combination of a system comprised of
-multiple resources is meaningful.
+different machines. However, in that case, time measurements may not
+be a useful parameter to benchmark. However, as in the science group,
+we are concerned about accuracy the combination of a system comprised
+of multiple resources is meaningful.
 
 Our progress with the earthquake benchmark would not have been
-possible if we did not have cloudmesh-sbatch. One important aspect
-is that the management of thousands of jobs that we ran was simplified
+possible if we did not have cloudmesh-sbatch. One important aspect is
+that the management of thousands of jobs that we ran was simplified
 and the jobs could be created easily while fostering
 reproducibility. The resulting jobs were run over a time period of a
 month, while each job took many hours to complete.
@@ -1563,21 +1633,44 @@ month, while each job took many hours to complete.
 \section{Benchmark Results}
 \label{sec:results}
 
-In this section, we will present some of our concrete benchmark results for the earthquake application while mostly focusing on obtaining good accuracy and modifying hyperparameters to control the benchmark. In addition to accuracy, we also have provided insights into how the runtime can be predicted to allow scheduling hints for the various batch jobs that we ran. We also have included a brief observation about our experiences with energy monitoring and why it is beneficial. We start the section with a description of the hardware used for the benchmarks.
+In this section, we will present some of our concrete benchmark
+results for the earthquake application while mostly focusing on
+obtaining good accuracy and modifying hyperparameters to control the
+benchmark. In addition to accuracy, we also have provided insights
+into how the runtime can be predicted to allow scheduling hints for
+the various batch jobs that we ran. We also have included a brief
+observation about our experiences with energy monitoring and why it is
+beneficial. We start the section with a description of the hardware
+used for the benchmarks.
 
 
 \subsection{Hardware used for this Research}
 
-The benchmarks we present in the next sections have been run on a number of compute resources. This includes not only an HPC at the University of Virginia (UV) but also a desktop, a laptop, and Google Colab to represent different classes of compute resources that students have access to. We used the following resources:
+The benchmarks we present in the next sections have been run on a
+number of compute resources. This includes not only an HPC at the
+University of Virginia (UV) but also a desktop, a laptop, and Google
+Colab to represent different classes of compute resources that
+students have access to. We used the following resources:
 
 \begin{itemize}
-\item {\bf Rivanna}~\citep{www-rivanna} -- The Rivanna HPC cluster is a system hosted at the University of Virginia
-with 15 different hardware configurations spanning 575 nodes. 
-There exist 5 different classes of GPUs on these nodes. The Rivanna HPC follows the condominium model and continues to receive additions of nodes and upgrades at various times.
-\item {\bf Google Colab}~\cite{google-colab} is a free-to-use interactive computing service offered by Google that provides on-demand access to GPUs and TPUs. Google Colab is designed to be used with machine learning and data analysis \cite{google-colab}.
-When running with Google Colab, multiple hardware configurations may be provided depending on the instance type. The Pro+ plan allocates an NVIDIA V100 with 53GBs of RAM for a GPU configuration. The free plan only offers 32 GB and as GPU a P100.
-\item {\bf Desktop} -- A custom-built desktop with an AMD 5950X processor, 128GB memory, and fast NVMe storage.
-\item {\bf Laptop} -- A store-bought laptop with an AMD 5900HX processor, 16GB memory, and NVMe storage.
+\item {\bf Rivanna}~\citep{www-rivanna} -- The Rivanna HPC cluster is
+  a system hosted at the University of Virginia with 15 different
+  hardware configurations spanning 575 nodes.  There exist 5 different
+  classes of GPUs on these nodes. The Rivanna HPC follows the
+  condominium model and continues to receive additions of nodes and
+  upgrades at various times.
+\item {\bf Google Colab}~\cite{google-colab} is a free-to-use
+  interactive computing service offered by Google that provides
+  on-demand access to GPUs and TPUs. Google Colab is designed to be
+  used with machine learning and data analysis \cite{google-colab}.
+  When running with Google Colab, multiple hardware configurations may
+  be provided depending on the instance type. The Pro+ plan allocates
+  an NVIDIA V100 with 53GBs of RAM for a GPU configuration. The free
+  plan only offers 32 GB and as GPU a P100.
+\item {\bf Desktop} -- A custom-built desktop with an AMD 5950X
+  processor, 128GB memory, and fast NVMe storage.
+\item {\bf Laptop} -- A store-bought laptop with an AMD 5900HX
+  processor, 16GB memory, and NVMe storage.
 
 \end{itemize}
 
@@ -1623,58 +1716,108 @@ The details of the machines are showcased in Table~\ref{tab:hwoverview}.
 \subsection{Earthquake Forecast Performance Measurements}
 \label{sec:perf-main}
 
-The original code targets three applications: earthquake forecasting, COVID prediction, and hydrology prediction.
-The code was significantly modified by removing other code unrelated to the earthquake prediction application. This included
-removing code for the two additional applications targeting hydrology and COVID, as they used a similar DL prediction algorithm, but with different data and optimization
-parameters. Cloudmesh StopWatch methods were added to obtain code
-runtime, start, stop, status, and event actions of the different phases of the program. In addition, we
-augmented the execution of the batch scripts with code that reports
-energy and temperature using cloudmesh-gpu.
+The original code targets three applications: earthquake forecasting,
+COVID prediction, and hydrology prediction.  The code was
+significantly modified by removing other code unrelated to the
+earthquake prediction application. This included removing code for the
+two additional applications targeting hydrology and COVID, as they
+used a similar DL prediction algorithm, but with different data and
+optimization parameters. Cloudmesh StopWatch methods were added to
+obtain code runtime, start, stop, status, and event actions of the
+different phases of the program. In addition, we augmented the
+execution of the batch scripts with code that reports energy and
+temperature using cloudmesh-gpu.
 
 
 \subsubsection{Reproducible Experiments}
 
-One of the important lessons learned from working within an educational environment is to assure that experiments can be reproduced. This not only includes saving the original data in an immutable storage facility, but also to assure that the code and parameters to the code are preserved for each experiment. Code used during a development phase should not be used especially if they are developed with Python notebooks that could contain a {\em implicit hidden} state causing side effects. Hence, the benchmark if valid must be saved in a clean fashion so that no other result-impacting effects occur. 
+One of the important lessons learned from working within an
+educational environment is to assure that experiments can be
+reproduced. This not only includes saving the original data in an
+immutable storage facility, but also to assure that the code and
+parameters to the code are preserved for each experiment. Code used
+during a development phase should not be used especially if they are
+developed with Python notebooks that could contain a {\em implicit
+  hidden} state causing side effects. Hence, the benchmark if valid
+must be saved in a clean fashion so that no other result-impacting
+effects occur.
 
 \subsubsection{Measuring Runtime}
 \label{sec:perf-runtime}
 
-As the code requires a significant amount of time to execute, we first had to estimate the projected runtime for a number of epochs. Hence, after the code augmentations, we obtained for a small number of epochs (2, 10) the runtime and  projected the runtime for 
-various systems from these values. 
-As our ML code
-performs similarly to linear growth when increasing epochs, it was
-possible to fairly accurately predict the performance while larger numbers of epochs improved the prediction accuracy. As we need to reserve resources on any shared compute resource if it is an HPC, or a desktop such runtime predictions are extremely important to accurately estimate it to reserve the compute resources.
+As the code requires a significant amount of time to execute, we first
+had to estimate the projected runtime for a number of epochs. Hence,
+after the code augmentations, we obtained for a small number of epochs
+(2, 10) the runtime and projected the runtime for various systems from
+these values.  As our ML code performs similarly to linear growth when
+increasing epochs, it was possible to fairly accurately predict the
+performance while larger numbers of epochs improved the prediction
+accuracy. As we need to reserve resources on any shared compute
+resource if it is an HPC, or a desktop such runtime predictions are
+extremely important to accurately estimate it to reserve the compute
+resources.
 
-We also want to estimate how much time is spent on the GPU vs the rest of the program. This will then allow us to predict the runtime.
+We also want to estimate how much time is spent on the GPU vs. the rest
+of the program. This will then allow us to predict the runtime.
 Figure~\ref{fig:performance-projection}A shows the time measured for a
-2 epoch case for modelling prediction and the rest of the application. The bars in the histogram are divided while the top part indicates the model prediction and the bottom part is the rest of the runtime of the application. These numbers can then be use to generate predictions while varying the epoch numbers and using the data for the particular GPU used.
+2 epoch case for modelling prediction and the rest of the
+application. The bars in the histogram are divided while the top part
+indicates the model prediction and the bottom part is the rest of the
+runtime of the application. These numbers can then be use to generate
+predictions while varying the epoch numbers and using the data for the
+particular GPU used.
 
-Figure~\ref{fig:performance-projection}B indicates the time spent in the application.  To produce this graph, we ran the application  while varying the epochs between 2 and 70 to obtain the
-runtime.  The total runtime for various configurations with different GPUs and filesystems (where choices for the file system existed) is shown in
-Figure~\ref{fig:performance-projection}B. 
-This experiment was also
+Figure~\ref{fig:performance-projection}B indicates the time spent in
+the application.  To produce this graph, we ran the application while
+varying the epochs between 2 and 70 to obtain the runtime.  The total
+runtime for various configurations with different GPUs and filesystems
+(where choices for the file system existed) is shown in
+Figure~\ref{fig:performance-projection}B.  This experiment was also
 run on the desktop using an AMD 5950X with an RTX3090 and 128 GB of
 memory while data was located on an NVMe. The data on the HPC system
-was initially located on an NSF storage system (indicated by the name project for the /project or scratch for the /scratch filesystem).  As we see the desktop with an RTX3090 is significantly faster than the HPC compute node
-equipped with any other GPU including an A100, which was a surprise not only to the team but also to the research staff. To quantify this result, we enumerate the
-results for a 2 epoch case in Table \ref{tab:2-epoch-case}.  To our
-surprise, we found that the RTX3090 machine was almost 2.67 times
-better than the HPC machine with an A100.
+was initially located on an NSF storage system (indicated by the name
+project for the /project or scratch for the /scratch filesystem).  As
+we see the desktop with an RTX3090 is significantly faster than the
+HPC compute node equipped with any other GPU including an A100, which
+was a surprise not only to the team but also to the research staff. To
+quantify this result, we enumerate the results for a 2 epoch case in
+Table \ref{tab:2-epoch-case}.  To our surprise, we found that the
+RTX3090 machine was almost 2.67 times better than the HPC machine with
+an A100.
 
-This desktop also significantly outperformed benchmarks conducted on Google Colab. We discovered that Google Colab, although
-good for small epochs runs, quickly deteriorated with increasing
-number of epochs due to the older GPUs with Google Colab's present hardware availability.
+This desktop also significantly outperformed benchmarks conducted on
+Google Colab. We discovered that Google Colab, although good for small
+epochs runs, quickly deteriorated with increasing number of epochs due
+to the older GPUs with Google Colab's present hardware availability.
 
-The reason why the desktop performed so well is that it had up-to-date,
-fast memory and that the data was hosted on fast NVMe storage. As the
-earthquake application uses many data requests, fast IO makes a big
-difference. This performance analysis has guided us to propose changes to the HPC
-machine which are in the process to be implemented. Future expansions of the HPC machine include 28TB of fast to
-the GPUs accessible NVMe storage. Our benchmark is a good use case for motivating this update.
+The reason why the desktop performed so well is that it had
+up-to-date, fast memory and that the data was hosted on fast NVMe
+storage. As the earthquake application uses many data requests, fast
+IO makes a big difference. This performance analysis has guided us to
+propose changes to the HPC machine which are in the process to be
+implemented. Future expansions of the HPC machine include 28TB of fast
+to the GPUs accessible NVMe storage. Our benchmark is a good use case
+for motivating this update.
 
-Based on these findings, we influenced a change in the architecture of the HPC server nodes to add a file system with NVMe storage on it. However, as our measurements show the desktop significantly outperformed the HPC system, additional changes will need to take place even after this upgrade while updating servers to the newest generation of NVIDIA hardware. This upgrade will focus on increasing the bandwidth of data transfers between the filesystem and the GPU so that the GPU can be properly utilized. We anticipate that such a system will become available to us in Fall of 2023.
+Based on these findings, we influenced a change in the architecture of
+the HPC server nodes to add a file system with NVMe storage on
+it. However, as our measurements show the desktop significantly
+outperformed the HPC system, additional changes will need to take
+place even after this upgrade while updating servers to the newest
+generation of NVIDIA hardware. This upgrade will focus on increasing
+the bandwidth of data transfers between the filesystem and the GPU so
+that the GPU can be properly utilized. We anticipate that such a
+system will become available to us in Fall of 2023.
 
-However, for our experiments, we were only running the desktop up to 33 epochs and the dotted line includes our prediction of the runtime based on our previous values. The reason for this is that during our experiments, we ran out of memory on the desktop to produce the visualization which is part of the overall program. The insight we gained is that one must assure that the data feed to the GPU can keep up with the GPU's performance. It is not sufficient to add GPUs to a server that may not have adequate fast filesystems, memory, or processors.
+However, for our experiments, we were only running the desktop up to
+33 epochs and the dotted line includes our prediction of the runtime
+based on our previous values. The reason for this is that during our
+experiments, we ran out of memory on the desktop to produce the
+visualization which is part of the overall program. The insight we
+gained is that one must assure that the data feed to the GPU can keep
+up with the GPU's performance. It is not sufficient to add GPUs to a
+server that may not have adequate fast filesystems, memory, or
+processors.
 
 \begin{figure}[p]
 
@@ -1717,16 +1860,28 @@ However, for our experiments, we were only running the desktop up to 33 epochs a
     \end{center}
 \end{table}
 
-For our next experiments, we need to distinguish the different phases of the application in more detail. We have augmented the code with timers that return information about the following phases:
+For our next experiments, we need to distinguish the different phases
+of the application in more detail. We have augmented the code with
+timers that return information about the following phases:
 
 \begin{itemize}
-    \item {\bf Total.} This shows the total runtime of the application and includes all additional phases mentioned here.
-    \item {\bf Initialize.} Time taken to initialize all variables and data and split data into train, validation and test.
-    \item {\bf Sampling locations.} Time taken to sample time series data into 2 week batches.
-    \item {\bf Training or Model Fit.} Time taken to train the model and determine and save the best fit from all epochs.
-    \item {\bf Bestfit or Bestfit Prediction.} Time taken to find the best fit model to calculate predictions.
-    \item {\bf Visualize.} Time taken to organize all predictions into an organized structure so the MSE and NNSE can be calculated and accuracy graphs can be identified.
-    \item {\bf Final Plots.} Time taken to gather data collected during model runtime and move to a permanent directory and process plots and graphs from data. Then, clean up data and close all unneeded processes.
+\item {\bf Total.} This shows the total runtime of the application and
+  includes all additional phases mentioned here.
+\item {\bf Initialize.} Time taken to initialize all variables and
+  data and split data into train, validation and test.
+\item {\bf Sampling locations.} Time taken to sample time series data
+  into 2 week batches.
+\item {\bf Training or Model Fit.} Time taken to train the model and
+  determine and save the best fit from all epochs.
+\item {\bf Bestfit or Bestfit Prediction.} Time taken to find the best
+  fit model to calculate predictions.
+\item {\bf Visualize.} Time taken to organize all predictions into an
+  organized structure so the MSE and NNSE can be calculated and
+  accuracy graphs can be identified.
+\item {\bf Final Plots.} Time taken to gather data collected during
+  model runtime and move to a permanent directory and process plots
+  and graphs from data. Then, clean up data and close all unneeded
+  processes.
 \end{itemize}
 
 
@@ -1754,61 +1909,74 @@ epoch runs up to 90 epochs. Our best accuracy values are found at our
 \subsubsection{Prediction Parameters for Input and Prediction Data}
 
 For the rest of the experiments, we have chosen different input and
-output vectors that are used as hyperparameters or Prediction Parameters.
-In the subsequent benchmark results, these groupings of data are used as 
-part of the training to optimize their 
-associated accuracy values. We have introduced a convenient nomenclature for the data input. This nomenclature uses  using the following rules that are applied on the data:
+output vectors that are used as hyperparameters or Prediction
+Parameters.  In the subsequent benchmark results, these groupings of
+data are used as part of the training to optimize their associated
+accuracy values. We have introduced a convenient nomenclature for the
+data input. This nomenclature uses using the following rules that are
+applied on the data:
 
 \begin{itemize}
-  \item All data was grouped into 2-week periods
-  \item The term {\em Now} indicates the most recent rolling sequential date from the dataset,
-        the Term {\em \#M} or {\em \#Y} corresponds to the number of Months or Years
-        prior to {\em Now} to use when sampling the data. 
-  \item An optional moving window is applied based on a range of 2-week grouping
-        from the specified time frame.  For example, 2wk+26AVG is an abbreviation
-        for performing the calculation over 26 groupings.
-        When not specified, only one observation is collected.
+  \item All data was grouped into 2-week periods.
+  \item The term {\em Now} indicates the most recent rolling
+    sequential date from the dataset, the Term {\em \#M} or {\em \#Y}
+    corresponds to the number of Months or Years prior to {\em Now} to
+    use when sampling the data.
+  \item An optional moving window is applied based on a range of
+    2-week grouping from the specified time frame.  For example,
+    2wk+26AVG is an abbreviation for performing the calculation over
+    26 groupings.  When not specified, only one observation is
+    collected.
 \end{itemize}
 
-The data is grouped into 2 week periods. The model steps through
-each of these 2 week groupings and uses training data up to 1 year
-into the past from the current 2 week grouping. The model uses up 
-to 1 year, $<=26$ data points, before the current 2 week grouping 
-run on the model as training data. For example, the model is taking 
-the first 2 weeks of January 2000, it would take $<=26$ 2 week groupings 
-before that point as training data, so all of 1999 data would be 26 
-data points. Then it repeats this method with the next 2 week period 
-in sequence so the 2 week grouping of week 3 and 4 of January 2000 
-and the training data would be the previous 26 2 week groupings from 
-that point or the first 2 weeks of January 2000 and the previous 25 
-2 week groupings of 1999, all of 1999 data except first two weeks of 
-1999. It repeats this until all 2 week groupings are used in model.
+The data is grouped into 2 week periods. The model steps through each
+of these 2 week groupings and uses training data up to 1 year into the
+past from the current 2 week grouping. The model uses up to 1 year,
+$<=26$ data points, before the current 2 week grouping run on the
+model as training data. For example, the model is taking the first 2
+weeks of January 2000, it would take $<=26$ 2 week groupings before
+that point as training data, so all of 1999 data would be 26 data
+points. Then it repeats this method with the next 2 week period in
+sequence so the 2 week grouping of week 3 and 4 of January 2000 and
+the training data would be the previous 26 2 week groupings from that
+point or the first 2 weeks of January 2000 and the previous 25 2 week
+groupings of 1999, all of 1999 data except first two weeks of 1999. It
+repeats this until all 2 week groupings are used in model.
 
-Applying these rules, a range of values are notated by first specifying a 2 week grouping
-and then the number of observations to include.  For example, a value of {\em 1Y 2wk+26AVG} 
-is one year from the 2 week grouping the model is currently on or the rolling training group,
-is run on the dataset, taking 26 2 week groupings from that date. Another example, the value 
-of {\em 1 Year Back} is a single 2-week occurrence one year ago from the rolling training group.
-Another example is {\em Now 2wk+7AVG} is 7 2 week groups from the rolling training group.
+Applying these rules, a range of values are notated by first
+specifying a 2 week grouping and then the number of observations to
+include.  For example, a value of {\em 1Y 2wk+26AVG} is one year from
+the 2 week grouping the model is currently on or the rolling training
+group, is run on the dataset, taking 26 2 week groupings from that
+date. Another example, the value of {\em 1 Year Back} is a single
+2-week occurrence one year ago from the rolling training group.
+Another example is {\em Now 2wk+7AVG} is 7 2 week groups from the
+rolling training group.
 
 
 \subsubsection{Competitive Accuracy Benchmarks}
 
-Next, we summarize the competitive accuracy benchmark where
-we use the nomenclature for the input and output hyperparameters
-defining the time period used for the training and validation.  To
-simplify our presentation, we have decided to use epoch values 2, 30, 70, and 90 for this paper's experiments. We took all results and
-sorted them for training and validation separately by the accuracy
-values. This leads to a ranking of the experiments by accuracy. In
-Table \ref{tab:ranking-accuracy} we present the top 20 accuracy
-values, while in Figure \ref{fig:NNSE-comparison-a100}A and \ref{fig:NNSE-comparison-a100}B we created a
-histogram showcasing how many accuracy values fall into a certain
-bucket over all experiments for training and validation.
+Next, we summarize the competitive accuracy benchmark where we use the
+nomenclature for the input and output hyperparameters defining the
+time period used for the training and validation.  To simplify our
+presentation, we have decided to use epoch values 2, 30, 70, and 90
+for this paper's experiments. We took all results and sorted them for
+training and validation separately by the accuracy values. This leads
+to a ranking of the experiments by accuracy. In Table
+\ref{tab:ranking-accuracy} we present the top 20 accuracy values,
+while in Figure \ref{fig:NNSE-comparison-a100}A and
+\ref{fig:NNSE-comparison-a100}B we created a histogram showcasing how
+many accuracy values fall into a certain bucket over all experiments
+for training and validation.
 
-From the table, we see that we achieve the best
-results using the parameters (epoch=90, Next Year Back). From the histogram, we see that the best results stem mostly from 90 epochs.
+From the table, we see that we achieve the best results using the
+parameters (epoch=90, Next Year Back). From the histogram, we see that
+the best results stem mostly from 90 epochs.
 
-Hence, although we are mostly interested in identifying the best accuracy value, it is also advantageous to reflect that data places the 90 epoch case above the other values, generally leading to better results (see Figure \ref{fig:NNSE-comparison-a100}A) for training.
+Hence, although we are mostly interested in identifying the best
+accuracy value, it is also advantageous to reflect that data places
+the 90 epoch case above the other values, generally leading to better
+results (see Figure \ref{fig:NNSE-comparison-a100}A) for training.
 
 
     \begin{table}[htb]
@@ -1894,7 +2062,7 @@ Hence, although we are mostly interested in identifying the best accuracy value,
 \TODO{GVL}{the second nnse table is a table with order preserved. should we preserve order?}
 
 
-    \begin{table}[htb]
+\begin{table}[htb]
       \caption{Ranking of the top 20 accuracy values sorted by descending training NNSE datapoints.}\
       \label{tab:ranking-accuracy}
     
@@ -1972,27 +2140,63 @@ Hence, although we are mostly interested in identifying the best accuracy value,
         }
         \end{center}
         
-        \end{table}
+\end{table}
 
 
 
-To identify more details about the most accurate results and the prediction/hyperparameters used to create them we have plotted the accuracy values in Figure~\ref{fig:performance-projection}C and \ref{fig:performance-projection}D. 
+        
+To identify more details about the most accurate results and the
+prediction/hyperparameters used to create them we have plotted the
+accuracy values in Figure~\ref{fig:performance-projection}C and
+\ref{fig:performance-projection}D.
 
-Here we have sorted the hyperparameters by the accuracy values for the validation where the best accuracy for each hyperparameter is identified and sorted in increasing fashion. We have then taken the same order of the hyperparameters and applied to the training.
-The diagrams include the minimum and maximum accuracy values for a hyperparameter found using 2, 30, 70, and 90 as epochs, while the experiment has been repeated 5 times. The average for each accuracy for a given epoch is shown. Additionally, the confidence interval for each epoch is added as a highlighted area.
+Here we have sorted the hyperparameters by the accuracy values for the
+validation where the best accuracy for each hyperparameter is
+identified and sorted in increasing fashion. We have then taken the
+same order of the hyperparameters and applied to the training.  The
+diagrams include the minimum and maximum accuracy values for a
+hyperparameter found using 2, 30, 70, and 90 as epochs, while the
+experiment has been repeated 5 times. The average for each accuracy
+for a given epoch is shown. Additionally, the confidence interval for
+each epoch is added as a highlighted area.
 
-The best average value for the hyperparameter {\em Next Year Back} is 0.937 for training and 0.937 for validation (see Table~\ref{tab:ranking-accuracy}).
+The best average value for the hyperparameter {\em Next Year Back} is
+0.937 for training and 0.937 for validation (see
+Table~\ref{tab:ranking-accuracy}).
 
-Not only did we find that the best epoch for accuracy is 90, but the best hyperparameters are {\em Next Year Back} for average NNSE and {\em Next 6 Months Back} for summed NNSE, meaning according to our nomenclature the previous year and 6 months of observation readings from the current rolling training group is used as training data support our model.
+Not only did we find that the best epoch for accuracy is 90, but the
+best hyperparameters are {\em Next Year Back} for average NNSE and
+{\em Next 6 Months Back} for summed NNSE, meaning according to our
+nomenclature the previous year and 6 months of observation readings
+from the current rolling training group is used as training data
+support our model.
 
-Although we see on average better accuracy results with 30 epochs, the best accuracy values we still have seen with 90 epochs. This indicates that we have a higher variation of the results in the 90 epoch case. However, as we are competing for the best value and not the average value this variation has an advantage and we do not as easily get stuck in a local minima. 
+Although we see on average better accuracy results with 30 epochs, the
+best accuracy values we still have seen with 90 epochs. This indicates
+that we have a higher variation of the results in the 90 epoch
+case. However, as we are competing for the best value and not the
+average value this variation has an advantage and we do not as easily
+get stuck in a local minima.
 
-One other observation we can make is that the training NNSE value is higher than that of validation. This leads us to believe that the input data may be incomplete to train the model more accurately, or the input data needs to be differently structured to have a higher validation accuracy value. 
-Hence, although this work is a good starting point, we believe there is significant room for improvement.
+One other observation we can make is that the training NNSE value is
+higher than that of validation. This leads us to believe that the
+input data may be incomplete to train the model more accurately, or
+the input data needs to be differently structured to have a higher
+validation accuracy value.  Hence, although this work is a good
+starting point, we believe there is significant room for improvement.
 
-We can make similar observations when looking at the summed accuracy values. However here we see that more of the best accuracy values are retrieved when using 90 epochs.  We see in the average and summed accuracy that the best 20 values have been created with the prediction parameters of {\em Next Year Back}, {\em Next 6 Month Back}, and {\em Next 3 Month Back}. The average shows a more uniform distribution of these parameters in the top 20 than the summed NNSE values (see Figure~\ref{fig:NNSE-comparison-a100-summed}).
+We can make similar observations when looking at the summed accuracy
+values. However here we see that more of the best accuracy values are
+retrieved when using 90 epochs.  We see in the average and summed
+accuracy that the best 20 values have been created with the prediction
+parameters of {\em Next Year Back}, {\em Next 6 Month Back}, and {\em
+  Next 3 Month Back}. The average shows a more uniform distribution of
+these parameters in the top 20 than the summed NNSE values (see
+Figure~\ref{fig:NNSE-comparison-a100-summed}).
 
-As we see further educational opportunities can be derived from analyzing different prediction parameters, and different input data distributions.
+As we see further educational opportunities can be derived from
+analyzing different prediction parameters, and different input data
+distributions.
 
 \begin{figure}[p]
 
@@ -2062,57 +2266,121 @@ As we see further educational opportunities can be derived from analyzing differ
 
 Energy consumption has become an important factor in the evaluation of
 compute centers due to the high costs. This not only includes common
-compute center-based metrics such as {\em Power Usage Effectiveness} (PUE) 
-but also the measurement of application-oriented energy consumption. 
-Such application-oriented comparisons have lead to ranking of the most
-energy-efficient supercomputers as detailed in the Green500 list
-\citep{green500}. In such comparisons the metric Energy Efficiency is used derived by the GFlops/watts value. Just as the Top500 this benchmark is based on Linpack performance measurements \cite{www-top500}.
-However, it is important to also consider other applications when measuring energy consumption. Such applications may consist of many different phases and may not perform at the maximum potential performance of the available hardware, or the available hardware may project a bottleneck for the performance. 
+compute center-based metrics such as {\em Power Usage Effectiveness}
+(PUE) but also the measurement of application-oriented energy
+consumption.  Such application-oriented comparisons have lead to
+ranking of the most energy-efficient supercomputers as detailed in the
+Green500 list \citep{green500}. In such comparisons the metric Energy
+Efficiency is used derived by the GFlops/watts value. Just as the
+Top500 this benchmark is based on Linpack performance measurements
+\cite{www-top500}.  However, it is important to also consider other
+applications when measuring energy consumption. Such applications may
+consist of many different phases and may not perform at the maximum
+potential performance of the available hardware, or the available
+hardware may project a bottleneck for the performance.
 
-To measure the  algorithm's energy consumption we need to augment the application in such a way that we can monitor energy use over the lifetime of the application. For this, we have developed a simple-to-use energy trace program to monitor and
-predict our energy uses called \verb|cloudmesh-gpu| as introduced in Section \ref{sec:monitoring}.
-We used for our initial experiments data hosted on an NFS filesystem in the data center as local scratch was not available at the time.
+To measure the algorithm's energy consumption we need to augment the
+application in such a way that we can monitor energy use over the
+lifetime of the application. For this, we have developed a
+simple-to-use energy trace program to monitor and predict our energy
+uses called \verb|cloudmesh-gpu| as introduced in Section
+\ref{sec:monitoring}.  We used for our initial experiments data hosted
+on an NFS filesystem in the data center as local scratch was not
+available at the time.
 
 
-With this program, we can create energy traces of the GPU. An energy trace is a sample of energy measurements periodically taken over time of the GPU. The period of the measurements can be decreased to increase the accuracy of the energy measurements over time. Our presentation here only includes measurements of the GPU and does not include the measurement of the servers, file system, or network energy consumption as our focus for this study is the impact on GPUs and to see if they are efficiently used.
+With this program, we can create energy traces of the GPU. An energy
+trace is a sample of energy measurements periodically taken over time
+of the GPU. The period of the measurements can be decreased to
+increase the accuracy of the energy measurements over time. Our
+presentation here only includes measurements of the GPU and does not
+include the measurement of the servers, file system, or network energy
+consumption as our focus for this study is the impact on GPUs and to
+see if they are efficiently used.
 
-In our case, we chose to use measure the GPU energy every second leading to an energy trace that we term $E^T_{\Delta t=1s}(GPU)$. Such traces can be applied to the application running with different hyperparameters. To showcase the 
-drastically different energy traces we have limited our discussion to running applications on different GPUs (A100, V100) and different epochs (2, 30, 70). These traces are depicted in Figure~\ref{fig:energy-graphs}A-F.  To better showcase the impact of the different phases of the application we have augmented the traces with different colors for the different phases of the application.
-We distinguish the phases called {\em Initialize},  {\em Training}, {\em Best Fit Prediction}, {\em Visualize}, and {\em Final plots}. The meaning of these phases has been explained in Section~\ref{sec:perf-runtime}. And used different colors for the pahses in the Figure~\ref{fig:energy-graphs} to distinguish them better.
+In our case, we chose to use measure the GPU energy every second
+leading to an energy trace that we term $E^T_{\Delta t=1s}(GPU)$. Such
+traces can be applied to the application running with different
+hyperparameters. To showcase the drastically different energy traces
+we have limited our discussion to running applications on different
+GPUs (A100, V100) and different epochs (2, 30, 70). These traces are
+depicted in Figure~\ref{fig:energy-graphs}A-F.  To better showcase the
+impact of the different phases of the application we have augmented
+the traces with different colors for the different phases of the
+application.  We distinguish the phases called {\em Initialize}, {\em
+  Training}, {\em Best Fit Prediction}, {\em Visualize}, and {\em
+  Final plots}. The meaning of these phases has been explained in
+Section~\ref{sec:perf-runtime}. And used different colors for the
+pahses in the Figure~\ref{fig:energy-graphs} to distinguish them
+better.
 
-An important observation is for the training phase (colored in green) the energy values of the GPU are significantly higher than in the rest of the application indicating a much higher utilization of the GPU during that phase. 
+An important observation is for the training phase (colored in green)
+the energy values of the GPU are significantly higher than in the rest
+of the application indicating a much higher utilization of the GPU
+during that phase.
 
-The other phases dealing with data reparation only show a modest
-use of the GPU. We have measured the energy consumption between
-different GPUS. 
-When looking at the energy traces Figure~\ref{fig:energy-graphs} showing the differences between A100 and the V100 GPUs we note that the time on the 
-abscissa is significantly larger for the V100. Hence overall energy consumption per second will be significantly larger. The fluctuations of the energy in the training phase can be explained through the various repeated processes that exist within the training of DL application.
+The other phases dealing with data reparation only show a modest use
+of the GPU. We have measured the energy consumption between different
+GPUS.  When looking at the energy traces
+Figure~\ref{fig:energy-graphs} showing the differences between A100
+and the V100 GPUs we note that the time on the abscissa is
+significantly larger for the V100. Hence overall energy consumption
+per second will be significantly larger. The fluctuations of the
+energy in the training phase can be explained through the various
+repeated processes that exist within the training of DL application.
 
 %\TODO{All}{Figure 9 A, B, C needs in the graphs to have labels A100, V100 P100, K80, e.g. capital letter}
 
-To compare the energy values between different GPUs such as A100, V100, and P100 we can calculate the {\em Energy Trace Consumption} defined as the sum of all Energy values in an energy trace 
-$E^T_C \sum E^T_{\Delta t=1s}(GPU)$ 
-applied to a hyperparameter such as the epoch.  We can then calculate the energy trace consumption per epoch which we plotted
-in
-Figure~\ref{fig:energy-graphs-compare}A.
-As the time with higher epoch numbers is dominated by the training time as seen in Figure~\ref{fig:energy-graphs}.
-Hence the energy per epoch for lower numbers of epochs will be small, while for larger numbers the energy per epoch will be higher. However, they will not change much with higher numbers of epochs as demonstrated in Figure~\ref{fig:energy-graphs-compare}A.
-We also see that the K80 uses significantly higher energy than the other GPUs, with the A100 performing best. For K80 and 70 epochs, we could not obtain a value as it was outside the allowed time to run applications on the supercomputer defined by the center's policy.
-We also see that the standard deviation for the kWh/Epoch value becomes smaller with an increasing number of epochs. 
+To compare the energy values between different GPUs such as A100,
+V100, and P100 we can calculate the {\em Energy Trace Consumption}
+defined as the sum of all Energy values in an energy trace
+$E^T_C \sum E^T_{\Delta t=1s}(GPU)$ applied to a hyperparameter such
+as the epoch.  We can then calculate the energy trace consumption per
+epoch which we plotted in Figure~\ref{fig:energy-graphs-compare}A.  As
+the time with higher epoch numbers is dominated by the training time
+as seen in Figure~\ref{fig:energy-graphs}.  Hence the energy per epoch
+for lower numbers of epochs will be small, while for larger numbers
+the energy per epoch will be higher. However, they will not change
+much with higher numbers of epochs as demonstrated in
+Figure~\ref{fig:energy-graphs-compare}A.  We also see that the K80
+uses significantly higher energy than the other GPUs, with the A100
+performing best. For K80 and 70 epochs, we could not obtain a value as
+it was outside the allowed time to run applications on the
+supercomputer defined by the center's policy.  We also see that the
+standard deviation for the kWh/Epoch value becomes smaller with an
+increasing number of epochs.
 
-This means that the power
-usage of GPUs is generally constant when training our benchmark model and could be used for energy prediction. 
+This means that the power usage of GPUs is generally constant when
+training our benchmark model and could be used for energy prediction.
 
 
 
-In Figure~\ref{fig:energy-graphs-compare}B, we also depicted the Energy trace per epoch. However, in contrast to Figure~\ref{fig:energy-graphs-compare}A that were created using the data on an NFS storage device, we included here the values obtained for data hosted on a localscratch filesystem and the project filesystem. While the localscratch uses NVMe storage the project filesystem is hosted on a shared GPFS storage server. Accessing the data from there takes more time and hence more energy is used during the benchmark per epoch.
+In Figure~\ref{fig:energy-graphs-compare}B, we also depicted the
+Energy trace per epoch. However, in contrast to
+Figure~\ref{fig:energy-graphs-compare}A that were created using the
+data on an NFS storage device, we included here the values obtained
+for data hosted on a localscratch filesystem and the project
+filesystem. While the localscratch uses NVMe storage the project
+filesystem is hosted on a shared GPFS storage server. Accessing the
+data from there takes more time and hence more energy is used during
+the benchmark per epoch.
 
-Hence it offers a clear insight into how a filesystem can negatively impact the energy as the runtime is enhanced and the GPU time to cool down or adjust for reducing the energy is too small to have an impact.
+Hence it offers a clear insight into how a filesystem can negatively
+impact the energy as the runtime is enhanced and the GPU time to cool
+down or adjust for reducing the energy is too small to have an impact.
 
 
 Additionally in Figure~\ref{fig:energy-graphs-compare}C, we see the
-total GPU energy consumption from the complete execution of the benchmark notebook depicting measures from the phases {\em Initialize}, {\em Training}, {\em Bestfit Prediction}, {\em Visualize}, and {\em Final Plots}.
-This graph is important, as it shows the impacts of the energy usage of the GPU throughout the runtime and when compared to the plots in Figure~\ref{fig:energy-graphs-compare}A and \ref{fig:energy-graphs-compare}B, outlier events, such as a potential interaction from other users sharing the benchmark infrastructure can be identified.
+total GPU energy consumption from the complete execution of the
+benchmark notebook depicting measures from the phases {\em
+  Initialize}, {\em Training}, {\em Bestfit Prediction}, {\em
+  Visualize}, and {\em Final Plots}.  This graph is important, as it
+shows the impacts of the energy usage of the GPU throughout the
+runtime and when compared to the plots in
+Figure~\ref{fig:energy-graphs-compare}A and
+\ref{fig:energy-graphs-compare}B, outlier events, such as a potential
+interaction from other users sharing the benchmark infrastructure can
+be identified.
 
 
 \begin{figure}[htb]
@@ -2190,24 +2458,25 @@ This paper summarizes an enormous body of work that addresses multiple
 aspects of machine learning benchmarking. We identified that
 benchmarking can lead to a significant educational contribution to
 students and researchers. We identified that not only is software
-carpentry needed, but also {\em benchmark carpentry}, an effort that we termed in conjunction
-with the MLCommons Science Working Group. We have
-demonstrated that students are capable of conducting sophisticated
-benchmarks while dealing with complex system-related infrastructure
-and working with policies set by HPC compute centers that deal with
-fair resource management. To deal with this we have also developed a
-compute coordination and workflow management system in two components
-called \verb|cloudmesh-sbatch| and \verb|cloudmesh-cc| that allow benchmark jobs to
-be automatically generated from hyperparameter permutations. It also
-allows us to coordinate such benchmarks on different machines. We have
-identified the patterns of selection, cooperation, and competition
-which are part of a benchmark workflow. Furthermore, we have improved
-the original benchmark code in many aspects. To simplify benchmarking
-we also developed an easy-to-use \verb|StopWatch| that in contrast to the
-\verb|mllog| library used by MLCommons is simpler and is immediately humanly
-readable. Lastly, our benchmarks had a significant impact on the
-operation and accessibility of software in the educational cluster we
-used. Plans for new filesystem management and updated compute nodes
+carpentry needed, but also {\em benchmark carpentry}, an effort that
+we termed in conjunction with the MLCommons Science Working Group. We
+have demonstrated that students are capable of conducting
+sophisticated benchmarks while dealing with complex system-related
+infrastructure and working with policies set by HPC compute centers
+that deal with fair resource management. To deal with this we have
+also developed a compute coordination and workflow management system
+in two components called \verb|cloudmesh-sbatch| and
+\verb|cloudmesh-cc| that allow benchmark jobs to be automatically
+generated from hyperparameter permutations. It also allows us to
+coordinate such benchmarks on different machines. We have identified
+the patterns of selection, cooperation, and competition which are part
+of a benchmark workflow. Furthermore, we have improved the original
+benchmark code in many aspects. To simplify benchmarking we also
+developed an easy-to-use \verb|StopWatch| that in contrast to the
+\verb|mllog| library used by MLCommons is simpler and is immediately
+humanly readable. Lastly, our benchmarks had a significant impact on
+the operation and accessibility of software in the educational cluster
+we used. Plans for new filesystem management and updated compute nodes
 excite us to conduct more such studies. We intend to submit our
 results to the MLCommons Science Working groups as earthquake
 forecasting is one of their benchmark codes and efforts.
