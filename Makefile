@@ -40,6 +40,19 @@ clean:
 	rm -f *.ttt
 	rm -f *.blg
 
+latexdiff-setup:
+	mkdir -p tmp
+	cd tmp; wget https://github.com/cyberaide/paper-frontiers/archive/refs/tags/v0.1.tar.gz
+	cd tmp; tar -xvf v0.1.tar.gz
+
+latexdiff:
+	latexdiff tmp/paper-frontiers-0.1/vonLaszewski-frontiers.tex vonLaszewski-frontiers.tex > vonLaszewski-frontiers-diff.tex
+	# diff vonLaszewski-frontiers.tex tmp/paper-frontiers-0.1/vonLaszewski-frontiers.tex
+	pdflatex $(FILENAME)-diff
+	bibtex $(FILENAME)-diff
+	pdflatex $(FILENAME)-diff
+	pdflatex $(FILENAME)-diff
+	open $(FILENAME)-diff.pdf
 
 regular:
 	pdflatex $(FILENAME)
