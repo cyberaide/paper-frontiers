@@ -599,7 +599,7 @@ When dealing with datasets we typically encounter several issues.  These issues 
 
 \subsubsection{Data Compression}
 
-An issue of utmost importance, especially for large data sets, is how the data is represented. For example, we found that the original dataset was 11GB big for the earthquake benchmark. However, we found the underlying data was a sparse matrix, and was easily compressed by a factor of 100. This is significant, as in this case the entire dataset can be stored in GitHub or moved quickly into memory. The compressed xz archive file is only 21 MB and downloading only the archive file using wget takes 0.253s on the HPC. In case the dataset and its repository are downloaded with Git, we note that the entire Git repository is 108MB~\citep{eq-data}. Downloading this compressed dataset only takes 7.723s. Thus, it is preferred to just download the data using wget. In both cases, the data is compressed. To uncompress, the data it will take an additional 1 minute and 2.522 seconds. However, if we were to download the data in uncompressed form it would take approximately 3 hours and 51 seconds.
+An issue of utmost importance, especially for large data sets, is how the data is represented. For example, we found that the original dataset was 11GB big for the earthquake benchmark. However, we found the underlying data was a sparse matrix, and was easily compressed by a factor of 100 with lossless compression. This is significant, as in this case the entire dataset can be stored in GitHub or moved quickly into memory. The compressed xz archive file is only 21 MB and downloading only the archive file using wget takes 0.253s on the HPC. In case the dataset and its repository are downloaded with Git, we note that the entire Git repository is 108MB~\citep{eq-data}. On the RIvanna Supercomputer, downloading this compressed dataset only takes 7.723s. Thus, it is preferred to just download the data using wget. In both cases, the data is compressed. To uncompress, the data it will take an additional 1 minute and 2.522 seconds. However, if we were to download the data in uncompressed form it would take approximately 3 hours and 51 seconds. This is due to the fact that the data is sparse and the compression allows a significant reduction needed to store this data.
 
 From this simple example, it is clear that MLCommons benchmarks can provide students insights into how data is managed and delivered to for example large-scale computing clusters with many nodes while utilizing compression algorithms. We will next discuss insights into infrastructure management while using filesystems in HPC resources.  While often object stores are discussed to host such large datasets it is imperative to identify the units of storage in such object stores.  In our case, an object store that would host individual data records is not useful due to the vast number of data points. Therefore the best way to store this data even in an object store is as a single entry of compressed overall data.  Other MLCommons Science working group benchmarks have datasets in the order of 500GB to 12TB. Other tools, such as Globus transfer, can be used to download larger datasets.  Obviously, these sets need special considerations when placed on a computing system where the students' storage capacities may be limited by policy.
 
@@ -608,6 +608,7 @@ From this simple example, it is clear that MLCommons benchmarks can provide stud
 
 Besides having proper data and being able to download it efficiently from the location of storage, it is imperative to be able to access it in such a way that the GPUs used for deep learning are being fed with enough data without being idle. Our performance results were somewhat surprising and had a devastating effect on the overall execution time. We found that the performance was more than twice as fast on the personal computer while using an RTX3090 in contrast to using the HPC center recommended filesystems when using an A100. For this reason, we have made a simple test and measured the performance to read access the various file systems. The results are shown in Table~\ref{tab:file-performance} which include various file systems at the University of Virginia's Rivanna HPC but also a comparison with a personal computer.
 
+\begin{comment}
 \begin{table}[htb]
   \caption{File transfer performance of various file systems on Rivanna and personal computers.}
   \label{tab:file-performance}
@@ -629,6 +630,34 @@ Besides having proper data and being able to download it efficiently from the lo
     Special Node Rivanna & \verb|/localscratch|  &  384 MiB/s & 403 MB/s  & 12.6 & NVMe storage of the node\\
     RAM disk Rivanna  & \verb|/dev/shm/*|      &             461 MiB/s & 483 MB/s  & 15.1 & simulated filesystem in a RAM disk\\
     Personal Computer & \verb|/home/$USER| & 579 MiB/s & 607 MB/s &  18.9 & Sabrent 2TB NVMe\\
+    \hline                                             
+    \end{tabular}
+  }
+    \end{center}
+\end{table}
+\end{comment}
+
+\begin{table}[htb]
+  \caption{File transfer performance of various file systems on Rivanna and personal computers.}
+  \label{tab:file-performance}
+  \begin{center}
+  {\footnotesize 
+  \begin{tabular}{|llrrrp{4.5cm}|}
+    \hline
+    Machine & File systems & Bandwidth & Speedup & Description \\
+    \hline
+    \hline
+    Rivanna & \verb|/scratch/$USER  (sbatch)|     &  32.1 MB/s  & 1.0 & shared scratch space, batch mode \\
+    Rivanna & \verb|/scratch/$USER (interactive)| &  34.8 MB/s  & 1.1 & shared scratch space, interactive \\
+    Rivanna & \verb|/home/$USER|                    & 42.9 MB/s  & 1.3 & users home directory \\
+    MacM1   & \verb|/| &  97.7MB/s & 3.0 & users homedir \\
+    Rivanna & \verb|/project/$PROJECTID |     &  105 MB/s  & 3.3 & project specific filesystem \\
+    % Personal Computer  & \verb|c:| &  196 MB/s  & 6.1 &  file system on a personal computer \\
+    Rivanna & \verb|/tmp|                         &  285 MB/s  & 8.9 & temporary file system on a node \\
+    \hline
+    Special Node Rivanna & \verb|/localscratch|  &  403 MB/s  & 12.6 & NVMe storage of the node\\
+    RAM disk Rivanna  & \verb|/dev/shm/*|      &    483 MB/s  & 15.1 & simulated filesystem in a RAM disk\\
+    Personal Computer & \verb|/home/$USER| &  607 MB/s &  18.9 & Sabrent 2TB NVMe\\
     \hline                                             
     \end{tabular}
   }
@@ -880,8 +909,8 @@ The details of the machines are showcased in Table~\ref{tab:hwoverview}.
     {\footnotesize
     \begin{tabular}{|l|r|r|r|r|r|r|r|}
         \hline
-            {\bf Machine}  & {\bf Cores} & {\bf Memory} & {\bf GPU}   &   {\bf \# GPUs} & {\bf Memory} & {\bf \# Nodes}  & {\bf Commissioned} \\ 
-                     &  {\bf /Node} & {\bf /Node}  &  {\bf Memory} & {\bf /GPU}     &   {\bf /Node}        & & \\
+            {\bf Machine}  & {\bf Cores} & {\bf Memory} & {\bf GPU}   &   {\bf Memory} & {\bf \# GPUs} & {\bf \# Nodes}  & {\bf Commissioned} \\ 
+                     &  {\bf / Node} & {\bf / Node}  &  & {\bf / GPU} & {\bf / Node}     &   {\bf / Node}        &  \\
         \hline
         \hline
         Rivanna (UVA)    & 128 & 2000GB   & A100 & 80GB &  8  & 10 & Feb 2022 \\
@@ -944,13 +973,16 @@ However, for our experiments, we were only running the desktop for up to 33 epoc
 
   \centering\includegraphics[width=0.75\columnwidth]{images/Graphics_Cards_BestFit_bar}
 
-  {\bf (A)} Time performance measurements while using 2 epochs on various systems with different GPUs.
-
+  {\bf (A)} Time of the best fit in seconds of performance measurements while using 2 epochs on various systems with different GPUs. The lower portion of each bar represents the setup time, while the upper portion represents the training and prediction time. The setup time is constant throughout the experiments, while with increasing number of epochs the training and prediction time will dominate. 
+  
+  
   \bigskip
 
   \centering\includegraphics[width=0.9\columnwidth]{images/Benchmark_comp_resource_new}
 
   {\bf (B)} Time performance benchmark for various GPU cards on different systems and variations of epochs.
+  
+  
     
   \caption{Performance time measurements.}
   \label{fig:performance-projection}
@@ -999,10 +1031,12 @@ Since MLCommons Science Working Group's focus is improving an application’s ac
 
 We observe that application loss for validation and training intersects at the 30-33 epoch value (see Figure~\ref{fig:loss}). We have also tested larger epoch runs up to 90 epochs. Our best accuracy values are found at our 90 epoch runs.
 
+However, generally we can say that at the intersection point the model's performance on the validation set starts to degrade while its performance on the training set continues to improve. Hence, the  model is fitting the training data too well while at the same time not being able to generalize our validation data leading to overfitting. As the training loss continues to decrease with increased number of epochs after the intersection point, the model has become too complex and captures noise in the training data. This analysis provides an excelent opportunity for future benchmarking activities to deal with overfitting while considering techniques such as early stopping, regularization, the reduction of the medel complexity, reorganization of the data, cross-validation, and additional hyperparameter tuning. 
+
 \begin{figure}[htb]
     \centering
     \includegraphics[width=0.70\columnwidth]{images/loss90.png}
-    \caption{Loss}
+    \caption{Loss comparision between training and validation data.}
     \label{fig:loss}
 \end{figure}
 
