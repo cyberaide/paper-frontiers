@@ -642,8 +642,8 @@ Besides having proper data and being able to download it efficiently from the lo
   \label{tab:file-performance}
   \begin{center}
   {\footnotesize 
-  \begin{tabular}{|llrrrp{4.5cm}|}
-    \hline
+    \begin{tabular}{|llrrp{4.5cm}|}
+      \hline
     Machine & File systems & Bandwidth & Speedup & Description \\
     \hline
     \hline
@@ -654,11 +654,11 @@ Besides having proper data and being able to download it efficiently from the lo
     Rivanna & \verb|/project/$PROJECTID |     &  105 MB/s  & 3.3 & project specific filesystem \\
     % Personal Computer  & \verb|c:| &  196 MB/s  & 6.1 &  file system on a personal computer \\
     Rivanna & \verb|/tmp|                         &  285 MB/s  & 8.9 & temporary file system on a node \\
-    \hline
+    % \hline
     Special Node Rivanna & \verb|/localscratch|  &  403 MB/s  & 12.6 & NVMe storage of the node\\
     RAM disk Rivanna  & \verb|/dev/shm/*|      &    483 MB/s  & 15.1 & simulated filesystem in a RAM disk\\
     Personal Computer & \verb|/home/$USER| &  607 MB/s &  18.9 & Sabrent 2TB NVMe\\
-    \hline                                             
+    \hline
     \end{tabular}
   }
     \end{center}
@@ -971,9 +971,9 @@ However, for our experiments, we were only running the desktop for up to 33 epoc
 
 \begin{figure}[p]
 
-  \centering\includegraphics[width=0.75\columnwidth]{images/Graphics_Cards_BestFit_bar}
+  \centering\includegraphics[width=0.70\columnwidth]{images/Graphics_Cards_BestFit_bar}
 
-  {\bf (A)} Time of the best fit in seconds of performance measurements while using 2 epochs on various systems with different GPUs. The lower portion of each bar represents the setup time, while the upper portion represents the training and prediction time. The setup time is constant throughout the experiments, while with increasing number of epochs the training and prediction time will dominate. 
+  {\bf (A)} Time of the best fit in seconds of performance measurements while using 2 epochs on various systems with different GPUs. The lower portion (green) of each bar represents the setup time, while the upper portion (blue) represents the training and prediction time. The setup time is constant throughout the experiments, while with increasing number of epochs the training and prediction time will dominate. 
   
   
   \bigskip
