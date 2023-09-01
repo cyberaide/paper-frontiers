@@ -137,7 +137,9 @@ Town Center Four,
 
 \def\corrEmail{laszewski@gmail.com}
 
-\newcommand{\TITLE}{Insights in High-Performance Big Data Systems Gained from
+\newcommand{\TITLE}{
+Opportunities for Enhancing MLCommons Efforts while leveraging 
+Insights in High-Performance Big Data Systems Gained from
   Educational
   MLCommons Earthquake Benchmarks Efforts}
 
@@ -196,7 +198,10 @@ Town Center Four,
 
 \section{}
 
-In this paper, we focus on identifying insights obtained for High-Performance Computing Big Data Systems while developing and conducting science benchmarks for earthquake prediction. This activity was conducted across multiple educational efforts and has identified several lessons. This includes that sophisticated benchmarks can be integrated into courses and research activities at universities exposing the students and researchers to topics that are otherwise typically not sufficiently covered in current course curricula. As such, we have outlined the many lessons we learned throughout these efforts culminating in the need for benchmark carpentry for scientists using advanced computational resources. The paper also presents the analysis of an earthquake prediction code benchmark while focusing on the accuracy of the results and not only on the runtime. Energy traces were produced throughout these benchmarks, showcasing that energy-related benchmarks can be useful in addition to the usual time-related benchmarks. The activity was only possible by utilizing a benchmark runtime pipeline while developing and using software to automatically generate jobs from the permutation of hyperparameters. This was made possible by using a templated job management framework developed in a collection of software called cloudmesh with its newly developed components, cloudmesh-sbatch and cloudmesh-cc.
+MLCommons is an effort to develop and improve the AI ecosystem through benchmarks, public datasets, and research. It consists of members from startups, leading companies, academics, and non-profits from around the world. The goal is to make Machine Learning better for everyone.
+In order to increase participation by others, educational institutions provide valuable opportunities for engagement. 
+In this paper, we identify insights obtained as part of efforts utilizing High-Performance Computing Big Data Systems in existing education while developing and conducting science benchmarks for earthquake prediction. 
+As this activity was conducted across multiple educational efforts we project if and how it is possible to make such efforts available on a wider scale. This includes the integration of sophisticated benchmarks into courses and research activities at universities exposing the students and researchers to topics that are otherwise typically not sufficiently covered in current course curricula as we saw from our practical experience across multiple organiztions. As such, we have outlined the many lessons we learned throughout these efforts culminating in the need for {\em benchmark carpentry} for scientists using advanced computational resources. The paper also presents the analysis of an earthquake prediction code benchmark while focusing on the accuracy of the results and not only on the runtime. Energy traces were produced throughout these benchmarks, showcasing that energy-related benchmarks can be useful in addition to the usual time-related benchmarks. In the short time of the project with limited student availability, the activity was only possible by utilizing a benchmark runtime pipeline while developing and using software to automatically generate jobs from the permutation of hyperparameters. It integrates a templated job management framework for executing tasks and experiments based on hyperparameters while leveraging hybrid compute resources available at different institutions. The software is part of a collection called cloudmesh with its newly developed components, cloudmesh-ee (experiment executor) and cloudmesh-cc (compute coordinator).
 
 
 \tiny \keyFont{ \section{Keywords:} deep learning, benchmarking, hyper
@@ -294,10 +299,24 @@ scope (STEM) data using Deep Learning \\ \hline
 
 Due to the strong affiliation with industry as well as the integration of National Labs and Academic High-Performance Computing centers, MLCommons provides a well-positioned starting point for academic participation. Over the years, we have participated significantly in MLCommons's efforts and integrated aspects of MLCommons into our educational activities. Hence, since its inception, we leveraged the MLCommons activities and obtained a number of important educational insights that we discuss in this paper.
 
+\TODO{}{
+Enforce applicability of experiments
+
+use representative benchmarks reflecting production use
+
+accelerate progress through fair, and useful metrics
+
+serve commercial and research community
+
+keep benchmarks effordable
+}
+
 
 \section{Insights for Educational Activities}
 
 Next, we discuss our insights while focusing on educational activities. This includes general observations about Machine Learning methods, libraries, tools and software carpentry, benchmark carpentry, and infrastructure. We then discuss in specific terms how MLCommons-related topics shape our insights. This includes insights of MLCommons while using it in educational settings leading to the potential to create a course curriculum. We then focus on the earthquake application while presenting lessons learned while improving such a large application as part of the code development, the data management, and the workflow to conduct extensive hyperparameter-based experiments. This leads us to develop tools that simplify monitoring (time and energy), as well as tools to manage jobs and computations while taking into account policy limitations at the HPC center.
+
+
 
 \subsection{Insights of Machine Learning in Education}
 \label{sec:edu-ml}
