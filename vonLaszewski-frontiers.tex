@@ -554,7 +554,7 @@ One of the common tasks when dealing with time series is the ability to predict 
 
 \subsubsection{Earthquake Data}
 
-The data for this earthquake is described in \citep{las-22-mlcommons-science}.  It uses a subset of the earthquake data from the United States Geological Survey (USGS) focused on Southern California between latitude: $32^\circ$N to $36^\circ$N and longitude: $-120^\circ$S to $-114^\circ$S). The data for this region covers all earthquakes since 1950. The data includes four measurements per record: magnitude, spatial location, depth from the crust, and time. We curated the dataset and reorganized it in different temporal and spatial bins. ``Although the actual time lapse between measurements is one day, we accumulate this into fortnightly data. The region is then divided into a grid of $40\times 60$ with each pixel covering an actual zone of $0.1\deg\times 0.1$ or $11km\times 11km$ grid. The dataset also includes an assignment of pixels to known faults and a list of the largest earthquakes in that region from 1950. We have chosen various samplings of the dataset to provide both input and predicted values. These include time ranges from a fortnight up to four years. Furthermore, we calculate summed magnitudes and depths and counts of significant quakes (magnitude < 3.29).''  Table~\ref{tab:eq-summary} depicts the key features of the benchmark \citep{las-22-mlcommons-science}.
+The data for this earthquake is described in \citep{las-22-mlcommons-science}.  It uses a subset of the earthquake data from the United States Geological Survey (USGS) focused on Southern California between latitude: $32^\circ N$ to $36^\circ N$ and longitude: $-120^\circ S$ to $-114^\circ S$). The data for this region covers all earthquakes since 1950. The data includes four measurements per record: magnitude, spatial location, depth from the crust, and time. We curated the dataset and reorganized it in different temporal and spatial bins. ``Although the actual time lapse between measurements is one day, we accumulate this into fortnightly data. The region is then divided into a grid of $40 \times 60$ with each pixel covering an actual zone of $0.1\deg \times 0.1$ or $11km \times 11km$ grid. The dataset also includes an assignment of pixels to known faults and a list of the largest earthquakes in that region from 1950. We have chosen various samplings of the dataset to provide both input and predicted values. These include time ranges from a fortnight up to four years. Furthermore, we calculate summed magnitudes and depths and counts of significant quakes (magnitude < 3.29).''  Table~\ref{tab:eq-summary} depicts the key features of the benchmark \citep{las-22-mlcommons-science}.
 
 
 \begin{table}
@@ -624,8 +624,8 @@ In this paper, we only focus on the TFT implementation. The TFT Inputs and Outpu
 \item {\bf Static Known Inputs (5 Inputs):} 4 space-filling curve
   labels of fault grouping, linear label of pixel
   \item {\bf Targets (4 Targets):} $m_{bin} (F:\Delta t,t)$ for $\Delta t = 2, 14, 26, 52$ weeks. Calculated for $t-52$ to $t$ for encoder and $t$ to $t+52$ weeks for decoder in $2$ week intervals. 104 predictions per sequence.
-  \item {\bf Dynamic Known Inputs (13 Inputs):} $P_l(\cos_{Full})$ for $l=0$ to $4$ $\cos_{period}(t), \sin_{period}(t)$  for $period = 8, 16, 32, 64$
-  \item {\bf Dynamic Unknown Inputs (9 Inputs):} Energy-averaged Depth, Multiplicity, Multiplicity  $m>3.29$ events $m_{bin}$ $(B:\Delta t,t)$ for $\Delta$ $t = 2, 4, 8, 14, 26, 52$ weeks
+  \item {\bf Dynamic Known Inputs (13 Inputs):} $P_l(\cos_{Full})$ for $l=0$ to $4 \cos_{period}(t), \sin_{period}(t)$  for $period = 8, 16, 32, 64$
+  \item {\bf Dynamic Unknown Inputs (9 Inputs):} Energy-averaged Depth, Multiplicity, Multiplicity  $m>3.29$ events $m_{bin} (B:\Delta t,t)$ for $\Delta t = 2, 4, 8, 14, 26, 52$ weeks
 \end{itemize}
 
 
@@ -760,6 +760,7 @@ We describe these systems briefly while focusing on their applicability for benc
 To conduct monitoring of time we have provided for years a convenient StopWatch package in Python \citep{cloudmesh-stopwatch}.  It is very easy to use and is focused on runtime execution monitoring of time-consuming portions in a single-threaded Python application. Although MLCommons provides their own time measuring component, called mllog, it is clear from the name that the focus is to create entries in a log file that is not easily readable by a human and may require post-processing to make it usable. In contrast, our library contains not only simple labeled \texttt{start} and \texttt{stop} methods, it also provides a convenient mechanism to print human-readable customizable performance tables. However, it is possible to also generate a result table in other formats such as CSV, JSON, YAML, TXT, and others).  Human readability is especially important during a debugging phase when benchmarks are developed. Moreover, we also have developed a plugin interface to mllog, that allows us to automatically create mllog entries into an additional log file, so the data may be used within MLCommons through specialized analytics programs. A use case is depicted next (we have omitted other advanced features such as function decorators for the StopWatch to keep the example simple).
 
 
+
 \begin{lstlisting}[language=Python]
     from cloudmesh.common.StopWatch import StopWatch 
     # ...
@@ -777,6 +778,7 @@ To also have direct access to MLCommons events, we have recently added the abili
 
 
 In addition to the StopWatch, we have developed a simple command line tool that can be used for example in batch scripts to monitor the GPU performance characteristics such as energy, temperature, and other parameters \citep{cloudmesh-gpu}. The tool can be started in a batch script as follows and is currently supporting NVIDIA GPUs:
+
 
 \begin{lstlisting}[language=sh]
     cms gpu watch --gpu=0 --delay=0.5 --dense > gpu0.log &
@@ -923,6 +925,7 @@ An example of a batch script in the cloudmesh template markup  is:
 
     seff $SLURM_JOB_D
 \end{lstlisting}
+%$
 
 The variables can easily be referred to with a dot notation in the templates.  Variables in the YAML file can also be replaced so it is possible to use abbreviations easily and in a consistent fashion in the YAML file as well as in the batch script.
 
@@ -1120,7 +1123,7 @@ However, generally, we can say that at the intersection point, the model's perfo
 
 For the rest of the experiments, we have chosen different input and output vectors that are used as hyperparameters or prediction parameters. In the subsequent benchmark results, these groupings of data are used as part of the training to optimize their associated accuracy values. 
 
-The data is grouped into 2 week periods. The model steps through each of these 2-week groupings and uses training data up to 1 year into the past from the current 2-week grouping. The model uses up to 1 year, $<=26$ data points, before the current 2-week grouping run on the model as training data. For example, the model is taking the first 2 weeks of January 2000, it would take $<=26$ 2-week groupings before that point as training data, so all of 1999 data would be 26 data points. Then it repeats this method with the next 2-week period in sequence so the 2-week grouping of weeks 3 and 4 of January 2000 and the training data would be the previous 26 2-week groupings from that point or the first 2 weeks of January 2000 and the previous 25 2 week groupings of 1999, all of 1999 data except first two weeks of 1999. It repeats this until all 2-week groupings are used in the model.
+The data is grouped into 2 week periods. The model steps through each of these 2-week groupings and uses training data up to 1 year into the past from the current 2-week grouping. The model uses up to 1 year, $\leq$ $ 26$ data points, before the current 2-week grouping run on the model as training data. For example, the model is taking the first 2 weeks of January 2000, it would take $ \leq 26$ 2-week groupings before that point as training data, so all of 1999 data would be 26 data points. Then it repeats this method with the next 2-week period in sequence so the 2-week grouping of weeks 3 and 4 of January 2000 and the training data would be the previous 26 2-week groupings from that point or the first 2 weeks of January 2000 and the previous 25 2 week groupings of 1999, all of 1999 data except first two weeks of 1999. It repeats this until all 2-week groupings are used in the model.
 
 We have introduced a convenient nomenclature for the data input. This nomenclature uses the following rules that are applied to control how parameters are used as input and output data:
 
