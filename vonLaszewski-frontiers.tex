@@ -12,6 +12,7 @@
 
 \documentclass[utf8]{FrontiersinVancouver} % for articles in journals
 
+
 \DeclareGraphicsExtensions{.pdf,.png,.jpg}
 
 % \DeclareGraphicsExtensions{.jpg,.pdf,.png}
@@ -23,6 +24,8 @@
 
 \setcitestyle{square} % for articles in the journals "Frontiers in Physics" and "Frontiers in Applied Mathematics and Statistics" 
 
+
+\usepackage{tcolorbox}
 \usepackage{url}
 \usepackage{lineno}
 \usepackage[hidelinks]{hyperref}
@@ -151,20 +154,29 @@ Insights in High-Performance Big Data Systems Gained from
 \onecolumn
 
 
+%
+% FOR FINAL VERSION OUTCOMMENT
+%
 %\clearpage
 
 %\listoftodos
+\setcounter{tocdepth}{4}
+\makeatletter\newcommand{\tableofcontents}{\@starttoc{toc}}\makeaother
 
 
-%{\bf \TITLE}
+{\bf \TITLE}
 
-%{\Authors}
+{\Authors}
 
-%{\Address}
+{\Address}
 
-%\bigskip
+\bigskip
 
-%\tableofcontents
+\tableofcontents
+
+%
+% OUTCOMMENT LINES ABOVE
+%
 
 \title{\TITLE}
 
@@ -200,8 +212,8 @@ Insights in High-Performance Big Data Systems Gained from
 
 MLCommons is an effort to develop and improve the AI ecosystem through benchmarks, public datasets, and research. It consists of members from startups, leading companies, academics, and non-profits from around the world. The goal is to make Machine Learning better for everyone.
 In order to increase participation by others, educational institutions provide valuable opportunities for engagement. 
-In this paper, we identify insights obtained as part of efforts utilizing High-Performance Computing Big Data Systems in existing education while developing and conducting science benchmarks for earthquake prediction. 
-As this activity was conducted across multiple educational efforts we project if and how it is possible to make such efforts available on a wider scale. This includes the integration of sophisticated benchmarks into courses and research activities at universities exposing the students and researchers to topics that are otherwise typically not sufficiently covered in current course curricula as we saw from our practical experience across multiple organiztions. As such, we have outlined the many lessons we learned throughout these efforts culminating in the need for {\em benchmark carpentry} for scientists using advanced computational resources. The paper also presents the analysis of an earthquake prediction code benchmark while focusing on the accuracy of the results and not only on the runtime. Energy traces were produced throughout these benchmarks, showcasing that energy-related benchmarks can be useful in addition to the usual time-related benchmarks. In the short time of the project with limited student availability, the activity was only possible by utilizing a benchmark runtime pipeline while developing and using software to automatically generate jobs from the permutation of hyperparameters. It integrates a templated job management framework for executing tasks and experiments based on hyperparameters while leveraging hybrid compute resources available at different institutions. The software is part of a collection called cloudmesh with its newly developed components, cloudmesh-ee (experiment executor) and cloudmesh-cc (compute coordinator).
+In this paper, we identify numerous insights obtained from different viewpoints as part of efforts utilizing High-Performance Computing Big Data Systems in existing education while developing and conducting science benchmarks for earthquake prediction. 
+As this activity was conducted across multiple educational efforts we project if and how it is possible to make such efforts available on a wider scale. This includes the integration of sophisticated benchmarks into courses and research activities at universities exposing the students and researchers to topics that are otherwise typically not sufficiently covered in current course curricula as we saw from our practical experience across multiple organizations. As such, we have outlined the many lessons we learned throughout these efforts culminating in the need for {\em benchmark carpentry} for scientists using advanced computational resources. The paper also presents the analysis of an earthquake prediction code benchmark while focusing on the accuracy of the results and not only on the runtime. Energy traces were produced throughout these benchmarks, showcasing that energy-related benchmarks can be useful in addition to the usual time-related benchmarks. Furthermore, one of the insights is that In the short time of the project with limited student availability, the activity was only possible by utilizing a benchmark runtime pipeline while developing and using software to automatically generate jobs from the permutation of hyperparameters. It integrates a templated job management framework for executing tasks and experiments based on hyperparameters while leveraging hybrid compute resources available at different institutions. The software is part of a collection called cloudmesh with its newly developed components, cloudmesh-ee (experiment executor) and cloudmesh-cc (compute coordinator).
 
 
 \tiny \keyFont{ \section{Keywords:} deep learning, benchmarking, hyper
@@ -215,7 +227,9 @@ As this activity was conducted across multiple educational efforts we project if
 \section{Introduction}
 
 
-In this paper, we summarize some of the insights that we obtained while improving and conducting earthquake benchmarks within the MLCommons\textsuperscript{\texttrademark} Science Working Group, porting it to a High-Performance Computing Big Data systems.  This includes insights into the usability and capability of HPC Big Data systems, the usage of the MLCommons benchmarking science applications \citep{las-22-mlcommons-science}, and insights from improving the applicability in educational efforts.
+As today academic institutions provide machine learning and deep learning educational efforts we are trying to identify if it is possible to leverage such activities to apply them as part of benchmarking machine learning efforts conducted by the community as part of MLCommons \cite{www-mlcommons,mlcommons-science}. 
+
+To provide a managable entry point into obtaining insights into answering this question, we summarize numerous  insights that we obtained while improving and conducting earthquake benchmarks within the MLCommons\textsuperscript{\texttrademark} Science Working Group, porting it to a High-Performance Computing Big Data systems.  This includes insights into the usability and capability of HPC Big Data systems, the usage of the MLCommons benchmarking science applications \citep{las-22-mlcommons-science}, and insights from improving the applicability in educational efforts.
 
 Benchmarking is an important effort in exploring and using HPC Big Data systems.  While using benchmarks, we can compare the performance of various systems. We can also evaluate the system's overall performance and identify potential areas for improvements and optimizations either on the system side or the algorithmic methods and their impact on the performance. Furthermore, benchmarking is ideal for enhancing the reproducibility of an experiment, where other researchers can replicate the performance and find enhancements to accuracy, modeling time, or other measurements.
 
@@ -225,14 +239,29 @@ Benchmarks also offer a common way to communicate the results to its users so th
 
 Such parameters should include not only parameters related to the algorithm itself, but also to explore different systems parameters such as those impacting data access performance or even energy consumption.
 
-The paper is structured as follows. First, we provide an introduction to MLCommons (Section \ref{sec:mlcommons}).  Next, we provide some insights about Machine Learning in educational settings and the generalization of Machine Learning to other efforts (Section~\ref{sec:edu-ml}). We then specifically analyze which insights we gained from practically using MLCommons in educational efforts (Section~\ref{sec:edu-mlcommons-insights}). After this, we focus on the Earthquake Forecasting application, describe it (Section~\ref{sec:eq}) and specifically identify our insights in the data management for this application (Section~\ref{sec:eq-data}).  As the application used is time-consuming and is impacted by policy limitations of the educational HPC data system, a special workflow framework has been designed to coordinate the many tasks needed to conduct a comprehensive analysis (Section~\ref{sec:workflow-main}). This includes the creation of an enhanced templated batch queue mechanism that bypasses the policy limitations but makes management of the many jobs simple trough convenient parameter management (Section~\ref{sec:workflow-sbatch}). In addition, we developed a graphical compute coordinator that enables us to visualize the execution of the jobs in a generalized simple workflow system (Section~\ref{sec:workflow-cc}).  To showcase the performance (Section~\ref{sec:perf-main}) of the earthquake forecasting application, present data for the runtime (Section~\ref{sec:perf-runtime}) and for the energy (Section~\ref{sec:perf-energy}). We complete the paper with a brief discussion of our results (Section~\ref{sec:conclusion}).
+Within this paper, we try to identify opportunities in four different areas as depicted in Figure \ref{fig:opportunities} To enhance the MLCommons efforts we have been involved as part of the MLCommons Science Working Group. This includes areas in hardware, applications, education, and evaluation and outreach. These areas intercept heavily with each other to create an integrated effort.    
 
-The research questions are as follows:
 
-{\bf Q1.} How can we train students who are new to machine learning and ensure the reproducibility and dissemination of their results across varying computing environments?
+\begin{figure}[htb]
+    \centering\includegraphics[width=0.5\columnwidth]{images/frontiers-eq-overview}
+    \caption{Overview of aspects of opportunities for an integrated educational effort for MLCommons while using Applications from the Science Working Group.}
+    \label{fig:opportunities}
+\end{figure}
 
-{\bf Q2.} How can we utilize a standardized metric for evaluating the accuracy of an earthquake forecasting model within workflow frameworks?
+Hence, we try to identify pathways and exemplars on how such efforts can on the one hand enhance educational efforts by leveraging expertise from MLCommons into educational efforts, but also considering the unique opportunities and limitations that apply when considering to use them within educational efforts.
 
+Hence, in general, we look at opportunities and challenges about 
+
+\begin{itemize}
+\item {\em Insights from MLCommons towards education}, and 
+\item {\em Insights from education towards MLCommons}.
+\end{itemize}
+
+
+
+The paper is structured as follows. First, we provide an introduction to MLCommons (Section \ref{sec:mlcommons}).  Next, we provide some insights about Machine Learning in educational settings and the generalization of Machine Learning to other efforts (Section~\ref{sec:edu-ml}). We then specifically analyze which insights we gained from practically using MLCommons in educational efforts (Section~\ref{sec:edu-mlcommons-insights}). After this, we focus on the Earthquake Forecasting application, describe it (Section~\ref{sec:eq}) and specifically identify our insights in the data management for this application (Section~\ref{sec:eq-data}).  As the application used is time-consuming and is impacted by policy limitations of the educational HPC data system, a special workflow framework has been designed to coordinate the many tasks needed to conduct a comprehensive analysis (Section~\ref{sec:workflow-main}). This includes the creation of an enhanced templated batch queue mechanism that bypasses the policy limitations but makes management of the many jobs simple trough convenient parameter management (Section~\ref{sec:workflow-ee}). In addition, we developed a graphical compute coordinator that enables us to visualize the execution of the jobs in a generalized simple workflow system (Section~\ref{sec:workflow-cc}).  To showcase the performance (Section~\ref{sec:perf-main}) of the earthquake forecasting application, present data for the runtime (Section~\ref{sec:perf-runtime}) and for the energy (Section~\ref{sec:perf-energy}). We complete the paper with a brief discussion of our results (Section~\ref{sec:conclusion}).
+
+\begin{comment}
 \subsection{Related Work}
 \label{sec:related-work}
 
@@ -247,6 +276,7 @@ We further augment reproducibility by leveraging tools such as {\em Singularity}
 Beroza et al. describe the need for a new form of AI to conduct earthquake forecasting using deep learning~\cite{beroza}. A competition led by university professors and Google engineers sought the most effective earthquake forecasting method; competitors used an array of different methods, including Light Gradient-Boosting Machine (LightGBM), other gradient boosting trees, and feedforward neural networks~\cite{johnson}. Instead, we opt to use long short-term memory (LSTM) and temporal fusion transformer (TFT) due to the former's memory capacity and the latter's "attention" feature that learns from historical data. Such a combination has been previously used in literature, such as in analyzing electricity load within power grids~\cite{giacomazzi}.
 
 Lastly, we implement a solution to the hyperparameter search problem, where parameters must be combined in various ways to find the best machine learning model while avoiding overfitting~\cite{claesen}.
+\end{comment}
 
 \subsection{MLCommons}
 \label{sec:mlcommons}
@@ -262,7 +292,7 @@ The science working group is concerned with improving the science beyond just a 
 A list of selected benchmarks for the working groups focusing on inference, training, and science are shown in Table~\ref{tab:mlcommons-benchmarks}.
 
 
-\begin{table}[htb]
+\begin{table}
   \caption{MLCommons Benchmarks}
   \label{tab:mlcommons-benchmarks}
   \bigskip
@@ -299,20 +329,18 @@ scope (STEM) data using Deep Learning \\ \hline
 
 Due to the strong affiliation with industry as well as the integration of National Labs and Academic High-Performance Computing centers, MLCommons provides a well-positioned starting point for academic participation. Over the years, we have participated significantly in MLCommons's efforts and integrated aspects of MLCommons into our educational activities. Hence, since its inception, we leveraged the MLCommons activities and obtained a number of important educational insights that we discuss in this paper.
 
-\TODO{}{
-Enforce applicability of experiments
+\begin{tcolorbox}
+Summary Section \ref{sec:mlcommons}:
 
-use representative benchmarks reflecting production use
-
-accelerate progress through fair, and useful metrics
-
-serve commercial and research community
-
-keep benchmarks effordable
-}
+\begin{itemize}
+\item {\bf Challenges:} {\it The rigor of applying benchmarks requires special attention to reproducible experiments. Educational resources may be limited and a benchmark of a full HPC system may not be possible within an educational computing center while not interrupting other shared usage.}
+\item {\bf Opportunities:} {\it MLCommons provides a rich set of benchmarks in a variety of areas that comprehensively encompass many aspects of deep learning applications that are of interest for educational efforts.}
+\end{itemize}
+\end{tcolorbox}
 
 
 \section{Insights for Educational Activities}
+\label{sed:edu}
 
 Next, we discuss our insights while focusing on educational activities. This includes general observations about Machine Learning methods, libraries, tools and software carpentry, benchmark carpentry, and infrastructure. We then discuss in specific terms how MLCommons-related topics shape our insights. This includes insights of MLCommons while using it in educational settings leading to the potential to create a course curriculum. We then focus on the earthquake application while presenting lessons learned while improving such a large application as part of the code development, the data management, and the workflow to conduct extensive hyperparameter-based experiments. This leads us to develop tools that simplify monitoring (time and energy), as well as tools to manage jobs and computations while taking into account policy limitations at the HPC center.
 
@@ -324,6 +352,10 @@ Next, we discuss our insights while focusing on educational activities. This inc
 Before starting with the insights from MLCommons on our efforts, we will first consider some of our experience regarding topics taught in educational activities for machine learning in general. We distinguish machine learning {\em methods}, {\em applications} that use or can use machine learning, the {\em libraries} used to apply these methods for applications, software development {\em tools}, and finally the {\em
 infrastructure} that is needed to execute them. Understanding these aspects will allow other ML endeavors to benefit from the time-saving, latest-technology solutions we have identified that will devote more time to applying ML to real-world problems.
 
+The aim is not to inundate students with all possible facets of
+machine learning, but rather to guide students toward the completion 
+of a interesting, memorable, applicable real-world project
+that the student can take and apply to other projects. This necessitates finding a balance between automating the developer setup (providing a ready-to-go environment) and leaving such setup to the student which can impart knowledge through self-learning.
 
 \subsubsection{ML Methods}
 
@@ -339,60 +371,72 @@ First, we note that at the university level, the predominant programming languag
 
 In contrast, other specialized classes that focus on the development of faster, GPU-based methods typically use C++ code leveraging the vendor's specialized libraries to interface with the GPUs such as Nvidia CUDA.
 
+
+
 \subsubsection{Tools and Software Carpentry}\label{sec:tools}
 
+Unfortunately, today's students are not sufficiently exposed to software carpentry at the beginning of their studies as we found while working together with four different student groups from three different universities, despite the university curriculum consisting of Python and AI classes. 
 
-To efficiently use the libraries and methods, as well as the infrastructure used to execute software, students need a basic understanding of software engineering tools such as a text editor and code management system. A subset of this is often referred to as software carpentry \cite{software-carpentry}. Topics of immediate importance include the ability to:
+To efficiently use the libraries and methods, as well as the infrastructure used to execute software on shared HPC computers, students need a basic understanding of software engineering tools such as a text editor and code management system. A subset of this is often referred to as software carpentry \cite{software-carpentry}. Topics of immediate importance include the ability to: (1)
+ obtain a moderate grasp of terminal use with Unix commands,
+(2) leverage the features of a professional IDE,
+(3) be familiar with a code management system and version control,
+(4) ensure the availability of the code using open-source, 
+(5) understand how to collaborate with others, and (5) utilize queuing systems as used within shared resources managed through queuing systems. 
 
-\begin{enumerate}
-    \item master a terminal with Unix commands,
-    \item leverage the features of a professional IDE,
-    \item be familiar with a code management system and version control,
-    \item ensure the availability of the code using open-source,
-    \item and understand how to collaborate with others.
-\end{enumerate}
+It is vital to instill these industry-standard practices within apprentices who are new to artificial intelligence utilization of HPC systems, beyond just the simplest example, to efficiently use the resources and plan benchmark experiments. These skills are key to evolving a beginner's research and class experience towards intermediate and advanced knowledge usable in the industry so they distinguish themselves from the many job applicants once graduated.
 
-It is vital to instill these industry-standard practices within apprentices who are new to artificial intelligence to eliminate unnecessary manual work and guarantee code quality.
+Although many centers offer Jupyter as an interactive use of the HPC resources, such notebooks are often designed to be just a one-off experiment. Queuing system time imitations hinder making repeatable experiments possible as the time requirements may only allow one experiment as we have experienced with our application.
 
-Firstly, the student should understand basic Unix terminal use. This presents a challenge as the most common operating system on students' computers is Microsoft's Windows 10, possessing 68.75\% of the OS market as of 2023~\cite{norem}. Unix commands are not natively available on Windows 10, which limits the student's ability to navigate a Unix HPC environment, which is where machine learning is commonly conducted. This also exacerbates students' manual code expenditure, as Unix commands such as \verb|grep|, \verb|find|, and \verb|make| are unavailable, and automation of the file system is limited.
+Furthermore, we observed that most students own Microsoft Windows-based desktop and have never come in contact with a terminal using commandline tools. This is backed up by the fact that Microsoft's Windows 10, possessing 68.75\% of the OS market as of 2023~\cite{norem}. Hence the students often lack the ability to navigate a Unix HPC environment, where machine learning is commonly conducted in a shared resource. This also exacerbates students' manual code expenditure, as Unix commands such as \verb|grep|, \verb|find|, and \verb|make| are typically not known, and automation of the programs building the workflow to execute a benchmark experiment efficiently is limited. 
 
-As part of our efforts, we encourage the use of Git Bash on Windows systems, which provides a Unix-like environment. Windows Subsystem for Linux (WSL) also achieves the same result. We also leverage {\em Chocolatey}, a package manager that mimics the Unix package tools.
+However, as part of our efforts, we found an easy way to not only teach students these concepts but also access HPC machines via a terminal straight from the laptop or desktop. While on macOS and Linux existing terminals and shells can be used, on Windows, we found that the use of Git Bash on Windows systems provides a Unix-like environment. We also leverage {\em Chocolatey}, a package manager that mimics the Unix package tools. Alternatively, Windows Subsystem for Linux (WSL) achieves the same result, while directly being able to run Linux in a virtual machine on the computers. However for students with older or resource-limited machines, the latter may not be an option. 
+To efficiently use the terminal, the elementary use of a command needs to be taught including the use of a simple command-line editor. While leveraging bash on the commandline it becomes easy to develop tutorials and scripts that allow the formulation of simple shell scripts to access the HPC queuing system. 
 
-Similarly, within the terminal, the elementary use of a command line editor is oftentimes needed to simplify direct editing on remote HPC machines. Students can choose editors such as {\em vi}, {\em vim}, {\em nano}, {\em pico}, or {\em emacs}. The latter, {\em emacs}, has been used predominantly by us as we can teach it in five minutes while focusing on the ten most important commands. If more sophisticated commands are needed, the emacs reference card is a valuable helper~\cite{emacs-reference}. As the same shortcuts are used in a terminal, we reduced the complexity of teaching students using a command line editor as well as editing in the terminal with convenient shortcuts. These CLI tools are vital to apprentices of machine learning as they save time in the time-sensitive programs in which they are conducting research work.
+Furthermore, sophisticated programming tools that readily exist in cross-OS portable fashion on the laptop/desktop can be used to develop or improve the code quality of the software. This includes the availability of integrated development environments (IDEs) (such as PyCharm and VSCode) with advanced features such as syntax highlighting, code inspection, and refactoring.  As part of this applying uniform formatting such as promoted by PEP 8 \cite{www-pep8} increases code readability and uniformity, therefore, effortlessly improving collaboration on code by various team members.
 
-Within the context of machine learning, another important aspect is the use of an integrated development environment (IDE) with advanced features such as syntax highlighting, code inspection, and refactoring. For example, Fincher and Robins note the importance of using Integrated Development Environments (IDEs) and the difficulty that accompanies them as IDEs grow more complex with the evolution of their corresponding toolchains~\cite{fincher_robins_2019}. However, overcoming these barriers to entry brings about beneficial habits such as using the collaborative features of the IDE such as live peer editing or version control features, intelligent code completion, and keyboard shortcuts to manipulate code. Moreover, Tan et. al. note these features help students write correct code that meets industry standards~\cite{tan_chen}. The features also save time in time-intensive programs such as a Research Experience for Undergraduates, which typically only last one semester and require the completion of a student project.
 
-To teach software carpentry is to teach the basics of an IDE and how they can benefit the novice programmer. If students are able to understand the use of an IDE, then students are more likely to contribute to scientific machine learning applications positively.
+Although such IDEs can become quite complex with the evolution of their corresponding toolchains~\cite{fincher_robins_2019}, in our case we can restrict their use towards code development and management.
+As such, habits are immediately introduced that improve the code quality. Furthermore, these tools allow 
+collaborative code development through group editing and group version control management.
+Together, it helps students write correct code that meets industry standards and practices~\cite{tan_chen}.
 
-The use of simple editors such as {\em Notepad++}, {\em IDLE}, or {\em nano} is insufficient as they do not support the best software engineering practices that can be achieved with an advanced programming framework development environment. Instead, students benefit from advanced tools such as {\em PyCharm} or {\em Visual Studio Code} (vscode) as they provide sophisticated features to improve code quality and also provide strong integration with git. One of the strengths of PyCharm is that it has a sophisticated code inspector and auto-completion, making writing reliable and syntactically correct code faster. On the other hand, while some authors recommend vscode~\cite{tan_chen}, its default features do not match that of PyCharm (such as weak code refactoring and settings customization), and configuring its plugin engine to add similar features as provided by PyCharm requires additional work. Further, PyCharm offers a free professional license to those enrolled within a university.
+From our experience,  significant effort is saved in time-intensive programs such as a Research Experience for Undergraduates, which typically only lasts one semester and requires the completion of a student project. As part of this, we observed that integrated software carpeting while also integrating IDEs benefits novice students as they are more likely to contribute to existing research activities related to scientific machine learning applications.
+Such sophisticated IDEs are offered as community editions freely or are available in their professional version to students and open source projects.
 
 Such IDEs also provide the ability to easily write markdown text and render the output while writing. This is very useful for writing documentation. Documentation is a necessity in ML research experiences as a lack thereof creates a barrier to entry~\cite{konigstorfer}.
 
-Most recently, these tools also allow writing code remotely, as well as in online group sessions fostering collaboration. Hence, peer programming has become a reality, even if the students work remotely with each other. This is further proven by online, free IDEs such as {\em Replit} where students can edit the same file simultaneously~\cite{Kovtaniuk2022}.
+As already pointed out, most recently, these tools also allow writing code remotely, as well as in online group sessions fostering collaboration. Hence, peer programming has become a reality, even if the students work remotely with each other. This is further proven by online, free IDEs such as {\em Replit} where students can edit the same file simultaneously~\cite{Kovtaniuk2022}. However such features have now become an integral part of modern IDEs such as PyCharm and VSCode, so that not switching to other tools is needed. Due to this, 
+we noticed an uptake among students in using the remote editing capabilities of more advanced editors such as PyCharm and vscode; alongside their superiority while developing code, a command editor on the HPC terminal was entirely avoided. However, this comes with an increased load on the login nodes, which is outweighed by the developers' convenience and code quality while using such advanced editors. HPC centers are advised to increase their capabilities significantly to support such tools while increasing their resources for using them by their customers.
 
-Over the last months, we noticed an uptake in using the remote editing capabilities of more advanced editors such as PyCharm and vscode; alongside their superiority while developing code, a command editor on the HPC terminal was entirely avoided. This comes with an increased load on the login nodes, which are outweighed by the developers' convenience and code quality while using such advanced editors. HPC centers are advised to increase their capabilities significantly to support such tools while increasing their resources for using them by their customers.
+Lastly, the common choice for collaborative code management is Git, with successful social coding platforms such as GitHub and GitLab. These code management systems are key for teams to share their developed code and enable collaborative code management.  However, they require a significant learning curve. An important aspect is that the code management systems are typically hosted in the open, and the code is available for improvement at any time. We found that students who adopt the open-source philosophy perform considerably better than those who insist on having their codes in a private repository. The openness fosters two aspects: 
 
-Lastly, the common choice for code management is Git, with successful social coding platforms such as GitHub and GitLab. These code management systems are key for teams to share their developed code and enable collaborative code management.  However, they require a significant learning curve. An important aspect is that the code management systems are typically hosted in the open, and the code is available for improvement at any time. We found that students who adopt the open-source philosophy perform considerably better than those who insist on having their codes in a private repository. The openness fosters two aspects. 
+\begin{itemize}
+    \item First, the code quality improves as the students put more effort into the work due to its openness to the community. This allows students to share their code, improve other code, and gain networking opportunities. Also, perhaps most important, this allows scientists to replicate their experiments to ensure similar results. 
+    \item Second, collaboration can include research experts from the original authors and researchers that would otherwise not be available at the university. Hence, the overall quality of the research experience for the student increases as the overall potential for success is implicitly accessible to the student.
+\end{itemize}
 
-First, the code quality improves as the students put more effort into the work due to its openness to the community. This allows students to share their code, improve other code, and gain networking opportunities. Also, perhaps most important, this allows scientists to replicate their experiments to ensure similar end results. Second, collaboration can include research experts from the original authors and researchers that would otherwise not be available at the university. Hence, the overall quality of the research experience for the student increases as the overall potential for success is implicitly accessible to the student.
+An additional tool is JupyterLab, created by Project Jupyter. It provides a web browser interface for interactive Python notebooks (with file extension \verb|ipynb|). The strength here is a rich external ecosystem that allows us to interactively run programs while integrating analysis components to utilize data frames and visualization to conduct data exploration. For example, this is possible by using Web browser interfaces to either the HPC-hosted Jupyter notebook editor or Google Colab. The unfortunate disadvantage of using notebooks is that, while the segmentation of code into cells can provide debugging convenience, this format may break proper software engineering practices such as defining and using functions, classes, and self-defined Python libraries that lead to more sustainable and easier-to-manage code. An upside to Jupyter notebooks is that they possess an integrated markdown engine that can provide sophisticated documentation built in; we have also identified that students without access to capable local machines can leverage Google Colab, which is a free platform for using Jupyter notebooks. Jupyter notebooks accessing HPC queues are to day often made available through Web-based access as part of on-demand interfaces to the HPC computing resource \cite{uva-ondemand}.
 
-An additional tool is JupyterLab, created by Project Jupyter. It provides a web browser interface for interactive Python notebooks (with file extension \verb|ipynb|). The strength here is a rich external ecosystem that allows us to interactively run programs while integrating analysis components to utilize data frames and visualization to conduct data exploration. For example, this is possible by using Web browser interfaces to either the HPC-hosted Jupyter Notebook editor or Google Colab. The unfortunate disadvantage in using notebooks is that, while the segmentation of code into cells can provide debugging convenience, this format may break proper software engineering practices such as defining and using functions, classes, and self-defined Python libraries that lead to more sustainable and easier-to-manage code. An upside to Jupyter Notebooks is that they possess an integrated markdown engine that can provide sophisticated documentation built in; we have also identified that students without access to capable local machines can leverage Google Colab, which is a free platform for using Jupyter notebooks.
+Regrettably, live collaborative editing of Jupyter notebooks is not yet supported on some platforms such as {\em Replit} and {\em PyCharm}. However, vscode does support it (even within the browser, eliminating the need to download a client). We expect that such features will become eventually available in other tools. 
 
-Regrettably, live-time collaboration of Jupyter notebooks is not yet supported on {\em Replit} and {\em PyCharm}, but vscode does support it (even within the browser, eliminating the need to download a client). The vscode IDE also has a more intuitive remote development interface.
 
-Similarly, PEP 8 is the industry-standard Style Guide for Python Code, written by the language developers. Professional IDEs such as the ones previously mentioned allow for quick reformatting of code to fit the PEP 8 standard, which in turn allows for easier reading of the code and, therefore, effortless collaboration from other scientists.
+The lack of emphasizing standards such as these relates to a general problem at the university level. 
 
-The lack of standards such as these relates to a general problem at the university level. While the material taught in ML requires an entire semester, students often come ill-prepared for ML classes as typical programming language classes do not focus on software carpentry, but instead on teaching Python while only emphasizing the language aspects but not with a sustainable {\em practical} software engineering approach. We alleviate difficulties such as these encountered within research experience by leveraging a cross-platform cloud-computing toolkit named {\em cloudmesh}. This toolkit, alongside our use of professional IDEs and version control, allows students to focus less on manual code expenditures and operating system debugging, and more on HPC use and machine learning development on datasets such as from the Modified National Institute of Standards and Technology (MNIST), among others. We acknowledge the importance of saving time as it is a precious commodity in research experiences.
+While topical-focused classes such as machine and deep learning is obviously in the foreground, we 
+see a lack of introducing students using software carpeting and even the understanding of HPC queuing systems in general. Tools such as Jupyter and Collab that are often used in such classes deprive the students often from the needed underlying understanding of efficiently using shared GPU resources for ML and DL. 
 
-{\bf To sum up}, the best, industry-standard tools include Python, PyCharm, vscode, Git Bash, Git, Chocolatey, Jupyter, and Unix, as well as our cloudmesh toolkit.
+Hence are often ill-prepared for software carpeting needs that arise in more advanced applications of DL utilizing parallel and concurrent DL methodologies. Furthermore programming language classes are often only applied to teaching Python while only emphasizing the language aspects but not with a sustainable {\em practical} software engineering approach. Because machine learning is a relatively new venture in the computing field, there is not yet a definitive set of standards meant for beginning students. 
 
-Because machine learning is a relatively new venture in the computing field, there is no definitive set of standards meant for beginning students. The solution to the ambiguity surrounding the creation of machine learning applications is the use of a standardized benchmarking system named MLCommons. This system is easily implemented as long as programmers can utilize the capabilities of an industry-standard IDE. Since we emphasize reproducibility and openness with other contributors, then an open-source solution like MLCommons is necessary.
+
+We alleviate difficulties such as these encountered within research experience by leveraging a cross-platform cloud-computing toolkit named {\em cloudmesh}. This toolkit, alongside our use of professional IDEs and version control, allows students to focus less on manual code expenditures and operating system debugging, and more on HPC use and machine learning development on datasets such as from the Modified National Institute of Standards and Technology (MNIST), among others. We acknowledge the importance of saving time as it is a precious commodity in research experiences.  
+One solution to help reduce the entry barrier surrounding the creation of machine learning benchmark applications is the use of our cloudmesh toolkit, and our standardized benchmarking system named MLCommons. This system is easily implemented as long as programmers can utilize the capabilities of an industry-standard IDE. Since we emphasize reproducibility and openness with other contributors, then an open-source solution like MLCommons is necessary.
 
 
 
 \subsubsection{Benchmark Carpentry}
 
-Benchmark carpentry is a well-known concept that has been formulated to create reproducible results in research computing.  The experiences and insights documented in this paper have recently been reported to the MLCommons Science Working group. Throughout the discussion, we identified the need to develop an effort focusing on benchmark carpentry that goes beyond the aspects typically taught in software carpentry while focusing on aspects of benchmarks that are not covered. This includes a review of other benchmark efforts such as TOP500 and Green500, the technical discussion around system benchmarks including SPEC benchmarks, as well as tools and practices to better benchmark a system. Special effort needs not only to be placed on benchmarking the CPU and GPU capabilities, but also on what effect the impact of the file system or the memory hierarchy has. This benchmarking ensures reproducibility while leveraging the Findability, Accessibility, Interoperability, and Reusability (FAIR) principle. Further, using software that establishes not only immutable baseline environments such as {\em Singularity} and {\em Docker}, but also the creation of reproducible benchmark pipelines and workflows using cloudmesh-sbatch and cloudmesh-cc, is beneficial. Such efforts can also be included in university courses, and the results of developing material for and by the participants can significantly pervade the concept of a standardized benchmarking system such as MLCommons's MLPerf.
+Benchmark carpentry is not yet a well-known concept while focussing on applying software carpentry and common benchamrk software and experiemnet management aspects the to create reproducible results in research computing.  To work towards a consolidated effort of benchmark-carpentry,  the experiences and insights documented in this paper have recently been reported to the MLCommons Science Working group. Throughout the discussion, we identified the need to develop an effort focusing on benchmark carpentry that goes beyond the aspects typically taught in software carpentry while focusing on aspects of benchmarks that are not covered. This includes a review of other benchmark efforts such as TOP500 and Green500, the technical discussion around system benchmarks including SPEC benchmarks, as well as tools and practices to better benchmark a system. Special effort needs not only to be placed on benchmarking the CPU and GPU capabilities, but also on what effect the impact of the file system or the memory hierarchy has. This benchmarking ensures reproducibility while leveraging the Findability, Accessibility, Interoperability, and Reusability (FAIR) principle. Further, using software that establishes not only immutable baseline environments such as {\em Singularity} and {\em Docker}, but also the creation of reproducible benchmark pipelines and workflows using cloudmesh-ee and cloudmesh-cc, is beneficial. Such efforts can also be included in university courses, and the results of developing material for and by the participants can significantly pervade the concept of a standardized benchmarking system such as MLCommons's MLPerf.
 
 \subsubsection{Infrastructure}
 
@@ -400,11 +444,11 @@ An additional aspect ML students must have exposure to is the need for access to
 
 Another path to obtain resources for machine learning can be found in the cloud. This may include Infrastructure as a Service (IaaS) and Platform as a Service (PaaS) cloud service offerings from Amazon, Azure, Google Cloud, Salesforce, and others. In addition to the computational needs for executing neural networks and deep learning algorithms, we also find services that can be accessed mainly through REST APIs offering methods to integrate the technology into the application research easily. Most popular tools focus on natural language processing, such as translation and, more recently, on text analysis and responses through OpenAI's ChatGPT and Google's Bard.
 
-However, many academic institutions have access to campus-level and national-level computing resources in their HPC centers. In the US, this includes resources from the Department of Energy (DOE) and the National Science Foundation (NSF). Such computing resources are accessed mostly through traditional batch scheduling solutions (such as Slurm \citep{www-slurm}), which allows for sharing limited resources with a large user community. For this reason, centers often implement a scheduling policy that puts significant restrictions on the computational resources that can be used simultaneously and for a limited period. The number of files and the access to a local disk on compute nodes constituting the HPC resources may also be limited. This provides a potential very high entry barrier as these policy restrictions may not be integrated into the application design from the start. Moreover, in some cases, these restrictions may provide a significant performance penalty when data is placed in a slow Network File System (NFS) instead of directly in memory (often the data does not fit in memory) or in NVMe storage if it exists and is not restricted on the compute nodes.  It is also important to understand that such nodes may also be shared with other users and it is important to provide the infrastructure requirements upfront in regard to computation time, memory footprint, and file storage requirements accurately so that scheduling can be performed most expediently.  Furthermore, the computing staff maintains the software on these systems and is typically tailored for the HPC environment.  It is best to develop with the version provided, which may target outdated software versions.  Container technologies reduce the impact of this issue by enabling users of the HPC center to provide their own custom software dependencies as an image.
+However, many academic institutions have access to campus-level and national-level computing resources in their HPC centers. In the US, this includes resources from the Department of Energy (DOE) and the National Science Foundation (NSF). Such computing resources are accessed mostly through traditional batch scheduling solutions (such as Slurm \citep{www-slurm}), which allows for sharing limited resources with a large user community. For this reason, centers often implement a scheduling policy that puts significant restrictions on the computational resources that can be used simultaneously and for a limited period. The number of files and the access to a local disk on compute nodes constituting the HPC resources may also be limited. This provides a potential very high entry barrier as these policy restrictions may not be integrated into the application design from the start. Moreover, in some cases, these restrictions may provide a significant performance penalty when data is placed in a slow Network File System (NFS) instead of directly in memory (often the data does not fit in memory) or in NVMe storage if it exists and is not restricted on the compute nodes.  It is also important to understand that such nodes may also be shared with other users and it is important to provide the infrastructure requirements upfront regarding computation time, memory footprint, and file storage requirements accurately so that scheduling can be performed most expediently.  Furthermore, the computing staff maintains the software on these systems and is typically tailored for the HPC environment.  It is best to develop with the version provided, which may target outdated software versions.  Container technologies reduce the impact of this issue by enabling users of the HPC center to provide their own custom software dependencies as an image.
 
 One of the popular container frameworks for HPC centers is {\em Singularity}, and some centers offer {\em Docker} as an alternative. As images must bring all the software needed to run a task, they quickly become large in size, and it is not feasible to just copy the image from your local computer but to work with the center to create the image within the HPC infrastructure. This is especially true when a university requires all resources to be accessed through a VPN. Here, one can often see a factor of 10 or more slowdown in transfer and access speeds~\cite{tovar}.
 
-All these elements must be learned; establishing an understanding of these subjects can take considerable time. Hence, using HPC resources has to be introduced with specialized educational efforts often provided by the HPC center. However, sometimes these general courses are not targeted specifically to running a particular version of PyTorch or TensorFlow with cuDNN, but just the general aspect of accessing the queues. Although these efforts often fall under the offerings of software carpentry, the teaching objective may fall short as the focus is placed on a limited number of software supported by the center instead of teaching how to install and use the latest version of TensorFlow. Furthermore, the offered software may be limited in case the underlying GPU card drivers are outdated. Software benchmarks not only need the newest software libraries but also the newest device drivers, which can only be installed by the HPC support team.
+All these elements must be learned; establishing an understanding of these subjects can take considerable time. Hence, using HPC resources has to be introduced with specialized educational efforts often provided by the HPC center. However, sometimes these general courses are not targeted specifically to running a particular version of PyTorch or TensorFlow with cuDNN, but just the general aspect of accessing the queues. Although these efforts often fall under the offerings of software carpentry, the teaching objective may fall short as the focus is placed on a limited number of software, supported by the center instead of teaching how to install and use the latest version of TensorFlow. Furthermore, the offered software may be limited in case the underlying GPU card drivers are outdated. Software benchmarks not only need the newest software libraries but also the newest device drivers, which can only be installed by the HPC support team.
 
 Furthermore, specifically customized queues demanding allocations, partitions, and resource requirements may not be documented or communicated to its users, and a burden is placed on the faculty member to integrate this accurately into the course curriculum.
 
@@ -426,19 +470,19 @@ From our experiences with these various efforts, we found that the following les
 \begin{itemize}
 
 
-\item {\bf Teamwork.} Students benefit from focusing on the success and collaboration of the entire team rather than mere individualism, as after graduation, students may work in large teams. This includes the opportunity for pair programming, but also the fact that careful time planning in the team is needed to succeed. This also includes how to collaborate with peers using professional, industry-standard coding software and management of code in a team through a version control system such as Git. Raibulet and Fontana demonstrate that students see an increase in enthusiasm and appreciation of teamwork-oriented platforms when such aspects are employed in coding courses~\cite{raibulet}. While courses may still focus on the individual's progress, an MLCommons Benchmark benefits from focusing on grading the team and taking the entire project and team progress into a holistic grade evaluation.
+\item {\bf Teamwork.} Students benefit from focusing on the success and collaboration of the entire team rather than mere individualism, as after graduation, students may work in large teams. This includes the opportunity for pair programming, but also the fact that careful time planning in the team is needed to succeed. This also includes how to collaborate with peers using professional, industry-standard coding software and management of code in a team through a version control system such as Git. As others point out ~\cite{raibulet}, we also see an increase in enthusiasm and appreciation of teamwork-oriented platforms when such aspects are employed in coding courses. While courses may still focus on the individual's progress, an MLCommons Benchmark benefits from focusing on grading the team and taking the entire project and team progress into a holistic grade evaluation. 
 
-\item {\bf Interdisciplinary Research.} Many of the applications in MLCommons are requiring interdisciplinary research between the domain scientists, ML experts, and IT engineers. As part of the teamwork, students have the opportunity to participate not only within their discipline but learn about how to operate in an interdisciplinary team. Such multidisciplinary experience not only broadens their knowledge base but also strengthens their market viability, making them attractive candidates for diverse job possibilities and career opportunities in the ever-evolving technological landscape~\cite{zeidmane}.
+\item {\bf Interdisciplinary Research.} Many of the applications in MLCommons require interdisciplinary research between the domain scientists, ML experts, and IT engineers. As part of the teamwork, students have the opportunity to participate not only within their discipline but learn about how to operate in an interdisciplinary team. Such multidisciplinary experience not only broadens their knowledge base but also strengthens their market viability, making them attractive candidates for diverse job possibilities and career opportunities in the ever-evolving technological landscape~\cite{zeidmane}.
 
-\item {\bf System Benchmarking vs. Science Benchmarking.} Students can learn about two different benchmarking efforts. The first is system-level benchmarking in which a system is compared based on a predefined algorithm and its parameters measuring system performance. The second is the benchmarking of a scientific algorithm in which the quality of the algorithm is compared with each other, where system performance parameters are a secondary aspect.
+\item {\bf System Benchmarking vs. Science Benchmarking.} Students can learn about two different benchmarking efforts. The first is system-level benchmarking in which a system is compared based on a predefined algorithm and its parameters measuring system performance. The second is the benchmarking of a scientific algorithm in which the quality of the algorithms is compared with each other, where system performance parameters are a secondary aspect.
 
-\item {\bf Software Ecosystem.} Students are often using a course-provided, limited, custom-defined environment prepared explicitly for a course that makes course management for the teacher easier, but does not expose the students to various ways of setting up and utilizing the large variety of software related to big data systems. This includes setting up Python beyond the use of Conda and Colab notebooks, the use of queueing systems, containers, and cloud computing software for AI, DL (deep learning), and HPC experiments as well as other advanced aspects of software engineering. Benchmarking introduces these concepts to students in a variety of configurations and environments, providing them with a more research- and industry-like approach to managing software systems.
+\item {\bf Software Ecosystem.} Students are often using a course-provided, limited, custom-defined environment prepared explicitly for a course that makes course management for the teacher easier but does not expose the students to various ways of setting up and utilizing the large variety of software related to big data systems. This includes setting up Python beyond the use of Conda and Colab notebooks, the use of queueing systems, containers, and cloud computing software for AI, DL (deep learning), and HPC experiments as well as other advanced aspects of software engineering. Benchmarking introduces these concepts to students in a variety of configurations and environments, providing them with a more research- and industry-like approach to managing software systems.
 
-\item {\bf Execution Ecosystem.} While in-class problems typically do not require as many computing resources, some of the examples in MLCommons require a significant organizational aspect to select and run meaningful calculations that enhance the accuracy of the results. Careful planning with workflows and the potential use of hybrid heterogeneous systems significantly improves the awareness to deal with not only the laptop but also the large available resources students may get access to while leveraging flagship-class computing resources, or their own local HPC system when available. Learning to navigate an HPC system is imperative to teach to students and can be augmented by professor-created toolkits and platforms~\cite{zou}. The execution ecosystem also includes accounting for system policies, remote system access, and frugal planning of experiments through the prediction of runtimes and the planning of hyperparameter searches~\cite{claesen}. This can also include dealing with energy consumption and other environmental parameters.
+\item {\bf Execution Ecosystem.} While in-class problems typically do not require as many computing resources, some of the examples in MLCommons require a significant organizational aspect to select and run meaningful calculations that enhance the accuracy of the results. Careful planning with workflows and the potential use of hybrid heterogeneous systems significantly improves the awareness to deal with not only the laptop but also the large available resources students may get access to while leveraging flagship-class computing resources, or their own local HPC system when available. Learning to navigate an HPC system is imperative to teach to students and can be augmented by professor-created toolkits and platforms~\cite{zou}. We found it necessary to provide additional documentation to address the staff-provided HPC manual while focussing on specific aspects that are not general in nature, but are related to group and queue management specifically set up for us by staff. This includes documentation about the accounting for system policies, remote system access, and frugal planning of experiments through the prediction of runtimes and the planning of hyperparameter searches~\cite{las-22-arxiv-workflow-cc,claesen}. This can also include dealing with energy consumption and other environmental parameters.
 
-\item {\bf Parallelization.} The examples provide a basis for learning about various parallelization aspects. This includes the parallelization on the job level and hyperparameters searches, but also on the use of parallelization methods provided by large-scale GPU bases big data systems.
+\item {\bf Parallelization.} The examples provide a basis for learning about various parallelization aspects. This includes the parallelization on the job level and hyperparameters searches, but also on the use of parallelization methods provided by large-scale GPU-based big data systems.
 
-\item {\bf IO Data Management.} One other important lesson is the efficient and effective use of data stores to execute. For example, DL algorithms require a large number of fast IO interactions. Having access to sufficient space to store potentially larger datasets is beneficial. Also, the time needed to send data from the external storage to the GPU should be small to assure that the GPUs have sufficient data to perform well without bottleneck. Such management is vital to be taught within education as the entirety of ML depends on the organization of data~\cite{shapiro}.
+\item {\bf IO Data Management.} One other important lesson is the efficient and effective use of data stores to execute. For example, DL algorithms require a large number of fast IO interactions. Having access to sufficient space to store potentially larger datasets is beneficial. Also, the time needed to send data from the external storage to the GPU should be small to ensure that the GPUs have sufficient data to perform well without bottleneck. Such management is vital to be taught within education as the entirety of ML depends on the organization of data~\cite{shapiro}.
 
 \item {\bf Data Analysis.} The examples provide valuable input to further enhance abilities to conduct non-trivial data analysis through advanced Python scripts while integrating them in coordinated runs to analyze log files that are created to validate the numerical stability of the benchmarks. This includes the utilization of popular data analysis libraries (such as Pandas) as well as visualization frameworks (such as Seaborn). It also allows students to focus on identifying a result that can be communicated in a professional manner.
 
@@ -451,11 +495,11 @@ From our experiences with these various efforts, we found that the following les
 
 \subsubsection{MLCommons Deep-Learning-based Proposed Course Curriculum}
 
-We can utilize the MLCommons effort to center a course curriculum around it. For this to work, the course can focus on deep learning while using examples from MLCommons benchmarks as well as additional enhancements into other topics that may not be covered.
+In this section we explore the idea to potentially create a course curriculumn 
+utilizing the MLCommons effort. For this to work and focus on MLCommons, the course can focus on deep learning while using examples from MLCommons benchmarks as well as additional enhancements into other topics that may not be covered.
 
-In contrast to other courses that may only focus on DL techniques, this course will have the requirement to utilize significant computational resources that are for example available on many campuses as part of an HPC or a national scale facility such as NSF's Access. Alternatively, Google Colab can be used; however, it will have the disadvantage of not using HPC resources from local or national HPC centers.
+In contrast to other courses that may only focus on DL techniques, this course will have the requirement to utilize significant computational resources that are for example available on many campuses as part of an HPC or a national scale facility such as NSF's Access. Alternatively, Google Colab can be used; however, it will have the disadvantage of not using HPC resources from local or national HPC centers as discussed earlier.
 
-The curriculum is divided into several sections that can be taught over a semester in either a graduate or undergraduate class or a combination thereof.
 
 \begin{enumerate}
   
@@ -470,16 +514,38 @@ The curriculum is divided into several sections that can be taught over a semest
 \item{\bf Natural Language Processing:} As NLP has such a big impact on industry and academia additional lectures in that area are presented. This includes large language models, analyzing text, applications of NLP, language translation, and sentiment analysis. Practical examples are introduced while looking at ChatGPT. From MLCommons, the applications DLRM, BERT, and RNN-T are discussed.
 
 \item{\bf Project Presentations:} The last part of the class is focused on a project presentation that students can conduct in a team or individually. It should showcase an application and performance results on one or multiple HPC data systems, or include an improvement to an existing MLCommons benchmark. It is expected that the students write a high-quality project report. Ideally, each team will submit its result to MLCommons. A good start here is the Science Working Group as it provides rolling submissions and its focus is accuracy and not speed, which is often a topic of interest in academia.
+
+\item{\bf Submitting Expanding MLCommons Benchmarks:} The results obtained can be also submitted to MLCommons. Here we see two opportunities. First, the submission of results from standardized benchmmarks provided by MLCOmmons, and second, the inclusion of new scentific application results submitted to the MLCommons Science Working group.
   
 \end{enumerate}
 
-Adaptations of this material are possible and can be made accordingly to stay up to date with community AI developments as well as efforts newly covered in MLCommons. The semester-long project is accompanied by bi-weekly practical mini-assignments showcasing selected results and implementations of a particular topic. The final outcome will be a project report. Grading and integration can be done based on the instructors and the universities course requirements that university policies may govern. Practically, we believe that grading the project will be sufficient; however, we observed that weekly graded assignments may be needed to compete with other weekly homework-oriented graded classes that require immediate attention by the students.
 
 
-\subsection{Earthquake Forecasting}
+Adaptations of this material are possible and can be made accordingly to stay up to date with community AI developments as well as efforts newly covered in MLCommons. The semester-long project is accompanied by bi-weekly practical mini-assignments showcasing selected results and implementations of a particular topic. The final outcome will be a project report. Grading and integration can be done based on the instructors and the university course requirements that university policies may govern. Practically, we believe that grading the project will be sufficient; however, we observed that weekly graded assignments may be needed to compete with other weekly homework-oriented graded classes that require immediate attention by the students.
+The curriculum can be divided into several sections that can be taught over a semester in either a graduate or undergraduate class or a combination thereof. The curriculum could be used in its entirety, or selected aspects could be taught. 
+
+\begin{tcolorbox}
+Summary Section \ref{sed:edu}:
+
+\begin{itemize}
+
+\item {\bf Challenges:} {\it Students lack knowledge of software carpentry despite taking programming and AI classes at universities. Software carpeting tools such as terminals, command line tools, and IDEs are not sufficiently utilized although they provide significant benefits for professional code development and management of shared resources. Today's DL students often have only knowledge about Jupyter notebooks or Google Collab resulting in one cell at a time oriented programming rather than a proper more sophisticated software engineering approach. Using computing resources at HPC centers may pose a considerable on-ramp hurdle especially when combined with queuing systems and container technologies that vary in their implementation between centers and specialized documentation must be available.}
+\item {\bf Opportunities:} {\it Software carpeting could be offered as an additional class and made a prerequisite for taking AI classes, or become an integral part of the DL experience. This should include learning about terminal commands, accessing queuing systems, IDEs, code management, and collaborative code development going beyond the usage of Jupyter notebooks. Benchmark carpentry should be offered in addition to software carpentry while focusing on unique aspects of reviewing common benchmark practices and applying them to DL applications. Tools such as cloudmesh used in several MLCommons applications allow leveraging creating simple standardized interfaces to time-based benchmarks and the display of the results in a human-readable form. Exposing students to knowledge about shared HPC resources used for DL rather than just reusing cloud resources offers a deeper understanding of resource-efficient resource utilization in a resource-starved environment as well as the costs associated with them having an impact on affordable benchmarks. MLCommons covers a wide variety of topics and it is conceivable to develop a comprehensive course curriculum around it that could be either used in its entirety or adapted based on interests as well as selectively taught. To address variations in the HPC technologies used, center documentation can be developed by an organization, but may have to be adapted to simplify it while focusing on storage, compute, and container technologies and specifics offered. This course curriculum provides the opportunity to emphasize teamwork while focussing on a larger project.}
+
+\end{itemize}
+
+\end{tcolorbox}
+
+
+
+\section{Earthquake Forecasting}
 \label{sec:eq}
 
-To prove the efficacy of the aforementioned recommended coding practices and standards of machine learning education, we now demonstrate an application of these practices: the earthquake benchmark, coined {\em TEvolOp} (Time Series Evolution Operator). This machine learning application demonstrates the results achieved from various computing environments with the help of the cloudmesh toolkit.
+While we so far have focused on the general applicability of MLCommons benchmarks as potential options to develop an educational curriculum, we focus next on an exemplar for a potential semester-long project and their insights towards the goal of using it as an educational tool.
+
+Although MLCommons has many applications we decided to use an application from the MLCommons Science Working Group as we most closely work as part of this group. It has four major benchmarks as documented in \cite{las-22-mlcommons-science} and \cite{las-2023-escience}. 
+
+However, here we focus on the earthquake benchmark code that creates a Time  Series Evolution Operator (TEvolOp) to be applied to several scientific applications such as hydrology and COVID-19 predictions. We focus on this application because in contrast to other MLCommons applications it is written as a Jupyter notebook and therefore intercepts with many educational efforts using Jupyter notebooks. We restrict our report to the efforts related to earthquake forecasting as it is one of the first applications from the MLCommons Science Working Group that have been used in educational class projects. 
 
 The scientific objective of the earthquake benchmark is to extract the evolution using earthquake forecasting while utilizing time series forecasting.
 
@@ -570,13 +636,31 @@ This data can be input based on the time series. Backward data can be taken up t
 More details of the TFT model applied to the earthquake application are presented in ~\citep{fox2022-jm}. More general details about TFT models can be found in~\citep{TFT-21}.
 
 
+
 \subsubsection{Insights into Development of the Code}
 
-The original code was developed with the goal to create a DL method called {\em TEvolOp} to apply special time-series evolution for multiple applications including earthquake, hydrology, and COVID prediction. The code was presented in a large Python Jupyter Notebook on Google Colab.  Due to the integration of multiple applications (hydrology and COVID), the code was difficult to understand and maintain. For this reason, the total number of lines of 13500 was reduced by more than 2400 lines when the hydrology and the COVID code were removed. However, at the same time, we restructured the code and reached a final length of about 11100 lines of code. The original code contained all hyperparameters and needed to be changed every time a hyperparameter was modified.  The code included all definitions of variables and hyperparameters in the code itself. The code could be further made shorter by separating the model code into a library.
+The original code was developed with the goal of creating a DL method called {\em TEvolOp} to apply special time-series evolution for multiple applications including earthquake, hydrology, and COVID prediction. The code was presented in a large Python Jupyter notebook on Google Colab.  Due to the integration of multiple applications (hydrology and COVID), the code is complex and challenging to understand and maintain. For this reason, the total number of lines of 13500 was reduced by more than 2400 lines when the hydrology and the COVID code were removed. However, at the same time, we restructured the code and reached a final length of about 11100 lines of code. The code was kept as a Jupyter notebook in order to test the applicability of benchmarking applications presented at notebooks rather than converting it into a pure Python script. The code included all definitions of variables and hyperparameters in the code itself. This means that the original code needed to be changed before running it, in case a hyperparameter needed to be modified.  
 
-This code has some issues that future versions ought to address. First, the code includes every aspect that is not covered by TensorFlow and also contains a customized version of TFT. Second, due to this the code is very large, and manipulating and editing the code is time-consuming and error-prone. Third, as many code-related parameters are managed still in the code running the same code with various parameters becomes cumbersome. In fact, multiple copies of the code need to be maintained when new parameters are chosen, instead of making such parameters part of a configuration file. Hence we started moving towards the simplification of the code by introducing the concept of libraries that can be pip installed, as well as adding gradually more parameters to configuration files that are used by the program.
+This code has some challenges that future versions ought to address. First, the code includes every aspect that is not covered by TensorFlow and also contains a customized version of TFT. Second, due to this the code is very large, and manipulating and editing the code is time-consuming and error-prone. 
+Third, as many code-related parameters are managed still in the code running the same code with various parameters becomes cumbersome. In fact, multiple copies of the code need to be maintained when new parameters are chosen, instead of making such parameters part of a configuration file. Hence we started moving towards the simplification of the code by introducing the concept of libraries that can be pip installed, as well as adding gradually more parameters to configuration files that are used by the program.
 
-The advantage of using a notebook is that it can be augmented with lots of graphs that give updates on the progress and its measurement accuracy. It is infeasible for students to use and replicate the run of this notebook on their own computers as the runtime can be up to two days. Students use their computers for other purposes and need to be able to use them on the go. Often HPC centers provide interactive jobs in the batch queues, but this is also insufficient. Instead, we opted to use Jupyter notebooks with a special batch script that internally uses Papermill \citep{www-papermill} and leverage an HPC queueing system to execute the notebook in the background. Papermill will also include all cells that have to be updated during runtime, including graphics. The script we developed needed to be run multiple times and with different hyperparameters such as the number of epochs.  As the HPC system is a heterogeneous GPU system having access to A100, V100, P100, and RTX2080 graphics cards, the choice of the GPU system must be able to be configurable. Hence, the batch script includes the ability to also read in the configuration file and adapt itself to the needed parameters. This is controlled by a sophisticated but simple batch job generator which we discuss in Section~\ref{sec:workflow-sbatch}.
+The advantage of using a notebook is that it can be augmented with lots of graphs that give updates on the progress and its measurement accuracy. It is infeasible for students to use and replicate the run of this notebook on their own computers as the runtime can be up to two days. Naturally, students use their computers for other purposes and need to be able to use them on the go not having the luxury to dedicate such a prolonged time to running a single application. Hence it is desirable to use academic HPC centers that provide interactive jobs in the batch queues in which Jupyter notebooks could be run. However, running such a time-consuming interactive Job is also not possible in most cases. Instead, we opted to use Jupyter notebooks with a special batch script that internally uses Papermill \citep{www-papermill} and leverages an HPC queueing system to execute the notebook in the background. Papermill will execute the notebook and include all cells that have to be updated during runtime, including graphics in a separate runtime copy. The script we developed needed to be run multiple times with different hyperparameters such as the number of epochs.  As the HPC system is a heterogeneous GPU system having access to A100, V100, P100, and RTX2080 graphics cards, the choice of the GPU system must be able to be configurable. Hence, the batch script includes the ability to also read in the configuration file and adapt itself to the needed parameters so such parameters can be separated from the actual notebook. This is controlled by a sophisticated but simple batch job generator which we discuss in Section~\ref{sec:workflow-ee}.
+
+
+\begin{tcolorbox}
+Summary choosing the Earthquake benchmark Application:
+
+\begin{itemize}
+\item {\bf Opportunities:} {\it Using a scientific application as a project within the educational efforts allows students to identify pathways on how to apply DL knowledge to such applications.
+
+Furthermore, we have chosen an application written as Jupyter notebook to identify if students have an easier time with it and to see if benchmarks can be easily generated if notebooks are used instead of just Python programs. We identify that existing tools such as Papermil can provide the ability to run Jupyter notebooks in queueing systems while running them as tasks in the background and capturing cell output}
+
+\item {\bf Challenges:} {\it Understanding a scientific application can be quite complex. Having a full implementation using DL for it, still provides challenges as data and algorithm dependencies need to be analyzed and domain knowledge needs to be communicated to gain deeper understanding. It is important to separate the runtime environment variables as much as possible from the actual notebook. The coordination of such variables can be challanging and tools such as cloudmesh-ee make such integration simple.}
+\end{itemize}
+\end{tcolorbox}
+
+
+
 
 %libraries for mlcommons benchmarking, cloudmesh
 %portable way to define data locations via config
@@ -589,17 +673,16 @@ The advantage of using a notebook is that it can be augmented with lots of graph
 \subsection{Insights into Data Management from the Earthquake Forecasting Application}
 \label{sec:eq-data}
 
-In data management, we are concerned with various aspects of the data set, the data compression and storage, as well as the data access speed. We discuss insights into each of them next.
+In data management, we are concerned with various aspects of the data set, the data compression and storage, as well as the data access speed. We discuss insights into each of them that we obtained while looking at the earthquake forecast application.
 
 \subsubsection{Data Sets}
 
-
-When dealing with datasets we typically encounter several issues.  These issues are addressed by the MLCommons benchmarks and data management activities so that they provide ideal candidates for education without spending an exorbitant amount of time on data. Such issues typically include access to data without privacy restrictions, data preprocessing that makes the data suitable for deep learning, data labeling in case they are part of a well-defined MLCommons benchmark. Other issues include data bias, noisy or missing data, as well as overfitting while using training data. Typically the MLCommons benchmarks will be designed to limit such issues. However, some benchmarks such as the science group benchmarks which are concerned with improving the science have the option to potentially address these issues in order to improve the accuracy. This could include even injecting new data and different preprocessing methods.
+When dealing with datasets we typically encounter several issues.  These issues are addressed by the MLCommons benchmarks and data management activities so that they provide ideal candidates for education without spending an exorbitant amount of time on data. Such issues typically include access to data without privacy restrictions, data preprocessing that makes the data suitable for deep learning, and data labeling in case they are part of a well-defined MLCommons benchmark. Other issues include data bias, noisy or missing data, as well as overfitting while using training data. Typically the MLCommons benchmarks will be designed to limit such issues. However, some benchmarks such as the science group benchmarks which are concerned with improving the science have the option to potentially address these issues in order to improve the accuracy. This could include even injecting new data and different preprocessing methods.
 
 
 \subsubsection{Data Compression}
 
-An issue of utmost importance, especially for large data sets, is how the data is represented. For example, we found that the original dataset was 11GB big for the earthquake benchmark. However, we found the underlying data was a sparse matrix, and was easily compressed by a factor of 100 with lossless compression. This is significant, as in this case the entire dataset can be stored in GitHub or moved quickly into memory. The compressed xz archive file is only 21 MB and downloading only the archive file using wget takes 0.253s on the HPC. In case the dataset and its repository are downloaded with Git, we note that the entire Git repository is 108MB~\citep{eq-data}. On the RIvanna Supercomputer, downloading this compressed dataset only takes 7.723s. Thus, it is preferred to just download the data using wget. In both cases, the data is compressed. To uncompress, the data it will take an additional 1 minute and 2.522 seconds. However, if we were to download the data in uncompressed form it would take approximately 3 hours and 51 seconds. This is due to the fact that the data is sparse and the compression allows a significant reduction needed to store this data.
+An issue of utmost importance, especially for large data sets, is how the data is represented. For example, we found that the original dataset was 11GB big for the earthquake benchmark. However, we found the underlying data was a sparse matrix, and was easily lossless compressed by a factor of 100. This is significant, as in this case the entire dataset can be stored in GitHub or moved quickly into memory. The compressed xz archive file is only 21 MB and downloading only the archive file using wget takes 0.253s on the HPC. In case the dataset and its repository are downloaded with Git, we note that the entire Git repository is 108MB~\citep{eq-data}. On the Rivanna Supercomputer, downloading this compressed dataset only takes 7.723s. Thus, it is preferred to just download the data using wget. In both cases, the data is compressed. To uncompress, the data it will take an additional 1 minute and 2.522 seconds. However, if we were to download the data in uncompressed form it would take approximately 3 hours and 51 seconds. The reduction in time is due to the fact that the data is sparse and the compression allows a significant reduction needed to store and thus transfer the data.
 
 From this simple example, it is clear that MLCommons benchmarks can provide students insights into how data is managed and delivered to for example large-scale computing clusters with many nodes while utilizing compression algorithms. We will next discuss insights into infrastructure management while using filesystems in HPC resources.  While often object stores are discussed to host such large datasets it is imperative to identify the units of storage in such object stores.  In our case, an object store that would host individual data records is not useful due to the vast number of data points. Therefore the best way to store this data even in an object store is as a single entry of compressed overall data.  Other MLCommons Science working group benchmarks have datasets in the order of 500GB to 12TB. Other tools, such as Globus transfer, can be used to download larger datasets.  Obviously, these sets need special considerations when placed on a computing system where the students' storage capacities may be limited by policy.
 
@@ -608,40 +691,11 @@ From this simple example, it is clear that MLCommons benchmarks can provide stud
 
 Besides having proper data and being able to download it efficiently from the location of storage, it is imperative to be able to access it in such a way that the GPUs used for deep learning are being fed with enough data without being idle. Our performance results were somewhat surprising and had a devastating effect on the overall execution time. We found that the performance was more than twice as fast on the personal computer while using an RTX3090 in contrast to using the HPC center recommended filesystems when using an A100. For this reason, we have made a simple test and measured the performance to read access the various file systems. The results are shown in Table~\ref{tab:file-performance} which include various file systems at the University of Virginia's Rivanna HPC but also a comparison with a personal computer.
 
-\begin{comment}
-\begin{table}[htb]
+\begin{table}
   \caption{File transfer performance of various file systems on Rivanna and personal computers.}
   \label{tab:file-performance}
   \begin{center}
-  {\footnotesize 
-  \begin{tabular}{|llrrrp{4.5cm}|}
-    \hline
-    Machine & File systems & \multicolumn{2}{l}{Bandwidth Performance} & Speedup & Description \\
-    \hline
-    \hline
-    Rivanna & \verb|/scratch/$USER  (sbatch)|     & 30.6 MiB/s & 32.1 MB/s  & 1.0 & shared scratch space, batch mode \\
-    Rivanna & \verb|/scratch/$USER (interactive)| & 33.2 MiB/s &  34.8 MB/s  & 1.1 & shared scratch space, interactive \\
-    Rivanna & \verb|/home/$USER|                    & 40.9 MiB/s & 42.9 MB/s  & 1.3 & users home directory \\
-    MacM1   & \verb|/| & 93.2MiB/s & 97.7MB/s & 3.0 & users homedir \\
-    Rivanna & \verb|/project/$PROJECTID |     & 100 MiB/s  & 105 MB/s  & 3.3 & project specific filesystem \\
-    Personal Computer  & \verb|c:| & 187 MiB/s  & 196 MB/s  & 6.1 &  file system on a personal computer \\
-    Rivanna & \verb|/tmp|                         & 271 MiB/s  & 285 MB/s  & 8.9 & temporary file system on a node \\
-    \hline
-    Special Node Rivanna & \verb|/localscratch|  &  384 MiB/s & 403 MB/s  & 12.6 & NVMe storage of the node\\
-    RAM disk Rivanna  & \verb|/dev/shm/*|      &             461 MiB/s & 483 MB/s  & 15.1 & simulated filesystem in a RAM disk\\
-    Personal Computer & \verb|/home/$USER| & 579 MiB/s & 607 MB/s &  18.9 & Sabrent 2TB NVMe\\
-    \hline                                             
-    \end{tabular}
-  }
-    \end{center}
-\end{table}
-\end{comment}
-
-\begin{table}[htb]
-  \caption{File transfer performance of various file systems on Rivanna and personal computers.}
-  \label{tab:file-performance}
-  \begin{center}
-  {\footnotesize 
+ {\footnotesize 
     \begin{tabular}{|llrrp{4.5cm}|}
       \hline
     Machine & File systems & Bandwidth & Speedup & Description \\
@@ -666,10 +720,22 @@ Besides having proper data and being able to download it efficiently from the lo
   
 
 
-Based on this observation, it was of great disadvantage to consider running the earthquake benchmark on the regularly configured HPC  nodes as they ran on some resources for almost 24 hours due to the policy limit the Rivanna system allows for one job. Hence, we were allowed to use a special compute node that has additional NVMe storage available and accessible to us. On those nodes (in the Table listed as \verb|/localscratch|), we were able to obtain a very suitable performance for this application while having a 10 times fold increase in access in contrast to the scratch file system and almost double the performance given to us on the project file system. The \verb|/tmp| system -- although fast -- was not sufficiently large for our application and also performs slower than the \verb|/localscratch| set up for us. In addition, we also made an experiment using a shared memory-based hosted filesystem in the nodes RAM.
+Based on this observation, it was of great disadvantage to consider running the earthquake benchmark on the regularly configured HPC  nodes as they ran on some resources for almost 24 hours due to the policy limit the Rivanna system allows for one job. Hence, we were allowed to use a special compute node that has additional NVMe storage available and accessible to us. On those nodes (in the Table listed as \texttt{/localscratch}), we were able to obtain a very suitable performance for this application while having a 10 times fold increase in access in contrast to the scratch file system and almost double the performance given to us on the project file system. The \texttt{/tmp} system -- although fast -- was not sufficiently large for our application and also performs slower than the \texttt{/localscratch} set up for us. In addition, we also made an experiment using a shared memory-based hosted filesystem in the nodes RAM.
 
-What we learn from this experience is that an HPC system must provide a fast file system locally available on the nodes to serve the GPUs adequately. The computer should be designed from the start to not only have the fastest possible GPUs for large data processing but also have a very fast filesystem that can keep up with the data input requirements presented by the GPU. Furthermore, in case updated GPUs are purchased, it is not sufficient to just take the previous generation motherboard and CPU processor and memory but to update the hardware components and include a state-of-the-art compute node. This often prevents the repurposing of the node while adding just GPUs due to inefficient hardware components that can not keep up with the GPUs capabilities.
+What we learn from this experience is that an HPC system must provide a fast file system locally available on the nodes to serve the GPUs adequately. The computer should be designed from the start to not only have the fastest possible GPUs for large data processing but also have a very fast filesystem that can keep up with the data input requirements presented by the GPU. Furthermore, in case updated GPUs are purchased, it is not sufficient to just take the previous generation motherboard and CPU processor and memory but to update the hardware components and include a state-of-the-art compute node. This often prevents the repurposing of the node while adding just GPUs due to inefficient hardware components that can not keep up with the GPU's capabilities.
 
+\begin{tcolorbox}
+Summary of data management aspects:
+
+\begin{itemize}
+
+\item {\bf Challenges:} {\it Scientific applications require at times large-scale storage spaces that can be provided while using HPC compute centers. The speed of accessing the data depends on where the data is and can be stored in the HPC system. Performance between systems can vary drastically showcasing differences between shared, non-shared, NVMe-based storage, and in-memory storage volumes.}
+
+
+\item {\bf Opportunities:} {\it Through Benchmarking awareness of choosing appropriate storage options to access the input data can be provided. As scientific data is often sparse it could be significantly compressed and the time to access the data to move it and uncompress it is often much smaller than the time one needs to load the uncompressed data. Access to a server to its local storage system is essential and must be provided by the HPC center. Instead of old-fashioned HDD or even SSD's the fastest NVMe storage should be provided.}
+
+\end{itemize}
+\end{tcolorbox}
   
 
 
@@ -678,12 +744,13 @@ What we learn from this experience is that an HPC system must provide a fast fil
 
 As we are trying to benchmark various aspects of the applications and the systems utilizing Deep Learning, we need to be able to easily formulate runtime variables that take into account different control parameters either of the algorithm or the underlying system and hardware.
 
-Furthermore, it is beneficial to be able to coordinate benchmarks on remote machines either on a single system or while using multiple systems in conjunction with hybrid and heterogeneous multi-HPC systems. These concepts are similar to those found in cloud and Grid computing for job services \citep{las-infogram} and for workflows \citep{las-workflow,las07-workflow}. However, the focus here is that the services provided are controlled by the application user and not necessarily by the cloud or HPC provider. Thus we distinguish the need for a workflow service that can utilize heterogeneous HPC systems while leveraging the same parameter set to conduct a benchmark for comparison. Such a framework was presented by von Laszewski, Fleischer, et al. in \citep{las-22-arxiv-workflow-cc} and is based on our earlier work on workflows in clouds and Grids.
+Furthermore, it is beneficial to be able to coordinate benchmarks on remote machines either on a single system or while using multiple systems in conjunction with hybrid and heterogeneous multi-HPC systems. 
+Thus if we change parameters for one infrastructure it should be possible to easily and automatically be applied to another infrastructure to identify the impact on both.
+These concepts are similar to those found in cloud and Grid computing for job services \citep{las-infogram} and for workflows \citep{las-workflow,las07-workflow}. However, the focus here is that the services managing the execution are provided and controlled by the application user and not necessarily by the cloud or HPC provider. Thus we distinguish the need for a workflow service that can utilize heterogeneous HPC systems while leveraging the same parameter set to conduct a benchmark for comparison either varying parameters on the same or other systems. Such a framework is presented by von Laszewski, et al. in \citep{las-22-arxiv-workflow-cc,las-2023-escience} and is based on our earlier work on workflows in clouds and Grids.
 
 In addition, we need a mechanism to create various runs with different parameters. One of the issues we run into is that often our runtime needs exceed that of a single job submission. Although job arrays and custom configurations exist, they often lead to longer run times that may not be met by default policies used in educational settings. Thus it is often more convenient to create jobs that fall within the limits of the HPC center's policies and split the benchmarking tasks across a number of jobs based on the parameter permutations. This allows also easier parallelization.
 
-For this reason, von Laszewski, Knuuti, et al. have implemented {\it
-  cloudmesh-sbatch} that provides a batch job generator, creating parallel jobs based on a permutation of experiment parameters that are defined in a configuration file. The tool will create for each job its own subdirectory, copies the code and configuration files into it, and creates a shell script that lists all jobs to be submitted to the queuing system.
+For this reason, von Laszewski, et al. have implemented the cloudmesh Experiment Executor ({\it cloudmesh-ee}) that provides an easy-to-use batch job generator, creating parallel jobs based on a permutation of experiment parameters that are defined in a configuration file. The tool creates for each job its own subdirectory, copies the code and configuration files into it, and creates a shell script that lists all jobs to be submitted to the queuing system. This has also the advantage that Jupyter notebooks can easily be integrated into this workflow component as a local copy is generated in each directory and the output for each cell is created during the program execution.
 
 Furthermore, we need a simple system to measure the performance and energy, while communicating the data in an easy fashion to the users. This system was developed by von Laszewski and contains two components (a) a general stopwatch (b) a mechanism to monitor the GPU as discussed in \ref{sec:monitoring}.
 
@@ -692,7 +759,7 @@ We describe these systems briefly while focusing on their applicability for benc
 \subsubsection{Cloudmesh Monitoring}
 \label{sec:monitoring}
 
-To conduct monitoring of time we have provided for years a convenient StopWatch package in Python \citep{cloudmesh-stopwatch}.  It is very easy to use and is focused on runtime execution monitoring of time-consuming portions in a single-threaded Python application. Although MLCommons provides their own time measuring component, called mllog, it is clear from the name that the focus is to create entries in a log file that is not easily readable by a human and may require post-processing to make it usable. In contrast, our library contains not only simple labeled \verb|start| and \verb|stop| methods, it also provides a convenient mechanism to print human-readable customizable performance tables. However, it is possible to also generate a result table in other formats such as CSV, JSON, YAML, TXT, and others).  Human readability is especially important during a debugging phase when benchmarks are developed. Moreover, we also have developed a plugin interface to mllog, that allows us to automatically create mllog entries into an additional log file, so the data may be used within MLCommons through specialized analytics programs. A use case is depicted next (we have omitted other advanced features such as function decorators for the StopWatch to keep the example simple).
+To conduct monitoring of time we have provided for years a convenient StopWatch package in Python \citep{cloudmesh-stopwatch}.  It is very easy to use and is focused on runtime execution monitoring of time-consuming portions in a single-threaded Python application. Although MLCommons provides their own time measuring component, called mllog, it is clear from the name that the focus is to create entries in a log file that is not easily readable by a human and may require post-processing to make it usable. In contrast, our library contains not only simple labeled \texttt{start} and \texttt{stop} methods, it also provides a convenient mechanism to print human-readable customizable performance tables. However, it is possible to also generate a result table in other formats such as CSV, JSON, YAML, TXT, and others).  Human readability is especially important during a debugging phase when benchmarks are developed. Moreover, we also have developed a plugin interface to mllog, that allows us to automatically create mllog entries into an additional log file, so the data may be used within MLCommons through specialized analytics programs. A use case is depicted next (we have omitted other advanced features such as function decorators for the StopWatch to keep the example simple).
 
 {\fontsize{6pt}{6pt}\selectfont
 \begin{lstlisting}[style=python]
@@ -742,7 +809,7 @@ The overall architecture is depicted in Figure \ref{fig:cc-2}A. It showcases a l
     \centering\includegraphics[width=1.0\columnwidth]{images/cloudmesh-sbatch-new}
     
     
-    {\bf (B)} Architecture of Workflow Script Batch Generator cloudmesh-sbatch.
+    {\bf (B)} Architecture of Workflow Script Batch Generator cloudmesh-ee.
 
     \caption{Architecture of the Cloudmesh Workflow Service Framework.}
     \label{fig:cc-2}
@@ -799,17 +866,17 @@ We have tested the framework while running various MNIST application examples, i
 Figure \ref{fig:cc-3}A shows the REST specification and \ref{fig:cc-3}B shows the graphical user interface.
 
 \subsubsection{Parameterized Experiment Workflow Job Generator}
-\label{sec:workflow-sbatch}
+\label{sec:workflow-ee}
 
 In traditional machine learning workflows, hyperparameter tuning and configuration are key elements in assessing and optimizing the performance of models. However, scaling hyperparameters for highly parallel execution with heterogeneous hardware is complex.
 
-Cloudmesh-sbatch is a hyperparameter and configuration management toolkit designed to address the generation of batch jobs with a consistent and configurable interface based on hyperparameter values across multiple development toolchains. One of its functions is to create batch jobs based on parameterized job specifications and configuration files.  Cloudmesh-sbatch is part of the Cloudmesh toolkit, a set of tools and libraries for managing cloud and HPC resources from the command line, REST interfaces, or GUI's.  Cloudmesh-sbatch can use a variety of queuing systems and submission commands. Currently, we provide interfaces to Slurm, LSF, and ssh. As the original system was developed first for Slurm sbatch submissions we used the name cloudmesh-sbatch. In the future, we may find a better name showcasing the generality of the system while using arbitrary queuing systems and submission commands.
+Cloudmesh-ee is a hyperparameter and configuration management toolkit designed to address the generation of batch jobs with a consistent and configurable interface based on hyperparameter values across multiple development toolchains. One of its functions is to create batch jobs based on parameterized job specifications and configuration files.  Cloudmesh-sbatch is part of the Cloudmesh toolkit, a set of tools and libraries for managing cloud and HPC resources from the command line, REST interfaces, or GUI's.  Cloudmesh-ee can use a variety of queuing systems and submission commands. Currently, we provide interfaces to Slurm, LSF, and ssh. As the original system was developed first for Slurm sbatch submissions we used the name cloudmesh-ee. In the future, we may find a better name showcasing the generality of the system while using arbitrary queuing systems and submission commands.
 
-The architecture of the cloudmesh-sbatch framework is depicted in Figure \ref{fig:cc-2}B.
+The architecture of the cloudmesh-ee framework is depicted in Figure \ref{fig:cc-2}B.
 
-Cloudmesh-sbatch differentiates itself from other template engines through is its ability to generate a cartesian product (permutation) of hyperparameter to form independent {\it experiment} execution profiles, making it trivial to scale an experiment from one execution to thousands of configurations based on the ranges and their unique combinations.  The resulting output provides a generated Slurm or LSF script and a YAML configuration file representing the specific hyperparameters.  By managing many highly configurable jobs with cloudmesh-sbatch, the focus is placed on what hyperparameters to use for experiments and reduce the possibility of human error when running experiments over a range of hyperparameters.
+Cloudmesh-ee differentiates itself from other template engines through is its ability to generate a cartesian product (permutation) of hyperparameter to form independent {\it experiment} execution profiles, making it trivial to scale an experiment from one execution to thousands of configurations based on the ranges and their unique combinations.  The resulting output provides a generated Slurm or LSF script and a YAML configuration file representing the specific hyperparameters.  By managing many highly configurable jobs with cloudmesh-ee, the focus is placed on what hyperparameters to use for experiments and reduce the possibility of human error when running experiments over a range of hyperparameters.
 
-Cloudmesh-sbatch takes two configuration files. The first is a YAML file that includes all parameters used by the benchmark including an experiment section that defines the cartesian product. It will create Slurm scripts via cloudmesh-sbatch while
+Cloudmesh-ee takes two configuration files. The first is a YAML file that includes all parameters used by the benchmark including an experiment section that defines the cartesian product. It will create Slurm scripts via cloudmesh-ee while
 
 \begin{enumerate}
   \item using a unique directory for the experiment
@@ -869,16 +936,16 @@ An example of a batch script in the template markup is
 
 The variables can easily be referred to with a dot notation in the templates.  Variables in the YAML file can also be replaced so it is possible to use abbreviations easily and in a consistent fashion in the YAML file as well as in the batch script.
 
-The configuration files and cloudmesh-sbatch can be configured with parameters so that the files and directories are placed in the right location and repeatable experiments are created not only on the original machine but the template can also be easily adapted onto other machines. An example of a variable replacement specification in the YAML file is given for the \verb|data| value where not only the operating system variable \verb|os.USER| is replaced, but also the variable \verb|{application.name}|. Obviously, this is a significant functionality enhancement to a typical YAML file.  Multiple values are only possible under the experiment tag, where a variable with multiple values is assigned a string of comma-separated values.
+The configuration files and cloudmesh-ee can be configured with parameters so that the files and directories are placed in the right location and repeatable experiments are created not only on the original machine but the template can also be easily adapted onto other machines. An example of a variable replacement specification in the YAML file is given for the \verb|data| value where not only the operating system variable \verb|os.USER| is replaced, but also the variable \verb|{application.name}|. Obviously, this is a significant functionality enhancement to a typical YAML file.  Multiple values are only possible under the experiment tag, where a variable with multiple values is assigned a string of comma-separated values.
 
 One can choose a number of important parameters as part of the permutation strategy to create different experiments. Common variables are names of graphics cards (if available), memory, file systems used, versions of Python, versions of TensorFlow, epochs, learning rate, and many other important parameters that can influence the benchmark.  The reason why we only allow the parameters with variation under \verb|experiment| is to assure that there is no confusion with other parameters that may not be modified and instead only represent a single value. However, variables under experiment are also allowed to have just a single value.  Another interesting case is the introduction of a repeat parameter, allowing the program to be executed multiple times in order to for example support patterns of competition or collaboration while selecting the best values, or creating averages.
 
 
-The final output of cloudmesh-sbatch is a shell script that contains all jobs that are to be executed with the defined permutations over the parameters.
+The final output of cloudmesh-ee is a shell script that contains all jobs that are to be executed with the defined permutations over the parameters.
 
 One nice side effect of this is that the jobs in the file can be run in parallel and have the queuing system take over the scheduling of the job following the system-defined queuing policies. However, it may also be possible to create a {\it collaborative group} submission, using our earlier introduced collaborative pattern, where multiple users submit a portion of the jobs so that policies restricting the number of jobs per user can be avoided. Furthermore, if access to multiple HPC machines is available the jobs could be split among the different machines. However, in that case, time measurements may not be a useful parameter to benchmark. However, as in the science group, we are concerned about accuracy the combination of a system comprised of multiple resources is meaningful.
 
-Our progress with the earthquake benchmark would not have been possible if we did not have cloudmesh-sbatch. One important aspect is that the management of thousands of jobs that we ran was simplified and the jobs could be created easily while fostering reproducibility. The resulting jobs were run over a time period of a month, while each job took many hours to complete.
+Our progress with the earthquake benchmark would not have been possible if we did not have cloudmesh-ee. One important aspect is that the management of thousands of jobs that we ran was simplified and the jobs could be created easily while fostering reproducibility. The resulting jobs were run over a time period of a month, while each job took many hours to complete.
 
 
 
@@ -902,7 +969,7 @@ The benchmarks we present in the next sections have been run on a number of comp
 
 The details of the machines are showcased in Table~\ref{tab:hwoverview}.
 
-\begin{table}[htb]
+\begin{table}
     \caption{Overview of the computing resources.}
     \label{tab:hwoverview}
     \begin{center}
@@ -947,7 +1014,7 @@ The original code targets three applications: earthquake forecasting, COVID pred
 
 One of the important lessons learned from working within an educational environment is to assure that experiments can be reproduced early on in the coding process. This not only includes saving the original data in an immutable storage facility but also to assure that the code and parameters of the code are preserved for each experiment. Specifically, we ensure this preservation by using configuration files and Singularity containers. 
 
-Code used during a development phase should not be used especially if they are developed with Python notebooks that could contain an {\em implicit
+Code used during a development phase should not be used especially if they are developed with Jupyter Python notebooks that could contain an {\em implicit
   hidden} state causing side effects. Hence, the benchmark 
 must be saved in a clean fashion so that no other result-impacting
 effects occur.
@@ -988,7 +1055,7 @@ However, for our experiments, we were only running the desktop for up to 33 epoc
   \label{fig:performance-projection}
 \end{figure}
 
-\begin{table}[htb]
+\begin{table}
     \caption{Runtime of the 2 epoch case in seconds}
     \label{tab:2-epoch-case}
     \begin{center}
@@ -1069,8 +1136,8 @@ From the table, we see that we achieve the best results using the parameters (ep
 Hence, although we are mostly interested in identifying the best accuracy value, it is also advantageous to reflect that data places the 90 epoch case above the other values, generally leading to better results (see Figure \ref{fig:NNSE-comparison-a100}A) for training.
 
 
-    \begin{table}[htb]
-      \caption{Ranking of the top 20 accuracy values.}\
+    \begin{table}
+    \caption{Ranking of the top 20 accuracy values.}\
       \label{tab:ranking-accuracy}
     
         {\bf (A)} The top 20 {\em average} accuracy values based on hyperparameters with 2, 30, 70, and 90 epochs.\
@@ -1151,7 +1218,7 @@ Hence, although we are mostly interested in identifying the best accuracy value,
 
 \begin{comment}
 
-\begin{table}[htb]
+\begin{table}
       \caption{Ranking of the top 20 accuracy values sorted by descending training NNSE datapoints.}\
       \label{tab:ranking-accuracy}
     
@@ -1436,7 +1503,7 @@ Students have now easy means to measure and improve through algorithmic means th
 
 % \TODO{GVL}{enhance the discussion section}
 
-This paper summarizes a large body of work that addresses multiple aspects of machine learning benchmarking. We identified that benchmarking can lead to a significant educational contribution to students and researchers. We identified that not only is software carpentry needed, but also {\em benchmark carpentry}, an effort that we termed in conjunction with the MLCommons Science Working Group. We have demonstrated that students are capable of conducting sophisticated benchmarks while dealing with complex system-related infrastructure and working with policies set by HPC compute centers that deal with fair resource management. To deal with this we have also developed a compute coordination and workflow management system in two components called \verb|cloudmesh-sbatch| and \verb|cloudmesh-cc| that allow benchmark jobs to be automatically generated from hyperparameter permutations. It also allows us to coordinate such benchmarks on different machines. We have identified the patterns of selection, cooperation, and competition which are part of a benchmark workflow. Furthermore, we have improved the original benchmark code in many aspects. To simplify benchmarking we also developed an easy-to-use \verb|StopWatch| that in contrast to the \verb|mllog| library used by MLCommons is simpler and is immediately humanly readable. Lastly, our benchmarks had a significant impact on the operation and accessibility of software in the educational cluster we used. Plans for new filesystem management and updated compute nodes excite us to conduct more such studies. We intend to submit our results to the MLCommons Science Working groups as earthquake forecasting is one of their benchmark codes and efforts.
+This paper summarizes a large body of work that addresses multiple aspects of machine learning benchmarking. We identified that benchmarking can lead to a significant educational contribution to students and researchers. We identified that not only is software carpentry needed, but also {\em benchmark carpentry}, an effort that we termed in conjunction with the MLCommons Science Working Group. We have demonstrated that students are capable of conducting sophisticated benchmarks while dealing with complex system-related infrastructure and working with policies set by HPC compute centers that deal with fair resource management. To deal with this we have also developed a compute coordination and workflow management system in two components called \verb|cloudmesh-ee| and \verb|cloudmesh-cc| that allow benchmark jobs to be automatically generated from hyperparameter permutations. It also allows us to coordinate such benchmarks on different machines. We have identified the patterns of selection, cooperation, and competition which are part of a benchmark workflow. Furthermore, we have improved the original benchmark code in many aspects. To simplify benchmarking we also developed an easy-to-use \verb|StopWatch| that in contrast to the \verb|mllog| library used by MLCommons is simpler and is immediately humanly readable. Lastly, our benchmarks had a significant impact on the operation and accessibility of software in the educational cluster we used. Plans for new filesystem management and updated compute nodes excite us to conduct more such studies. We intend to submit our results to the MLCommons Science Working groups as earthquake forecasting is one of their benchmark codes and efforts.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1448,7 +1515,7 @@ This paper summarizes a large body of work that addresses multiple aspects of ma
 \begin{verbatim}
 Cloudmesh Data Submodule - https://github.com/cloudmesh/cloudmesh-data
 Cloudmesh GPU Submodule - https://github.com/cloudmesh/cloudmesh-gpu
-Cloudmesh sbatch Submodule - https://github.com/cloudmesh/cloudmesh-sbatch 
+Cloudmesh ee Submodule - https://github.com/cloudmesh/cloudmesh-ee 
 \end{verbatim}
 }
 \end{comment}
@@ -1490,10 +1557,10 @@ The code is all in the public domain and available on GitHub at the following lo
   remote computing
   resources. \url{https://github.com/cloudmesh/cloudmesh-cc}
 
-\item {\bf cloudmesh-sbatch} -- Is a code to generate batch scripts for
+\item {\bf cloudmesh-ee} -- Is a code to generate batch scripts for
   hyperparameter studies high-performance computers so they can be
   executed on different supercomputers by multiple
-  accounts. \url{https://github.com/cloudmesh/cloudmesh-sbatch}
+  accounts. \url{https://github.com/cloudmesh/cloudmesh-ee}
 
 \item {\bf cloudmesh} -- Cloudmesh is a large collection of repositories for
   accessing cloud and HPC
