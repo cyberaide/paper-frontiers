@@ -12,7 +12,6 @@
 
 \documentclass[utf8]{FrontiersinVancouver} % for articles in journals
 
-
 \DeclareGraphicsExtensions{.pdf,.png,.jpg}
 
 % \DeclareGraphicsExtensions{.jpg,.pdf,.png}
@@ -153,7 +152,7 @@ Insights in High-Performance Big Data Systems Gained from
 
 \onecolumn
 
-
+\begin{comment}
 %
 % FOR FINAL VERSION OUTCOMMENT
 %
@@ -177,6 +176,7 @@ Insights in High-Performance Big Data Systems Gained from
 %
 % OUTCOMMENT LINES ABOVE
 %
+\end{comment}
 
 \title{\TITLE}
 
@@ -227,7 +227,8 @@ As this activity was conducted across multiple educational efforts, we project i
 \section{Introduction}
 
 
-As today's academic institutions provide machine learning and deep learning educational efforts, we attempt to identify if it is possible to leverage such activities to apply them as part of benchmarking machine learning efforts conducted by the community as part of MLCommons \cite{www-mlcommons,las-22-mlcommons-science}. 
+As today's academic institutions provide machine learning, deep learning, and high performance computing educational efforts, we attempt to identify if it is possible to leverage 
+existing large scale efforts from the MLCommons community within such activities.\cite{www-mlcommons,las-22-mlcommons-science}. We focus soly on challenges and opportunities cast by the MLCommons efforts to achieve this goal.
 
 To provide a manageable entry point into answering this question, we summarize numerous insights that we obtained while improving and conducting earthquake benchmarks within the MLCommons\textsuperscript{\texttrademark} Science Working Group, porting it to High-Performance Computing Big Data systems.  This includes insights into the usability and capability of HPC Big Data systems, the usage of the MLCommons benchmarking science applications \citep{las-22-mlcommons-science}, and insights from improving the applicability in educational efforts.
 
@@ -235,11 +236,11 @@ Benchmarking is an important effort in exploring and using HPC Big Data systems.
 
 While for traditional HPC systems, the pure computational power is measured such as projected by the TOP500 \cite{dongarra1997top500,www-top500}, it is also important to incorporate more sophisticated benchmarks that integrate different applications, such as the file system performance (which can considerably impact the computation time). This is especially the case when fast GPUs are used that need to be fed with data at an adequate rate to perform well. If file systems are too slow, then the expensive specialized GPUs cannot be adequately utilized.
 
-Benchmarks also offer a common way to communicate the results to its users so that expectations on what is possible are disseminated within the computing community. This includes users from the educational community. Students often have an easier time reproducing a benchmark and assessing the impact of modified parameters as part of the exploration of the behaviors of an algorithm. This is especially the case in deep learning, where a variety of hyperparameters are typically modified to find the most accurate solution.
+Benchmarks also offer a common way to communicate the results to its users so that expectations on what is possible are disseminated within the computing and educational community. This includes users from the educational community. Students often have an easier time reproducing a benchmark and assessing the impact of modified parameters as part of the exploration of the behaviors of an algorithm. This is especially the case in deep learning, where a variety of hyperparameters are typically modified to find the most accurate solution.
 
-Such parameters should include not only parameters related to the algorithm itself but also explore different systems parameters such as those impacting data access performance or even energy consumption.
+Such parameters should include not only parameters related to the algorithm itselfbut also explore different systems parameters such as those impacting data access performance or even energy consumption.
 
-Within this paper, we identify opportunities in four different areas as depicted in Figure \ref{fig:opportunities} to enhance the MLCommons efforts we have been involved in as part of the MLCommons Science Working Group. This includes areas in hardware, applications, education, evaluation, and outreach. These areas intersect heavily with each other to create an integrated effort.    
+Within this paper, we identify opportunities in four different areas as depicted in Figure \ref{fig:opportunities} to enhance the MLCommons efforts we have been involved in as part of the MLCommons Science Working Group. This includes areas in hardware, applications, education, evaluation, and outreach. These areas intersect heavily with each other to create an integrated holistic benchmark effort for deep learning.    
 
 
 \begin{figure}[htb]
@@ -367,7 +368,7 @@ From this small list, we can already see that a comprehensive course curriculum 
 
 There are several diverse libraries and tools that exist to support the development of AI and ML products. As an example, we list a subset of frequently used software libraries and tools that enable the machine learning engineer and student to write their applications.
 
-First, we note that at the university level, the new, predominant programming language used for machine learning and data science is Python. This is evident from the success and popularity of sophisticated libraries such as scikit-learn, PyTorch, and TensorFlow. In recent years, we have seen a trend that PyTorch has become more popular at the university level than TensorFlow. Although the learning curve of these tools is significant, they provide invaluable opportunities while applying them to several different applications. As a result, we integrate these tools into our benchmarks and multi-use toolkit, {\em cloudmesh}.
+First, we note that at the university level, the predominant programming language used for machine learning and data science is Python. This is evident from the success and popularity of sophisticated libraries such as scikit-learn, PyTorch, and TensorFlow. In recent years, we have seen a trend that PyTorch has become more popular at the university level than TensorFlow. Although the learning curve of these tools is significant, they provide invaluable opportunities while applying them to several different applications. As a result, we integrate these tools into our benchmarks and multi-use toolkit, {\em cloudmesh}.
 
 In contrast, other specialized classes that focus on the development of faster, GPU-based methods typically use C++ code leveraging the vendor's specialized libraries to interface with the GPUs such as Nvidia CUDA.
 
@@ -384,7 +385,7 @@ To efficiently use the libraries and methods, as well as the infrastructure used
 (4) ensure the availability of the code using open-source, 
 (5) understand how to collaborate with others, and (5) utilize queuing systems as used within shared resources managed through queuing systems. 
 
-It is vital to instill these industry-standard practices within apprentices new to artificial intelligence utilization of HPC systems, beyond just the simplest example, to efficiently use the resources and plan benchmark experiments. These skills are key to evolving a beginner's research and class experience towards intermediate and advanced knowledge usable in the industry so they can further contribute to altruist AI applications and the dissemination of work within academia. Moreover, these students will bring lucrative skillsets with them to their future professional careers.
+It is vital to instill these industry-standard practices within apprentices new to artificial intelligence utilization of HPC systems, beyond just the simplest example, to efficiently use the resources and plan benchmark experiments. These skills are key to evolving a beginner's research and class experience towards intermediate and advanced knowledge usable in the industry so they can further contribute to altruist AI applications and the dissemination of work within academia. Moreover, these students will bring valuable and lucrative skillsets with them to their future professional careers.
 
 Although many centers offer Jupyter as an interactive use of the HPC resources, such notebooks are often designed to be simple one-off experiments, not allowing for encapsulation or expansion into other code. Furthermore, the queuing system time imitations within HPC environments hinder the reproducibility of experiments as the time requirements may only allow one experiment as we have experienced with our application.
 
@@ -419,23 +420,21 @@ An additional tool is JupyterLab, created by Project Jupyter. It provides a web 
 
 Regrettably, live collaborative editing of Jupyter notebooks is not yet supported on some platforms such as {\em Replit} and {\em PyCharm}. However, vscode does support this feature, even within the browser, eliminating the need to download a client. We expect that such features will eventually become available in other tools. 
 
-
-The lack of emphasizing standards such as these relates to a general problem at the university level. 
-
 While topical-focused classes such as machine and deep learning is obviously in the foreground, we 
 see a lack of introducing students to software carpeting and even the understanding of HPC queuing systems in general. Tools such as Jupyter and Colab that are often used in such classes deprive the students often from the needed underlying understanding of efficiently using shared GPU resources for ML and DL. 
 
 Hence, students are often ill-prepared for software carpeting needs that arise in more advanced applications of DL utilizing parallel and concurrent DL methodologies. Furthermore, programming language classes are often only applied to teaching Python while only emphasizing the language aspects but not with a sustainable, {\em practical} software engineering approach. Because machine learning is a relatively new venture in the computing field, there is not yet a definitive set of standards meant for beginning students. 
+The lack of emphasizing standards as part of teaching activities such as these relates to a general problem at the university level. 
 
 
 We alleviate difficulties such as these encountered within research experience by leveraging a cross-platform cloud-computing toolkit named {\em cloudmesh}. This toolkit, alongside our use of professional IDEs and version control, allows students to focus less on manual code expenditures and operating system debugging, and more on HPC use and machine learning development on datasets such as from the Modified National Institute of Standards and Technology (MNIST), among others. We acknowledge the importance of saving time as it is a precious commodity in research experiences.  
-The use of {\em cloudmesh} reduces the entry barrier surrounding the creation of machine learning benchmark applications, as well as our standardized benchmarking system, MLCommons. This system is easily implemented as long as programmers can utilize the capabilities of an industry-standard IDE. Since we emphasize reproducibility and openness with other contributors, then an open-source solution like MLCommons is necessary.
+The use of {\em cloudmesh} reduces the entry barrier surrounding the creation of machine learning benchmark workflow applications, as well as our standardized benchmarking system, MLCommons. This system is easily implemented as long as programmers can utilize the capabilities of an industry-standard IDE. Since we emphasize reproducibility and openness with other contributors, then an open-source solution like MLCommons is necessary.
 
 
 
 \subsubsection{Benchmark Carpentry}
 
-Benchmark carpentry is not yet a well-known concept for focusing on applying software carpentry, common benchmark software, and experiment management aspects to create reproducible results in research computing.  To work towards a consolidated effort of benchmark carpentry,  the experiences and insights documented in this paper have recently been reported to the MLCommons Science Working group. Throughout the discussion, we identified the need to develop an effort focusing on benchmark carpentry that goes beyond the aspects typically taught in software carpentry while focusing on aspects of benchmarks that are not covered. This includes a review of other benchmark efforts such as TOP500 and Green500, the technical discussion around system benchmarks including SPEC benchmarks, as well as tools and practices to better benchmark a system. Special effort needs not only to be placed on benchmarking the CPU and GPU capabilities, but also on what effect the impact of the file system or the memory hierarchy has. This benchmarking ensures reproducibility while leveraging the Findability, Accessibility, Interoperability, and Reusability (FAIR) principle. Further, using software that establishes not only immutable baseline environments such as {\em Singularity} and {\em Docker}, but also the creation of reproducible benchmark pipelines and workflows using cloudmesh-ee and cloudmesh-cc, is beneficial. Such efforts can also be included in university courses, and the results of developing material for and by the participants can significantly pervade the concept of a standardized benchmarking system such as MLCommons's MLPerf.
+Benchmark carpentry is not yet a well-known concept while focusing on applying software carpentry, common benchmark software, and experiment management aspects to create reproducible results in research computing.  To work towards a consolidated effort of benchmark carpentry,  the experiences and insights documented in this paper have recently been reported to the MLCommons Science Working group. Throughout the discussion, we identified the need to develop an effort focusing on benchmark carpentry that goes beyond the aspects typically taught in software carpentry while focusing on aspects of benchmarks that are not covered. This includes a review of other benchmark efforts such as TOP500 and Green500, the technical discussion around system benchmarks including SPEC benchmarks, as well as tools and practices to better benchmark a system. Special effort needs not only to be placed on benchmarking the CPU and GPU capabilities, but also on what effect the impact of the file system or the memory hierarchy has. This benchmarking ensures reproducibility while leveraging the Findability, Accessibility, Interoperability, and Reusability (FAIR) principle. Further, using software that establishes not only immutable baseline environments such as {\em Singularity} and {\em Docker}, but also the creation of reproducible benchmark pipelines and workflows using cloudmesh-ee and cloudmesh-cc, is beneficial. Such efforts can also be included in university courses, and the results of developing material for and by the participants can significantly pervade the concept of a standardized benchmarking system such as MLCommons's MLPerf.
 
 \subsubsection{Infrastructure}
 
@@ -1535,21 +1534,6 @@ Summary Energy Benchmarks:
 % \TODO{GVL}{enhance the discussion section}
 
 This paper summarizes a large body of work that addresses multiple aspects of machine learning benchmarking. We identified that benchmarking can lead to a significant educational contribution to students and researchers. We identified that not only is software carpentry needed, but also {\em benchmark carpentry}, an effort that we termed in conjunction with the MLCommons Science Working Group. We have demonstrated that students are capable of conducting sophisticated benchmarks while dealing with complex system-related infrastructure and working with policies set by HPC compute centers that deal with fair resource management. To deal with this we have also developed a compute coordination and workflow management system in two components called \verb|cloudmesh-ee| and \verb|cloudmesh-cc| that allow benchmark jobs to be automatically generated from hyperparameter permutations. It also allows us to coordinate such benchmarks on different machines. We have identified the patterns of selection, cooperation, and competition which are part of a benchmark workflow. Furthermore, we have improved the original benchmark code in many aspects. To simplify benchmarking we also developed an easy-to-use \verb|StopWatch| that in contrast to the \verb|mllog| library used by MLCommons is simpler and is immediately humanly readable. Lastly, our benchmarks had a significant impact on the operation and accessibility of software in the educational cluster we used. Plans for new filesystem management and updated compute nodes excite us to conduct more such studies. We intend to submit our results to the MLCommons Science Working groups as earthquake forecasting is one of their benchmark codes and efforts.
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{comment}
-\TODO{TODO}
-
-{\footnotesize
-\begin{verbatim}
-Cloudmesh Data Submodule - https://github.com/cloudmesh/cloudmesh-data
-Cloudmesh GPU Submodule - https://github.com/cloudmesh/cloudmesh-gpu
-Cloudmesh ee Submodule - https://github.com/cloudmesh/cloudmesh-ee 
-\end{verbatim}
-}
-\end{comment}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
