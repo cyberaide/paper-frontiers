@@ -12,6 +12,11 @@
 
 \documentclass[utf8]{FrontiersinVancouver} % for articles in journals
 
+\usepackage{etoolbox} 
+\newbool{SUBMISSION}
+%\boolfalse{SUBMISSION}
+\booltrue{SUBMISSION} 
+
 \DeclareGraphicsExtensions{.pdf,.png,.jpg}
 
 % \DeclareGraphicsExtensions{.jpg,.pdf,.png}
@@ -796,7 +801,13 @@ The analysis must include an easy-to-understand specification that encourages re
 
 The overall architecture is depicted in Figure \ref{fig:cc-2}A. It showcases a layered architecture with components dealing with batch job generation, storage management, compute coordination, and monitoring. These components sit on top of other specialized systems that can easily be ported to other systems while using common system abstractions.
 
+
+% FIG 3
 \begin{figure}[htb]
+
+  \ifbool{SUBMISSION}{  
+      \centering\includegraphics[width=1.0\columnwidth]{images/fig3}
+  }{
     \centering\includegraphics[width=0.70\columnwidth]{images/cloudmesh-cc-new}
     
     {\bf (A)} Architecture of the overall workflow framework.
@@ -807,11 +818,18 @@ The overall architecture is depicted in Figure \ref{fig:cc-2}A. It showcases a l
     
     
     {\bf (B)} Architecture of Workflow Script Batch Generator cloudmesh-ee.
+  }
 
+  
+  
     \caption{Architecture of the Cloudmesh Workflow Service Framework.}
     \label{fig:cc-2}
 
 \end{figure}
+
+
+
+
 
 Instead of focusing on the details of this architecture, we found that the high-level use of it is very important as part of the educational activities which also have an implication in general on the use within any research activity.
 
@@ -841,10 +859,17 @@ In the earthquake code, we have observed all three patterns are used in the benc
 Within HPC environments, scientific tasks can leverage the processing power of a supercomputer so they can run at previously unobtainable high speeds or utilize specialized hardware for acceleration that otherwise is not available to the user. HPC can be used for analytic programs that leverage machine learning applied to large data sets to, for example, predict future values or to model current states. For such high-complexity projects, there are often multiple complex programs that may be running repeatedly in either competition or cooperation, as also in the earthquake forecast application.  This may even include resources in the same or different data centers on which the benchmarks are run. To simplify the execution on such infrastructures, we developed a hybrid multi-cloud analytics service framework that was created to manage heterogeneous and remote workflows, queues, and jobs.  It can be used through a Python API, the command line, and a REST service. It is supported on multiple operating systems like macOS, Linux, and Windows 10 and 11.  The workflow is specified via an easy-to-define YAML file.  Specifically, we have developed a library called Cloudmesh Compute Coordinator (cloudmesh-cc) \citep{las-22-arxiv-workflow-cc} that adds workflow features to control the execution of jobs on remote compute resources, while at the same time leveraging capabilities provided by the local compute environments to directly interface with graphical visualizations better suited for the desktop. The goal is to provide numerous workflows that in cooperation enhance the experience of the analytics tasks. This includes a REST service (see Figure \ref{fig:cc-3}A) and command line tools to interact with it.
 
 
+% FIG 5
 \begin{figure}[htb]
-  \centering\includegraphics[width=0.8\columnwidth]{images/fastapi-service-highres.jpg}
-  
-  {\bf (A) Fast API workflow service.}
+
+
+  \ifbool{SUBMISSION}{
+    \centering\includegraphics[width=0.8\columnwidth]{images/fig5.jpg}
+}{
+
+    \centering\includegraphics[width=0.8\columnwidth]{images/fastapi-service-highres.jpg}
+    
+    {\bf (A) Fast API workflow service.}
 
   \bigskip
 
@@ -852,6 +877,9 @@ Within HPC environments, scientific tasks can leverage the processing power of a
     \centering\includegraphics[width=0.8\columnwidth]{images/cc-1.jpg}
 
     {\bf (B) Workflow user interface.}
+
+}
+  
 
     \caption{Workflow interfaces.}
     \label{fig:cc-3}
@@ -1047,8 +1075,12 @@ Based on these findings, we influenced a change in the architecture of the HPC s
 
 However, for our experiments, we were only running the desktop for up to 33 epochs, and the dotted line includes our prediction of the runtime based on our previous values. The reason for this is that during our experiments, we ran out of memory on the desktop to produce the visualization which is part of the overall program. The insight we gained is that one must ensure that the data feed to the GPU can keep up with the GPU's performance. It is not sufficient to add GPUs to a server that may not have adequate fast filesystems, memory, or processors.
 
+% FIG 6
 \begin{figure}[p]
 
+  \ifbool{SUBMISSION}{
+  \centering\includegraphics[width=1.0\columnwidth]{images/fig6}
+ }{
   \centering\includegraphics[width=0.70\columnwidth]{images/Graphics_Cards_BestFit_bar}
 
   {\bf (A)} Time of the best fit in seconds of performance measurements while using 2 epochs on various systems with different GPUs. The lower portion (green) of each bar represents the setup time, while the upper portion (blue) represents the training and prediction time. The setup time is constant throughout the experiments, while with an increasing number of epochs the training and prediction time will dominate. 
@@ -1060,7 +1092,7 @@ However, for our experiments, we were only running the desktop for up to 33 epoc
 
   {\bf (B)} Time performance benchmark for various GPU cards on different systems and variations of epochs.
   
-  
+  }
     
   \caption{Performance time measurements.}
   \label{fig:performance-projection}
@@ -1331,8 +1363,12 @@ Figure~\ref{fig:NNSE-comparison-a100-summed}).
 
 As we see further educational opportunities can be derived from analyzing different prediction parameters, and different input data distributions.
 
+% FIG 8
 \begin{figure}[p]
 
+  \ifbool{SUBMISSION}{
+            \includegraphics[width=1.0\linewidth]{images/fig8}
+  }{  
   \begin{center}
        \begin{minipage}[t]{0.49\textwidth}
         \includegraphics[width=1.0\linewidth]{images/frequency_nnse_histogram_stacked_df_training}
@@ -1356,15 +1392,20 @@ As we see further educational opportunities can be derived from analyzing differ
 
   \end{center}
 
+  }
+  
   \caption {Evaluation of the NNSE average accuracy for epochs 2, 30, 70, and 90.}
   \label{fig:NNSE-comparison-a100}
 
 \end{figure}
 
 
-
+% FIG 9
 \begin{figure}[p]
 
+  \ifbool{SUBMISSION}{
+        \includegraphics[width=1.0\linewidth]{images/fig9}
+  }{
   \begin{center}
        \begin{minipage}[t]{0.49\textwidth}
         \includegraphics[width=1.0\linewidth]{images/frequency_nnse_histogram_stacked_df_training_summed}
@@ -1387,7 +1428,8 @@ As we see further educational opportunities can be derived from analyzing differ
      \end{minipage}
 
   \end{center}
-
+  }
+  
   \caption {Evaluation of the NNSE summed accuracy for epochs 2, 30, 70, and 90.}
   \label{fig:NNSE-comparison-a100-summed}
 
@@ -1456,11 +1498,14 @@ Such phases and making clear that GPUs may not be used in some of them could als
 
 Students have now easy means to measure and improve through algorithmic means the energy consumption in the various phases, but also the overall consumption for a scientific application. External data \cite{energy-price} can be used to obtain information about the cost of such calculations. However, in many cases, this data needs to be augmented as data centers may have special pricing for energy consumption. Thus it is very useful to also consider greenhouse gas emissions instead \cite{greenhouse-calc}. In our future work, we like to integrate such data into the energy monitor we have currently.
 
+% FIG 10
 \begin{figure}[htb]
 
+  \ifbool{SUBMISSION}{    
+    \includegraphics[width=1.0\linewidth]{images/fig10}
+  }{
   \begin{center}
-
-     \begin{minipage}[b]{0.43\textwidth}
+    \begin{minipage}[b]{0.43\textwidth}
        \includegraphics[width=1.0\linewidth]{images/a100-shaded-energy-2-epochs}
         {\bf (A)} A100 energy trace $E^T_{\Delta t=1s}(GPU)$ for 2 epochs training and validation.
     \end{minipage}
@@ -1490,17 +1535,21 @@ Students have now easy means to measure and improve through algorithmic means th
         {\bf (F)}  V100 energy trace $E^T_{\Delta t=1s}(GPU)$ for 70 epochs training and validation.
      \end{minipage}
 \end{center}
-
+}
      \caption{Energy traces for training and validation for epochs 2 (A, B), 30 (C, D), 70 (E, F). The sampling rate is 1 second.}
      \label{fig:energy-graphs}
 \end{figure}
 
 
 
+%FIG 11
 \begin{figure}[htb]
 
+  \ifbool{SUBMISSION}{
+       \includegraphics[width=1.0\textheightlinewidth]{images/fig10}
+  }{
   \begin{center}
-
+    
        \includegraphics[height=0.28\textheight]{images/energy_all_model_fit_kWh_per_epoch}
 
        {\bf (A)} Average energy usage per epoch, including only to the Training event energy traces
@@ -1515,7 +1564,8 @@ Students have now easy means to measure and improve through algorithmic means th
 
 
   \end{center}
-
+  }
+  
   \caption{Averaged energy consumption of various GPUs targeting a 1 second data sampling rate. The recorded values in (A) and all V100 reported are produced with an NFS mounted filesystem.  The data for A100 in (B) and (C) is using localscratch's NVMe storage.} 
   \label{fig:energy-graphs-compare}
 \end{figure}
